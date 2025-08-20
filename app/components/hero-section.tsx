@@ -84,9 +84,9 @@ export default function HeroSection() {
           className="relative mb-12 max-w-5xl mx-auto"
         >
           {/* Carousel Container */}
-          <div className="relative bg-card border border-border rounded-lg p-6 shadow-xl overflow-hidden group">
+          <div className="relative bg-card border border-border rounded-lg shadow-xl overflow-hidden group">
             {/* Image Container */}
-            <div className="relative aspect-video rounded-lg overflow-hidden">
+            <div className="relative aspect-[3/2] rounded-lg overflow-hidden">
               {slides.map((slide, index) => (
                 <div
                   key={index}
@@ -98,7 +98,7 @@ export default function HeroSection() {
                     src={slide.src}
                     alt={slide.alt}
                     fill
-                    className="object-cover rounded-lg"
+                    className="object-contain"
                     priority={index === 0}
                   />
                 </div>
