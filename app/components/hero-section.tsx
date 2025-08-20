@@ -14,18 +14,18 @@ export default function HeroSection() {
   const slides = [
     {
       src: '/dashboard1.png',
-      alt: 'Knowcap.ai Meeting Management Interface',
-      title: 'Centralized Meeting Management'
+      alt: 'AI-powered meeting management with sources and studio workspace',
+      title: 'AI-Powered Meeting Intelligence'
     },
     {
       src: '/dashboard2.png', 
-      alt: 'Project Leader Performance Dashboard',
-      title: 'Performance Analytics Dashboard'
+      alt: 'Project Leader Performance Dashboard showing Hassan Sam Arslan metrics',
+      title: 'Expert-Level Performance Analytics'
     },
     {
       src: '/dashboard3.png',
-      alt: 'Detailed Project Metrics and Analysis',
-      title: 'Comprehensive Project Analysis'
+      alt: 'Comprehensive project analysis with detailed breakdowns and assessments',
+      title: 'Deep Project Analysis & Insights'
     }
   ]
 
