@@ -30,17 +30,12 @@ export default function HeroSection() {
             <span className="text-sm font-medium text-muted-foreground">For Odoo Partners Only</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            I'm an Odoo Partner. <br />
-            <span className="gradient-text">I Built This Because</span> <br />
-            My Projects Were a Mess
+            I'm an Odoo Partner. My projects were a mess—so I built the <span className="gradient-text">AI‑powered operating system</span> for Odoo partners.
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             You know the feeling. Client expectations sky-high, documentation scattered, 
             team burning out, and you're firefighting instead of building.
           </p>
-          <div className="text-lg text-cyan-300 mb-8 font-medium">
-            Hassan here. Fellow Odoo Partner. I've been there.
-          </div>
         </motion.div>
 
         <motion.div 
