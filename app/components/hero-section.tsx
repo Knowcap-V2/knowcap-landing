@@ -53,7 +53,7 @@ export default function HeroSection() {
       <div className="fixed top-6 right-6 z-50">
         <ThemeToggle />
       </div>
-      <div className="max-w-6xl mx-auto px-6 py-20 text-center relative">
+      <div className="max-w-7xl mx-auto px-2 py-16 text-center relative">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -77,10 +77,10 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mb-6 max-w-6xl mx-auto"
+          className="relative mb-4 mx-1 sm:mx-2"
         >
           {/* Carousel Container */}
-          <div className="relative border border-border/20 rounded-md overflow-hidden group shadow-lg">
+          <div className="relative border border-border/10 rounded-sm overflow-hidden group">
             {/* Image Container */}
             <div className="relative aspect-[16/10] overflow-hidden">
               {slides.map((slide, index) => (
@@ -121,12 +121,12 @@ export default function HeroSection() {
           </div>
           
           {/* Slide Indicators - Outside the image container */}
-          <div className="flex justify-center gap-2 mt-2">
+          <div className="flex justify-center gap-1.5 mt-1">
             {slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-200 ${
                   index === currentSlide 
                     ? 'bg-primary' 
                     : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
@@ -137,8 +137,8 @@ export default function HeroSection() {
           </div>
           
           {/* Slide Title - Outside the image container */}
-          <div className="text-center mt-1">
-            <p className="text-sm font-medium text-muted-foreground">
+          <div className="text-center mt-0.5">
+            <p className="text-xs font-medium text-muted-foreground">
               {slides[currentSlide].title}
             </p>
           </div>
