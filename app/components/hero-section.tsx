@@ -2,15 +2,54 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Users, Code, Zap } from 'lucide-react'
+import { ArrowRight, Users, Code, Zap, ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ThemeToggle } from '@/components/theme-toggle'
+import { useState, useEffect } from 'react'
 
 export default function HeroSection() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  
+  const slides = [
+    {
+      src: '/dashboard1.png',
+      alt: 'Knowcap.ai Meeting Management Interface',
+      title: 'Centralized Meeting Management'
+    },
+    {
+      src: '/dashboard2.png', 
+      alt: 'Project Leader Performance Dashboard',
+      title: 'Performance Analytics Dashboard'
+    },
+    {
+      src: '/dashboard3.png',
+      alt: 'Detailed Project Metrics and Analysis',
+      title: 'Comprehensive Project Analysis'
+    }
+  ]
+
   const scrollToApplication = () => {
     document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })
   }
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+  }
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index)
+  }
+
+  // Auto-advance carousel every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-bg">
@@ -30,7 +69,7 @@ export default function HeroSection() {
             <span className="text-sm font-medium text-muted-foreground">For Odoo Partners Only</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            I'm an Odoo Partner. My projects were a mess—so I built the <span className="gradient-text">AI‑powered operating system</span> for Odoo partners.
+            As a former Odoo partner, my projects were leaking profits—so I built the <span className="gradient-text">AI‑powered operating system</span> for Odoo partners.
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             You know the feeling. Client expectations sky-high, documentation scattered, 
@@ -42,17 +81,69 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mb-12"
+          className="relative mb-12 max-w-5xl mx-auto"
         >
-          <div className="bg-card border border-border rounded-lg p-6 shadow-xl">
-            <Image
-              src="/image.png"
-              alt="Knowcap.ai Interface"
-              width={800}
-              height={400}
-              className="rounded-lg"
-              priority
-            />
+          {/* Carousel Container */}
+          <div className="relative bg-card border border-border rounded-lg p-6 shadow-xl overflow-hidden group">
+            {/* Image Container */}
+            <div className="relative aspect-video rounded-lg overflow-hidden">
+              {slides.map((slide, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
+                    index === currentSlide ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    className="object-cover rounded-lg"
+                    priority={index === 0}
+                  />
+                </div>
+              ))}
+              
+              {/* Navigation Arrows */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm border border-border/50 hover:bg-accent/50 rounded-full p-2 transition-all duration-200 opacity-0 hover:opacity-100 group-hover:opacity-100"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              
+              <button
+                onClick={nextSlide}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm border border-border/50 hover:bg-accent/50 rounded-full p-2 transition-all duration-200 opacity-0 hover:opacity-100 group-hover:opacity-100"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+            
+            {/* Slide Indicators */}
+            <div className="flex justify-center gap-2 mt-4">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                    index === currentSlide 
+                      ? 'bg-primary' 
+                      : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+            
+            {/* Slide Title */}
+            <div className="text-center mt-3">
+              <p className="text-sm font-medium text-muted-foreground">
+                {slides[currentSlide].title}
+              </p>
+            </div>
           </div>
         </motion.div>
 
