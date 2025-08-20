@@ -77,12 +77,12 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mb-8 max-w-5xl mx-auto"
+          className="relative mb-6 max-w-6xl mx-auto"
         >
           {/* Carousel Container */}
-          <div className="relative bg-card border border-border rounded-lg shadow-xl overflow-hidden group">
+          <div className="relative border border-border/20 rounded-md overflow-hidden group shadow-lg">
             {/* Image Container */}
-            <div className="relative aspect-[3/2] rounded-lg overflow-hidden">
+            <div className="relative aspect-[16/10] overflow-hidden">
               {slides.map((slide, index) => (
                 <div
                   key={index}
@@ -118,28 +118,29 @@ export default function HeroSection() {
               </button>
             </div>
             
-            {/* Slide Indicators */}
-            <div className="flex justify-center gap-2 mt-3">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                    index === currentSlide 
-                      ? 'bg-primary' 
-                      : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-            
-            {/* Slide Title */}
-            <div className="text-center mt-2">
-              <p className="text-sm font-medium text-muted-foreground">
-                {slides[currentSlide].title}
-              </p>
-            </div>
+          </div>
+          
+          {/* Slide Indicators - Outside the image container */}
+          <div className="flex justify-center gap-2 mt-2">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                  index === currentSlide 
+                    ? 'bg-primary' 
+                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+          
+          {/* Slide Title - Outside the image container */}
+          <div className="text-center mt-1">
+            <p className="text-sm font-medium text-muted-foreground">
+              {slides[currentSlide].title}
+            </p>
           </div>
         </motion.div>
 
