@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { ArrowRight, Users, Code, Zap } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 export default function HeroSection() {
   const scrollToApplication = () => {
@@ -13,6 +14,10 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-bg">
+      {/* Theme Toggle - Fixed position top right */}
+      <div className="fixed top-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
       <div className="max-w-6xl mx-auto px-6 py-20 text-center relative">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
