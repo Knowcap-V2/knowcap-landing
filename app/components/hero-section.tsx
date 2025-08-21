@@ -57,7 +57,7 @@ export default function HeroSection() {
       <div className="fixed top-6 right-6 z-50">
         <ThemeToggle />
       </div>
-      <div className="max-w-7xl mx-auto px-2 py-16 text-center relative">
+      <div className="max-w-[1400px] mx-auto px-2 py-16 text-center relative">
         <div className={`mb-8 transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="flex items-center justify-center gap-2 mb-6">
             <Users className="w-6 h-6 text-cyan-400" />
@@ -72,21 +72,21 @@ export default function HeroSection() {
           </p>
         </div>
 
-        <div className={`relative mb-4 mx-1 sm:mx-2 transition-all duration-800 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+        <div className={`relative mb-4 mx-0 sm:mx-1 transition-all duration-800 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           {/* Carousel Container with External Navigation */}
-          <div className="relative flex items-center justify-center gap-4">
+          <div className="relative flex items-center justify-center gap-2">
             {/* Left Navigation Arrow */}
             <button
               onClick={prevSlide}
-              className="bg-background/90 backdrop-blur-sm border border-border/50 hover:bg-accent/50 rounded-full p-3 transition-all duration-200 shadow-lg hover:shadow-xl z-10 flex-shrink-0"
+              className="bg-background/90 backdrop-blur-sm border border-border/50 hover:bg-accent/50 rounded-full p-4 transition-all duration-200 shadow-lg hover:shadow-xl z-10 flex-shrink-0"
               aria-label="Previous image"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-6 h-6" />
             </button>
             
             {/* Image Container */}
-            <div className="relative border border-border/10 rounded-sm overflow-hidden flex-1 max-w-5xl">
-              <div className="relative aspect-[16/10] overflow-hidden">
+            <div className="relative border border-border/10 rounded-sm overflow-hidden flex-1 max-w-none">
+              <div className="relative aspect-[18/10] overflow-hidden">
                 {slides.map((slide, index) => (
                   <div
                     key={index}
@@ -109,10 +109,10 @@ export default function HeroSection() {
             {/* Right Navigation Arrow */}
             <button
               onClick={nextSlide}
-              className="bg-background/90 backdrop-blur-sm border border-border/50 hover:bg-accent/50 rounded-full p-3 transition-all duration-200 shadow-lg hover:shadow-xl z-10 flex-shrink-0"
+              className="bg-background/90 backdrop-blur-sm border border-border/50 hover:bg-accent/50 rounded-full p-4 transition-all duration-200 shadow-lg hover:shadow-xl z-10 flex-shrink-0"
               aria-label="Next image"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-6 h-6" />
             </button>
           </div>
           
