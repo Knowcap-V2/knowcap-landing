@@ -79,45 +79,47 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="relative mb-4 mx-1 sm:mx-2"
         >
-          {/* Carousel Container */}
-          <div className="relative border border-border/10 rounded-sm overflow-hidden group">
+          {/* Carousel Container with External Navigation */}
+          <div className="relative flex items-center justify-center gap-4">
+            {/* Left Navigation Arrow */}
+            <button
+              onClick={prevSlide}
+              className="bg-background/90 backdrop-blur-sm border border-border/50 hover:bg-accent/50 rounded-full p-3 transition-all duration-200 shadow-lg hover:shadow-xl z-10 flex-shrink-0"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            
             {/* Image Container */}
-            <div className="relative aspect-[16/10] overflow-hidden">
-              {slides.map((slide, index) => (
-                <div
-                  key={index}
-                  className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
-                    index === currentSlide ? 'opacity-100' : 'opacity-0'
-                  }`}
-                >
-                  <Image
-                    src={slide.src}
-                    alt={slide.alt}
-                    fill
-                    className="object-contain"
-                    priority={index === 0}
-                  />
-                </div>
-              ))}
-              
-              {/* Navigation Arrows */}
-              <button
-                onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-background/90 backdrop-blur-sm border border-border/50 hover:bg-accent/50 rounded-full p-3 transition-all duration-200 shadow-lg hover:shadow-xl"
-                aria-label="Previous image"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              
-              <button
-                onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-background/90 backdrop-blur-sm border border-border/50 hover:bg-accent/50 rounded-full p-3 transition-all duration-200 shadow-lg hover:shadow-xl"
-                aria-label="Next image"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
+            <div className="relative border border-border/10 rounded-sm overflow-hidden flex-1 max-w-5xl">
+              <div className="relative aspect-[16/10] overflow-hidden">
+                {slides.map((slide, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
+                      index === currentSlide ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  >
+                    <Image
+                      src={slide.src}
+                      alt={slide.alt}
+                      fill
+                      className="object-contain"
+                      priority={index === 0}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
             
+            {/* Right Navigation Arrow */}
+            <button
+              onClick={nextSlide}
+              className="bg-background/90 backdrop-blur-sm border border-border/50 hover:bg-accent/50 rounded-full p-3 transition-all duration-200 shadow-lg hover:shadow-xl z-10 flex-shrink-0"
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
           
           {/* Slide Indicators - Outside the image container */}
