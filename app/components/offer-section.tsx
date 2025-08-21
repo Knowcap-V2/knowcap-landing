@@ -72,8 +72,8 @@ export default function OfferSection() {
                 </li>
               ))}
             </ul>
-            <div className="mt-6 p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
-              <p className="text-green-300 font-semibold text-sm">
+            <div className="mt-6 p-4 bg-black/10 dark:bg-white/10 border border-black/20 dark:border-white/20 rounded-lg">
+              <p className="text-black dark:text-white font-semibold text-sm">
                 Estimated value: $50,000+ in platform access, consulting, and partnership opportunities
               </p>
             </div>
@@ -98,8 +98,8 @@ export default function OfferSection() {
                 </li>
               ))}
             </ul>
-            <div className="mt-6 p-4 bg-cyan-500/10 border border-cyan-500/20 rounded-lg">
-              <p className="text-cyan-300 font-semibold text-sm">
+            <div className="mt-6 p-4 bg-black/10 dark:bg-white/10 border border-black/20 dark:border-white/20 rounded-lg">
+              <p className="text-black dark:text-white font-semibold text-sm">
                 This is about mutual value creation, not one-sided extraction
               </p>
             </div>
