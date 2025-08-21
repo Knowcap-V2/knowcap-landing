@@ -3,13 +3,17 @@
 
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Users, Code, Zap, ChevronLeft, ChevronRight } from 'lucide-react'
-import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { useState, useEffect } from 'react'
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   
   const slides = [
     {
@@ -54,12 +58,7 @@ export default function HeroSection() {
         <ThemeToggle />
       </div>
       <div className="max-w-7xl mx-auto px-2 py-16 text-center relative">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-8"
-        >
+        <div className={`mb-8 transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="flex items-center justify-center gap-2 mb-6">
             <Users className="w-6 h-6 text-cyan-400" />
             <span className="text-sm font-medium text-muted-foreground">For Odoo Partners Only</span>
@@ -71,14 +70,9 @@ export default function HeroSection() {
             You know the feeling. Client expectations sky-high, documentation scattered, 
             team burning out, and you're firefighting instead of building.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mb-4 mx-1 sm:mx-2"
-        >
+        <div className={`relative mb-4 mx-1 sm:mx-2 transition-all duration-800 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           {/* Carousel Container with External Navigation */}
           <div className="relative flex items-center justify-center gap-4">
             {/* Left Navigation Arrow */}
@@ -144,14 +138,9 @@ export default function HeroSection() {
               {slides[currentSlide].title}
             </p>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
+        <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
           <Button 
             size="lg" 
             onClick={scrollToApplication}
@@ -170,7 +159,7 @@ export default function HeroSection() {
               <span>Invite Only</span>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
