@@ -2,24 +2,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useEffect } from 'react'
 import { FileText } from 'lucide-react'
 
 export default function ApplicationSection() {
-  useEffect(() => {
-    // Load Typeform embed script
-    const script = document.createElement('script')
-    script.src = '//embed.typeform.com/next/embed.js'
-    script.async = true
-    document.body.appendChild(script)
-
-    return () => {
-      // Cleanup script when component unmounts
-      if (document.body.contains(script)) {
-        document.body.removeChild(script)
-      }
-    }
-  }, [])
 
   return (
     <section id="application" className="py-20 bg-background">
@@ -52,10 +37,8 @@ export default function ApplicationSection() {
           className="bg-card border border-border rounded-lg p-8"
         >
           {/* Typeform Embed */}
-          <div 
-            data-tf-live="01K34ZEG8XK9D4VV46M91TH3Q5"
-            style={{ minHeight: '600px' }}
-          ></div>
+          <div data-tf-live="01K34ZEG8XK9D4VV46M91TH3Q5"></div>
+          <script src="//embed.typeform.com/next/embed.js"></script>
           
           <p className="text-xs text-muted-foreground text-center mt-4">
             Applications are reviewed personally by Hassan within 48 hours. 
