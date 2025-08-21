@@ -73,14 +73,14 @@ export default function ProblemSection() {
             >
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center">
-                    <crisis.icon className="w-6 h-6 text-red-400" />
+                  <div className="w-12 h-12 bg-black/10 dark:bg-white/10 rounded-lg flex items-center justify-center">
+                    <crisis.icon className="w-6 h-6 text-black dark:text-white" />
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-3 text-red-300">{crisis.title}</h3>
+                  <h3 className="text-xl font-bold mb-3 text-black dark:text-white">{crisis.title}</h3>
                   <p className="text-muted-foreground mb-4 leading-relaxed">{crisis.description}</p>
-                  <p className="text-sm text-red-400 font-medium italic">{crisis.impact}</p>
+                  <p className="text-sm text-black dark:text-white font-medium italic">{crisis.impact}</p>
                 </div>
               </div>
             </motion.div>
