@@ -80,15 +80,15 @@ export default function VisionSection() {
                 </div>
                 <div className="flex-1">
                   <div className="mb-4">
-                    <h4 className="text-lg font-semibold text-red-400 mb-2">Problem:</h4>
+                    <h4 className="text-lg font-semibold text-black dark:text-red-400 mb-2">Problem:</h4>
                     <p className="text-muted-foreground text-lg">{solution.problem}</p>
                   </div>
-                  <div className="bg-secondary/50 rounded-lg p-4 border-l-4 border-cyan-400 mb-4">
-                    <h4 className="text-sm font-semibold text-cyan-300 mb-2">Magic Prompt:</h4>
-                    <p className="text-cyan-100 italic">"{solution.magicPrompt}"</p>
+                  <div className="bg-secondary/50 rounded-lg p-4 border-l-4 border-black dark:border-cyan-400 mb-4">
+                    <h4 className="text-sm font-semibold text-black dark:text-cyan-300 mb-2">Magic Prompt:</h4>
+                    <p className="text-black dark:text-cyan-100 italic">"{solution.magicPrompt}"</p>
                   </div>
                   <div className="text-right">
-                    <span className="text-sm font-bold text-cyan-400">({solution.system})</span>
+                    <span className="text-sm font-bold text-black dark:text-cyan-400">({solution.system})</span>
                   </div>
                 </div>
               </div>
