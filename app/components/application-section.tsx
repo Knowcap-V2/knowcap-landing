@@ -3,21 +3,36 @@
 
 import { FileText, Loader } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import Script from 'next/script'
 
 export default function ApplicationSection() {
   const [mounted, setMounted] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [scriptLoaded, setScriptLoaded] = useState(false)
 
   useEffect(() => {
     setMounted(true)
-    
-    // Hide loading state after a short delay to allow iframe to start loading
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 2000)
-    
-    return () => clearTimeout(timer)
   }, [])
+
+  useEffect(() => {
+    if (scriptLoaded) {
+      // Hide loading state after script loads and form initializes
+      const timer = setTimeout(() => {
+        setIsLoading(false)
+      }, 1500)
+      
+      return () => clearTimeout(timer)
+    }
+  }, [scriptLoaded])
+
+  const handleScriptLoad = () => {
+    setScriptLoaded(true)
+  }
+
+  const handleScriptError = () => {
+    console.error('Failed to load Typeform script')
+    setIsLoading(false)
+  }
 
   return (
     <section id="application" className="py-20 bg-background">
@@ -47,18 +62,15 @@ export default function ApplicationSection() {
             </div>
           )}
 
-          {/* Typeform Container - Using iframe approach for better mobile compatibility */}
+          {/* Typeform Container - Using live embed for maximum compatibility */}
           <div className="relative">
-            <iframe 
-              src="https://form.typeform.com/to/01K34ZEG8XK9D4VV46M91TH3Q5?typeform-medium=embed-snippet"
-              title="Founders Circle Application"
-              className="w-full border-0"
+            <div 
+              data-tf-live="01K34ZEG8XK9D4VV46M91TH3Q5"
+              className="w-full"
               style={{ 
                 height: '600px',
                 minHeight: '600px'
               }}
-              allow="camera; microphone; autoplay; encrypted-media; fullscreen"
-              loading="lazy"
             />
           </div>
 
@@ -72,7 +84,13 @@ export default function ApplicationSection() {
         </div>
       </div>
 
-
+      {/* Typeform Script */}
+      <Script
+        src="//embed.typeform.com/next/embed.js"
+        onLoad={handleScriptLoad}
+        onError={handleScriptError}
+        strategy="afterInteractive"
+      />
     </section>
   )
 }
