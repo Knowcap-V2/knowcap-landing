@@ -3,6 +3,7 @@
 
 import { motion } from 'framer-motion'
 import { User, Mail, Heart } from 'lucide-react'
+import Script from 'next/script'
 
 export default function PersonalNoteSection() {
   return (
@@ -76,21 +77,37 @@ export default function PersonalNoteSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center bg-card border border-border rounded-lg p-6"
+          className="bg-card border border-border rounded-lg p-6"
         >
-          <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="flex items-center justify-center gap-2 mb-6">
             <Mail className="w-5 h-5 text-cyan-400" />
-            <span className="text-sm font-medium text-muted-foreground">Questions? Reach out directly</span>
+            <span className="text-sm font-medium text-muted-foreground">Ready to get started? Apply now</span>
           </div>
-          <a 
-            href="mailto:hsa@knowcap.ai" 
-            className="text-xl font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
-          >
-            hsa@knowcap.ai
-          </a>
-          <p className="text-sm text-muted-foreground mt-2">
-            I personally read and respond to every email within 24 hours.
-          </p>
+          
+          {/* Typeform Embed */}
+          <div 
+            data-tf-live="01K34ZEG8XK9D4VV46M91TH3Q5"
+            className="w-full"
+            style={{ 
+              height: '500px',
+              minHeight: '500px'
+            }}
+          />
+          
+          <div className="text-center mt-4 pt-4 border-t border-border">
+            <p className="text-sm text-muted-foreground mb-2">
+              Or reach out directly at:
+            </p>
+            <a 
+              href="mailto:hsa@knowcap.ai" 
+              className="text-lg font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
+            >
+              hsa@knowcap.ai
+            </a>
+            <p className="text-xs text-muted-foreground mt-1">
+              I personally read and respond to every email within 24 hours.
+            </p>
+          </div>
         </motion.div>
 
         <motion.div 
@@ -105,6 +122,12 @@ export default function PersonalNoteSection() {
           </p>
         </motion.div>
       </div>
+      
+      {/* Typeform Script */}
+      <Script
+        src="//embed.typeform.com/next/embed.js"
+        strategy="afterInteractive"
+      />
     </section>
   )
 }
