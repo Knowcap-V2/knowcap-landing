@@ -62,16 +62,9 @@ export default function ApplicationSection() {
             </div>
           )}
 
-          {/* Typeform Container - Using live embed for maximum compatibility */}
+          {/* Typeform Container - Compact embed */}
           <div className="relative">
-            <div 
-              data-tf-live="01K34ZEG8XK9D4VV46M91TH3Q5"
-              className="w-full"
-              style={{ 
-                height: '600px',
-                minHeight: '600px'
-              }}
-            />
+            <div data-tf-live="01K34ZEG8XK9D4VV46M91TH3Q5"></div>
           </div>
 
           {/* Footer Note */}
