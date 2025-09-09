@@ -6,6 +6,7 @@ import BeyondObviousSection from '@/components/beyond-obvious-section'
 import OfferSectionGeneral from '@/components/offer-section-general'
 import ApplicationSection from '@/components/application-section'
 import PersonalNoteSectionGeneral from '@/components/personal-note-section-general'
+import FloatingCTA from '@/components/floating-cta'
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <OfferSectionGeneral />
       <ApplicationSection />
       <PersonalNoteSectionGeneral />
+      <FloatingCTA />
     </main>
   )
 }

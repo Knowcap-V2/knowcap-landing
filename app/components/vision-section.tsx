@@ -2,7 +2,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Eye, Shield, BookOpen, Zap, Users } from 'lucide-react'
+import { Eye, Shield, BookOpen, Zap, Users, ArrowRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 const solutions = [
   {
@@ -102,15 +103,34 @@ export default function VisionSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center mt-16 bg-card border border-border rounded-lg p-8"
+          id="vision"
         >
           <h3 className="text-2xl font-bold mb-4">
             This isn't theory. <span className="text-cyan-400">This is how we actually work.</span>
           </h3>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground mb-6">
             These aren't just features - they're your daily AI assistants. 
             Built into every workflow, every client interaction, every project decision in Knowcap.ai. 
             Because when you can simply ask for what you need, magic happens.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button 
+              size="lg"
+              onClick={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+            >
+              Get Early Access
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            <Button 
+              variant="outline"
+              size="lg"
+              onClick={() => window.open('mailto:hassan@knowcap.ai?subject=Demo Request&body=I would like to schedule a demo of Knowcap.ai', '_blank')}
+              className="border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
+            >
+              Schedule Demo
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>

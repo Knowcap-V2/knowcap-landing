@@ -3,7 +3,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { AlertTriangle, Eye, MessageSquare, Clock, FileText, Settings } from 'lucide-react'
+import { AlertTriangle, Eye, MessageSquare, Clock, FileText, Settings, ArrowRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 const crises = [
   {
@@ -92,10 +93,28 @@ export default function ProblemSectionGeneral() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-center mt-12"
         >
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground mb-8">
             <span className="font-semibold text-black dark:text-white">Here's the truth:</span> These aren't just inconveniences. 
             They're the difference between thriving and barely surviving in project management.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button 
+              size="lg"
+              onClick={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+            >
+              Stop the Bleeding
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            <Button 
+              variant="outline"
+              size="lg"
+              onClick={() => document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' })}
+              className="border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
+            >
+              See the Solution
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>

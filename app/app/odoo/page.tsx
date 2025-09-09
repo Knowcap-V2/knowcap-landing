@@ -7,6 +7,7 @@ import BeyondObviousSection from '@/components/beyond-obvious-section'
 import OfferSection from '@/components/offer-section'
 import ApplicationSection from '@/components/application-section'
 import PersonalNoteSection from '@/components/personal-note-section'
+import FloatingCTA from '@/components/floating-cta'
 
 export default function OdooPage() {
   return (
@@ -18,6 +19,7 @@ export default function OdooPage() {
       <OfferSection />
       <ApplicationSection />
       <PersonalNoteSection />
+      <FloatingCTA />
     </main>
   )
 }
