@@ -68,8 +68,8 @@ export default function HeroSection() {
             As a former Odoo partner, my projects were leaking profits—so I built the <span className="gradient-text">AI‑powered operating system</span> for Odoo partners.
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            You know the feeling. Client expectations sky-high, documentation scattered, 
-            team burning out, and you're firefighting instead of building.
+            You know the feeling: the missed requirements, the client turnover, the endless support questions. 
+            I lived it, so I built the AI governance layer to fix it. I'm looking for 5 other Odoo Partner leaders to build the future with me.
           </p>
         </div>
 
