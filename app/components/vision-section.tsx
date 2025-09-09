@@ -15,7 +15,7 @@ const solutions = [
   {
     icon: Users,
     problem: 'Your team wastes hours answering the same client questions.',
-    magicPrompt: 'Generate an agent with the knowledge of these 1 doc 5 screen demo recordings and 10 meetings in a link and Send it to my client.',
+    magicPrompt: 'Generate an agent with the knowledge from 1 document, 5 screen recordings, and 10 meetings, then send it to my client as a shareable link.',
     system: 'Knowcap Agent'
   },
   {
