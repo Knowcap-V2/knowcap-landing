@@ -40,18 +40,18 @@ export default function PersonalNoteSectionGeneral() {
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
-              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold px-8 py-4 text-lg rounded-lg shadow-lg transition-all duration-300"
+              onClick={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold px-12 py-4 text-xl rounded-lg shadow-lg transition-all duration-300"
             >
-              Watch 2-Min Demo
+              Get Started Free
             </motion.button>
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white font-bold px-8 py-4 text-lg rounded-lg transition-all duration-300"
+              onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
+              className="text-cyan-400 hover:text-cyan-300 font-semibold text-lg underline transition-colors duration-300"
             >
-              Get Started Free
+              Schedule a Demo
             </motion.button>
           </div>
           

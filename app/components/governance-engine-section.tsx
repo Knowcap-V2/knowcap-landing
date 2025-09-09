@@ -6,27 +6,27 @@ import { BookOpen, Shield, CheckCircle, ArrowRight, Receipt } from 'lucide-react
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 
-const governanceSteps = [
+const governanceSolutions = [
   {
-    step: 1,
-    title: 'Choose Your Playbook',
-    description: 'Instantly set up your governance by selecting a best-practice template from our Playbook Library or upload your own methodology.',
-    visual: 'Image of a library of playbook templates',
-    icon: BookOpen
+    title: 'Enforce Your Methodology with AI Governance',
+    description: 'Bring your proven methodology into the digital age. Simply upload your existing delivery playbook or SOP document. Our AI instantly understands your standards and begins auditing every client meeting against them, automatically flagging deviations and risks—each backed by a clickable timestamp receipt.',
+    visual: 'A simple animation showing a document being dragged and dropped into Knowcap, which then activates the governance dashboard',
+    icon: Shield,
+    highlighted: true
   },
   {
-    step: 2,
-    title: 'Let AI Govern with Receipts',
-    description: 'Our AI audits every client meeting against your playbook, automatically flagging deviations and risks. Every finding is backed by a clickable timestamp receipt, taking you to the exact moment it happened.',
-    visual: 'Image of a project dashboard with red-flag alerts, each with a small \'receipt\' icon',
-    icon: Receipt
+    title: 'Eliminate Repetitive Questions with an AI Agent',
+    description: 'Knowcap automatically creates an AI agent for each project, trained on every meeting and document. When clients ask the same question for the tenth time, the agent provides an instant, accurate answer, complete with a timestamp receipt linking to the exact moment it was discussed.',
+    visual: 'A chat interface showing a question being answered by an AI with a video snippet receipt',
+    icon: BookOpen,
+    highlighted: false
   },
   {
-    step: 3,
-    title: 'Act with Proof',
-    description: 'Move from insight to action instantly. Every "Action Bridge" embeds the proof. Generate a coaching snippet for Slack with the video proof attached, or create a Jira ticket that links directly to the client\'s request.',
-    visual: 'Image of a flagged risk with actionable buttons',
-    icon: CheckCircle
+    title: 'Act Instantly with Action Bridges & Proof',
+    description: 'Move from insight to action in seconds. Every flagged issue has an "Action Bridge" to generate a coaching snippet for Slack with the video proof attached, or create a Jira ticket that links directly to the client\'s original request.',
+    visual: 'A flagged risk with actionable buttons like \'Generate Coaching Snippet\'',
+    icon: CheckCircle,
+    highlighted: false
   }
 ]
 
@@ -52,7 +52,7 @@ export default function GovernanceEngineSection() {
         </motion.div>
 
         <div className="space-y-16">
-          {governanceSteps.map((step, index) => (
+          {governanceSolutions.map((solution, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -66,20 +66,21 @@ export default function GovernanceEngineSection() {
               {/* Content Side */}
               <div className="flex-1 space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    {step.step}
-                  </div>
                   <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center">
-                    <step.icon className="w-8 h-8 text-white" />
+                    <solution.icon className="w-8 h-8 text-white" />
                   </div>
                 </div>
                 
-                <h3 className="text-3xl font-bold text-cyan-300">
-                  Step {step.step}: {step.title}
+                <h3 className={`text-3xl font-bold ${
+                  solution.highlighted 
+                    ? 'bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent' 
+                    : 'text-cyan-300'
+                }`}>
+                  {solution.title}
                 </h3>
                 
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  {step.description}
+                  {solution.description}
                 </p>
 
                 {index === 1 && (
@@ -89,7 +90,7 @@ export default function GovernanceEngineSection() {
                       <span className="text-sm font-bold text-cyan-400">Timestamp Receipt Example</span>
                     </div>
                     <p className="text-sm text-cyan-100">
-                      "Risk flagged: Client changed requirements without approval at 14:23 in Meeting #3. 
+                      "Client asked about multi-currency billing at 14:23 in Meeting #3. 
                       <span className="underline cursor-pointer">Click here to view exact moment.</span>"
                     </p>
                   </div>
@@ -101,10 +102,10 @@ export default function GovernanceEngineSection() {
                 <div className="relative aspect-video bg-muted/50 rounded-lg border border-border/50 flex items-center justify-center">
                   <div className="text-center p-8">
                     <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center mx-auto mb-4">
-                      <step.icon className="w-8 h-8 text-white" />
+                      <solution.icon className="w-8 h-8 text-white" />
                     </div>
                     <p className="text-sm text-muted-foreground italic">
-                      {step.visual}
+                      {solution.visual}
                     </p>
                   </div>
                 </div>

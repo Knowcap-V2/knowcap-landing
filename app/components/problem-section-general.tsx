@@ -3,7 +3,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { AlertTriangle, DollarSign, Brain, Scale, ArrowRight } from 'lucide-react'
+import { AlertTriangle, DollarSign, Brain, Clock, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const threats = [
@@ -20,10 +20,10 @@ const threats = [
     visual: 'Fading brain'
   },
   {
-    icon: Scale,
-    title: '"He Said, She Said"',
-    description: 'Without a system of record, every dispute becomes a battle of opinions. You risk your reputation and client relationships on foggy memories.',
-    visual: 'Unbalanced scales'
+    icon: Clock,
+    title: 'Productivity Drain',
+    description: 'Your team is trapped in a cycle of repetitive work, wasting hours answering the same client questions while "he said, she said" disputes derail progress.',
+    visual: 'Hourglass draining'
   }
 ]
 
