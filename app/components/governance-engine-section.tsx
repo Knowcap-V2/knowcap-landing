@@ -10,23 +10,17 @@ const governanceSolutions = [
   {
     title: 'Enforce Your Methodology with AI Governance',
     description: 'Bring your proven methodology into the digital age. Simply upload your existing delivery playbook or SOP document. Our AI instantly understands your standards and begins auditing every client meeting against them, automatically flagging deviations and risks—each backed by a clickable timestamp receipt.',
-    visual: 'A simple animation showing a document being dragged and dropped into Knowcap, which then activates the governance dashboard',
-    icon: Shield,
-    highlighted: true
+    icon: Shield
   },
   {
     title: 'Eliminate Repetitive Questions with an AI Agent',
     description: 'Knowcap automatically creates an AI agent for each project, trained on every meeting and document. When clients ask the same question for the tenth time, the agent provides an instant, accurate answer, complete with a timestamp receipt linking to the exact moment it was discussed.',
-    visual: 'A chat interface showing a question being answered by an AI with a video snippet receipt',
-    icon: BookOpen,
-    highlighted: false
+    icon: BookOpen
   },
   {
     title: 'Act Instantly with Action Bridges & Proof',
     description: 'Move from insight to action in seconds. Every flagged issue has an "Action Bridge" to generate a coaching snippet for Slack with the video proof attached, or create a Jira ticket that links directly to the client\'s original request.',
-    visual: 'A flagged risk with actionable buttons like \'Generate Coaching Snippet\'',
-    icon: CheckCircle,
-    highlighted: false
+    icon: CheckCircle
   }
 ]
 
@@ -51,63 +45,42 @@ export default function GovernanceEngineSection() {
           </h2>
         </motion.div>
 
-        <div className="space-y-16">
+        <div className="grid lg:grid-cols-1 gap-8 max-w-4xl mx-auto">
           {governanceSolutions.map((solution, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className={`flex flex-col lg:flex-row items-center gap-12 ${
-                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              }`}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="bg-card border border-border rounded-lg p-8 hover:shadow-xl transition-all duration-300 hover:border-cyan-500/30"
             >
-              {/* Content Side */}
-              <div className="flex-1 space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center">
-                    <solution.icon className="w-8 h-8 text-white" />
-                  </div>
+              <div className="flex items-start gap-6">
+                <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <solution.icon className="w-6 h-6 text-white" />
                 </div>
                 
-                <h3 className={`text-3xl font-bold ${
-                  solution.highlighted 
-                    ? 'bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent' 
-                    : 'text-cyan-300'
-                }`}>
-                  {solution.title}
-                </h3>
-                
-                <p className="text-xl text-muted-foreground leading-relaxed">
-                  {solution.description}
-                </p>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-cyan-300 mb-4">
+                    {solution.title}
+                  </h3>
+                  
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {solution.description}
+                  </p>
 
-                {index === 1 && (
-                  <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Receipt className="w-5 h-5 text-cyan-400" />
-                      <span className="text-sm font-bold text-cyan-400">Timestamp Receipt Example</span>
+                  {index === 1 && (
+                    <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-4 mt-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Receipt className="w-5 h-5 text-cyan-400" />
+                        <span className="text-sm font-bold text-cyan-400">Timestamp Receipt Example</span>
+                      </div>
+                      <p className="text-sm text-cyan-100">
+                        "Client asked about multi-currency billing at 14:23 in Meeting #3. 
+                        <span className="underline cursor-pointer">Click here to view exact moment.</span>"
+                      </p>
                     </div>
-                    <p className="text-sm text-cyan-100">
-                      "Client asked about multi-currency billing at 14:23 in Meeting #3. 
-                      <span className="underline cursor-pointer">Click here to view exact moment.</span>"
-                    </p>
-                  </div>
-                )}
-              </div>
-
-              {/* Visual Side */}
-              <div className="flex-1">
-                <div className="relative aspect-video bg-muted/50 rounded-lg border border-border/50 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center mx-auto mb-4">
-                      <solution.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <p className="text-sm text-muted-foreground italic">
-                      {solution.visual}
-                    </p>
-                  </div>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -141,7 +114,7 @@ export default function GovernanceEngineSection() {
               variant="outline"
               size="lg"
               onClick={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
+              className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
             >
               Start Free Trial
             </Button>

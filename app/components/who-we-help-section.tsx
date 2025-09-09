@@ -109,7 +109,7 @@ export default function WhoWeHelpSection() {
             <Button 
               size="lg"
               onClick={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
             >
               Discuss Your Needs
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -118,7 +118,7 @@ export default function WhoWeHelpSection() {
               variant="outline"
               size="lg"
               onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
-              className="border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
+              className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
             >
               Watch Demo
             </Button>

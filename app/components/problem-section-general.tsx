@@ -59,7 +59,7 @@ export default function ProblemSectionGeneral() {
               className="bg-card border border-border rounded-lg p-8 text-center hover:shadow-xl transition-all duration-300 hover:border-red-500/30"
             >
               <div className="mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <threat.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-red-300">{threat.title}</h3>
@@ -88,7 +88,7 @@ export default function ProblemSectionGeneral() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg"
-              onClick={() => document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('governance')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
             >
               See How We Create Receipts
@@ -98,7 +98,7 @@ export default function ProblemSectionGeneral() {
               variant="outline"
               size="lg"
               onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
-              className="border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
+              className="border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
             >
               Watch Demo
             </Button>
