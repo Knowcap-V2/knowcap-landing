@@ -63,6 +63,7 @@ export default function HeroSectionGeneral() {
           <div className="flex items-center justify-center gap-2 mb-6">
             <Users className="w-6 h-6 text-cyan-400" />
             <span className="text-sm font-medium text-muted-foreground">For Project Managers</span>
+            {/* GENERAL PAGE IDENTIFIER */}
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             As a former project manager, my projects were chaotic and bleeding time—so I built the <span className="gradient-text">AI‑powered operating system</span> for project managers.
