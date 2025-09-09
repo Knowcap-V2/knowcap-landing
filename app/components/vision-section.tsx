@@ -15,13 +15,13 @@ const solutions = [
   {
     icon: Users,
     problem: 'Your team wastes hours answering the same client questions.',
-    magicPrompt: 'Show the client the exact training moment on how to do multi-currency vendor bill creation.',
+    magicPrompt: 'Generate an agent with the knowledge of these 1 doc 5 screen demo recordings and 10 meetings in a link and Send it to my client.',
     system: 'Knowcap Agent'
   },
   {
     icon: BookOpen,
     problem: 'Creating training guides from screen recordings is a manual nightmare.',
-    magicPrompt: 'Generate a visual, step-by-step guide from the warehouse automation training video.',
+    magicPrompt: 'Generate a visual, step-by-step guide with timestamps from the warehouse automation training video.',
     system: 'Knowcap Artifacts'
   },
   {
