@@ -125,7 +125,7 @@ export default function VisionSection() {
             <Button 
               variant="outline"
               size="lg"
-              onClick={() => window.open('mailto:hassan@knowcap.ai?subject=Demo Request&body=I would like to schedule a demo of Knowcap.ai', '_blank')}
+              onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
               className="border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
             >
               Schedule Demo

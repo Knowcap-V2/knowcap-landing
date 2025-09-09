@@ -24,7 +24,7 @@ export default function FloatingCTA() {
   }
 
   const openDemo = () => {
-    window.open('mailto:hassan@knowcap.ai?subject=Demo Request&body=I would like to schedule a demo of Knowcap.ai', '_blank')
+    window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')
     setIsMinimized(true)
   }
 
