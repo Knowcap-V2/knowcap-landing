@@ -18,8 +18,8 @@ const governanceSolutions = [
     icon: BookOpen
   },
   {
-    title: 'Act Instantly with Action Bridges & Proof',
-    description: 'Move from insight to action in seconds. Every flagged issue has an "Action Bridge" to generate a coaching snippet for Slack with the video proof attached, or create a Jira ticket that links directly to the client\'s original request.',
+    title: 'Automate Critical Documentation with Verifiable Artifacts',
+    description: 'Never lose track of critical decisions again. Knowcap automatically generates documentation artifacts from your meetings—complete with timestamps and proof. From project summaries to compliance reports, every document is backed by verifiable evidence.',
     icon: CheckCircle
   }
 ]
