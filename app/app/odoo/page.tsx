@@ -1,22 +1,23 @@
 
+
 import HeroSection from '@/components/hero-section'
-import ProblemSectionGeneral from '@/components/problem-section-general'
+import ProblemSection from '@/components/problem-section'
 import VisionSection from '@/components/vision-section'
 import BeyondObviousSection from '@/components/beyond-obvious-section'
-import OfferSectionGeneral from '@/components/offer-section-general'
+import OfferSection from '@/components/offer-section'
 import ApplicationSection from '@/components/application-section'
-import PersonalNoteSectionGeneral from '@/components/personal-note-section-general'
+import PersonalNoteSection from '@/components/personal-note-section'
 
-export default function Home() {
+export default function OdooPage() {
   return (
     <main className="min-h-screen bg-background">
       <HeroSection />
-      <ProblemSectionGeneral />
+      <ProblemSection />
       <VisionSection />
       <BeyondObviousSection />
-      <OfferSectionGeneral />
+      <OfferSection />
       <ApplicationSection />
-      <PersonalNoteSectionGeneral />
+      <PersonalNoteSection />
     </main>
   )
 }

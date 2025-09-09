@@ -8,8 +8,8 @@ import { Toaster } from '@/components/ui/toaster'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Knowcap.ai - Odoo Project Management for Partners',
-  description: 'Built by an Odoo Partner, for Odoo Partners. Transform chaotic project management into streamlined success.',
+  title: 'Knowcap.ai - AI-Powered Project Management Platform',
+  description: 'Transform chaotic project management into streamlined success with AI-powered insights and automation.',
   icons: {
     icon: '/favicon.ico',
   },
