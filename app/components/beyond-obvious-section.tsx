@@ -8,17 +8,17 @@ const intelligenceFeatures = [
   {
     icon: TrendingUp,
     title: 'Predictive Analytics',
-    description: 'Know which projects are at risk of failure before your client does by identifying patterns in communication and deliverables.'
+    description: 'Know which projects are at risk of failure, with links to the exact warning signs. Every prediction is backed by verifiable evidence you can click through and review.'
   },
   {
     icon: Users,
     title: 'Best Practice Discovery',
-    description: 'Automatically identify the habits and processes of your top-performing consultants so you can replicate their success across the entire team.'
+    description: 'Automatically identify the habits of your top performers with a library of their best moments. Each insight links to the specific conversation or decision that made the difference.'
   },
   {
     icon: DollarSign,
     title: 'Profitability Insights',
-    description: 'Pinpoint which types of clients, projects, or tasks consistently drain the most resources, allowing you to optimize your business model for profitability.'
+    description: 'Pinpoint which types of clients drain the most resources, backed by a verifiable history of every interaction. No more guessing—you have the receipts.'
   }
 ]
 
@@ -35,13 +35,13 @@ export default function BeyondObviousSection() {
         >
           <div className="flex items-center justify-center gap-2 mb-6">
             <Target className="w-6 h-6 text-cyan-400" />
-            <span className="text-sm font-medium text-muted-foreground">The Path to True Project Intelligence</span>
+            <span className="text-sm font-medium text-muted-foreground">Beyond Control to Intelligence</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Control is the Foundation. <span className="gradient-text">Intelligence</span> is the Payoff.
+            Control is the Foundation. <span className="gradient-text">Verifiable Intelligence</span> is the Payoff.
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Getting your projects under control is the first step. But the real goal is to make them smarter. Once Knowcap is governing your projects, it becomes your single source of truth—allowing our AI to unlock insights you've never had before:
+            Getting your projects under control is the first step. But the real goal is to make your business smarter. Because every insight in Knowcap is backed by a receipt, you can trust the intelligence and act with confidence.
           </p>
         </motion.div>
 

@@ -62,15 +62,13 @@ export default function HeroSectionGeneral() {
         <div className={`mb-8 transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="flex items-center justify-center gap-2 mb-6">
             <Users className="w-6 h-6 text-cyan-400" />
-            <span className="text-sm font-medium text-muted-foreground">For Project Managers</span>
-            {/* GENERAL PAGE IDENTIFIER */}
+            <span className="text-sm font-medium text-muted-foreground">AI Project Governance Platform</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            As a former project manager, my projects were chaotic and bleeding time—so I built the <span className="gradient-text">AI‑powered operating system</span> for project managers.
+            Stop Hoping for the Best. <span className="gradient-text">Start Governing Your Projects.</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            You know the feeling. Stakeholder expectations sky-high, documentation scattered, 
-            team burning out, and you're firefighting instead of delivering.
+            Knowcap.ai is the AI Governance Platform for professional services firms. We turn your client conversations into a system of record that enforces your methodology, flags risks with verifiable proof, and ensures every project is delivered flawlessly and profitably.
           </p>
         </div>
 
@@ -145,20 +143,30 @@ export default function HeroSectionGeneral() {
         <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
           <Button 
             size="lg"
-            onClick={scrollToApplication}
+            onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
             className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
           >
-            Join the Founders Circle
+            Watch 2-Min Demo
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <div className="flex items-center gap-1">
-              <Code className="w-4 h-4" />
-              <span>7 Partner Spots Available</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <Zap className="w-4 h-4" />
-              <span>Invite Only</span>
+          <Button 
+            variant="outline"
+            size="lg"
+            onClick={scrollToApplication}
+            className="border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
+          >
+            Get Started Free
+          </Button>
+        </div>
+        
+        {/* Social Proof Bar */}
+        <div className={`mt-12 transition-all duration-800 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+          <p className="text-sm text-muted-foreground mb-6">Trusted by Leading Professional Services Firms</p>
+          <div className="flex justify-center items-center gap-8 text-muted-foreground">
+            <div className="text-sm font-medium bg-muted/30 px-4 py-2 rounded-md">Founders Circle Members</div>
+            <div className="flex items-center gap-2">
+              <Users className="w-4 h-4" />
+              <span className="text-sm">Join 7 Elite Partners</span>
             </div>
           </div>
         </div>

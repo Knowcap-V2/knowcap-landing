@@ -3,39 +3,27 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { AlertTriangle, Eye, MessageSquare, Clock, FileText, Settings, ArrowRight } from 'lucide-react'
+import { AlertTriangle, DollarSign, Brain, Scale, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
-const crises = [
+const threats = [
   {
-    icon: Eye,
-    title: 'The Visibility Gap',
-    description: 'You have no idea what your team is actually doing on projects until it\'s too late. Tasks disappear into black holes, progress reports are fiction, and you find out about problems when stakeholders complain.',
-    impact: 'Result: Constant firefighting, blown budgets, damaged relationships.'
+    icon: DollarSign,
+    title: 'Profit Leaks',
+    description: 'Without a verifiable record of every decision, undocumented scope creep and unapproved changes silently destroy your project margins.',
+    visual: 'Leaking money bag'
   },
   {
-    icon: MessageSquare,
-    title: 'The Communication Drain',
-    description: 'Your team is drowning in endless meetings, status updates, and clarification requests. Instead of executing on deliverables, they\'re explaining progress and answering the same questions repeatedly.',
-    impact: 'Result: Lost productivity, team frustration, stakeholder dissatisfaction.'
+    icon: Brain,
+    title: 'Knowledge Loss',
+    description: 'When an employee leaves, your company\'s institutional memory walks out the door because their knowledge was never captured in a verifiable way.',
+    visual: 'Fading brain'
   },
   {
-    icon: Clock,
-    title: 'The Knowledge Time Bomb',
-    description: 'When a key team member leaves, they take all the project knowledge with them. You\'re left scrambling to figure out what they built, how processes work, and why systems are suddenly failing.',
-    impact: 'Result: Project delays, knowledge loss, expensive re-work.'
-  },
-  {
-    icon: FileText,
-    title: 'The Process Documentation Gap',
-    description: 'You know you need Standard Operating Procedures for your projects, but who has time to document them? Meanwhile, every project is a unique approach, and you can\'t scale your operations.',
-    impact: 'Result: Inconsistent delivery, quality issues, team confusion.'
-  },
-  {
-    icon: Settings,
-    title: 'The Tool Integration Trap',
-    description: 'Every project uses different tools and workflows. Your team juggles multiple platforms, and nothing talks to each other. Data lives in silos, and reporting is a nightmare.',
-    impact: 'Result: Inefficiency, data loss, reporting headaches.'
+    icon: Scale,
+    title: '"He Said, She Said"',
+    description: 'Without a system of record, every dispute becomes a battle of opinions. You risk your reputation and client relationships on foggy memories.',
+    visual: 'Unbalanced scales'
   }
 ]
 
@@ -52,35 +40,32 @@ export default function ProblemSectionGeneral() {
         >
           <div className="flex items-center justify-center gap-2 mb-6">
             <AlertTriangle className="w-6 h-6 text-red-400" />
-            <span className="text-sm font-medium text-muted-foreground">The Reality Check</span>
+            <span className="text-sm font-medium text-muted-foreground">The Real Threat to Your Business</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            The Five Crises of <span className="gradient-text text-black dark:text-white">Every Project</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            Your projects aren't failing because of bad people. <br />
+            <span className="gradient-text">They're failing because of a broken system without receipts.</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Sound familiar? You're not alone. These are the exact problems that keep project managers awake at night.
-          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {crises.map((crisis, index) => (
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          {threats.map((threat, index) => (
             <motion.div 
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-card border border-border rounded-lg p-6"
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              className="bg-card border border-border rounded-lg p-8 text-center hover:shadow-xl transition-all duration-300 hover:border-red-500/30"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <crisis.icon className="w-6 h-6 text-black dark:text-white" />
-                <h3 className="text-xl font-bold text-black dark:text-white">{crisis.title}</h3>
+              <div className="mb-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <threat.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-red-300">{threat.title}</h3>
               </div>
-              <p className="text-muted-foreground mb-4 leading-relaxed">
-                {crisis.description}
-              </p>
-              <p className="text-sm font-medium text-black dark:text-white">
-                {crisis.impact}
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                {threat.description}
               </p>
             </motion.div>
           ))}
@@ -90,29 +75,32 @@ export default function ProblemSectionGeneral() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-center mt-12"
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="text-center bg-card border border-border rounded-lg p-8"
         >
-          <p className="text-lg text-muted-foreground mb-8">
-            <span className="font-semibold text-black dark:text-white">Here's the truth:</span> These aren't just inconveniences. 
-            They're the difference between thriving and barely surviving in project management.
+          <h3 className="text-3xl font-bold mb-4">
+            The solution isn't better people. <span className="text-cyan-400">It's a system that creates receipts.</span>
+          </h3>
+          <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto">
+            Every successful project needs one thing: a verifiable record of what was decided, when, and by whom. 
+            Without it, you're building on quicksand.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg"
-              onClick={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+              onClick={() => document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
             >
-              Stop the Bleeding
+              See How We Create Receipts
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <Button 
               variant="outline"
               size="lg"
-              onClick={() => document.getElementById('vision')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
+              onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
+              className="border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
             >
-              See the Solution
+              Watch Demo
             </Button>
           </div>
         </motion.div>

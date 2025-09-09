@@ -17,11 +17,11 @@ export default function PersonalNoteSectionGeneral() {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-2 mb-6">
-            <Heart className="w-6 h-6 text-red-400" />
-            <span className="text-sm font-medium text-muted-foreground">A Personal Note</span>
+            <Heart className="w-6 h-6 text-cyan-400" />
+            <span className="text-sm font-medium text-muted-foreground">Final Call to Action</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            From <span className="gradient-text">Hassan</span>
+            Ready to Build Your Business on a <span className="gradient-text">Foundation of Proof</span>?
           </h2>
         </motion.div>
 
@@ -30,44 +30,44 @@ export default function PersonalNoteSectionGeneral() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-card border border-border rounded-lg p-8 mb-8"
+          className="bg-card border border-border rounded-lg p-8 mb-8 text-center"
         >
-          <div className="flex items-start gap-4 mb-6">
-            <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-              <User className="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-cyan-300">Hassan</h3>
-              <p className="text-sm text-muted-foreground">Founder, Knowcap.ai • Fellow Project Manager</p>
-            </div>
+          <p className="text-xl text-muted-foreground leading-relaxed mb-6">
+            See how Knowcap.ai can give you the verifiable control and intelligence you need to deliver every project perfectly.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold px-8 py-4 text-lg rounded-lg shadow-lg transition-all duration-300"
+            >
+              Watch 2-Min Demo
+            </motion.button>
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
+              className="border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white font-bold px-8 py-4 text-lg rounded-lg transition-all duration-300"
+            >
+              Get Started Free
+            </motion.button>
           </div>
           
-          <div className="prose prose-invert max-w-none">
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              If you've read this far, you probably recognize yourself in the stories I've shared. 
-              The late-night fire drills. The feeling of being one team member away from disaster. 
-              The frustration of knowing there has to be a better way.
-            </p>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              I've been where you are. I've felt that weight of responsibility, that pressure to 
-              keep everything together while also growing the business. And I've spent the last 
-              three years building something that I wish had existed when I needed it most.
-            </p>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              This isn't about selling you software. It's about sharing what I've learned with 
-              people who understand the challenge. The Founders Circle isn't a customer acquisition 
-              strategy—it's a collaboration between peers who want to solve the same problems together.
-            </p>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              If this resonates with you, if you're ready to move beyond the chaos and build 
-              something systematic and sustainable, I'd love to hear from you.
-            </p>
-            
-            <p className="text-lg font-semibold text-cyan-300">
-              Here's to building businesses that work for us, not against us.
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground mb-4">
+              <div className="flex items-center gap-1">
+                <Heart className="w-4 h-4 text-cyan-400" />
+                <span>No Credit Card Required</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <User className="w-4 h-4 text-cyan-400" />
+                <span>30-Day Free Trial</span>
+              </div>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Join professional services firms who've moved from chaos to control
             </p>
           </div>
         </motion.div>
