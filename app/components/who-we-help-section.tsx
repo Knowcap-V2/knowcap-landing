@@ -40,6 +40,13 @@ const solutions = [
     description: 'Executive oversight with verifiable project intelligence and team accountability.',
     challenges: ['Strategic alignment tracking', 'Team performance visibility', 'Decision audit trails'],
     cta: 'Discover'
+  },
+  {
+    icon: Scale,
+    title: 'Law Firms',
+    description: 'Governance for high-stakes legal projects where every conversation and decision matters.',
+    challenges: ['Client communication trails', 'Billing documentation', 'Compliance requirements'],
+    cta: 'Learn More'
   }
 ]
 
@@ -66,7 +73,7 @@ export default function WhoWeHelpSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {solutions.map((solution, index) => (
             <motion.div
               key={index}
