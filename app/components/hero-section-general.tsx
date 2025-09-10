@@ -146,7 +146,7 @@ export default function HeroSectionGeneral() {
             onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
             className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
           >
-            Watch 2-Min Demo
+            Book a Quick Demo
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
           <Button 
