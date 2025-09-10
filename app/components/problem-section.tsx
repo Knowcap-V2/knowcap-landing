@@ -62,26 +62,26 @@ export default function ProblemSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="space-y-4 mb-12">
           {crises.map((crisis, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-card border border-border rounded-lg p-6 hover:shadow-xl transition-all duration-300 hover:border-cyan-500/30"
+              transition={{ duration: 0.6, delay: index * 0.05 }}
+              className="bg-card border border-border rounded-lg p-4 hover:shadow-lg transition-all duration-300 hover:border-cyan-500/30"
             >
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-3">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-black/10 dark:bg-white/10 rounded-lg flex items-center justify-center">
-                    <crisis.icon className="w-6 h-6 text-black dark:text-white" />
+                  <div className="w-8 h-8 bg-red-500/10 rounded-lg flex items-center justify-center">
+                    <crisis.icon className="w-4 h-4 text-red-400" />
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-3 text-black dark:text-white">{crisis.title}</h3>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">{crisis.description}</p>
-                  <p className="text-sm text-black dark:text-white font-medium italic">{crisis.impact}</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-bold mb-2 text-black dark:text-white">{crisis.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-2 leading-relaxed">{crisis.description}</p>
+                  <p className="text-xs text-red-400 font-medium">{crisis.impact}</p>
                 </div>
               </div>
             </motion.div>
