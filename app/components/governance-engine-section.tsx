@@ -75,9 +75,9 @@ export default function GovernanceEngineSection() {
                         <Receipt className="w-5 h-5 text-cyan-400" />
                         <span className="text-sm font-bold text-cyan-400">Timestamp Receipt Example</span>
                       </div>
-                      <p className="text-sm text-cyan-100">
+                      <p className="text-sm text-muted-foreground">
                         "Client asked about multi-currency billing at 14:23 in Meeting #3. 
-                        <span className="underline cursor-pointer">Click here to view exact moment.</span>"
+                        <span className="underline cursor-pointer text-cyan-400">Click here to view exact moment.</span>"
                       </p>
                     </div>
                   )}

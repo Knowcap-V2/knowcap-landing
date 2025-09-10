@@ -2,15 +2,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Users, Scale, Code, ArrowRight } from 'lucide-react'
+import { Users, Scale, Code, ArrowRight, Database, Share2, Crown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const solutions = [
   {
-    icon: Scale,
-    title: 'Law Firms',
-    description: 'Governance for high-stakes legal projects where every conversation matters.',
-    challenges: ['Client communication trails', 'Billing documentation', 'Compliance requirements'],
+    icon: Database,
+    title: 'ERP/CRM Implementation Partners',
+    description: 'Governance for complex system implementations where requirements change and decisions compound.',
+    challenges: ['Configuration decisions tracking', 'Change request documentation', 'Client approval chains'],
     cta: 'Learn More'
   },
   {
@@ -22,10 +22,24 @@ const solutions = [
   },
   {
     icon: Users,
-    title: 'Consulting Firms',
+    title: 'Consulting Agencies',
     description: 'AI governance for methodology compliance and knowledge management.',
     challenges: ['Methodology adherence', 'Knowledge retention', 'Quality assurance'],
     cta: 'Get Started'
+  },
+  {
+    icon: Share2,
+    title: 'Social Media Agencies',
+    description: 'Campaign governance with verifiable client approvals and creative revision tracking.',
+    challenges: ['Campaign approval trails', 'Creative feedback loops', 'Performance accountability'],
+    cta: 'Explore'
+  },
+  {
+    icon: Crown,
+    title: 'C-level with Management',
+    description: 'Executive oversight with verifiable project intelligence and team accountability.',
+    challenges: ['Strategic alignment tracking', 'Team performance visibility', 'Decision audit trails'],
+    cta: 'Discover'
   }
 ]
 
@@ -52,7 +66,7 @@ export default function WhoWeHelpSection() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mb-12">
           {solutions.map((solution, index) => (
             <motion.div
               key={index}
@@ -60,14 +74,14 @@ export default function WhoWeHelpSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-card border border-border rounded-lg p-8 hover:shadow-xl transition-all duration-300 hover:border-cyan-500/30 group"
+              className="bg-card border border-border rounded-lg p-6 hover:shadow-xl transition-all duration-300 hover:border-cyan-500/30 group"
             >
               <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <solution.icon className="w-8 h-8 text-white" />
+                <div className="w-14 h-14 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <solution.icon className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-cyan-300">{solution.title}</h3>
-                <p className="text-muted-foreground text-lg leading-relaxed mb-6">{solution.description}</p>
+                <h3 className="text-xl font-bold mb-3 text-cyan-300">{solution.title}</h3>
+                <p className="text-muted-foreground text-base leading-relaxed mb-6">{solution.description}</p>
               </div>
 
               <div className="space-y-3 mb-6">
