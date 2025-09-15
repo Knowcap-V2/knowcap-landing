@@ -1,38 +1,15 @@
 
 'use client'
 
-import { FileText, Loader } from 'lucide-react'
+import { FileText } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import Script from 'next/script'
 
 export default function ApplicationSection() {
   const [mounted, setMounted] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-  const [scriptLoaded, setScriptLoaded] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
-
-  useEffect(() => {
-    if (scriptLoaded) {
-      // Hide loading state after script loads and form initializes
-      const timer = setTimeout(() => {
-        setIsLoading(false)
-      }, 1500)
-      
-      return () => clearTimeout(timer)
-    }
-  }, [scriptLoaded])
-
-  const handleScriptLoad = () => {
-    setScriptLoaded(true)
-  }
-
-  const handleScriptError = () => {
-    console.error('Failed to load Typeform script')
-    setIsLoading(false)
-  }
 
   return (
     <section id="application" className="py-20 bg-background">
@@ -52,19 +29,18 @@ export default function ApplicationSection() {
         </div>
 
         <div className={`bg-card border border-border rounded-lg overflow-hidden transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {/* Loading State */}
-          {isLoading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-card/90 z-10 rounded-lg">
-              <div className="text-center">
-                <Loader className="w-8 h-8 animate-spin text-cyan-400 mx-auto mb-3" />
-                <span className="text-muted-foreground">Loading application form...</span>
-              </div>
+          {/* Google Form Container */}
+          <div className="relative w-full">
+            <div className="w-full overflow-hidden rounded-t-lg">
+              <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLScDXh7m_JwK9RLCRkv94V9pEvU5qvSn9_tDotl8w_uk_MzrxA/viewform?embedded=true" 
+                className="w-full border-none"
+                style={{ height: 'min(2592px, 80vh)' }}
+                title="Founders Circle Application Form"
+              >
+                Loading application form...
+              </iframe>
             </div>
-          )}
-
-          {/* Typeform Container - Compact embed */}
-          <div className="relative">
-            <div data-tf-live="01K34ZEG8XK9D4VV46M91TH3Q5"></div>
           </div>
 
           {/* Footer Note */}
@@ -76,14 +52,6 @@ export default function ApplicationSection() {
           </div>
         </div>
       </div>
-
-      {/* Typeform Script */}
-      <Script
-        src="//embed.typeform.com/next/embed.js"
-        onLoad={handleScriptLoad}
-        onError={handleScriptError}
-        strategy="afterInteractive"
-      />
     </section>
   )
 }
