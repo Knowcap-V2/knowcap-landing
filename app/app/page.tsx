@@ -1,25 +1,21 @@
 
 
-import HeroSection from '@/components/hero-section'
-import ProblemSection from '@/components/problem-section'
-import VisionSection from '@/components/vision-section'
-import BeyondObviousSection from '@/components/beyond-obvious-section'
-import OfferSection from '@/components/offer-section'
-import ApplicationSection from '@/components/application-section'
-import PersonalNoteSection from '@/components/personal-note-section'
-import FloatingCTA from '@/components/floating-cta'
+import BetaHeroSection from '@/components/beta-hero-section'
+import BetaFeaturesSection from '@/components/beta-features-section'
+import BetaProblemSection from '@/components/beta-problem-section'
+import BetaSolutionSection from '@/components/beta-solution-section'
+import BetaTestimonialsSection from '@/components/beta-testimonials-section'
+import BetaCTASection from '@/components/beta-cta-section'
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
-      <HeroSection />
-      <ProblemSection />
-      <VisionSection />
-      <BeyondObviousSection />
-      <OfferSection />
-      <ApplicationSection />
-      <PersonalNoteSection />
-      <FloatingCTA />
+      <BetaHeroSection />
+      <BetaProblemSection />
+      <BetaFeaturesSection />
+      <BetaSolutionSection />
+      <BetaTestimonialsSection />
+      <BetaCTASection />
     </main>
   )
 }
