@@ -17,7 +17,7 @@ const betaPerks = [
 
 export default function BetaCTASection() {
   const openGoogleForm = () => {
-    window.open('https://docs.google.com/forms/d/e/1FAIpQLSdh5O7bOx7Ys0ww2RqzKYz6Aig6JLZhK1t6sM5x1yNl1lF6kQ/viewform', '_blank')
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLScDXh7m_JwK9RLCRkv94V9pEvU5qvSn9_tDotl8w_uk_MzrxA/viewform?usp=sharing&ouid=105175348828928124523', '_blank')
   }
 
   const bookDemo = () => {
