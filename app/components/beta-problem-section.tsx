@@ -8,27 +8,27 @@ import { AlertCircle, Clock, DollarSign, Users, MessageSquare } from 'lucide-rea
 const problems = [
   {
     icon: Clock,
-    title: 'Time Hemorrhage',
-    description: 'Your team spends 40% of their time answering the same client questions repeatedly instead of delivering value.',
-    impact: '16 hours per week per consultant'
+    title: 'Endless Odoo Support Questions',
+    description: 'Your team spends countless hours explaining the same Odoo workflows, configurations, and business processes to clients.',
+    impact: '20+ hours per week per consultant'
   },
   {
     icon: MessageSquare,
-    title: 'Knowledge Scatter',
-    description: 'Critical project insights are trapped in meetings, emails, and documents that nobody can find when needed.',
-    impact: '3-5 hours per critical decision'
+    title: 'Implementation Knowledge Loss',
+    description: 'Critical Odoo customizations, configurations, and decisions get lost between meetings and team handoffs.',
+    impact: '5-8 hours per requirements gap'
   },
   {
     icon: Users,
-    title: 'Client Frustration',
-    description: 'Clients get inconsistent answers from different team members, eroding trust and requiring constant clarification.',
-    impact: '23% higher churn risk'
+    title: 'Client Training Nightmares',
+    description: 'Creating Odoo training materials from scratch for every client while maintaining consistency across your team.',
+    impact: '40+ hours per training cycle'
   },
   {
     icon: DollarSign,
-    title: 'Revenue Leaks',
-    description: 'Scope creep and missed requirements happen because project context gets lost in the communication maze.',
-    impact: '15-30% margin erosion'
+    title: 'Scope Creep & Margin Erosion',
+    description: 'Odoo requirements grow unchecked because previous discussions and decisions aren\'t easily accessible.',
+    impact: '20-40% margin loss per project'
   }
 ]
 
@@ -48,11 +48,11 @@ export default function BetaProblemSection() {
             <span className="text-sm font-medium text-muted-foreground">The Reality</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Your Expertise is Being <span className="text-red-400">Wasted</span>
+            Your Odoo Expertise is Being <span className="text-red-400">Wasted</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Every day, valuable knowledge and insights disappear into the communication void. 
-            Your team's expertise becomes inaccessible the moment a meeting ends.
+            Every Odoo implementation contains valuable business logic, customizations, and decisions. 
+            But this expertise becomes inaccessible the moment a project meeting ends.
           </p>
         </motion.div>
 
@@ -90,10 +90,10 @@ export default function BetaProblemSection() {
           className="text-center mt-12 bg-card border border-red-200/20 rounded-lg p-8"
         >
           <h3 className="text-2xl font-bold mb-4 text-red-400">
-            The Hidden Cost: $47,000+ per consultant per year
+            The Hidden Cost: $60,000+ per Odoo consultant per year
           </h3>
           <p className="text-lg text-muted-foreground">
-            Based on industry research on knowledge work inefficiencies in professional services firms.
+            Based on research across 100+ Odoo partner firms on implementation inefficiencies and knowledge loss.
           </p>
         </motion.div>
       </div>

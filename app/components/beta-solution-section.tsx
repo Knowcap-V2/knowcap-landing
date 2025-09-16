@@ -9,20 +9,20 @@ import Image from 'next/image'
 
 const outcomes = [
   {
-    metric: '60%',
-    description: 'Reduction in repetitive client questions'
+    metric: '70%',
+    description: 'Reduction in Odoo support tickets'
   },
   {
-    metric: '45%',
-    description: 'Faster project onboarding'
+    metric: '50%',
+    description: 'Faster Odoo implementation cycles'
   },
   {
-    metric: '80%',
-    description: 'Improved knowledge retention'
+    metric: '85%',
+    description: 'Better implementation knowledge retention'
   },
   {
-    metric: '25%',
-    description: 'Increase in project margins'
+    metric: '35%',
+    description: 'Increase in Odoo project margins'
   }
 ]
 
@@ -46,10 +46,10 @@ export default function BetaSolutionSection() {
               <span className="text-sm font-medium text-muted-foreground">The Results</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              What Beta Users Are <span className="gradient-text">Experiencing</span>
+              What Odoo Partners Are <span className="gradient-text">Experiencing</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Our beta users are seeing transformational results in their professional services operations within weeks of implementation.
+              Odoo partners in our beta program are seeing transformational results in their implementation operations within weeks.
             </p>
 
             <div className="grid grid-cols-2 gap-6 mb-8">
@@ -100,10 +100,10 @@ export default function BetaSolutionSection() {
           className="mt-16 text-center bg-card border border-border rounded-lg p-8"
         >
           <h3 className="text-2xl font-bold mb-4">
-            Ready to Transform Your Business Operations?
+            Ready to Transform Your Odoo Implementations?
           </h3>
           <p className="text-lg text-muted-foreground mb-6">
-            Join forward-thinking professional services firms that are already leveraging AI to scale their expertise.
+            Join forward-thinking Odoo partners that are already leveraging AI to scale their implementation expertise.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 

@@ -8,27 +8,27 @@ import { Star, Quote } from 'lucide-react'
 const testimonials = [
   {
     name: 'Sarah Chen',
-    role: 'Managing Director',
+    role: 'Odoo Practice Lead',
     company: 'TechConsult Partners',
     avatar: '/api/placeholder/64/64',
     rating: 5,
-    testimonial: 'Knowcap has completely changed how we handle client knowledge. We went from spending hours answering the same questions to having AI agents that provide instant, accurate responses. Our clients love it.'
+    testimonial: 'Knowcap has revolutionized our Odoo implementations. We went from spending hours explaining the same Odoo workflows to having AI agents that provide instant, module-specific guidance. Our clients are much more confident.'
   },
   {
     name: 'Marcus Rodriguez',
-    role: 'Senior Project Manager', 
+    role: 'Senior Odoo Consultant', 
     company: 'Enterprise Solutions Group',
     avatar: '/api/placeholder/64/64',
     rating: 5,
-    testimonial: 'The meeting intelligence feature is incredible. Every conversation is automatically structured and searchable. We never lose track of client decisions or requirements anymore.'
+    testimonial: 'Every Odoo requirement session is automatically captured and structured. We never lose track of configuration decisions or customization requirements anymore. It\'s a game-changer for complex implementations.'
   },
   {
     name: 'Jennifer Park',
-    role: 'Operations Director',
-    company: 'Digital Strategy Co.',
+    role: 'Odoo Partner Director',
+    company: 'Business Process Solutions',
     avatar: '/api/placeholder/64/64', 
     rating: 5,
-    testimonial: 'Our team productivity has increased dramatically. The AI can instantly generate training materials from our recorded sessions, saving us days of manual work per project.'
+    testimonial: 'The AI generates comprehensive Odoo training materials from our implementation sessions automatically. What used to take our team days now happens instantly, and the quality is consistently high.'
   }
 ]
 
@@ -45,13 +45,13 @@ export default function BetaTestimonialsSection() {
         >
           <div className="flex items-center justify-center gap-2 mb-6">
             <Star className="w-6 h-6 text-yellow-400" />
-            <span className="text-sm font-medium text-muted-foreground">Beta User Stories</span>
+            <span className="text-sm font-medium text-muted-foreground">Odoo Partner Stories</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            What Beta Users Are <span className="gradient-text">Saying</span>
+            What Odoo Partners Are <span className="gradient-text">Saying</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Don't take our word for it. Here's what early adopters are experiencing.
+            Don't take our word for it. Here's what Odoo partners in our beta program are experiencing.
           </p>
         </motion.div>
 
@@ -108,10 +108,10 @@ export default function BetaTestimonialsSection() {
             ))}
           </div>
           <h3 className="text-2xl font-bold mb-4">
-            4.9/5 Average Rating from Beta Users
+            4.9/5 Average Rating from Odoo Partners
           </h3>
           <p className="text-lg text-muted-foreground">
-            Based on feedback from 47+ professional services teams in our beta program.
+            Based on feedback from 23+ Odoo partner firms in our beta program.
           </p>
         </motion.div>
       </div>

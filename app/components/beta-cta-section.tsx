@@ -35,15 +35,15 @@ export default function BetaCTASection() {
           className="mb-12"
         >
           <div className="flex items-center justify-center gap-2 mb-6">
-            <Sparkles className="w-6 h-6 text-cyan-400" />
-            <span className="text-sm font-medium text-muted-foreground bg-cyan-950/30 px-3 py-1 rounded-full border border-cyan-500/20">Limited Spots Available</span>
+            <Users className="w-6 h-6 text-cyan-400" />
+            <span className="text-sm font-medium text-muted-foreground bg-cyan-950/30 px-3 py-1 rounded-full border border-cyan-500/20">Odoo Partners Only</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Join the <span className="gradient-text">Beta Program</span>
+            Join the Odoo Partners <span className="gradient-text">Beta Program</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Be among the first to experience the future of professional services. 
-            Help us build the AI operating system that will transform your industry.
+            Be among the first Odoo partners to experience the future of implementation delivery. 
+            Help us build the AI operating system specifically designed for Odoo partners.
           </p>
         </motion.div>
 
@@ -94,7 +94,7 @@ export default function BetaCTASection() {
         >
           <div className="flex items-center justify-center gap-2">
             <Users className="w-4 h-4 text-cyan-400" />
-            <span>47+ beta users</span>
+            <span>23+ Odoo partners</span>
           </div>
           <div className="flex items-center justify-center gap-2">
             <CheckCircle className="w-4 h-4 text-green-500" />
@@ -102,7 +102,7 @@ export default function BetaCTASection() {
           </div>
           <div className="flex items-center justify-center gap-2">
             <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span>Setup in under 15 minutes</span>
+            <span>Odoo integration ready</span>
           </div>
         </motion.div>
 

@@ -8,39 +8,39 @@ import { Brain, MessageCircle, FileText, Shield, Zap, Eye } from 'lucide-react'
 const features = [
   {
     icon: Brain,
-    title: 'AI Meeting Intelligence',
-    description: 'Automatically capture, analyze, and structure insights from every client interaction.',
-    benefits: ['Real-time transcription', 'Action item extraction', 'Decision tracking']
+    title: 'AI Odoo Meeting Intelligence',
+    description: 'Automatically capture and structure insights from Odoo implementation meetings and requirement sessions.',
+    benefits: ['Odoo workflow documentation', 'Requirement tracking', 'Configuration decisions']
   },
   {
     icon: MessageCircle,
-    title: 'Instant AI Agents',
-    description: 'Create intelligent agents that can answer client questions using your project knowledge.',
-    benefits: ['24/7 client support', 'Consistent responses', 'Shareable links']
+    title: 'Odoo Support Agents',
+    description: 'Create AI agents trained on your Odoo implementations that can answer client questions instantly.',
+    benefits: ['24/7 Odoo support', 'Module-specific guidance', 'Process explanations']
   },
   {
     icon: FileText,
-    title: 'Smart Artifacts',
-    description: 'Generate training guides, documentation, and project materials automatically.',
-    benefits: ['Visual step-by-step guides', 'Video-to-text conversion', 'Timestamp references']
+    title: 'Odoo Training Materials',
+    description: 'Generate Odoo training guides and documentation automatically from your implementation sessions.',
+    benefits: ['Step-by-step Odoo guides', 'Screen recording analysis', 'Module walkthroughs']
   },
   {
     icon: Shield,
-    title: 'Knowledge Governance',
-    description: 'Ensure methodology compliance and maintain institutional knowledge.',
-    benefits: ['Process adherence tracking', 'Methodology enforcement', 'Quality assurance']
+    title: 'Implementation Governance',
+    description: 'Ensure your Odoo methodology compliance and maintain best practices across all projects.',
+    benefits: ['Odoo standard adherence', 'Quality checkpoints', 'Process consistency']
   },
   {
     icon: Eye,
-    title: 'Project Analytics',
-    description: 'Get deep insights into project performance, team dynamics, and client satisfaction.',
-    benefits: ['Performance dashboards', 'Risk identification', 'Predictive insights']
+    title: 'Odoo Project Analytics',
+    description: 'Get deep insights into Odoo implementation performance, module adoption, and client satisfaction.',
+    benefits: ['Implementation dashboards', 'Module usage tracking', 'Go-live readiness']
   },
   {
     icon: Zap,
-    title: 'Instant Context',
-    description: 'Access any project information instantly with natural language queries.',
-    benefits: ['Magic prompt interface', 'Cross-project insights', 'Historical analysis']
+    title: 'Odoo Knowledge Search',
+    description: 'Access any Odoo implementation detail instantly with natural language queries.',
+    benefits: ['Cross-implementation insights', 'Configuration history', 'Best practice lookup']
   }
 ]
 
@@ -60,10 +60,10 @@ export default function BetaFeaturesSection() {
             <span className="text-sm font-medium text-muted-foreground">The Solution</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Your Knowledge, <span className="gradient-text">Amplified by AI</span>
+            Your Odoo Expertise, <span className="gradient-text">Amplified by AI</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Transform scattered conversations into intelligent systems that work for your business 24/7.
+            Transform scattered Odoo implementation knowledge into intelligent systems that scale your expertise 24/7.
           </p>
         </motion.div>
 

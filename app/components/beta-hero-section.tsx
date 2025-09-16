@@ -32,15 +32,15 @@ export default function BetaHeroSection() {
       <div className="max-w-[1400px] mx-auto px-6 py-16 text-center relative">
         <div className={`mb-12 transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="flex items-center justify-center gap-2 mb-6">
-            <Sparkles className="w-6 h-6 text-cyan-400" />
-            <span className="text-sm font-medium text-muted-foreground bg-cyan-950/30 px-3 py-1 rounded-full border border-cyan-500/20">Beta Program</span>
+            <Users className="w-6 h-6 text-cyan-400" />
+            <span className="text-sm font-medium text-muted-foreground bg-cyan-950/30 px-3 py-1 rounded-full border border-cyan-500/20">Odoo Partners Beta Program</span>
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            The AI-Powered Operating System for <span className="gradient-text">Professional Services</span>
+            The AI-Powered Operating System for <span className="gradient-text">Odoo Partners</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-4xl mx-auto">
-            Stop losing revenue to miscommunication, scattered knowledge, and repetitive client questions. 
-            Knowcap transforms your project data into intelligent systems that work 24/7 for your business.
+            Stop losing revenue to scope creep, client confusion, and endless support questions. 
+            Knowcap transforms your Odoo implementations into intelligent systems that scale your expertise.
           </p>
         </div>
 
