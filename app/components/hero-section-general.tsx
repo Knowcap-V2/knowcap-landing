@@ -38,7 +38,7 @@ export default function HeroSectionGeneral() {
           </p>
         </div>
 
-        <div className={`relative mb-8 mx-auto max-w-5xl transition-all duration-800 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+        <div className={`relative mb-8 mx-auto max-w-4xl transition-all duration-800 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           {/* YouTube Video Container */}
           <div className="relative aspect-video rounded-lg overflow-hidden border border-border/20 shadow-2xl">
             <iframe
