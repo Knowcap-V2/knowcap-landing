@@ -2,54 +2,20 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Users, Code, Zap, ChevronLeft, ChevronRight } from 'lucide-react'
-import Image from 'next/image'
+import { ArrowRight, Users, Code, Zap } from 'lucide-react'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { useState, useEffect } from 'react'
 
 export default function HeroSection() {
-  const [currentSlide, setCurrentSlide] = useState(0)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
-  
-  const slides = [
-    {
-      src: '/dashboard1.png',
-      alt: 'AI-powered meeting management with sources and studio workspace',
-      title: 'AI-Powered Meeting Intelligence'
-    },
-    {
-      src: '/dashboard2.png', 
-      alt: 'Project Leader Performance Dashboard showing Hassan Sam Arslan metrics',
-      title: 'Expert-Level Performance Analytics'
-    },
-    {
-      src: '/dashboard3.png',
-      alt: 'Comprehensive project analysis with detailed breakdowns and assessments',
-      title: 'Deep Project Analysis & Insights'
-    }
-  ]
 
   const scrollToApplication = () => {
     document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })
   }
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
-  }
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index)
-  }
-
-  // Manual navigation only - no auto-advance
 
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-bg">
@@ -73,71 +39,19 @@ export default function HeroSection() {
           </p>
         </div>
 
-        <div className={`relative mb-4 mx-0 sm:mx-1 transition-all duration-800 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-          {/* Carousel Container with External Navigation */}
-          <div className="relative flex items-center justify-center gap-2">
-            {/* Left Navigation Arrow */}
-            <button
-              onClick={prevSlide}
-              className="bg-background/90 backdrop-blur-sm border border-border/50 hover:bg-accent/50 rounded-full p-4 transition-all duration-200 shadow-lg hover:shadow-xl z-10 flex-shrink-0"
-              aria-label="Previous image"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            
-            {/* Image Container */}
-            <div className="relative border border-border/10 rounded-sm overflow-hidden flex-1 max-w-none">
-              <div className="relative aspect-[18/10] overflow-hidden">
-                {slides.map((slide, index) => (
-                  <div
-                    key={index}
-                    className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
-                      index === currentSlide ? 'opacity-100' : 'opacity-0'
-                    }`}
-                  >
-                    <Image
-                      src={slide.src}
-                      alt={slide.alt}
-                      fill
-                      className="object-contain"
-                      priority={index === 0}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Right Navigation Arrow */}
-            <button
-              onClick={nextSlide}
-              className="bg-background/90 backdrop-blur-sm border border-border/50 hover:bg-accent/50 rounded-full p-4 transition-all duration-200 shadow-lg hover:shadow-xl z-10 flex-shrink-0"
-              aria-label="Next image"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
+        <div className={`relative mb-8 mx-auto max-w-5xl transition-all duration-800 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          {/* YouTube Video Container */}
+          <div className="relative aspect-video rounded-lg overflow-hidden border border-border/20 shadow-2xl">
+            <iframe
+              src="https://www.youtube.com/embed/_B3XMb_LiU4"
+              title="Knowcap AI Platform Demo"
+              className="absolute inset-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
           </div>
-          
-          {/* Slide Indicators - Outside the image container */}
-          <div className="flex justify-center gap-1.5 mt-1">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-200 ${
-                  index === currentSlide 
-                    ? 'bg-primary' 
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-          
-          {/* Slide Title - Outside the image container */}
-          <div className="text-center mt-0.5">
-            <p className="text-xs font-medium text-muted-foreground">
-              {slides[currentSlide].title}
-            </p>
+          <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
+            Live Demo
           </div>
         </div>
 
