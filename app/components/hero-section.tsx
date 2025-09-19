@@ -50,9 +50,12 @@ export default function HeroSection() {
               allowFullScreen
             />
           </div>
-          <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
+          <button
+            onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
+            className="absolute -bottom-4 -right-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer"
+          >
             Live Demo
-          </div>
+          </button>
         </div>
 
         <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
