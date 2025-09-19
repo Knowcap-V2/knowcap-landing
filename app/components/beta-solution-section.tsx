@@ -34,14 +34,14 @@ export default function BetaSolutionSection() {
   return (
     <section className="py-20 bg-secondary/30">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center justify-center gap-2 mb-6">
               <CheckCircle className="w-6 h-6 text-green-500" />
               <span className="text-sm font-medium text-muted-foreground">The Results</span>
             </div>
@@ -61,33 +61,19 @@ export default function BetaSolutionSection() {
               ))}
             </div>
 
-            <Button 
-              size="lg"
-              onClick={joinBeta}
-              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
-            >
-              Join Beta Program
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="relative aspect-[4/3] rounded-lg overflow-hidden border border-border/20 shadow-2xl">
-              <Image
-                src="/dashboard2.png"
-                alt="Knowcap Performance Analytics Dashboard"
-                fill
-                className="object-cover"
-              />
+            <div className="flex justify-center">
+              <Button 
+                size="lg"
+                onClick={joinBeta}
+                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+              >
+                Join Beta Program
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
             </div>
-
           </motion.div>
+
+
         </div>
 
         <motion.div 
