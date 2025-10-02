@@ -8,17 +8,17 @@ const intelligenceFeatures = [
   {
     icon: TrendingUp,
     title: 'Predictive Analytics',
-    description: 'Know which projects are at risk of failure, with links to the exact warning signs. Every prediction is backed by verifiable evidence you can click through and review.'
+    description: 'Spot projects at risk early — every prediction is linked to its warning signs.'
   },
   {
     icon: Users,
     title: 'Best Practice Discovery',
-    description: 'Automatically identify the habits of your top performers with a library of their best moments. Each insight links to the specific conversation or decision that made the difference.'
+    description: 'Identify the habits of top performers — each tied to the exact conversations that drove results.'
   },
   {
     icon: DollarSign,
     title: 'Profitability Insights',
-    description: 'Pinpoint which types of clients drain the most resources, backed by a verifiable history of every interaction. No more guessing—you have the receipts.'
+    description: 'Pinpoint which clients drain resources — with a verifiable history of interactions.'
   }
 ]
 
@@ -35,13 +35,13 @@ export default function BeyondObviousSection() {
         >
           <div className="flex items-center justify-center gap-2 mb-6">
             <Target className="w-6 h-6 text-cyan-400" />
-            <span className="text-sm font-medium text-muted-foreground">Beyond Control to Intelligence</span>
+            <span className="text-sm font-medium text-muted-foreground">Beyond Control → Verifiable Intelligence</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Control is the Foundation. <span className="gradient-text">Verifiable Intelligence</span> is the Payoff.
+            Control is the foundation. <span className="gradient-text">Intelligence is the payoff.</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Getting your projects under control is the first step. But the real goal is to make your business smarter. Because every insight in Knowcap is backed by a receipt, you can trust the intelligence and act with confidence.
+            Because every insight is backed by receipts, you can act with confidence.
           </p>
         </motion.div>
 
@@ -74,8 +74,8 @@ export default function BeyondObviousSection() {
           className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-lg p-8 text-center"
         >
           <h3 className="text-2xl font-bold mb-4">
-            <span className="text-cyan-400">Knowcap doesn't just help you manage projects. </span>
-            It helps you build a smarter, more profitable business.
+            Knowcap doesn't just help you control projects. <br />
+            <span className="text-cyan-400">It helps you build a smarter, more profitable team.</span>
           </h3>
         </motion.div>
       </div>

@@ -28,13 +28,13 @@ export default function HeroSectionGeneral() {
         <div className={`mb-8 transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="flex items-center justify-center gap-2 mb-6">
             <Users className="w-6 h-6 text-cyan-400" />
-            <span className="text-sm font-medium text-muted-foreground">AI Project Governance Platform</span>
+            <span className="text-sm font-medium text-muted-foreground">AI Context Engine for Teams</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Stop Hoping for the Best. <span className="gradient-text">Start Governing Your Projects.</span>
+            Stop Hoping for the Best. <span className="gradient-text">Start Governing with Proof.</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Knowcap.ai is the AI Governance Platform for professional services firms. We turn your client conversations into a system of record that enforces your methodology, flags risks with verifiable proof, and ensures every project is delivered flawlessly and profitably.
+            Knowcap.ai is the Context Engineering Platform for professional teams. It transforms your conversations, screen recordings, and documents into a system of record that eliminates knowledge loss, flags risks with timestamped receipts, and ensures every project runs with clarity, accountability, and proof.
           </p>
         </div>
 
@@ -78,12 +78,12 @@ export default function HeroSectionGeneral() {
         
         {/* Social Proof Bar */}
         <div className={`mt-12 transition-all duration-800 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
-          <p className="text-sm text-muted-foreground mb-6">Trusted by Leading Professional Services Firms</p>
+          <p className="text-sm text-muted-foreground mb-6">Trusted by Leading Professional Teams</p>
           <div className="flex justify-center items-center gap-8 text-muted-foreground">
             <div className="text-sm font-medium bg-muted/30 px-4 py-2 rounded-md">Founders Circle Members</div>
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4" />
-              <span className="text-sm">Join 7 Elite Partners</span>
+              <span className="text-sm">Join Early Elite Partners</span>
             </div>
           </div>
         </div>

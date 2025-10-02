@@ -9,17 +9,17 @@ import Image from 'next/image'
 const governanceSolutions = [
   {
     title: 'Enforce Your Methodology with AI Governance',
-    description: 'Bring your proven methodology into the digital age. Simply upload your existing delivery playbook or SOP document. Our AI instantly understands your standards and begins auditing every client meeting against them, automatically flagging deviations and risks—each backed by a clickable timestamp receipt.',
+    description: 'Upload your delivery playbook or SOP. Knowcap audits every client interaction against it — automatically flagging risks, backed by timestamp receipts you can click and verify.',
     icon: Shield
   },
   {
-    title: 'Eliminate Repetitive Questions with an AI Agent',
-    description: 'Knowcap automatically creates an AI agent for each project, trained on every meeting and document. When clients ask the same question for the tenth time, the agent provides an instant, accurate answer, complete with a timestamp receipt linking to the exact moment it was discussed.',
+    title: 'Eliminate Repetition with AI Project Agents',
+    description: 'Every project gets its own AI agent, trained on its meetings and documents. When a client repeats a question, the agent answers instantly — citing the exact meeting moment it was addressed.',
     icon: BookOpen
   },
   {
-    title: 'Automate Critical Documentation with Verifiable Artifacts',
-    description: 'Never lose track of critical decisions again. Knowcap automatically generates documentation artifacts from your meetings—complete with timestamps and proof. From project summaries to compliance reports, every document is backed by verifiable evidence.',
+    title: 'Automate Documentation with Verifiable Artifacts',
+    description: 'From project summaries to compliance reports, Knowcap generates artifacts instantly — each linked to the exact source.',
     icon: CheckCircle
   }
 ]
@@ -41,7 +41,7 @@ export default function GovernanceEngineSection() {
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="gradient-text">Proof. Not Promises.</span><br />
-            The First Platform That Moves You From Conversation to Verifiable Control.
+            The First Platform That Turns Conversations Into Verifiable Control.
           </h2>
         </motion.div>
 
@@ -95,11 +95,11 @@ export default function GovernanceEngineSection() {
           className="text-center mt-16 bg-card border border-border rounded-lg p-8"
         >
           <h3 className="text-3xl font-bold mb-4">
-            Every Decision. <span className="text-cyan-400">Every Moment.</span> Every Receipt.
+            Every Decision. Every Moment. <span className="text-cyan-400">Every Receipt.</span>
           </h3>
           <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto">
-            This isn't project management software. It's project governance. 
-            The difference? You can trust every insight because you can verify every source.
+            This isn't project management software.
+            It's project governance you can trust — because every answer is backed by proof.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 

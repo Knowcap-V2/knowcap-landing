@@ -21,7 +21,7 @@ export default function PersonalNoteSectionGeneral() {
             <span className="text-sm font-medium text-muted-foreground">Final Call to Action</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Build Your Business on a <span className="gradient-text">Foundation of Proof</span>?
+            Ready to Run Every Project on <span className="gradient-text">Proof</span>?
           </h2>
         </motion.div>
 
@@ -67,7 +67,7 @@ export default function PersonalNoteSectionGeneral() {
               </div>
             </div>
             <p className="text-sm text-muted-foreground">
-              Join professional services firms who've moved from chaos to control
+              Join professional teams who've moved from chaos → control
             </p>
           </div>
         </motion.div>
@@ -90,7 +90,7 @@ export default function PersonalNoteSectionGeneral() {
             hsa@knowcap.ai
           </a>
           <p className="text-sm text-muted-foreground mt-2">
-            I personally read and respond to every email within 24 hours.
+            Every message is read and answered personally within 24 hours.
           </p>
         </motion.div>
 
@@ -102,7 +102,7 @@ export default function PersonalNoteSectionGeneral() {
           className="text-center mt-8"
         >
           <p className="text-sm text-muted-foreground">
-            © 2024 Knowcap.ai • Built by Hassan, for Project Managers
+            © 2025 Knowcap.ai • Built by Hassan, for Professional Teams
           </p>
         </motion.div>
       </div>

@@ -10,19 +10,19 @@ const threats = [
   {
     icon: DollarSign,
     title: 'Profit Leaks',
-    description: 'Without a verifiable record of every decision, undocumented scope creep and unapproved changes silently destroy your project margins.',
+    description: 'Without verifiable receipts of every decision, scope creep and undocumented changes silently destroy project margins.',
     visual: 'Leaking money bag'
   },
   {
     icon: Brain,
     title: 'Knowledge Loss',
-    description: 'When an employee leaves, your company\'s institutional memory walks out the door because their knowledge was never captured in a verifiable way.',
+    description: 'When employees leave, your team\'s memory leaves with them — because insights were never captured in a persistent, verifiable way.',
     visual: 'Fading brain'
   },
   {
     icon: Clock,
     title: 'Productivity Drain',
-    description: 'Your team is trapped in a cycle of repetitive work, wasting hours answering the same client questions while "he said, she said" disputes derail progress.',
+    description: 'Your team wastes hours re-answering the same client questions while disputes over "who said what" derail progress.',
     visual: 'Hourglass draining'
   }
 ]
@@ -43,8 +43,8 @@ export default function ProblemSectionGeneral() {
             <span className="text-sm font-medium text-muted-foreground">The Real Threat to Your Business</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            Your projects aren't failing because of bad people. <br />
-            <span className="gradient-text">They're failing because of a broken system without receipts.</span>
+            Your projects don't fail because of bad people. <br />
+            <span className="gradient-text">They fail because knowledge gets lost, proof is missing, and context disappears.</span>
           </h2>
         </motion.div>
 
@@ -79,7 +79,7 @@ export default function ProblemSectionGeneral() {
           className="text-center bg-card border border-border rounded-lg p-8"
         >
           <h3 className="text-3xl font-bold mb-4">
-            The solution isn't better people. <span className="text-cyan-400">It's a system that creates receipts.</span>
+            The solution isn't better people. <span className="text-cyan-400">It's a system that captures receipts.</span>
           </h3>
           <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto">
             Every successful project needs one thing: a verifiable record of what was decided, when, and by whom. 
