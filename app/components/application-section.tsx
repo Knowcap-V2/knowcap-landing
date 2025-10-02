@@ -20,7 +20,7 @@ export default function ApplicationSection() {
             <span className="text-sm font-medium text-muted-foreground">Application Form</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Apply for the <span className="gradient-text">Founders Circle</span>
+            Apply for the <span className="gradient-text">Beta Early Access</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             This isn't a sales form. It's a partnership application. 
@@ -36,7 +36,7 @@ export default function ApplicationSection() {
                 src="https://docs.google.com/forms/d/e/1FAIpQLScDXh7m_JwK9RLCRkv94V9pEvU5qvSn9_tDotl8w_uk_MzrxA/viewform?embedded=true" 
                 className="w-full border-none"
                 style={{ height: 'min(2592px, 80vh)' }}
-                title="Founders Circle Application Form"
+                title="Beta Early Access Application Form"
               >
                 Loading application form...
               </iframe>

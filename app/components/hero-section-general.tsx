@@ -31,10 +31,10 @@ export default function HeroSectionGeneral() {
             <span className="text-sm font-medium text-muted-foreground">AI Context Engine for Teams</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Stop Hoping for the Best. <span className="gradient-text">Start Governing with Proof.</span>
+            Stop Losing Knowledge. <span className="gradient-text">Start Building Projects on a Foundation of Proof</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Knowcap.ai captures conversations, screens, and documents to build a system of record that eliminates knowledge loss, flags risks with receipts, and keeps projects on track with clarity and accountability.
+            The first Context Engineering AI that captures conversations, screens, and documents — eliminating knowledge loss, flagging risks with receipts, and instantly generating Quotations, Contracts, Reports, and PRDs.
           </p>
         </div>
 
@@ -80,7 +80,7 @@ export default function HeroSectionGeneral() {
         <div className={`mt-12 transition-all duration-800 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
           <p className="text-sm text-muted-foreground mb-6">Trusted by Leading Professional Teams</p>
           <div className="flex justify-center items-center gap-8 text-muted-foreground">
-            <div className="text-sm font-medium bg-muted/30 px-4 py-2 rounded-md">Founders Circle Members</div>
+            <div className="text-sm font-medium bg-muted/30 px-4 py-2 rounded-md">Beta Early Access Members</div>
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4" />
               <span className="text-sm">Join Early Elite Partners</span>

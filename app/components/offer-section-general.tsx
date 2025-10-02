@@ -44,7 +44,7 @@ export default function OfferSectionGeneral() {
             <span className="text-sm font-medium text-muted-foreground">Exclusive Opportunity</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            The <span className="gradient-text">Founders Circle</span>
+            The <span className="gradient-text">Beta Early Access</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             I'm not looking for customers. I'm looking for partners. 
@@ -141,7 +141,7 @@ export default function OfferSectionGeneral() {
             onClick={scrollToApplication}
             className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 text-lg"
           >
-            Apply for Founders Circle
+            Apply for the Beta Early Access
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
         </motion.div>
