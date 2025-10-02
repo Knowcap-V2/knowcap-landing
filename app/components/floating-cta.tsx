@@ -60,7 +60,7 @@ export default function FloatingCTA() {
           </div>
           <h3 className="font-bold text-lg mb-1">Ready to Transform?</h3>
           <p className="text-sm text-muted-foreground">
-            Join 7 project managers revolutionizing how projects get done.
+            Get early access + lifetime discounts + direct input on features as a founding partner.
           </p>
         </div>
 
