@@ -34,7 +34,7 @@ export default function HeroSectionGeneral() {
             Stop Hoping for the Best. <span className="gradient-text">Start Governing with Proof.</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Knowcap.ai is the Context Engineering Platform for professional teams. It transforms your conversations, screen recordings, and documents into a system of record that eliminates knowledge loss, flags risks with timestamped receipts, and ensures every project runs with clarity, accountability, and proof.
+            Knowcap.ai captures conversations, screens, and documents to build a system of record that eliminates knowledge loss, flags risks with receipts, and keeps projects on track with clarity and accountability.
           </p>
         </div>
 
