@@ -49,9 +49,6 @@ export default function BookPage() {
 
           {/* Additional Info */}
           <div className="mt-12 text-center text-muted-foreground">
-            <p className="mb-4">
-              Applications are reviewed personally by Hassan within 48 hours. If selected, you'll receive a direct email to schedule a discovery call.
-            </p>
             <p className="text-sm">
               Need immediate assistance? Email us at{' '}
               <a href="mailto:hassan@knowcap.ai" className="text-cyan-400 hover:text-cyan-300 transition-colors">
