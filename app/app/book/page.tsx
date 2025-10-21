@@ -1,29 +1,35 @@
 
 'use client'
 
-import Script from 'next/script'
 import { useEffect } from 'react'
 
 export default function BookPage() {
   useEffect(() => {
     // Set page title
     document.title = 'Book a Call - Knowcap.ai'
+    
+    // Load the Reclaim script
+    const script = document.createElement('script')
+    script.src = 'https://meet.reclaimai.com/scripts/embed-scheduling-link.0.x.x.js'
+    script.setAttribute('data-id', '6fb86eda-27d1-41c1-b807-726cad75a2e9')
+    script.setAttribute('data-redirect', 'NONE')
+    script.async = true
+    
+    const container = document.getElementById('reclaim-embed-container')
+    if (container) {
+      container.appendChild(script)
+    }
+    
+    return () => {
+      // Cleanup
+      if (container && script.parentNode === container) {
+        container.removeChild(script)
+      }
+    }
   }, [])
 
   return (
     <main className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between">
-          <a href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-cyan-400 rounded-lg flex items-center justify-center">
-              <span className="text-black font-bold text-xl">K</span>
-            </div>
-            <span className="text-xl font-bold">Knowcap.ai</span>
-          </a>
-        </div>
-      </div>
-
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
@@ -37,16 +43,8 @@ export default function BookPage() {
           </div>
 
           {/* Embedded Scheduling Widget */}
-          <div className="bg-card rounded-lg border border-border p-8 shadow-lg min-h-[600px]">
-            <div 
-              id="reclaim-embed-container"
-              data-id="6fb86eda-27d1-41c1-b807-726cad75a2e9" 
-              data-redirect="NONE"
-            />
-            <Script 
-              src="https://meet.reclaimai.com/scripts/embed-scheduling-link.0.x.x.js"
-              strategy="afterInteractive"
-            />
+          <div className="w-full min-h-[600px]">
+            <div id="reclaim-embed-container" />
           </div>
 
           {/* Additional Info */}
