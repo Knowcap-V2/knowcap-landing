@@ -55,7 +55,7 @@ export default function BetaHeroSection() {
             />
           </div>
           <button
-            onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
+            onClick={() => window.location.href = '/book'}
             className="absolute -bottom-4 -right-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer"
           >
             Live Demo
@@ -74,7 +74,7 @@ export default function BetaHeroSection() {
           <Button 
             variant="outline"
             size="lg"
-            onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
+            onClick={() => window.location.href = '/book'}
             className="border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
           >
             Book Demo

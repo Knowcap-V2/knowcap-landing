@@ -101,7 +101,7 @@ export default function BetaSolutionSection() {
             <Button 
               variant="outline"
               size="lg"
-              onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
+              onClick={() => window.location.href = '/book'}
               className="border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
             >
               Schedule Demo

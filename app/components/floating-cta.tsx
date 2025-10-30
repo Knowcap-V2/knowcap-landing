@@ -24,7 +24,7 @@ export default function FloatingCTA() {
   }
 
   const openDemo = () => {
-    window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')
+    window.location.href = '/book'
     setIsMinimized(true)
   }
 

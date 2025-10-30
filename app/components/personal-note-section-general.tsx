@@ -48,7 +48,7 @@ export default function PersonalNoteSectionGeneral() {
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
+              onClick={() => window.location.href = '/book'}
               className="text-cyan-400 hover:text-cyan-300 font-semibold text-lg underline transition-colors duration-300"
             >
               Schedule a Demo

@@ -25,7 +25,7 @@ export default function BetaCTASection() {
   }
 
   const bookDemo = () => {
-    window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')
+    window.location.href = '/book'
   }
 
   return (

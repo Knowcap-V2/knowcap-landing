@@ -134,7 +134,7 @@ export default function WhoWeHelpSection() {
             <Button 
               variant="outline"
               size="lg"
-              onClick={() => window.open('https://app.reclaim.ai/m/knowcap-group/knowcapai-demo', '_blank')}
+              onClick={() => window.location.href = '/book'}
               className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
             >
               Watch Demo
