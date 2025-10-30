@@ -2,9 +2,11 @@
 
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, CheckCircle, Users, Calendar, Sparkles } from 'lucide-react'
+import BetaApplicationForm from '@/components/beta-application-form'
 
 const betaPerks = [
   'Free access during beta period',
@@ -16,8 +18,10 @@ const betaPerks = [
 ]
 
 export default function BetaCTASection() {
-  const openGoogleForm = () => {
-    window.open('https://docs.google.com/forms/d/e/1FAIpQLScDXh7m_JwK9RLCRkv94V9pEvU5qvSn9_tDotl8w_uk_MzrxA/viewform?usp=sharing&ouid=105175348828928124523', '_blank')
+  const [isFormOpen, setIsFormOpen] = useState(false)
+
+  const openApplicationForm = () => {
+    setIsFormOpen(true)
   }
 
   const bookDemo = () => {
@@ -67,7 +71,7 @@ export default function BetaCTASection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg"
-              onClick={openGoogleForm}
+              onClick={openApplicationForm}
               className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
             >
               Apply for Beta Access
@@ -124,6 +128,8 @@ export default function BetaCTASection() {
           </p>
         </motion.div>
       </div>
+
+      <BetaApplicationForm open={isFormOpen} onOpenChange={setIsFormOpen} />
     </section>
   )
 }
