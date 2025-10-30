@@ -6,64 +6,34 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 15% 8%;
+    --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 8%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 8%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 195 100% 50%;
+    --primary: 222 47% 11%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 98%;
-    --secondary-foreground: 220 15% 8%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 210 40% 98%;
-    --muted-foreground: 215 20.2% 35%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 180 100% 45%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 195 100% 50%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222 47% 11%;
 
     --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 220 15% 8%;
-    --foreground: 210 40% 98%;
-
-    --card: 220 15% 10%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 220 15% 10%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 195 100% 50%;
-    --primary-foreground: 220 15% 8%;
-
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 220 15% 15%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 180 100% 45%;
-    --accent-foreground: 220 15% 8%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 220 15% 20%;
-    --input: 220 15% 20%;
-    --ring: 195 100% 50%;
   }
 }
 
@@ -72,27 +42,27 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-white text-foreground;
   }
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 .hero-bg {
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+  background: linear-gradient(180deg, #F0F6FF 0%, #FFFFFF 100%);
+  position: relative;
 }
 
-.dark .hero-bg {
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(90deg, rgba(96, 165, 250, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(96, 165, 250, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
 }
 
 html {

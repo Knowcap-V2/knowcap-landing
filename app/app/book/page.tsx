@@ -29,15 +29,15 @@ export default function BookPage() {
   }, [])
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-white">
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#1a1d29]">
               Book a Strategy Conversation
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               In this session, we'll review your current project challenges and see how Knowcap.ai could help streamline documentation, follow-ups, and delivery.
             </p>
           </div>
@@ -48,10 +48,10 @@ export default function BookPage() {
           </div>
 
           {/* Additional Info */}
-          <div className="mt-12 text-center text-muted-foreground">
+          <div className="mt-12 text-center text-gray-600">
             <p className="text-sm">
               Need immediate assistance? Email us at{' '}
-              <a href="mailto:hassan@knowcap.ai" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+              <a href="mailto:hassan@knowcap.ai" className="text-blue-600 hover:text-blue-700 transition-colors">
                 hassan@knowcap.ai
               </a>
             </p>

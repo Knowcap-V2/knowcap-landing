@@ -52,7 +52,7 @@ const solutions = [
 
 export default function WhoWeHelpSection() {
   return (
-    <section className="py-20 bg-secondary/30" id="who-we-help">
+    <section className="py-20 bg-gray-50" id="who-we-help">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -62,11 +62,11 @@ export default function WhoWeHelpSection() {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-2 mb-6">
-            <Users className="w-6 h-6 text-cyan-400" />
-            <span className="text-sm font-medium text-muted-foreground">Purpose-Built for Professional Teams</span>
+            <Users className="w-6 h-6 text-blue-600" />
+            <span className="text-sm font-medium text-gray-600">Purpose-Built for Professional Teams</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="gradient-text">Different industries.</span> Same need for context and proof.
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#1a1d29]">
+            Different industries. Same need for context and proof.
           </h2>
         </motion.div>
 
@@ -78,28 +78,28 @@ export default function WhoWeHelpSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-card border border-border rounded-lg p-6 hover:shadow-xl transition-all duration-300 hover:border-cyan-500/30 group"
+              className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-xl transition-all duration-300 hover:border-blue-300 group"
             >
               <div className="text-center mb-6">
-                <div className="w-14 h-14 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-14 h-14 bg-[#1a1d29] rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                   <solution.icon className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-cyan-300">{solution.title}</h3>
-                <p className="text-muted-foreground text-base leading-relaxed mb-6">{solution.description}</p>
+                <h3 className="text-xl font-bold mb-3 text-[#1a1d29]">{solution.title}</h3>
+                <p className="text-gray-600 text-base leading-relaxed mb-6">{solution.description}</p>
               </div>
 
               <div className="space-y-3 mb-6">
                 {solution.challenges.map((challenge, challengeIndex) => (
                   <div key={challengeIndex} className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full flex-shrink-0"></div>
-                    <span className="text-sm text-muted-foreground">{challenge}</span>
+                    <div className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0"></div>
+                    <span className="text-sm text-gray-600">{challenge}</span>
                   </div>
                 ))}
               </div>
 
               <Button 
                 variant="outline"
-                className="w-full border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white group-hover:scale-105 transition-all duration-300"
+                className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 group-hover:scale-105 transition-all duration-300"
                 onClick={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 {solution.cta}
@@ -114,19 +114,19 @@ export default function WhoWeHelpSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center bg-card border border-border rounded-lg p-8"
+          className="text-center bg-white border border-gray-200 rounded-lg p-8"
         >
-          <h3 className="text-2xl font-bold mb-4">
+          <h3 className="text-2xl font-bold mb-4 text-[#1a1d29]">
             Don't see your industry?
           </h3>
-          <p className="text-lg text-muted-foreground mb-6">
+          <p className="text-lg text-gray-600 mb-6">
             Knowcap adapts to any team that runs on knowledge, trust, and proof.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg"
               onClick={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+              className="bg-[#1a1d29] hover:bg-[#2a2d39] text-white font-medium px-8 py-6 rounded-lg transition-all duration-300 text-base"
             >
               Discuss Your Needs
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -135,7 +135,7 @@ export default function WhoWeHelpSection() {
               variant="outline"
               size="lg"
               onClick={() => window.location.href = '/book'}
-              className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
+              className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium px-8 py-6 rounded-lg transition-all duration-300 text-base"
             >
               Watch Demo
             </Button>

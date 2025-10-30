@@ -4,7 +4,6 @@
 import { motion } from 'framer-motion'
 import { BookOpen, Shield, CheckCircle, ArrowRight, Receipt } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import Image from 'next/image'
 
 const governanceSolutions = [
   {
@@ -26,7 +25,7 @@ const governanceSolutions = [
 
 export default function GovernanceEngineSection() {
   return (
-    <section className="py-20 bg-background" id="governance">
+    <section className="py-20 bg-white" id="governance">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -36,13 +35,15 @@ export default function GovernanceEngineSection() {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-2 mb-6">
-            <Shield className="w-6 h-6 text-cyan-400" />
-            <span className="text-sm font-medium text-muted-foreground">The Solution</span>
+            <Shield className="w-6 h-6 text-blue-600" />
+            <span className="text-sm font-medium text-gray-600">The Solution</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="gradient-text">Proof. Not Promises.</span><br />
-            The First Platform That Turns Conversations Into Verifiable Control.
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#1a1d29]">
+            Proof. Not Promises.
           </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            The First Platform That Turns Conversations Into Verifiable Control.
+          </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-1 gap-8 max-w-4xl mx-auto">
@@ -53,31 +54,31 @@ export default function GovernanceEngineSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="bg-card border border-border rounded-lg p-8 hover:shadow-xl transition-all duration-300 hover:border-cyan-500/30"
+              className="bg-gray-50 border border-gray-200 rounded-lg p-8 hover:shadow-xl transition-all duration-300 hover:border-blue-300"
             >
               <div className="flex items-start gap-6">
-                <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-[#1a1d29] rounded-lg flex items-center justify-center flex-shrink-0">
                   <solution.icon className="w-6 h-6 text-white" />
                 </div>
                 
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-cyan-300 mb-4">
+                  <h3 className="text-2xl font-bold text-[#1a1d29] mb-4">
                     {solution.title}
                   </h3>
                   
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-lg text-gray-600 leading-relaxed">
                     {solution.description}
                   </p>
 
                   {index === 1 && (
-                    <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-4 mt-4">
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
                       <div className="flex items-center gap-2 mb-2">
-                        <Receipt className="w-5 h-5 text-cyan-400" />
-                        <span className="text-sm font-bold text-cyan-400">Timestamp Receipt Example</span>
+                        <Receipt className="w-5 h-5 text-blue-600" />
+                        <span className="text-sm font-bold text-blue-600">Timestamp Receipt Example</span>
                       </div>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-gray-600">
                         "Client asked about multi-currency billing at 14:23 in Meeting #3. 
-                        <span className="underline cursor-pointer text-cyan-400">Click here to view exact moment.</span>"
+                        <span className="underline cursor-pointer text-blue-600">Click here to view exact moment.</span>"
                       </p>
                     </div>
                   )}
@@ -92,12 +93,12 @@ export default function GovernanceEngineSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-center mt-16 bg-card border border-border rounded-lg p-8"
+          className="text-center mt-16 bg-gray-50 border border-gray-200 rounded-lg p-8"
         >
-          <h3 className="text-3xl font-bold mb-4">
-            Every Decision. Every Moment. <span className="text-cyan-400">Every Receipt.</span>
+          <h3 className="text-3xl font-bold mb-4 text-[#1a1d29]">
+            Every Decision. Every Moment. Every Receipt.
           </h3>
-          <p className="text-lg text-muted-foreground mb-6 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 mb-6 max-w-3xl mx-auto">
             This isn't project management software.
             It's project governance you can trust — because every answer is backed by proof.
           </p>
@@ -105,7 +106,7 @@ export default function GovernanceEngineSection() {
             <Button 
               size="lg"
               onClick={() => window.location.href = '/book'}
-              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+              className="bg-[#1a1d29] hover:bg-[#2a2d39] text-white font-medium px-8 py-6 rounded-lg transition-all duration-300 text-base"
             >
               See It In Action
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -114,7 +115,7 @@ export default function GovernanceEngineSection() {
               variant="outline"
               size="lg"
               onClick={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
+              className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium px-8 py-6 rounded-lg transition-all duration-300 text-base"
             >
               Start Free Trial
             </Button>

@@ -1,11 +1,10 @@
 
-
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Users, Code, Zap } from 'lucide-react'
-import { ThemeToggle } from '@/components/theme-toggle'
+import { CheckCircle2, FileText, Lightbulb, Brain, LineChart } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 export default function HeroSectionGeneral() {
   const [mounted, setMounted] = useState(false)
@@ -14,77 +13,94 @@ export default function HeroSectionGeneral() {
     setMounted(true)
   }, [])
 
-  const scrollToApplication = () => {
-    document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-bg">
-      {/* Theme Toggle - Fixed position top right */}
-      <div className="fixed top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
-      <div className="max-w-[1400px] mx-auto px-2 py-16 text-center relative">
-        <div className={`mb-8 transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <Users className="w-6 h-6 text-cyan-400" />
-            <span className="text-sm font-medium text-muted-foreground">AI Context Engine for Teams</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Stop Losing Knowledge. <span className="gradient-text">Start Building Projects on a Foundation of Proof</span>
+      <div className="max-w-[1200px] mx-auto px-6 py-20 text-center relative z-10">
+        {/* Hero Text */}
+        <div className={`mb-12 transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h1 className="text-5xl md:text-6xl font-normal mb-4 leading-tight text-gray-600">
+            The AI Governance Layer for
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            The first Context Engineering AI that captures conversations, screens, and documents — eliminating knowledge loss, flagging risks with receipts, and instantly generating Quotations, Contracts, Reports, and PRDs.
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight text-[#1a1d29]">
+            Professional Teams
+          </h2>
+          <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+            Knowcap watches meetings and screens to auto-create timestamp-backed PRDs, SOPs, and onboarding guides. Your work becomes verified, searchable memory.
           </p>
-        </div>
-
-        <div className={`relative mb-8 mx-auto max-w-4xl transition-all duration-800 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-          {/* YouTube Video Container */}
-          <div className="relative aspect-video rounded-lg overflow-hidden border border-border/20 shadow-2xl">
-            <iframe
-              src="https://www.youtube.com/embed/_B3XMb_LiU4"
-              title="Knowcap AI Platform Demo"
-              className="absolute inset-0 w-full h-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
+          
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+            <Button 
+              size="lg"
+              variant="outline"
+              onClick={() => window.location.href = '/book'}
+              className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 font-medium px-8 py-6 rounded-lg transition-all duration-300 text-base"
+            >
+              Book a Demo
+            </Button>
+            <Button 
+              size="lg"
+              onClick={() => window.location.href = '/beta'}
+              className="bg-[#1a1d29] hover:bg-[#2a2d39] text-white font-medium px-8 py-6 rounded-lg transition-all duration-300 text-base"
+            >
+              Apply for Early Access
+            </Button>
           </div>
-          <button
-            onClick={() => window.location.href = '/book'}
-            className="absolute -bottom-4 -right-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer"
-          >
-            Live Demo
-          </button>
         </div>
 
-        <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
-          <Button 
-            size="lg"
-            onClick={() => window.location.href = '/book'}
-            className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
-          >
-            Book a Quick Demo
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
-          <Button 
-            variant="outline"
-            size="lg"
-            onClick={scrollToApplication}
-            className="border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
-          >
-            Get Started Free
-          </Button>
-        </div>
-        
-        {/* Social Proof Bar */}
-        <div className={`mt-12 transition-all duration-800 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
-          <p className="text-sm text-muted-foreground mb-6">Trusted by Leading Professional Teams</p>
-          <div className="flex justify-center items-center gap-8 text-muted-foreground">
-            <div className="text-sm font-medium bg-muted/30 px-4 py-2 rounded-md">Beta Early Access Members</div>
-            <div className="flex items-center gap-2">
-              <Users className="w-4 h-4" />
-              <span className="text-sm">Join Early Elite Partners</span>
+        {/* Feature Cards */}
+        <div className={`grid grid-cols-2 md:grid-cols-5 gap-4 mb-16 transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="flex flex-col items-center text-center p-4">
+            <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-3">
+              <CheckCircle2 className="w-6 h-6 text-blue-600" />
             </div>
+            <h3 className="text-sm font-semibold text-[#1a1d29] mb-1">Governance</h3>
+            <p className="text-xs text-gray-600">Keep Projects Accountable</p>
+          </div>
+          
+          <div className="flex flex-col items-center text-center p-4">
+            <div className="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-3">
+              <Lightbulb className="w-6 h-6 text-yellow-600" />
+            </div>
+            <h3 className="text-sm font-semibold text-[#1a1d29] mb-1">Agents</h3>
+            <p className="text-xs text-gray-600">Client-facing AI trained on your Meetings</p>
+          </div>
+          
+          <div className="flex flex-col items-center text-center p-4">
+            <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-3">
+              <FileText className="w-6 h-6 text-green-600" />
+            </div>
+            <h3 className="text-sm font-semibold text-[#1a1d29] mb-1">Artifacts</h3>
+            <p className="text-xs text-gray-600">Auto-generated PRDs & SOPs</p>
+          </div>
+          
+          <div className="flex flex-col items-center text-center p-4">
+            <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-3">
+              <Brain className="w-6 h-6 text-purple-600" />
+            </div>
+            <h3 className="text-sm font-semibold text-[#1a1d29] mb-1">Memory</h3>
+            <p className="text-xs text-gray-600">Persistent Project Knowledge</p>
+          </div>
+          
+          <div className="flex flex-col items-center text-center p-4">
+            <div className="w-12 h-12 rounded-full bg-pink-100 flex items-center justify-center mb-3">
+              <LineChart className="w-6 h-6 text-pink-600" />
+            </div>
+            <h3 className="text-sm font-semibold text-[#1a1d29] mb-1">Insights</h3>
+            <p className="text-xs text-gray-600">Detects if projects are on track</p>
+          </div>
+        </div>
+
+        {/* Product Screenshot */}
+        <div className={`relative mb-8 mx-auto max-w-5xl transition-all duration-800 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-gray-200 shadow-2xl bg-white">
+            <Image
+              src="/dashboard1.png"
+              alt="Knowcap AI Platform Interface"
+              fill
+              className="object-cover object-top"
+              priority
+            />
           </div>
         </div>
       </div>

@@ -4,7 +4,6 @@
 
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Sparkles, Users, Zap, ChevronDown } from 'lucide-react'
-import { ThemeToggle } from '@/components/theme-toggle'
 import { useState, useEffect } from 'react'
 
 export default function BetaHeroSection() {
@@ -24,20 +23,16 @@ export default function BetaHeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-bg">
-      {/* Theme Toggle - Fixed position top right */}
-      <div className="fixed top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
       <div className="max-w-[1400px] mx-auto px-2 py-16 text-center relative">
         <div className={`mb-8 transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="flex items-center justify-center gap-2 mb-6">
-            <Users className="w-6 h-6 text-cyan-400" />
-            <span className="text-sm font-medium text-muted-foreground bg-cyan-950/30 px-3 py-1 rounded-full border border-cyan-500/20">Odoo Partners Beta Program</span>
+            <Users className="w-6 h-6 text-blue-600" />
+            <span className="text-sm font-medium text-gray-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">Odoo Partners Beta Program</span>
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            The AI-Powered Operating System for <span className="gradient-text">Odoo Partners</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-[#1a1d29]">
+            The AI-Powered Operating System for Odoo Partners
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-4xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-4xl mx-auto">
             Stop losing revenue to scope creep, client confusion, and endless support questions. 
             Knowcap transforms your Odoo implementations into intelligent systems that scale your expertise.
           </p>

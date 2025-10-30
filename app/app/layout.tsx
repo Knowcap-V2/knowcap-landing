@@ -2,15 +2,14 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import { Toaster as Sonner } from 'sonner'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Knowcap.ai - AI-Powered Project Management Platform',
-  description: 'Transform chaotic project management into streamlined success with AI-powered insights and automation.',
+  title: 'Knowcap.ai - The AI Governance Layer for Professional Teams',
+  description: 'Knowcap watches meetings and screens to auto-create timestamp-backed PRDs, SOPs, and onboarding guides. Your work becomes verified, searchable memory.',
   icons: {
     icon: '/favicon.ico',
   },
@@ -22,18 +21,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem={true}
-          disableTransitionOnChange={false}
-        >
-          {children}
-          <Toaster />
-          <Sonner />
-        </ThemeProvider>
+        {children}
+        <Toaster />
+        <Sonner />
       </body>
     </html>
   )
