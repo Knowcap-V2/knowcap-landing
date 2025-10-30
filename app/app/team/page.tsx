@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 export default function TeamPage() {
   useEffect(() => {
     // Set page title
-    document.title = 'Join the Team - Knowcap.ai'
+    document.title = 'Connect With the People Building Knowcap.ai'
     
     // Load the Reclaim script
     const script = document.createElement('script')
@@ -35,10 +35,10 @@ export default function TeamPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Join the Team Behind Knowcap.ai
+              Connect With the People Building Knowcap.ai
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A conversation about your experience, ambitions, and how you can help shape Knowcap's next phase of growth. Designed to be open, direct, and insightful — not just an interview.
+              An open discussion about culture, direction, and the kind of people shaping Knowcap's evolution. A space to exchange ideas and explore how your mindset aligns with ours.
             </p>
           </div>
 

@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 export default function InvestPage() {
   useEffect(() => {
     // Set page title
-    document.title = "Explore Knowcap.ai's Growth Journey - Knowcap.ai"
+    document.title = "Explore Knowcap.ai's Vision and Opportunities - Knowcap.ai"
     
     // Load the Reclaim script
     const script = document.createElement('script')
@@ -35,10 +35,10 @@ export default function InvestPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Explore Knowcap.ai's Growth Journey
+              Explore Knowcap.ai's Vision and Opportunities
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Join a 45-minute strategy call with Hassan Sam Arslan to discuss Knowcap's traction, product roadmap, and opportunities for aligned investment or advisory collaboration.
+              A focused conversation with Hassan Sam Arslan about Knowcap's mission, traction, and strategic growth plans — ideal for investors and advisors exploring collaboration or future involvement.
             </p>
           </div>
 
