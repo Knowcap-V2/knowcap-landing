@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 export default function BookPage() {
   useEffect(() => {
     // Set page title
-    document.title = 'Book a Call - Knowcap.ai'
+    document.title = 'Book a Strategy Conversation - Knowcap.ai'
     
     // Load the Reclaim script
     const script = document.createElement('script')
@@ -35,10 +35,10 @@ export default function BookPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Schedule Your Discovery Call
+              Book a Strategy Conversation
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Let's discuss how Knowcap can transform your Odoo implementations and help you build the future of project management together.
+              In this session, we'll review your current project challenges and see how Knowcap.ai could help streamline documentation, follow-ups, and delivery.
             </p>
           </div>
 
