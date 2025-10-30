@@ -93,12 +93,12 @@ export default function HeroSectionGeneral() {
 
         {/* Product Screenshot */}
         <div className={`relative mb-8 mx-auto max-w-5xl transition-all duration-800 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-          <div className="relative aspect-[16/10] rounded-xl overflow-hidden border border-gray-200 shadow-2xl bg-white">
+          <div className="relative aspect-[16/9] rounded-xl overflow-hidden border border-gray-200 shadow-2xl bg-white">
             <Image
-              src="/dashboard1.png"
+              src="/hero-image.png"
               alt="Knowcap AI Platform Interface"
               fill
-              className="object-cover object-top"
+              className="object-cover object-center"
               priority
             />
           </div>
