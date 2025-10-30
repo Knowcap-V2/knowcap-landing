@@ -4,7 +4,6 @@
 import { Button } from '@/components/ui/button'
 import { CheckCircle2, FileText, Lightbulb, Brain, LineChart } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
 
 export default function HeroSectionGeneral() {
   const [mounted, setMounted] = useState(false)
@@ -91,15 +90,19 @@ export default function HeroSectionGeneral() {
           </div>
         </div>
 
-        {/* Product Screenshot */}
+        {/* YouTube Video */}
         <div className={`relative mb-8 mx-auto max-w-5xl transition-all duration-800 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-          <div className="relative aspect-[16/9] rounded-xl overflow-hidden border border-gray-200 shadow-2xl bg-white">
-            <Image
-              src="/hero-image.png"
-              alt="Knowcap AI Platform Interface"
-              fill
-              className="object-cover object-center"
-              priority
+          <div className="relative aspect-video rounded-xl overflow-hidden border border-gray-200 shadow-2xl bg-white">
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src="https://www.youtube.com/embed/j-SzV4i9Fbg?si=VsfOLpiJSg6FriJX" 
+              title="YouTube video player" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerPolicy="strict-origin-when-cross-origin" 
+              allowFullScreen
+              className="absolute inset-0 w-full h-full"
             />
           </div>
         </div>
