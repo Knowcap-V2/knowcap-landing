@@ -1,6 +1,45 @@
 
 import { NextRequest, NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import { google } from 'googleapis'
+
+// Function to get Gmail OAuth credentials
+async function getGmailAuth() {
+  try {
+    const accessToken = process.env.GMAIL_ACCESS_TOKEN
+    
+    if (!accessToken) {
+      throw new Error('Gmail OAuth token not found in environment')
+    }
+
+    const oauth2Client = new google.auth.OAuth2()
+    oauth2Client.setCredentials({
+      access_token: accessToken
+    })
+
+    return oauth2Client
+  } catch (error) {
+    console.error('Error getting Gmail auth:', error)
+    throw error
+  }
+}
+
+// Function to create email message
+function createMessage(to: string, subject: string, htmlBody: string) {
+  const message = [
+    `To: ${to}`,
+    'Content-Type: text/html; charset=utf-8',
+    'MIME-Version: 1.0',
+    `Subject: ${subject}`,
+    '',
+    htmlBody
+  ].join('\n')
+
+  return Buffer.from(message)
+    .toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '')
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -24,63 +63,22 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Check if SMTP is configured
-    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-      // Log to console for admin to see
-      console.log('=== NEW BETA APPLICATION (SMTP NOT CONFIGURED) ===')
-      console.log('Name:', name)
-      console.log('Email:', email)
-      console.log('Company:', company)
-      console.log('Role:', role)
-      console.log('Motivation:', motivation)
-      console.log('Submitted on:', new Date().toLocaleString())
-      console.log('===================================================')
-      
-      // Still return success to the user
-      return NextResponse.json(
-        { 
-          success: true, 
-          message: 'Application received successfully',
-          note: 'Your application has been logged. We will contact you at ' + email
-        },
-        { status: 200 }
-      )
-    }
+    // Log the submission
+    console.log('=== NEW BETA APPLICATION ===')
+    console.log('Name:', name)
+    console.log('Email:', email)
+    console.log('Company:', company)
+    console.log('Role:', role)
+    console.log('Motivation:', motivation)
+    console.log('Submitted on:', new Date().toLocaleString())
+    console.log('============================')
 
-    // Create email transporter
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: process.env.SMTP_SECURE === 'true',
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    })
+    // Try to send email using Gmail API
+    try {
+      const auth = await getGmailAuth()
+      const gmail = google.gmail({ version: 'v1', auth })
 
-    // Email content
-    const emailContent = `
-New Beta Application Submission
-
-Name: ${name}
-Email: ${email}
-Company: ${company}
-Role: ${role}
-
-What brings them to Knowcap:
-${motivation}
-
----
-Submitted on: ${new Date().toLocaleString()}
-    `.trim()
-
-    // Send email
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM || process.env.SMTP_USER,
-      to: 'hsa@knowcap.ai',
-      subject: `New Beta Application: ${name} from ${company}`,
-      text: emailContent,
-      html: `
+      const htmlBody = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #0891b2;">New Beta Application Submission</h2>
           
@@ -102,23 +100,42 @@ Submitted on: ${new Date().toLocaleString()}
             Submitted on: ${new Date().toLocaleString()}
           </p>
         </div>
-      `,
-    })
+      `
 
-    console.log('✅ Beta application email sent successfully to hsa@knowcap.ai')
+      const encodedMessage = createMessage(
+        'hsa@knowcap.ai',
+        `New Beta Application: ${name} from ${company}`,
+        htmlBody
+      )
 
-    return NextResponse.json(
-      { success: true, message: 'Application submitted successfully' },
-      { status: 200 }
-    )
+      await gmail.users.messages.send({
+        userId: 'me',
+        requestBody: {
+          raw: encodedMessage
+        }
+      })
+
+      console.log('✅ Beta application email sent successfully to hsa@knowcap.ai')
+
+      return NextResponse.json(
+        { success: true, message: 'Application submitted successfully' },
+        { status: 200 }
+      )
+    } catch (emailError) {
+      console.error('Error sending email via Gmail API:', emailError)
+      
+      // Still return success to user but log the error
+      return NextResponse.json(
+        { 
+          success: true, 
+          message: 'Application received successfully',
+          note: 'Your application has been logged. We will contact you at ' + email
+        },
+        { status: 200 }
+      )
+    }
   } catch (error) {
     console.error('Error submitting beta application:', error)
-    
-    // Log the application data even if email fails
-    console.log('=== FAILED EMAIL - APPLICATION DATA ===')
-    console.log('Data:', JSON.stringify(await request.json(), null, 2))
-    console.log('Error:', error)
-    console.log('======================================')
     
     return NextResponse.json(
       { error: 'Failed to submit application. Please contact us directly at hsa@knowcap.ai' },
