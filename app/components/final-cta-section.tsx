@@ -3,9 +3,13 @@
 
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Check, Calendar } from 'lucide-react'
+import { useState } from 'react'
+import BetaApplicationForm from '@/components/beta-application-form'
 
 export default function FinalCTASection() {
+  const [isFormOpen, setIsFormOpen] = useState(false)
+
   return (
     <section className="py-20 md:py-24 bg-[#0A0D12]">
       <div className="max-w-[1024px] mx-auto px-8 text-center">
@@ -25,21 +29,31 @@ export default function FinalCTASection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <Button 
               size="lg"
-              onClick={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => setIsFormOpen(true)}
               className="bg-[#005EFF] hover:bg-[#0052CC] text-white text-lg px-8 py-6 rounded-lg btn-shadow"
             >
               Apply for Beta Access
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <Button 
-              variant="outline"
               size="lg"
               onClick={() => window.location.href = '/book'}
-              className="border-[#D5D7DA] text-white hover:bg-white/10 text-lg px-8 py-6 rounded-lg"
+              className="bg-white/10 hover:bg-white/20 text-white border border-white/20 text-lg px-8 py-6 rounded-lg"
             >
               Schedule a Demo
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <Calendar className="ml-2 w-5 h-5" />
             </Button>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-6">
+            <div className="flex items-center gap-2 text-[#D5D7DA]">
+              <Check className="w-4 h-4 text-[#005EFF]" />
+              <span className="text-sm">No Credit Card Required</span>
+            </div>
+            <div className="flex items-center gap-2 text-[#D5D7DA]">
+              <Check className="w-4 h-4 text-[#005EFF]" />
+              <span className="text-sm">30-Day Free Trial</span>
+            </div>
           </div>
 
           <p className="text-sm text-[#D5D7DA] mt-6">
@@ -47,6 +61,8 @@ export default function FinalCTASection() {
           </p>
         </motion.div>
       </div>
+
+      <BetaApplicationForm open={isFormOpen} onOpenChange={setIsFormOpen} />
     </section>
   )
 }
