@@ -110,6 +110,43 @@ export default function HeroSectionGeneral() {
             />
           </div>
         </div>
+
+        {/* Trusted By Section */}
+        <div className={`mt-20 transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-center mb-8">
+            <p className="text-sm font-semibold text-[#535862] mb-2">Real teams already building with Knowcap</p>
+            <p className="text-sm text-[#535862]">6 Odoo partners • 40+ projects • 1000+ recorded sessions</p>
+          </div>
+          
+          {/* Logo Grid */}
+          <div className="flex flex-wrap justify-center items-center gap-8 max-w-4xl mx-auto">
+            <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+              <div className="h-12 w-32 bg-gradient-to-r from-gray-400 to-gray-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">45 Degrees</span>
+              </div>
+            </div>
+            <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+              <div className="h-12 w-32 bg-gradient-to-r from-blue-400 to-blue-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">Constellation</span>
+              </div>
+            </div>
+            <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+              <div className="h-12 w-32 bg-gradient-to-r from-purple-400 to-purple-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">Frequencil</span>
+              </div>
+            </div>
+            <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+              <div className="h-12 w-32 bg-gradient-to-r from-green-400 to-green-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">Europa</span>
+              </div>
+            </div>
+            <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+              <div className="h-12 w-32 bg-gradient-to-r from-orange-400 to-orange-500 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm">Luminescence</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

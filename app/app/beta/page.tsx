@@ -1,6 +1,7 @@
 
 
 import HeroSectionGeneral from '@/components/hero-section-general'
+import FeaturesContextSection from '@/components/features-context-section'
 import ProblemSectionGeneral from '@/components/problem-section-general'
 import GovernanceEngineSection from '@/components/governance-engine-section'
 import WhoWeHelpSection from '@/components/who-we-help-section'
@@ -13,6 +14,7 @@ export default function BetaPage() {
   return (
     <main className="min-h-screen bg-background">
       <HeroSectionGeneral />
+      <FeaturesContextSection />
       <ProblemSectionGeneral />
       <GovernanceEngineSection />
       <WhoWeHelpSection />
