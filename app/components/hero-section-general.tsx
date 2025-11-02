@@ -4,9 +4,11 @@
 import { Button } from '@/components/ui/button'
 import { CheckCircle2, FileText, Lightbulb, Brain, LineChart } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import BetaApplicationForm from '@/components/beta-application-form'
 
 export default function HeroSectionGeneral() {
   const [mounted, setMounted] = useState(false)
+  const [isFormOpen, setIsFormOpen] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -44,9 +46,9 @@ export default function HeroSectionGeneral() {
             </Button>
             <Button 
               size="lg"
-              onClick={() => window.location.href = '/beta'}
+              onClick={() => setIsFormOpen(true)}
             >
-              Apply for Early Access
+              Apply for Beta Access
             </Button>
           </div>
         </div>
@@ -148,6 +150,7 @@ export default function HeroSectionGeneral() {
           </div>
         </div>
       </div>
+      <BetaApplicationForm open={isFormOpen} onOpenChange={setIsFormOpen} />
     </section>
   )
 }

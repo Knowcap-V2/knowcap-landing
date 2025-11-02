@@ -2,10 +2,12 @@
 
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { CheckCircle, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import BetaApplicationForm from '@/components/beta-application-form'
 
 const outcomes = [
   {
@@ -27,8 +29,10 @@ const outcomes = [
 ]
 
 export default function BetaSolutionSection() {
+  const [isFormOpen, setIsFormOpen] = useState(false)
+
   const joinBeta = () => {
-    document.getElementById('beta-cta')?.scrollIntoView({ behavior: 'smooth' })
+    setIsFormOpen(true)
   }
 
   return (
@@ -109,6 +113,7 @@ export default function BetaSolutionSection() {
           </div>
         </motion.div>
       </div>
+      <BetaApplicationForm open={isFormOpen} onOpenChange={setIsFormOpen} />
     </section>
   )
 }

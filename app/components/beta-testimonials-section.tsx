@@ -8,7 +8,7 @@ import Image from 'next/image'
 export default function BetaTestimonialsSection() {
   const testimonials = [
     {
-      quote: 'Knowcap cut our support tickets by 70% after implementation.',
+      quote: 'Knowcap cut our support tickets by 40% after implementation.',
       author: 'Ibrahim Abed',
       title: 'Plementus (Egypt)',
       image: '/testimonial-1.jpg',
