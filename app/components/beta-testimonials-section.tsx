@@ -1,41 +1,39 @@
 
-
 'use client'
 
 import { motion } from 'framer-motion'
-import { Star, Quote } from 'lucide-react'
-
-const testimonials = [
-  {
-    name: 'Sarah Chen',
-    role: 'Odoo Practice Lead',
-    company: 'TechConsult Partners',
-    avatar: '/api/placeholder/64/64',
-    rating: 5,
-    testimonial: 'Knowcap has revolutionized our Odoo implementations. We went from spending hours explaining the same Odoo workflows to having AI agents that provide instant, module-specific guidance. Our clients are much more confident.'
-  },
-  {
-    name: 'Marcus Rodriguez',
-    role: 'Senior Odoo Consultant', 
-    company: 'Enterprise Solutions Group',
-    avatar: '/api/placeholder/64/64',
-    rating: 5,
-    testimonial: 'Every Odoo requirement session is automatically captured and structured. We never lose track of configuration decisions or customization requirements anymore. It\'s a game-changer for complex implementations.'
-  },
-  {
-    name: 'Jennifer Park',
-    role: 'Odoo Partner Director',
-    company: 'Business Process Solutions',
-    avatar: '/api/placeholder/64/64', 
-    rating: 5,
-    testimonial: 'The AI generates comprehensive Odoo training materials from our implementation sessions automatically. What used to take our team days now happens instantly, and the quality is consistently high.'
-  }
-]
+import { Play, Quote } from 'lucide-react'
+import Image from 'next/image'
 
 export default function BetaTestimonialsSection() {
+  const testimonials = [
+    {
+      quote: 'Knowcap cut our support tickets by 70% after implementation.',
+      author: 'Ibrahim Abed',
+      title: 'Plementus (Egypt)',
+      image: '/testimonial-1.jpg',
+      featured: true
+    },
+    {
+      quote: 'AI-generated PRDs reduced documentation time by half.',
+      author: 'Mohamed Jamal',
+      title: 'BI Solutions (KSA)',
+      image: '/testimonial-2.jpg',
+      featured: true
+    },
+    {
+      quote: 'Our teams stopped re-explaining projects to new members. Onboarding now takes minutes.',
+      author: 'Ariika Tech Team',
+      title: '',
+      image: '/testimonial-3.jpg',
+      featured: false
+    }
+  ]
+
   return (
-    <section className="py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="py-20 md:py-24 bg-[#F5F5F5]">
+      <div className="max-w-[1280px] mx-auto px-8">
+        {/* Section Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -44,78 +42,54 @@ export default function BetaTestimonialsSection() {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-2 mb-6">
-            <Star className="w-6 h-6 text-yellow-400" />
-            <span className="text-sm font-medium text-muted-foreground">Odoo Partner Stories</span>
+            <span className="section-subheading text-[#005EFF]">// TESTIMONIALS</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            What Odoo Partners Are <span className="gradient-text">Saying</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#191F2E] mb-6">
+            What Our Customers Say
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Don't take our word for it. Here's what Odoo partners in our beta program are experiencing.
-          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Testimonials Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-all duration-300"
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className={testimonial.featured ? 'md:col-span-1' : 'md:col-span-1'}
             >
-              <div className="flex items-center gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              
-              <Quote className="w-8 h-8 text-cyan-400 mb-4" />
-              
-              <p className="text-muted-foreground mb-6 italic">
-                "{testimonial.testimonial}"
-              </p>
-              
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
-                  {testimonial.name.split(' ').map(n => n[0]).join('')}
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 h-full">
+                {/* Video Preview with Play Button */}
+                <div className="relative aspect-video bg-gradient-to-br from-blue-100 to-blue-50">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-16 h-16 bg-[#005EFF] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform cursor-pointer">
+                      <Play className="w-7 h-7 text-white ml-1" fill="white" />
+                    </div>
+                  </div>
+                  
+                  {/* Author Info Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                    <p className="text-white font-semibold text-sm">{testimonial.author}</p>
+                    {testimonial.title && (
+                      <p className="text-white/90 text-xs">{testimonial.title}</p>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  <div className="font-semibold">{testimonial.name}</div>
-                  <div className="text-sm text-muted-foreground">
-                    {testimonial.role}
-                  </div>
-                  <div className="text-sm text-cyan-400">
-                    {testimonial.company}
-                  </div>
+
+                {/* Quote */}
+                <div className="p-6">
+                  <Quote className="w-8 h-8 text-[#005EFF]/20 mb-3" />
+                  <p className="text-[#535862] text-base leading-relaxed">
+                    {testimonial.quote}
+                  </p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center mt-12 bg-gradient-to-r from-cyan-950/30 to-blue-950/30 border border-cyan-500/20 rounded-lg p-8"
-        >
-          <div className="flex items-center justify-center gap-1 mb-4">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-            ))}
-          </div>
-          <h3 className="text-2xl font-bold mb-4">
-            4.9/5 Average Rating from Odoo Partners
-          </h3>
-          <p className="text-lg text-muted-foreground">
-            Based on feedback from 23+ Odoo partner firms in our beta program.
-          </p>
-        </motion.div>
       </div>
     </section>
   )
 }
-
