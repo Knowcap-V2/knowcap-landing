@@ -57,40 +57,40 @@ export default function HeroSectionGeneral() {
             <div className="w-16 h-16 rounded-full bg-[#E6F2FF] flex items-center justify-center mb-4">
               <CheckCircle2 className="w-8 h-8 text-[#005EFF]" />
             </div>
-            <h3 className="text-base font-semibold text-[#191F2E] mb-2">Governance</h3>
-            <p className="text-sm text-[#535862]">Keep Projects Accountable</p>
+            <h3 className="text-base font-semibold text-[#191F2E] mb-2">Keep Projects Accountable</h3>
+            <p className="text-sm text-[#535862]">AI-powered governance flags risks and verifies decisions.</p>
           </div>
           
           <div className="flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full bg-[#FFF4E6] flex items-center justify-center mb-4">
               <Lightbulb className="w-8 h-8 text-[#FF9500]" />
             </div>
-            <h3 className="text-base font-semibold text-[#191F2E] mb-2">Agents</h3>
-            <p className="text-sm text-[#535862]">Client-facing AI trained on your Meetings</p>
+            <h3 className="text-base font-semibold text-[#191F2E] mb-2">Get Instant Answers</h3>
+            <p className="text-sm text-[#535862]">Deploy AI agents trained on your project's verified memory.</p>
           </div>
           
           <div className="flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full bg-[#E6F9F2] flex items-center justify-center mb-4">
               <FileText className="w-8 h-8 text-[#00C48C]" />
             </div>
-            <h3 className="text-base font-semibold text-[#191F2E] mb-2">Artifacts</h3>
-            <p className="text-sm text-[#535862]">Auto-generated PRDs & SOPs</p>
+            <h3 className="text-base font-semibold text-[#191F2E] mb-2">Instant Documentation</h3>
+            <p className="text-sm text-[#535862]">Auto-generate PRDs, SOPs, and guides from any meeting.</p>
           </div>
           
           <div className="flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full bg-[#F3E6FF] flex items-center justify-center mb-4">
               <Brain className="w-8 h-8 text-[#9747FF]" />
             </div>
-            <h3 className="text-base font-semibold text-[#191F2E] mb-2">Memory</h3>
-            <p className="text-sm text-[#535862]">Persistent Project Knowledge</p>
+            <h3 className="text-base font-semibold text-[#191F2E] mb-2">A Searchable Memory</h3>
+            <p className="text-sm text-[#535862]">Every meeting, doc, and decision, instantly verifiable.</p>
           </div>
           
           <div className="flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full bg-[#FFE6F2] flex items-center justify-center mb-4">
               <LineChart className="w-8 h-8 text-[#FF3B69]" />
             </div>
-            <h3 className="text-base font-semibold text-[#191F2E] mb-2">Insights</h3>
-            <p className="text-sm text-[#535862]">Detects if projects are on track</p>
+            <h3 className="text-base font-semibold text-[#191F2E] mb-2">Spot Risks Automatically</h3>
+            <p className="text-sm text-[#535862]">Project intelligence flags delays and scope creep for you.</p>
           </div>
         </div>
 
