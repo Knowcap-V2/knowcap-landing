@@ -3,6 +3,7 @@
 import HeroSectionGeneral from '@/components/hero-section-general'
 import FeaturesContextSection from '@/components/features-context-section'
 import HowItWorksSection from '@/components/how-it-works-section'
+import ROISection from '@/components/roi-section'
 import ProblemSectionGeneral from '@/components/problem-section-general'
 import GovernanceEngineSection from '@/components/governance-engine-section'
 import WhoWeHelpSection from '@/components/who-we-help-section'
@@ -17,6 +18,7 @@ export default function AlphaPage() {
       <HeroSectionGeneral />
       <FeaturesContextSection />
       <HowItWorksSection />
+      <ROISection />
       <ProblemSectionGeneral />
       <GovernanceEngineSection />
       <WhoWeHelpSection />
