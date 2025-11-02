@@ -75,10 +75,10 @@ export default function PersonalNoteSectionGeneral() {
               <span className="section-subheading">Questions? Reach out directly</span>
             </div>
             <a 
-              href="mailto:info@knowcap.ai" 
+              href="mailto:hsa@knowcap.ai" 
               className="text-2xl font-semibold text-[#005EFF] hover:text-[#443AFF] transition-colors"
             >
-              info@knowcap.ai
+              hsa@knowcap.ai
             </a>
             <p className="text-sm text-[#535862] mt-2">
               Every message is read and answered personally within 24 hours.
