@@ -18,6 +18,13 @@ export default function HeroSectionGeneral() {
       <div className="max-w-[1280px] mx-auto px-8 py-20 text-center relative z-10">
         {/* Hero Text */}
         <div className={`mb-12 max-w-[1024px] mx-auto transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {/* Trust Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E6F2FF] border border-[#005EFF]/20 mb-6">
+            <span className="text-sm font-semibold text-[#005EFF]">
+              Teams using Knowcap cut onboarding time by 70%
+            </span>
+          </div>
+          
           <h1 className="hero-heading mb-6">
             The AI Governance Layer for{' '}
             <span className="text-[#005EFF]">Professional Teams</span>
