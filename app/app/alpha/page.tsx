@@ -8,7 +8,6 @@ import BetaTestimonialsSection from '@/components/beta-testimonials-section'
 import BeyondObviousSection from '@/components/beyond-obvious-section'
 import TrustSection from '@/components/trust-section'
 import FAQSection from '@/components/faq-section'
-import FinalCTASection from '@/components/final-cta-section'
 import PersonalNoteSectionGeneral from '@/components/personal-note-section-general'
 import FloatingCTA from '@/components/floating-cta'
 
@@ -23,7 +22,6 @@ export default function Page() {
       <BeyondObviousSection />
       <TrustSection />
       <FAQSection />
-      <FinalCTASection />
       <PersonalNoteSectionGeneral />
       <FloatingCTA />
     </main>
