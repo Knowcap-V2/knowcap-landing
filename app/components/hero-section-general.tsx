@@ -28,7 +28,7 @@ export default function HeroSectionGeneral() {
           </div>
           
           <h1 className="hero-heading mb-6">
-            The AI Governance Layer for{' '}
+            The AI Governance Platform for{' '}
             <span className="text-[#005EFF]">Professional Teams</span>
           </h1>
           <p className="hero-subheading mb-12 max-w-3xl mx-auto">
