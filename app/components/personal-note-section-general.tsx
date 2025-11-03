@@ -32,6 +32,7 @@ export default function PersonalNoteSectionGeneral() {
               <Button 
                 size="lg"
                 onClick={() => setIsFormOpen(true)}
+                className="bg-white text-[#191F2E] hover:bg-[#005EFF] hover:text-white transition-all duration-300 font-semibold"
               >
                 Apply for Beta Access
               </Button>
