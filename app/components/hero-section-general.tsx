@@ -40,7 +40,7 @@ export default function HeroSectionGeneral() {
             <Button 
               size="lg"
               variant="outline"
-              onClick={() => window.location.href = '/book'}
+              onClick={() => window.location.href = 'https://knowcap.ai/book'}
             >
               Book a Demo
             </Button>

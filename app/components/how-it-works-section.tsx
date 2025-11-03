@@ -138,6 +138,7 @@ export default function HowItWorksSection() {
           </p>
           <Button 
             size="lg" 
+            onClick={() => window.location.href = 'https://knowcap.ai/book'}
             className="bg-[#005EFF] hover:bg-[#0052CC] text-white text-lg px-8 py-6 rounded-lg btn-shadow"
           >
             Book a Demo

@@ -105,7 +105,7 @@ export default function BetaSolutionSection() {
             <Button 
               variant="outline"
               size="lg"
-              onClick={() => window.location.href = '/book'}
+              onClick={() => window.location.href = 'https://knowcap.ai/book'}
               className="border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
             >
               Schedule Demo

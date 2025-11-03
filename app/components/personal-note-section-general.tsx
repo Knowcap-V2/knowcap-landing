@@ -1,11 +1,15 @@
 
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { User, Mail, Heart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import BetaApplicationForm from '@/components/beta-application-form'
 
 export default function PersonalNoteSectionGeneral() {
+  const [isFormOpen, setIsFormOpen] = useState(false)
+
   return (
     <>
       {/* CTA Section with Dark Background */}
@@ -27,14 +31,14 @@ export default function PersonalNoteSectionGeneral() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-8">
               <Button 
                 size="lg"
-                onClick={() => document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => setIsFormOpen(true)}
               >
-                Get Started Free
+                Apply for Beta Access
               </Button>
               <Button 
                 variant="link"
                 size="lg"
-                onClick={() => window.location.href = '/book'}
+                onClick={() => window.location.href = 'https://knowcap.ai/book'}
                 className="text-white hover:text-[#005EFF]"
               >
                 Schedule a Demo →
@@ -98,6 +102,8 @@ export default function PersonalNoteSectionGeneral() {
           </motion.div>
         </div>
       </section>
+
+      <BetaApplicationForm open={isFormOpen} onOpenChange={setIsFormOpen} />
     </>
   )
 }

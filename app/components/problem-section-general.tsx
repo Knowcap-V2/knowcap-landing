@@ -97,7 +97,7 @@ export default function ProblemSectionGeneral() {
             <Button 
               variant="outline"
               size="lg"
-              onClick={() => window.location.href = '/book'}
+              onClick={() => window.location.href = 'https://knowcap.ai/book'}
             >
               Watch Demo
             </Button>

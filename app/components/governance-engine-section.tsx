@@ -105,7 +105,7 @@ export default function GovernanceEngineSection() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <Button 
               size="lg"
-              onClick={() => window.location.href = '/book'}
+              onClick={() => window.location.href = 'https://knowcap.ai/book'}
             >
               See It In Action
               <ArrowRight className="ml-2 w-5 h-5" />

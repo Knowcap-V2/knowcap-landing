@@ -25,7 +25,7 @@ export default function FloatingCTA() {
   }
 
   const openDemo = () => {
-    window.location.href = '/book'
+    window.location.href = 'https://knowcap.ai/book'
     setIsMinimized(true)
   }
 

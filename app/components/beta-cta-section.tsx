@@ -25,7 +25,7 @@ export default function BetaCTASection() {
   }
 
   const bookDemo = () => {
-    window.location.href = '/book'
+    window.location.href = 'https://knowcap.ai/book'
   }
 
   return (

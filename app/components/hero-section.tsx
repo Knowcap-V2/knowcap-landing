@@ -51,7 +51,7 @@ export default function HeroSection() {
             />
           </div>
           <button
-            onClick={() => window.location.href = '/book'}
+            onClick={() => window.location.href = 'https://knowcap.ai/book'}
             className="absolute -bottom-4 -right-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer"
           >
             Live Demo

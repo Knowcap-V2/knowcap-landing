@@ -133,7 +133,7 @@ export default function WhoWeHelpSection() {
             <Button 
               variant="outline"
               size="lg"
-              onClick={() => window.location.href = '/book'}
+              onClick={() => window.location.href = 'https://knowcap.ai/book'}
             >
               Watch Demo
             </Button>

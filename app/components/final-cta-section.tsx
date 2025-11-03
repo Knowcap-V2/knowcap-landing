@@ -37,7 +37,7 @@ export default function FinalCTASection() {
             </Button>
             <Button 
               size="lg"
-              onClick={() => window.location.href = '/book'}
+              onClick={() => window.location.href = 'https://knowcap.ai/book'}
               className="bg-white/10 hover:bg-white/20 text-white border border-white/20 text-lg px-8 py-6 rounded-lg"
             >
               Schedule a Demo
