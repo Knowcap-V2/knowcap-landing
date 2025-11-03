@@ -1,6 +1,7 @@
+
 'use client'
 
-import { Radio, FileCheck, Search, Paperclip } from 'lucide-react'
+import { Radio, FileCheck, Search } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
@@ -16,22 +17,22 @@ export default function FeaturesContextSection() {
       icon: Radio,
       title: 'Capture with Context',
       description: 'Send Knowcap to any meeting or screen session. It listens, watches, and understands, automatically linking every spoken word and on-screen action to its source.',
-      mockup: 'capture',
-      image: null
+      image: '/feature-capture.png',
+      borderColor: 'blue-500'
     },
     {
       icon: Search,
       title: 'Answer with Proof',
       description: 'Ask any question and get an instant answer with a direct link to the exact, verified moment in the recording. No more searching.',
-      mockup: 'search',
-      image: '/feature-search.png'
+      image: '/feature-search-new.png',
+      borderColor: 'purple-500'
     },
     {
       icon: FileCheck,
       title: 'Audit Any Deliverable',
       description: 'All generated PRDs, SOPs, and guides include timestamp citations and embedded clips, so every deliverable can be trusted, verified, and governed.',
-      mockup: 'audit',
-      image: '/feature-audit.png'
+      image: '/feature-audit-new.png',
+      borderColor: 'green-500'
     }
   ]
 
@@ -65,42 +66,15 @@ export default function FeaturesContextSection() {
                 <>
                   {/* Mockup */}
                   <div className="relative">
-                    {feature.mockup === 'capture' && (
-                      <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/10 rounded-2xl p-8 border border-blue-500/20">
-                        <div className="bg-[#1A1F2E] rounded-xl p-6">
-                          <div className="flex items-center gap-2 mb-4">
-                            <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                          </div>
-                          <div className="bg-[#0A0E1A] rounded-lg p-4 mb-4">
-                            <div className="flex items-center gap-3 text-gray-400 text-sm mb-3">
-                              <Radio className="w-4 h-4 text-red-500 animate-pulse" />
-                              <span>Recording in progress...</span>
-                            </div>
-                            <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                              <div className="h-full w-1/3 bg-blue-500 rounded-full"></div>
-                            </div>
-                          </div>
-                          <div className="space-y-2">
-                            <div className="h-3 bg-gray-800 rounded w-3/4"></div>
-                            <div className="h-3 bg-gray-800 rounded w-full"></div>
-                            <div className="h-3 bg-gray-800 rounded w-5/6"></div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                    {feature.mockup === 'search' && feature.image && (
-                      <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-purple-500/20">
-                        <Image
-                          src={feature.image}
-                          alt="Answer with Proof Interface"
-                          width={1312}
-                          height={736}
-                          className="w-full h-auto"
-                        />
-                      </div>
-                    )}
+                    <div className={`relative rounded-2xl overflow-hidden shadow-2xl border border-${feature.borderColor}/20`}>
+                      <Image
+                        src={feature.image}
+                        alt={`${feature.title} Interface`}
+                        width={1312}
+                        height={736}
+                        className="w-full h-auto"
+                      />
+                    </div>
                   </div>
 
                   {/* Content */}
@@ -133,17 +107,15 @@ export default function FeaturesContextSection() {
 
                   {/* Mockup */}
                   <div className="relative">
-                    {feature.mockup === 'audit' && feature.image && (
-                      <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-green-500/20">
-                        <Image
-                          src={feature.image}
-                          alt="Audit Any Deliverable Interface"
-                          width={1312}
-                          height={736}
-                          className="w-full h-auto"
-                        />
-                      </div>
-                    )}
+                    <div className={`relative rounded-2xl overflow-hidden shadow-2xl border border-${feature.borderColor}/20`}>
+                      <Image
+                        src={feature.image}
+                        alt={`${feature.title} Interface`}
+                        width={1312}
+                        height={736}
+                        className="w-full h-auto"
+                      />
+                    </div>
                   </div>
                 </>
               )}
@@ -154,3 +126,4 @@ export default function FeaturesContextSection() {
     </section>
   )
 }
+
