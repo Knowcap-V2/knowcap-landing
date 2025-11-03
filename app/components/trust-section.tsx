@@ -2,13 +2,29 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Shield, Lock, Users, FileCheck } from 'lucide-react'
 
-const trustedCompanies = [
-  { name: 'Ariika' },
-  { name: 'Moko' },
-  { name: 'BI Solutions' },
-  { name: 'Smetools' },
-  { name: 'Braincrew' }
+const trustPillars = [
+  {
+    icon: Shield,
+    headline: 'Your Data is Yours. Period.',
+    subtext: 'We never, ever train our AI models on your private project data. All your ingested assets and generated artifacts are yours, and yours alone.'
+  },
+  {
+    icon: Lock,
+    headline: 'Encryption at-Rest & In-Transit',
+    subtext: 'All your project files are secured using industry-standard AES-256 encryption on our servers (at-rest) and protected with TLS encryption during any transfer (in-transit).'
+  },
+  {
+    icon: Users,
+    headline: 'Granular Access Control',
+    subtext: 'You are in complete command. Our Role-Based Access Control (RBAC) lets you manage exactly who can see, edit, or share any asset, from a single file to an entire project.'
+  },
+  {
+    icon: FileCheck,
+    headline: 'Secure, Auditable Sharing',
+    subtext: 'All shared artifacts are generated via permission-controlled links. Full audit logs let you see who accessed what, and when—giving you true governance over your data.'
+  }
 ]
 
 export default function TrustSection() {
@@ -23,28 +39,32 @@ export default function TrustSection() {
           className="text-center mb-16"
         >
           <h2 className="section-heading mb-6">
-            Trusted by Leading Odoo Partners
+            Your Projects, Secured & Governed
           </h2>
           <p className="hero-subheading max-w-3xl mx-auto">
-            Professional teams around the world rely on Knowcap to deliver projects with confidence and control.
+            We're built for professional teams, which means security and control aren't features—they're our foundation. Your trust is our core metric.
           </p>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
-          {trustedCompanies.map((company, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {trustPillars.map((pillar, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
-              className="transform -rotate-45"
+              className="text-center"
             >
-              <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-[#005EFF]/10 to-[#443AFF]/5 rounded-2xl flex items-center justify-center border border-[#005EFF]/20 hover:border-[#005EFF]/40 transition-all duration-300 hover:shadow-lg">
-                <span className="text-lg md:text-xl font-bold text-[#191F2E] rotate-45">
-                  {company.name}
-                </span>
+              <div className="w-16 h-16 bg-[#005EFF] rounded-xl flex items-center justify-center mx-auto mb-6">
+                <pillar.icon className="w-8 h-8 text-white" />
               </div>
+              <h3 className="text-lg font-semibold mb-3 text-[#191F2E]">
+                {pillar.headline}
+              </h3>
+              <p className="body-text text-sm">
+                {pillar.subtext}
+              </p>
             </motion.div>
           ))}
         </div>

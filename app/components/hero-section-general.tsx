@@ -124,27 +124,27 @@ export default function HeroSectionGeneral() {
           <div className="flex flex-wrap justify-center items-center gap-8 max-w-4xl mx-auto">
             <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
               <div className="h-12 w-32 bg-gradient-to-r from-gray-400 to-gray-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">45 Degrees</span>
+                <span className="text-white font-bold text-sm">Ariika</span>
               </div>
             </div>
             <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
               <div className="h-12 w-32 bg-gradient-to-r from-blue-400 to-blue-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">Constellation</span>
+                <span className="text-white font-bold text-sm">Moko</span>
               </div>
             </div>
             <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
               <div className="h-12 w-32 bg-gradient-to-r from-purple-400 to-purple-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">Frequencil</span>
+                <span className="text-white font-bold text-sm">BI Solutions</span>
               </div>
             </div>
             <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
               <div className="h-12 w-32 bg-gradient-to-r from-green-400 to-green-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">Europa</span>
+                <span className="text-white font-bold text-sm">Smetools</span>
               </div>
             </div>
             <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
               <div className="h-12 w-32 bg-gradient-to-r from-orange-400 to-orange-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">Luminescence</span>
+                <span className="text-white font-bold text-sm">Braincrew</span>
               </div>
             </div>
           </div>

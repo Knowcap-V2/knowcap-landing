@@ -2,6 +2,7 @@
 
 import { Radio, FileCheck, Search, Paperclip } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 export default function FeaturesContextSection() {
   const [mounted, setMounted] = useState(false)
@@ -15,19 +16,22 @@ export default function FeaturesContextSection() {
       icon: Radio,
       title: 'Capture with Context',
       description: 'Send Knowcap to any meeting or screen session. It listens, watches, and understands, automatically linking every spoken word and on-screen action to its source.',
-      mockup: 'capture'
+      mockup: 'capture',
+      image: null
     },
     {
       icon: Search,
       title: 'Answer with Proof',
       description: 'Ask any question and get an instant answer with a direct link to the exact, verified moment in the recording. No more searching.',
-      mockup: 'search'
+      mockup: 'search',
+      image: '/feature-search.png'
     },
     {
       icon: FileCheck,
       title: 'Audit Any Deliverable',
       description: 'All generated PRDs, SOPs, and guides include timestamp citations and embedded clips, so every deliverable can be trusted, verified, and governed.',
-      mockup: 'audit'
+      mockup: 'audit',
+      image: '/feature-audit.png'
     }
   ]
 
@@ -86,32 +90,15 @@ export default function FeaturesContextSection() {
                         </div>
                       </div>
                     )}
-                    {feature.mockup === 'search' && (
-                      <div className="bg-gradient-to-br from-purple-500/20 to-purple-600/10 rounded-2xl p-8 border border-purple-500/20">
-                        <div className="bg-white rounded-xl p-6">
-                          <div className="flex items-center gap-3 mb-4 pb-4 border-b border-gray-200">
-                            <Paperclip className="w-5 h-5 text-gray-400" />
-                            <input 
-                              type="text" 
-                              placeholder="Ask about decisions, topics, tasks, or visuals..."
-                              className="flex-1 text-sm text-gray-600 bg-transparent outline-none"
-                              disabled
-                            />
-                            <button className="px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600 transition-colors">
-                              Search
-                            </button>
-                          </div>
-                          <div className="space-y-3">
-                            <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-                              <div className="text-sm font-medium text-gray-900 mb-1">Found in Meeting #247</div>
-                              <div className="text-xs text-gray-600">Timestamp: 12:34 - "We decided to use..."</div>
-                            </div>
-                            <div className="p-3 bg-gray-50 rounded-lg">
-                              <div className="h-2 bg-gray-200 rounded w-3/4 mb-2"></div>
-                              <div className="h-2 bg-gray-200 rounded w-1/2"></div>
-                            </div>
-                          </div>
-                        </div>
+                    {feature.mockup === 'search' && feature.image && (
+                      <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-purple-500/20">
+                        <Image
+                          src={feature.image}
+                          alt="Answer with Proof Interface"
+                          width={1312}
+                          height={736}
+                          className="w-full h-auto"
+                        />
                       </div>
                     )}
                   </div>
@@ -146,33 +133,15 @@ export default function FeaturesContextSection() {
 
                   {/* Mockup */}
                   <div className="relative">
-                    {feature.mockup === 'audit' && (
-                      <div className="bg-gradient-to-br from-green-500/20 to-green-600/10 rounded-2xl p-8 border border-green-500/20">
-                        <div className="bg-white rounded-xl p-6">
-                          <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-200">
-                            <div className="flex items-center gap-2">
-                              <FileCheck className="w-5 h-5 text-green-600" />
-                              <span className="font-semibold text-gray-900">Product Requirements Doc</span>
-                            </div>
-                            <span className="text-xs text-gray-500">Verified</span>
-                          </div>
-                          <div className="space-y-3">
-                            <div className="p-3 bg-gray-50 rounded-lg">
-                              <div className="text-sm font-medium text-gray-900 mb-2">Feature: User Authentication</div>
-                              <div className="flex items-center gap-2 text-xs text-blue-600">
-                                <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                                <span>Source: Meeting #247 @ 12:34</span>
-                              </div>
-                            </div>
-                            <div className="p-3 bg-gray-50 rounded-lg">
-                              <div className="text-sm font-medium text-gray-900 mb-2">Timeline: Q1 2024</div>
-                              <div className="flex items-center gap-2 text-xs text-blue-600">
-                                <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                                <span>Source: Planning Session @ 45:12</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+                    {feature.mockup === 'audit' && feature.image && (
+                      <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-green-500/20">
+                        <Image
+                          src={feature.image}
+                          alt="Audit Any Deliverable Interface"
+                          width={1312}
+                          height={736}
+                          className="w-full h-auto"
+                        />
                       </div>
                     )}
                   </div>
