@@ -102,20 +102,25 @@ export async function POST(request: NextRequest) {
         </div>
       `
 
-      const encodedMessage = createMessage(
-        'hsa@knowcap.ai',
-        `New Beta Application: ${name} from ${company}`,
-        htmlBody
-      )
+      // Send to both recipients
+      const recipients = ['hsa@knowcap.ai', 'shady@knowcap.ai']
+      
+      for (const recipient of recipients) {
+        const encodedMessage = createMessage(
+          recipient,
+          `New Beta Application: ${name} from ${company}`,
+          htmlBody
+        )
 
-      await gmail.users.messages.send({
-        userId: 'me',
-        requestBody: {
-          raw: encodedMessage
-        }
-      })
+        await gmail.users.messages.send({
+          userId: 'me',
+          requestBody: {
+            raw: encodedMessage
+          }
+        })
 
-      console.log('✅ Beta application email sent successfully to hsa@knowcap.ai')
+        console.log(`✅ Beta application email sent successfully to ${recipient}`)
+      }
 
       return NextResponse.json(
         { success: true, message: 'Application submitted successfully' },
