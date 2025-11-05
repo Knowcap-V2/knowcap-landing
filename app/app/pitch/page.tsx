@@ -28,7 +28,7 @@ export default function PitchPage() {
             </div>
 
             <h1 className="text-[60px] font-semibold leading-[72px] text-[#191F2E] mb-6">
-              Knowcap.ai — The AI Governance Layer for{' '}
+              Knowcap.ai — The AI Governance Platform for{' '}
               <span className="text-[#005EFF]">Professional Services</span>
             </h1>
             
@@ -50,25 +50,6 @@ export default function PitchPage() {
                   To capture the Odoo partner market and reach $1.2M ARR by end of 2026
                 </p>
               </div>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-              <Button 
-                size="lg"
-                variant="outline"
-                onClick={() => window.location.href = 'https://knowcap.ai/invest'}
-                className="bg-white hover:bg-gray-50"
-              >
-                Book a Demo
-              </Button>
-              <Button 
-                size="lg"
-                onClick={() => window.location.href = 'https://knowcap.ai/beta'}
-                className="bg-[#191F2E] hover:bg-[#2A303E] text-white"
-              >
-                Apply for Beta Access
-              </Button>
             </div>
           </div>
         </div>
