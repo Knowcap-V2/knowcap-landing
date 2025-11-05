@@ -15,15 +15,21 @@ export default function PitchPage() {
   return (
     <main className="min-h-screen bg-white">
       {/* Slide 1: Title */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Hero Blur Effect */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#443AFF] opacity-15 blur-[62px] rotate-12"></div>
+      <section className="relative min-h-screen flex items-center justify-center hero-bg">
+        <div className="hero-blur"></div>
         
         <div className="max-w-[1024px] mx-auto px-8 py-20 text-center relative z-10">
           <div className={`transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {/* Trust Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E6F2FF] border border-[#005EFF]/20 mb-6">
+              <span className="text-sm font-semibold text-[#005EFF]">
+                Teams using Knowcap cut onboarding time by 70%
+              </span>
+            </div>
+
             <h1 className="text-[60px] font-semibold leading-[72px] text-[#191F2E] mb-6">
               Knowcap.ai — The AI Governance Layer for{' '}
-              <span className="text-[rgba(0,94,255,0.9)]">Professional Services</span>
+              <span className="text-[#005EFF]">Professional Services</span>
             </h1>
             
             <p className="text-xl leading-[30px] text-[#414651] mb-8 max-w-3xl mx-auto">
@@ -44,6 +50,25 @@ export default function PitchPage() {
                   To capture the Odoo partner market and reach $1.2M ARR by end of 2026
                 </p>
               </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+              <Button 
+                size="lg"
+                variant="outline"
+                onClick={() => window.location.href = 'https://knowcap.ai/invest'}
+                className="bg-white hover:bg-gray-50"
+              >
+                Book a Demo
+              </Button>
+              <Button 
+                size="lg"
+                onClick={() => window.location.href = 'https://knowcap.ai/beta'}
+                className="bg-[#191F2E] hover:bg-[#2A303E] text-white"
+              >
+                Apply for Beta Access
+              </Button>
             </div>
           </div>
         </div>
@@ -785,7 +810,7 @@ export default function PitchPage() {
               <Button 
                 size="lg"
                 className="bg-white text-[#0A0D12] hover:bg-gray-100 text-xl px-12 py-6 h-auto"
-                onClick={() => window.location.href = 'https://knowcap.ai/book'}
+                onClick={() => window.location.href = 'https://knowcap.ai/invest'}
               >
                 Let's Talk
               </Button>
@@ -804,7 +829,7 @@ export default function PitchPage() {
             <Button 
               size="lg"
               variant="outline"
-              onClick={() => window.location.href = 'https://knowcap.ai/book'}
+              onClick={() => window.location.href = 'https://knowcap.ai/invest'}
             >
               Book a Demo
             </Button>
