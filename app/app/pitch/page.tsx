@@ -18,38 +18,87 @@ export default function PitchPage() {
       <section className="relative min-h-screen flex items-center justify-center hero-bg">
         <div className="hero-blur"></div>
         
-        <div className="max-w-[1024px] mx-auto px-8 py-20 text-center relative z-10">
+        <div className="max-w-[1024px] mx-auto px-8 py-20 relative z-10">
           <div className={`transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-[60px] font-semibold leading-[72px] text-[#191F2E] mb-8">
-              The AI Governance Assistant That Turns Every Meeting Into{' '}
-              <span className="text-[#005EFF]">Source-Backed Client Output</span>
+            <h1 className="text-[60px] font-semibold leading-[72px] text-[#191F2E] mb-12 text-center">
+              The AI Governance Layer That Watches, Understands, and Executes Work — Not Just Words
             </h1>
             
-            <p className="text-xl leading-[34px] text-[#535862] mb-8 max-w-3xl mx-auto italic">
-              Because "AI-generated" means nothing without evidence of how it was made.
-            </p>
-            
-            <p className="text-xl leading-[34px] text-[#414651] mb-8 max-w-3xl mx-auto">
-              Knowcap transforms live meetings and screen shares into <strong className="font-semibold text-[#191F2E]">source-backed deliverables</strong> — GAP analyses, SOPs, and implementation guides — before the meeting ends.
-            </p>
+            {/* Comparison Table */}
+            <div className="bg-white rounded-xl border-2 border-[#005EFF]/20 overflow-hidden mb-10">
+              <div className="grid grid-cols-3 border-b-2 border-[#005EFF]/20">
+                <div className="p-6"></div>
+                <div className="p-6 bg-[#F5F5F5] border-l-2 border-[#005EFF]/20">
+                  <p className="text-lg font-semibold text-[#191F2E] text-center">Regular Note-Takers</p>
+                </div>
+                <div className="p-6 bg-[#005EFF]/5 border-l-2 border-[#005EFF]/20">
+                  <p className="text-lg font-semibold text-[#005EFF] text-center">Knowcap.ai</p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-3 border-b-2 border-[#005EFF]/20">
+                <div className="p-6 bg-[#F5F5F5]">
+                  <p className="text-base font-semibold text-[#191F2E]">Session Context</p>
+                </div>
+                <div className="p-6 border-l-2 border-[#005EFF]/20">
+                  <p className="text-base text-[#535862]">One meeting at a time</p>
+                </div>
+                <div className="p-6 bg-[#005EFF]/5 border-l-2 border-[#005EFF]/20">
+                  <p className="text-base text-[#191F2E] font-medium">Understands the entire project — links meetings, docs, and workflows</p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-3 border-b-2 border-[#005EFF]/20">
+                <div className="p-6 bg-[#F5F5F5]">
+                  <p className="text-base font-semibold text-[#191F2E]">Input Type</p>
+                </div>
+                <div className="p-6 border-l-2 border-[#005EFF]/20">
+                  <p className="text-base text-[#535862]">Audio only</p>
+                </div>
+                <div className="p-6 bg-[#005EFF]/5 border-l-2 border-[#005EFF]/20">
+                  <p className="text-base text-[#191F2E] font-medium">Audio + Screen + Docs — sees what happens and why</p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-3">
+                <div className="p-6 bg-[#F5F5F5]">
+                  <p className="text-base font-semibold text-[#191F2E]">Output</p>
+                </div>
+                <div className="p-6 border-l-2 border-[#005EFF]/20">
+                  <p className="text-base text-[#535862]">Summaries</p>
+                </div>
+                <div className="p-6 bg-[#005EFF]/5 border-l-2 border-[#005EFF]/20">
+                  <p className="text-base text-[#191F2E] font-medium">Live Documents + AI Agents trained on project memory</p>
+                </div>
+              </div>
+            </div>
 
-            <p className="text-xl leading-[34px] text-[#414651] mb-10 max-w-3xl mx-auto">
-              Each line in a document links back to the exact moment it was captured, making every deliverable <strong className="font-semibold text-[#191F2E]">verified by design</strong>.
-            </p>
-
-            <p className="text-xl leading-[34px] text-[#414651] mb-10 max-w-3xl mx-auto">
-              By pairing speech and screen events, every decision becomes <strong className="font-semibold text-[#191F2E]">visible proof</strong> — not a hidden liability.
-            </p>
-
-            <p className="text-xl leading-[34px] text-[#191F2E] mb-12 max-w-3xl mx-auto font-semibold">
-              No follow-ups. No rework. Work is captured, governed, and shipped in real time.
-            </p>
-
-            <div className="bg-[#F5F5F5] rounded-xl p-8 max-w-2xl mx-auto">
-              <p className="text-sm font-semibold text-[#535862] uppercase tracking-wider mb-3">Example</p>
-              <p className="text-lg text-[#414651] leading-relaxed">
-                An Odoo consultant spends five hours documenting a process. Knowcap auto-generates it in 30 seconds — with <strong className="font-semibold text-[#191F2E]">visible proof</strong> of every step.
+            <div className="space-y-8 mb-10 text-left max-w-4xl mx-auto">
+              <p className="text-lg leading-relaxed text-[#414651]">
+                Knowcap observes calls and screens in real time, capturing what's said, shown, and decided.
               </p>
+              
+              <p className="text-lg leading-relaxed text-[#414651]">
+                It links every action to its timestamped evidence, builds a continuous project memory, and from that memory generates AI agents that act on verified data.
+              </p>
+              
+              <p className="text-lg leading-relaxed text-[#414651]">
+                It natively understands mixed languages and produces SOPs, contracts, and presentations — all grounded in proof, not transcription.
+              </p>
+            </div>
+
+            <div className="bg-[#F5F5F5] rounded-xl p-8 max-w-3xl mx-auto">
+              <p className="text-sm font-semibold text-[#535862] uppercase tracking-wider mb-4">Example</p>
+              <div className="space-y-4 text-left">
+                <p className="text-lg text-[#414651] leading-relaxed">
+                  <span className="inline-block mr-2">🧠</span>
+                  <strong className="font-semibold text-[#191F2E]">Ask Knowcap:</strong> "Are our sales reps following the playbook?"
+                </p>
+                <p className="text-lg text-[#414651] leading-relaxed pl-8">
+                  <span className="inline-block mr-2">➡️</span>
+                  Knowcap reviews every call, measures sentiment, and returns a performance report — each insight linked to the exact video moment.
+                </p>
+              </div>
             </div>
           </div>
         </div>
