@@ -45,20 +45,11 @@ export default function PitchPage() {
               No follow-ups. No rework. Work is captured, governed, and shipped in real time.
             </p>
 
-            <div className="bg-[#F5F5F5] rounded-xl p-8 max-w-2xl mx-auto mb-16">
+            <div className="bg-[#F5F5F5] rounded-xl p-8 max-w-2xl mx-auto">
               <p className="text-sm font-semibold text-[#535862] uppercase tracking-wider mb-3">Example</p>
               <p className="text-lg text-[#414651] leading-relaxed">
                 An Odoo consultant spends five hours documenting a process. Knowcap auto-generates it in 30 seconds — with <strong className="font-semibold text-[#191F2E]">visible proof</strong> of every step.
               </p>
-            </div>
-
-            <div className="inline-flex items-center gap-3 px-10 py-5 bg-[#0A0D12] rounded-xl">
-              <div className="text-center">
-                <p className="text-sm font-semibold text-[#D5D7DA] uppercase tracking-wider mb-2">Funding Ask</p>
-                <p className="text-3xl font-bold text-white">
-                  Raising $750K SAFE @ $10M pre-money
-                </p>
-              </div>
             </div>
           </div>
         </div>
@@ -68,7 +59,7 @@ export default function PitchPage() {
       <section className="py-28 bg-white">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
-            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">Slide 2</p>
+            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 2: Traction</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               7 Months From Prototype to Proof: 800 Source-Backed Docs, $84K ARR Pipeline
             </h2>
@@ -128,7 +119,7 @@ export default function PitchPage() {
       <section className="py-28 bg-[#F5F5F5]">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
-            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">Slide 3</p>
+            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 3: The Problem</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               Every Call Becomes a Liability When There's No Proof
             </h2>
@@ -187,7 +178,7 @@ export default function PitchPage() {
       <section className="py-28 bg-white">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
-            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">Slide 4</p>
+            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 4: The Solution</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               From Conversation to Source-Backed Deliverable — Automatically
             </h2>
@@ -254,7 +245,7 @@ export default function PitchPage() {
       <section className="py-28 bg-[#F5F5F5]">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
-            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">Slide 5</p>
+            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 5: Differentiation</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               The Only AI Engine That Proves What Really Happened
             </h2>
@@ -302,7 +293,7 @@ export default function PitchPage() {
       <section className="py-28 bg-white">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
-            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">Slide 6</p>
+            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 6: Market Opportunity</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               $2B Market: Every Firm That Sells Expertise Needs Proof
             </h2>
@@ -346,7 +337,7 @@ export default function PitchPage() {
       <section className="py-28 bg-[#F5F5F5]">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
-            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">Slide 7 · Why Now</p>
+            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 7: Why Now</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               The Proof Economy Has Arrived — Three Forces Making AI Governance Inevitable
             </h2>
@@ -413,7 +404,7 @@ export default function PitchPage() {
       <section className="py-28 bg-white">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
-            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">Slide 8</p>
+            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 8: Business Model</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               Simple SaaS Pricing That Pays for Itself — and Then Locks In
             </h2>
@@ -484,7 +475,7 @@ export default function PitchPage() {
       <section className="py-28 bg-[#F5F5F5]">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
-            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">Slide 9</p>
+            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 9: Unit Economics</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               Built for High Margin and Fast Payback — by Design
             </h2>
@@ -539,7 +530,7 @@ export default function PitchPage() {
       <section className="py-28 bg-white">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
-            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">Slide 10</p>
+            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 10: Go-to-Market</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               From Founder-Led Wins → Funded Growth Engine
             </h2>
@@ -613,7 +604,7 @@ export default function PitchPage() {
       <section className="py-28 bg-[#F5F5F5]">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
-            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">Slide 11</p>
+            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 11: Financial Projections</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               Profitable Growth by Design — Break-Even 2026, Scaling 3× Annually
             </h2>
@@ -669,7 +660,7 @@ export default function PitchPage() {
       <section className="py-28 bg-white">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
-            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">Slide 12</p>
+            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 12: Path to 100 Customers</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               From 7 LOIs → 100 Customers in 12 Months
             </h2>
@@ -740,7 +731,7 @@ export default function PitchPage() {
       <section className="py-28 bg-[#F5F5F5]">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
-            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">Slide 13</p>
+            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 13: The Team</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               The Domain Expert and the Architect — Built for AI Governance
             </h2>
@@ -783,7 +774,7 @@ export default function PitchPage() {
       <section className="py-28 bg-white">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
-            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">Slide 14</p>
+            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 14: Product Vision</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-4">
               From Documentation to the Work Genome — Building the Source-Verified Future of Work
             </h2>
@@ -848,7 +839,7 @@ export default function PitchPage() {
       <section className="py-28 bg-[#0A0D12]">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16 text-center">
-            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">Slide 15</p>
+            <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 15: The Ask</p>
             <h2 className="text-5xl font-bold leading-[58px] text-white mb-6">
               Raising $750K SAFE @ $10M Pre — To Build the Source-Verified Proof Economy Engine
             </h2>
