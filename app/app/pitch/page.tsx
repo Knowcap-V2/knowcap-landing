@@ -20,27 +20,43 @@ export default function PitchPage() {
         
         <div className="max-w-[1024px] mx-auto px-8 py-20 text-center relative z-10">
           <div className={`transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-[60px] font-semibold leading-[72px] text-[#191F2E] mb-6">
-              Knowcap.ai — The AI Governance Platform for{' '}
-              <span className="text-[#005EFF]">Professional Services</span>
+            <h1 className="text-[60px] font-semibold leading-[72px] text-[#191F2E] mb-8">
+              The AI Governance Assistant That Turns Every Meeting Into{' '}
+              <span className="text-[#005EFF]">Source-Backed Client Output</span>
             </h1>
             
-            <p className="text-xl leading-[30px] text-[#414651] mb-8 max-w-3xl mx-auto">
-              We are building the AI accountability and governance platform for professional-services teams—consultants, agencies, and ERP implementers.
+            <p className="text-xl leading-[32px] text-[#414651] mb-6 max-w-3xl mx-auto">
+              Because "AI-generated" means nothing without evidence of how it was made.
             </p>
             
-            <p className="text-xl leading-[30px] text-[#414651] mb-12 max-w-3xl mx-auto">
-              Knowcap ensures every discussion, decision, and workflow becomes measurable, verifiable output.
+            <p className="text-xl leading-[32px] text-[#414651] mb-6 max-w-3xl mx-auto">
+              Knowcap transforms live meetings and screen shares into <strong className="font-semibold text-[#191F2E]">source-backed deliverables</strong> — GAP analyses, SOPs, and implementation guides — before the meeting ends.
             </p>
 
-            <div className="inline-flex items-center gap-3 px-8 py-4 bg-[#F5F5F5] rounded-xl mb-12">
+            <p className="text-xl leading-[32px] text-[#414651] mb-8 max-w-3xl mx-auto">
+              Each line in a document links back to the exact moment it was captured, making every deliverable <strong className="font-semibold text-[#191F2E]">verified by design</strong>.
+            </p>
+
+            <p className="text-xl leading-[32px] text-[#414651] mb-6 max-w-3xl mx-auto">
+              By pairing speech and screen events, every decision becomes <strong className="font-semibold text-[#191F2E]">visible proof</strong> — not a hidden liability.
+            </p>
+
+            <p className="text-xl leading-[32px] text-[#414651] mb-10 max-w-3xl mx-auto font-medium">
+              No follow-ups. No rework. Work is captured, governed, and shipped in real time.
+            </p>
+
+            <div className="bg-[#F5F5F5] rounded-xl p-6 max-w-2xl mx-auto mb-12">
+              <p className="text-base font-semibold text-[#535862] uppercase tracking-wider mb-2">Example</p>
+              <p className="text-lg text-[#414651] leading-relaxed">
+                An Odoo consultant spends five hours documenting a process. Knowcap auto-generates it in 30 seconds — with <strong className="font-semibold text-[#191F2E]">visible proof</strong> of every step.
+              </p>
+            </div>
+
+            <div className="inline-flex items-center gap-3 px-8 py-4 bg-[#0A0D12] rounded-xl">
               <div className="text-left">
-                <p className="text-sm font-semibold text-[#535862] uppercase tracking-wider mb-1">Funding Ask</p>
-                <p className="text-2xl font-semibold text-[#191F2E]">
-                  Raising $750K SAFE @ $14M pre-money
-                </p>
-                <p className="text-base text-[#414651] mt-2">
-                  To capture the Odoo partner market and reach $1.2M ARR by end of 2026
+                <p className="text-sm font-semibold text-[#D5D7DA] uppercase tracking-wider mb-1">Funding Ask</p>
+                <p className="text-2xl font-semibold text-white">
+                  Raising $750K SAFE @ $10M pre-money
                 </p>
               </div>
             </div>
