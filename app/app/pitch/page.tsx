@@ -46,7 +46,7 @@ export default function PitchPage() {
         </div>
       </section>
 
-      {/* Slide 2: Validation & Traction */}
+      {/* Slide 2: Traction */}
       <section className="py-28 bg-white">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
@@ -141,7 +141,7 @@ export default function PitchPage() {
                   <span className="text-base font-bold text-[#005EFF]">3</span>
                 </div>
                 <div>
-                  <h5 className="font-semibold text-[#191F2E] text-lg mb-2">Administrative Overhead</h5>
+                  <h5 className="font-semibold text-[#191F2E] text-lg mb-2">Manual Documentation Overhead</h5>
                   <p className="text-[#414651] leading-relaxed">Consultants spend 2–3 hours rewriting notes after calls instead of billing.</p>
                 </div>
               </div>
@@ -288,35 +288,22 @@ export default function PitchPage() {
           </div>
 
           <div className="space-y-8">
-            <div className="bg-[#F5F5F5] p-8 rounded-xl">
-              <p className="text-lg text-[#414651] leading-relaxed mb-4">
+            <div className="bg-[#F5F5F5] p-8 rounded-xl space-y-4">
+              <p className="text-lg text-[#414651] leading-relaxed">
                 Knowcap starts with <strong className="font-semibold text-[#191F2E]">7 500 Odoo implementation firms</strong> (7 500 × $15 K / year = ≈ $110 M addressable market). These firms lack a verification platform to prove what was done and when.
               </p>
               <p className="text-lg text-[#414651] leading-relaxed">
                 Hassan's Odoo network (500 + direct contacts, 7 LOIs in 7 months, <strong className="font-semibold text-[#191F2E]">$0 CAC</strong>) provides immediate reach.
               </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-[#F5F5F5] p-8 rounded-xl text-center">
-                <p className="text-4xl font-bold text-[#005EFF] mb-3">Year 1</p>
-                <p className="text-[#414651] font-medium mb-2">100 customers</p>
-                <p className="text-[#414651] font-semibold">≈ $1.2 M ARR</p>
-                <p className="text-sm text-[#535862] mt-2">(~1.1 % penetration)</p>
-              </div>
-
-              <div className="bg-[#F5F5F5] p-8 rounded-xl text-center">
-                <p className="text-4xl font-bold text-[#005EFF] mb-3">Years 2–3</p>
-                <p className="text-[#414651] font-medium mb-2">Salesforce, Oracle, SAP partners</p>
-                <p className="text-[#414651] font-semibold">≈ $2.25 B TAM</p>
-                <p className="text-sm text-[#535862] mt-2">(~150 000 firms)</p>
-              </div>
-
-              <div className="bg-[#F5F5F5] p-8 rounded-xl text-center">
-                <p className="text-4xl font-bold text-[#005EFF] mb-3">Impact</p>
-                <p className="text-[#414651] font-medium">20–30 % billable time</p>
-                <p className="text-[#414651] font-semibold">recovered</p>
-              </div>
+              <p className="text-lg text-[#414651] leading-relaxed">
+                <strong className="font-semibold text-[#191F2E]">Year 1 target:</strong> 100 customers = ≈ $1.2 M ARR (~1.1 % penetration).
+              </p>
+              <p className="text-lg text-[#414651] leading-relaxed">
+                <strong className="font-semibold text-[#191F2E]">Years 2 – 3:</strong> Replicate to Salesforce, Oracle, and SAP partners (~150 000 firms = ≈ $2.25 B TAM).
+              </p>
+              <p className="text-lg text-[#414651] leading-relaxed">
+                These teams lose 20–30 % of billable time to undocumented work — Knowcap recovers it.
+              </p>
             </div>
           </div>
         </div>
@@ -328,7 +315,7 @@ export default function PitchPage() {
           <div className="mb-16">
             <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 7: Why Now</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
-              AI adoption inside service delivery has exploded — but unverified output is blocking enterprise rollout
+              Service delivery AI adoption has exploded — but unverified output blocks enterprise rollout
             </h2>
           </div>
 
@@ -400,29 +387,22 @@ export default function PitchPage() {
 
           <div className="space-y-10">
             <p className="text-xl text-[#414651] leading-relaxed">
-              <strong className="font-semibold text-[#191F2E]">$500 – $5 K / month per firm</strong> — a fraction of hours saved. Value increases as each project adds verified data.
+              $500 – $5 K / month per firm — a fraction of hours saved. Value increases as each project adds verified data.
             </p>
 
-            <div className="bg-[#F5F5F5] p-8 rounded-xl space-y-6">
-              <div>
-                <h4 className="text-lg font-semibold text-[#191F2E] mb-3">Pricing</h4>
-                <p className="text-[#414651]">Starter $500 / mo | Professional $1 K / mo | Enterprise $5 K / mo</p>
-              </div>
-
-              <div>
-                <h4 className="text-lg font-semibold text-[#191F2E] mb-3">Why It Works</h4>
-                <p className="text-[#414651]">One saved hour per day offsets the fee; alternatives can't verify or audit workflows.</p>
-              </div>
-
-              <div>
-                <h4 className="text-lg font-semibold text-[#191F2E] mb-3">Impact</h4>
-                <p className="text-[#414651]">Typical firm saves <strong className="font-semibold text-[#191F2E]">1 500 + hours / year (≈ $230 K value)</strong> and delivers projects ≈ 30 % faster.</p>
-              </div>
-
-              <div>
-                <h4 className="text-lg font-semibold text-[#191F2E] mb-3">Retention</h4>
-                <p className="text-[#414651]">Each project expands a customer's verified dataset; churn drops as teams depend on their historical records.</p>
-              </div>
+            <div className="bg-[#F5F5F5] p-8 rounded-xl space-y-4">
+              <p className="text-lg text-[#414651]">
+                <strong className="font-semibold text-[#191F2E]">Pricing:</strong> Starter $500 / mo | Professional $1 K / mo | Enterprise $5 K / mo
+              </p>
+              <p className="text-lg text-[#414651]">
+                <strong className="font-semibold text-[#191F2E]">Why It Works:</strong> One saved hour per day offsets the fee; alternatives can't verify or audit workflows.
+              </p>
+              <p className="text-lg text-[#414651]">
+                <strong className="font-semibold text-[#191F2E]">Impact:</strong> Typical firm saves 1 500 + hours / year (≈ $230 K value) and delivers projects ≈ 30 % faster.
+              </p>
+              <p className="text-lg text-[#414651]">
+                <strong className="font-semibold text-[#191F2E]">Retention:</strong> Each project expands a customer's verified dataset; churn drops as teams depend on their historical records.
+              </p>
             </div>
           </div>
         </div>
@@ -440,43 +420,31 @@ export default function PitchPage() {
 
           <div className="space-y-10">
             <p className="text-xl text-[#414651] leading-relaxed">
-              Launches in ERP ecosystem where governance pain is highest — then expands to all service teams running repeatable workflows.
+              Launches in ERP ecosystem where the documentation gap is highest — then expands to all service teams running repeatable workflows.
             </p>
 
-            <div className="space-y-6">
-              <div className="bg-white p-8 rounded-xl">
-                <h4 className="text-lg font-semibold text-[#005EFF] mb-3">Phase 1 (2025 – 2026)</h4>
-                <p className="text-[#414651]">Target 7 500 Odoo partners → 100 firms → $1.5 M ARR.</p>
-              </div>
-
-              <div className="bg-white p-8 rounded-xl">
-                <h4 className="text-lg font-semibold text-[#005EFF] mb-3">Phase 2 (2026 – 2027)</h4>
-                <p className="text-[#414651]">Expand into agencies and IT consultancies.</p>
-              </div>
-
-              <div className="bg-white p-8 rounded-xl">
-                <h4 className="text-lg font-semibold text-[#005EFF] mb-3">Phase 3 (2027 +)</h4>
-                <p className="text-[#414651]">Open API + Agent Marketplace.</p>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-xl">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="text-lg font-semibold text-[#191F2E] mb-3">Pricing</h4>
-                  <p className="text-[#414651]">Per-seat SaaS + usage-based credits (ACV $12 – 18 K).</p>
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-[#191F2E] mb-3">Distribution Edge</h4>
-                  <p className="text-[#414651]">Founder network cuts CAC ≈ 60 % and compresses sales cycles.</p>
-                </div>
-              </div>
+            <div className="bg-white p-8 rounded-xl space-y-4">
+              <p className="text-lg text-[#414651]">
+                <strong className="font-semibold text-[#191F2E]">Phase 1 (2025 – 2026):</strong> Target 7 500 Odoo partners → 100 firms → $1.5 M ARR.
+              </p>
+              <p className="text-lg text-[#414651]">
+                <strong className="font-semibold text-[#191F2E]">Phase 2 (2026 – 2027):</strong> Expand into agencies and IT consultancies.
+              </p>
+              <p className="text-lg text-[#414651]">
+                <strong className="font-semibold text-[#191F2E]">Phase 3 (2027 +):</strong> Open API + Agent Marketplace.
+              </p>
+              <p className="text-lg text-[#414651]">
+                <strong className="font-semibold text-[#191F2E]">Pricing:</strong> Per-seat SaaS + usage-based credits (ACV $12 – 18 K).
+              </p>
+              <p className="text-lg text-[#414651]">
+                <strong className="font-semibold text-[#191F2E]">Distribution Edge:</strong> Founder network cuts CAC ≈ 60 % and compresses sales cycles.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Slide 10: Financial Projections */}
+      {/* Slide 10: Financial Projections (v7) */}
       <section className="py-28 bg-white">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
@@ -484,79 +452,89 @@ export default function PitchPage() {
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               Capital-Efficient Growth — Break-Even 2026, Scaling 3× Annually
             </h2>
-            <p className="text-xl text-[#414651] leading-relaxed mt-6">
-              $750 K raise funds go-to-market and product acceleration — not burn.
-            </p>
           </div>
 
           <div className="space-y-10">
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
-                <thead>
-                  <tr className="bg-[#005EFF]/10">
-                    <th className="text-left p-4 font-semibold text-[#191F2E] border-b-2 border-[#005EFF]/20">Year</th>
-                    <th className="text-left p-4 font-semibold text-[#191F2E] border-b-2 border-[#005EFF]/20">Customers</th>
-                    <th className="text-left p-4 font-semibold text-[#191F2E] border-b-2 border-[#005EFF]/20">ARR</th>
-                    <th className="text-left p-4 font-semibold text-[#191F2E] border-b-2 border-[#005EFF]/20">Avg ACV</th>
-                    <th className="text-left p-4 font-semibold text-[#191F2E] border-b-2 border-[#005EFF]/20">CAC Payback</th>
-                    <th className="text-left p-4 font-semibold text-[#191F2E] border-b-2 border-[#005EFF]/20">Gross Margin</th>
-                    <th className="text-left p-4 font-semibold text-[#191F2E] border-b-2 border-[#005EFF]/20">Primary Driver</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b border-[#F5F5F5]">
-                    <td className="p-4 text-[#414651]">2025 (Pilot)</td>
-                    <td className="p-4 text-[#414651]">7 projects / 1 client</td>
-                    <td className="p-4 text-[#414651]">Proof of ROI ($84 K pre-orders)</td>
-                    <td className="p-4 text-[#414651]">—</td>
-                    <td className="p-4 text-[#414651]">—</td>
-                    <td className="p-4 font-semibold text-[#005EFF]">80 %</td>
-                    <td className="p-4 text-[#414651]">Founder sales + validation</td>
-                  </tr>
-                  <tr className="border-b border-[#F5F5F5]">
-                    <td className="p-4 text-[#414651]">2026</td>
-                    <td className="p-4 font-semibold text-[#191F2E]">100</td>
-                    <td className="p-4 font-semibold text-[#005EFF]">$1.2 M</td>
-                    <td className="p-4 text-[#414651]">$12 K</td>
-                    <td className="p-4 text-[#414651]">&lt; 2 mo</td>
-                    <td className="p-4 font-semibold text-[#005EFF]">85 %</td>
-                    <td className="p-4 text-[#414651]">Funded GTM team + Odoo network</td>
-                  </tr>
-                  <tr className="border-b border-[#F5F5F5]">
-                    <td className="p-4 text-[#414651]">2027</td>
-                    <td className="p-4 font-semibold text-[#191F2E]">300</td>
-                    <td className="p-4 font-semibold text-[#005EFF]">$3.6 M</td>
-                    <td className="p-4 text-[#414651]">$12 K</td>
-                    <td className="p-4 text-[#414651]">&lt; 2 mo</td>
-                    <td className="p-4 font-semibold text-[#005EFF]">88 %</td>
-                    <td className="p-4 text-[#414651]">Integrations + referrals</td>
-                  </tr>
-                  <tr>
-                    <td className="p-4 text-[#414651]">2028</td>
-                    <td className="p-4 font-semibold text-[#191F2E]">750 +</td>
-                    <td className="p-4 font-semibold text-[#005EFF]">$9 M +</td>
-                    <td className="p-4 text-[#414651]">$12 K</td>
-                    <td className="p-4 text-[#414651]">&lt; 2 mo</td>
-                    <td className="p-4 font-semibold text-[#005EFF]">90 %</td>
-                    <td className="p-4 text-[#414651]">AI-native automation (Vibe Tasking)</td>
-                  </tr>
-                </tbody>
-              </table>
+            <p className="text-xl text-[#414651] leading-relaxed">
+              $750 K raise funds go-to-market and product acceleration — not burn.
+            </p>
+
+            {/* Financial Table */}
+            <div className="bg-[#F5F5F5] rounded-xl overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-[#0A0D12] text-white">
+                    <tr>
+                      <th className="text-left p-4 font-semibold">Year</th>
+                      <th className="text-left p-4 font-semibold">Customers</th>
+                      <th className="text-left p-4 font-semibold">ARR</th>
+                      <th className="text-left p-4 font-semibold">Avg ACV</th>
+                      <th className="text-left p-4 font-semibold">CAC Payback</th>
+                      <th className="text-left p-4 font-semibold">Gross Margin</th>
+                      <th className="text-left p-4 font-semibold">Primary Driver</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-[#414651]">
+                    <tr className="border-b border-[#D5D7DA]">
+                      <td className="p-4 font-medium text-[#191F2E]">2025 (Pilot)</td>
+                      <td className="p-4">7 projects / 1 client</td>
+                      <td className="p-4">Proof of ROI ($84 K pre-orders)</td>
+                      <td className="p-4">—</td>
+                      <td className="p-4">—</td>
+                      <td className="p-4">80 %</td>
+                      <td className="p-4">Founder sales + validation</td>
+                    </tr>
+                    <tr className="border-b border-[#D5D7DA]">
+                      <td className="p-4 font-medium text-[#191F2E]">2026</td>
+                      <td className="p-4">100</td>
+                      <td className="p-4">$1.2 M</td>
+                      <td className="p-4">$12 K</td>
+                      <td className="p-4">{'< 2 mo'}</td>
+                      <td className="p-4">85 %</td>
+                      <td className="p-4">Funded GTM team + Odoo network</td>
+                    </tr>
+                    <tr className="border-b border-[#D5D7DA]">
+                      <td className="p-4 font-medium text-[#191F2E]">2027</td>
+                      <td className="p-4">300</td>
+                      <td className="p-4">$3.6 M</td>
+                      <td className="p-4">$12 K</td>
+                      <td className="p-4">{'< 2 mo'}</td>
+                      <td className="p-4">88 %</td>
+                      <td className="p-4">Integrations + referrals</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-medium text-[#191F2E]">2028</td>
+                      <td className="p-4">750 +</td>
+                      <td className="p-4">$9 M +</td>
+                      <td className="p-4">$12 K</td>
+                      <td className="p-4">{'< 2 mo'}</td>
+                      <td className="p-4">90 %</td>
+                      <td className="p-4">AI-native automation (Vibe Tasking)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <div className="p-4 bg-white border-t-2 border-[#005EFF]/20">
+                <p className="text-sm text-[#535862] italic">
+                  Note: Assumes average monthly burn of ≈ $65K through 2026, including GTM hires and infrastructure.
+                </p>
+              </div>
             </div>
 
             <div className="bg-[#F5F5F5] p-8 rounded-xl space-y-4">
-              <p className="text-lg text-[#414651] leading-relaxed">
+              <p className="text-lg text-[#414651]">
                 The $750 K SAFE funds transition from pilot proof to scalable sales engine — founder-led network to structured GTM team and integration channels.
               </p>
-              <p className="text-lg text-[#414651] leading-relaxed">
-                <strong className="font-semibold text-[#191F2E]">85 % margins and 60-day payback</strong> keep growth capital-efficient; profitability by Q4 2026 is structural, not temporary.
+              <p className="text-lg text-[#414651]">
+                85 % margins and 60-day payback keep growth capital-efficient; profitability by Q4 2026 is structural, not temporary.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Slide 11: Unit Economics */}
+      {/* Slide 11: Unit Economics (v8 – Final) */}
       <section className="py-28 bg-[#F5F5F5]">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
@@ -564,12 +542,13 @@ export default function PitchPage() {
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               High-Margin SaaS — 60-Day Payback Proven by Pilot
             </h2>
-            <p className="text-xl text-[#414651] leading-relaxed mt-6">
-              Strong unit economics from day one; every new client compounds value through verified project memory.
-            </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-10">
+            <p className="text-xl text-[#414651] leading-relaxed">
+              Strong unit economics from day one; every new client compounds value through verified project memory.
+            </p>
+
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-white p-8 rounded-xl">
                 <h4 className="text-lg font-semibold text-[#005EFF] mb-3">Average Contract</h4>
@@ -583,7 +562,7 @@ export default function PitchPage() {
 
               <div className="bg-white p-8 rounded-xl">
                 <h4 className="text-lg font-semibold text-[#005EFF] mb-3">Gross Margin</h4>
-                <p className="text-[#414651]">≈ 85 % (software + cloud cost &lt; 15 %)</p>
+                <p className="text-[#414651]">≈ 85 % (software + cloud cost {'< 15 %}'})</p>
               </div>
 
               <div className="bg-white p-8 rounded-xl">
@@ -595,9 +574,9 @@ export default function PitchPage() {
             <div className="bg-white p-8 rounded-xl">
               <h4 className="text-lg font-semibold text-[#005EFF] mb-4">LTV: $36 K – $60 K</h4>
               <ul className="space-y-2 text-[#414651]">
-                <li>• <strong className="font-semibold text-[#191F2E]">Conservative:</strong> $12 K × 3 years = $36 K</li>
-                <li>• <strong className="font-semibold text-[#191F2E]">Expected:</strong> $12 K × 5 years = $60 K (10–15 % annual churn from pilot)</li>
-                <li>• <strong className="font-semibold text-[#191F2E]">High switching cost:</strong> Verified project memory makes replacement painful</li>
+                <li>• <strong className="text-[#191F2E]">Conservative:</strong> $12 K × 3 years = $36 K</li>
+                <li>• <strong className="text-[#191F2E]">Expected:</strong> $12 K × 5 years = $60 K (10–15 % annual churn from pilot)</li>
+                <li>• <strong className="text-[#191F2E]">High switching cost:</strong> Verified project memory makes replacement painful</li>
               </ul>
             </div>
 
@@ -615,7 +594,7 @@ export default function PitchPage() {
         </div>
       </section>
 
-      {/* Slide 12: Path to 100 Customers */}
+      {/* Slide 12: Path to 100 Customers (v7) */}
       <section className="py-28 bg-white">
         <div className="max-w-[1024px] mx-auto px-8">
           <div className="mb-16">
@@ -623,67 +602,77 @@ export default function PitchPage() {
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
               From 7 Pre-Orders to 100 Paying Customers in 12 Months
             </h2>
-            <p className="text-xl text-[#414651] leading-relaxed mt-6">
-              Three compounding growth levers drive predictable ARR growth to $1.5 M by Q4 2026.
-            </p>
           </div>
 
           <div className="space-y-10">
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
-                <thead>
-                  <tr className="bg-[#005EFF]/10">
-                    <th className="text-left p-4 font-semibold text-[#191F2E] border-b-2 border-[#005EFF]/20">Quarter (2026)</th>
-                    <th className="text-left p-4 font-semibold text-[#191F2E] border-b-2 border-[#005EFF]/20">Primary Driver</th>
-                    <th className="text-left p-4 font-semibold text-[#191F2E] border-b-2 border-[#005EFF]/20">New Customers</th>
-                    <th className="text-left p-4 font-semibold text-[#191F2E] border-b-2 border-[#005EFF]/20">Cumulative</th>
-                    <th className="text-left p-4 font-semibold text-[#191F2E] border-b-2 border-[#005EFF]/20">Projected MRR</th>
-                    <th className="text-left p-4 font-semibold text-[#191F2E] border-b-2 border-[#005EFF]/20">CAC Note</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b border-[#F5F5F5]">
-                    <td className="p-4 text-[#414651]">Q1</td>
-                    <td className="p-4 text-[#414651]">Convert 7 pre-orders + founder network outreach</td>
-                    <td className="p-4 font-semibold text-[#191F2E]">15</td>
-                    <td className="p-4 font-semibold text-[#005EFF]">22</td>
-                    <td className="p-4 text-[#414651]">$22 K</td>
-                    <td className="p-4 text-[#414651]">&lt; $1 K (free reach)</td>
-                  </tr>
-                  <tr className="border-b border-[#F5F5F5]">
-                    <td className="p-4 text-[#414651]">Q2</td>
-                    <td className="p-4 text-[#414651]">Referral flywheel + case-study marketing</td>
-                    <td className="p-4 font-semibold text-[#191F2E]">23</td>
-                    <td className="p-4 font-semibold text-[#005EFF]">45</td>
-                    <td className="p-4 text-[#414651]">$45 K</td>
-                    <td className="p-4 text-[#414651]">≈ $1.2 K</td>
-                  </tr>
-                  <tr className="border-b border-[#F5F5F5]">
-                    <td className="p-4 text-[#414651]">Q3</td>
-                    <td className="p-4 text-[#414651]">Odoo App Store integration + co-marketing</td>
-                    <td className="p-4 font-semibold text-[#191F2E]">25</td>
-                    <td className="p-4 font-semibold text-[#005EFF]">70</td>
-                    <td className="p-4 text-[#414651]">$70 K</td>
-                    <td className="p-4 text-[#414651]">≈ $1.5 K</td>
-                  </tr>
-                  <tr>
-                    <td className="p-4 text-[#414651]">Q4</td>
-                    <td className="p-4 text-[#414651]">SDR team + inbound brand content</td>
-                    <td className="p-4 font-semibold text-[#191F2E]">30</td>
-                    <td className="p-4 font-semibold text-[#005EFF]">100</td>
-                    <td className="p-4 text-[#414651]">$125 K ($1.5 M ARR)</td>
-                    <td className="p-4 text-[#414651]">≈ $1.5 K</td>
-                  </tr>
-                </tbody>
-              </table>
+            <p className="text-xl text-[#414651] leading-relaxed">
+              Three compounding growth levers drive predictable ARR growth to $1.5 M by Q4 2026.
+            </p>
+
+            {/* Customer Growth Table */}
+            <div className="bg-[#F5F5F5] rounded-xl overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-[#0A0D12] text-white">
+                    <tr>
+                      <th className="text-left p-4 font-semibold">Quarter (2026)</th>
+                      <th className="text-left p-4 font-semibold">Primary Driver</th>
+                      <th className="text-left p-4 font-semibold">New Customers</th>
+                      <th className="text-left p-4 font-semibold">Cumulative</th>
+                      <th className="text-left p-4 font-semibold">Projected MRR</th>
+                      <th className="text-left p-4 font-semibold">CAC Note</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-[#414651]">
+                    <tr className="border-b border-[#D5D7DA]">
+                      <td className="p-4 font-medium text-[#191F2E]">Q1</td>
+                      <td className="p-4">Convert 7 pre-orders + founder network outreach</td>
+                      <td className="p-4">15</td>
+                      <td className="p-4">22</td>
+                      <td className="p-4">$22 K</td>
+                      <td className="p-4">{'< $1 K'} (free reach)</td>
+                    </tr>
+                    <tr className="border-b border-[#D5D7DA]">
+                      <td className="p-4 font-medium text-[#191F2E]">Q2</td>
+                      <td className="p-4">Referral flywheel + case-study marketing</td>
+                      <td className="p-4">23</td>
+                      <td className="p-4">45</td>
+                      <td className="p-4">$45 K</td>
+                      <td className="p-4">≈ $1.2 K</td>
+                    </tr>
+                    <tr className="border-b border-[#D5D7DA]">
+                      <td className="p-4 font-medium text-[#191F2E]">Q3</td>
+                      <td className="p-4">Odoo App Store integration + co-marketing</td>
+                      <td className="p-4">25</td>
+                      <td className="p-4">70</td>
+                      <td className="p-4">$70 K</td>
+                      <td className="p-4">≈ $1.5 K</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-medium text-[#191F2E]">Q4</td>
+                      <td className="p-4">SDR team + inbound brand content</td>
+                      <td className="p-4">30</td>
+                      <td className="p-4">100</td>
+                      <td className="p-4">$125 K ($1.5 M ARR)</td>
+                      <td className="p-4">≈ $1.5 K</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <div className="p-4 bg-white border-t-2 border-[#005EFF]/20">
+                <p className="text-sm text-[#535862]">
+                  <strong>Acquisition flow:</strong> Founder Network → Referrals → Integrations → SDR → Scale
+                </p>
+              </div>
             </div>
 
-            <div className="bg-[#F5F5F5] p-8 rounded-xl space-y-4">
-              <p className="text-lg text-[#414651] leading-relaxed">
+            <div className="bg-[#F5F5F5] p-8 rounded-xl">
+              <p className="text-lg text-[#414651]">
                 Sequential channels compound acquisition efficiency: founder network → referrals → integrations → SDR scale.
               </p>
-              <p className="text-lg text-[#414651] leading-relaxed">
-                By Q4 2026, Knowcap reaches <strong className="font-semibold text-[#191F2E]">100 customers, $1.5 M ARR, and break-even</strong> — a repeatable, capital-efficient growth engine.
+              <p className="text-lg text-[#414651] mt-4">
+                By Q4 2026, Knowcap reaches 100 customers, $1.5 M ARR, and break-even — a repeatable, capital-efficient growth engine.
               </p>
             </div>
           </div>
@@ -696,21 +685,23 @@ export default function PitchPage() {
           <div className="mb-16">
             <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 13: Team</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
-              The Domain Expert and the Architect — Built for AI Governance
+              The Domain Expert and the Architect — Built for AI Verification
             </h2>
           </div>
 
-          <div className="space-y-8">
+          <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-8 rounded-xl">
-              <h3 className="text-2xl font-semibold text-[#191F2E] mb-4">Hassan Sam Arslan — Founder & CEO</h3>
-              <p className="text-lg text-[#414651] leading-relaxed">
+              <h3 className="text-2xl font-bold text-[#191F2E] mb-2">Hassan Sam Arslan</h3>
+              <p className="text-lg text-[#005EFF] mb-4 font-semibold">Founder & CEO</p>
+              <p className="text-[#414651] leading-relaxed">
                 Former Odoo Gold Partner and Co-Founder of Ariika ($0 → $20 M). Led 100 + ERP implementations; experienced the profit-leak problem firsthand.
               </p>
             </div>
 
             <div className="bg-white p-8 rounded-xl">
-              <h3 className="text-2xl font-semibold text-[#191F2E] mb-4">Hesham Tarek — Co-Founder & CTO</h3>
-              <p className="text-lg text-[#414651] leading-relaxed">
+              <h3 className="text-2xl font-bold text-[#191F2E] mb-2">Hesham Tarek</h3>
+              <p className="text-lg text-[#005EFF] mb-4 font-semibold">Co-Founder & CTO</p>
+              <p className="text-[#414651] leading-relaxed">
                 AI systems architect and Firebase specialist. Built the Visual Transcription Engine core to Knowcap's verifiable documentation.
               </p>
             </div>
@@ -724,78 +715,137 @@ export default function PitchPage() {
           <div className="mb-16">
             <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 14: Product Vision</p>
             <h2 className="text-5xl font-bold leading-[58px] text-[#191F2E] mb-6">
-              From Documentation to the Verified Work Genome — Building the Auditable Future of Work
+              From Documentation to the Verified Work Genome — Building the Transparent Future of Work
             </h2>
-            <p className="text-xl text-[#414651] leading-relaxed mt-6">
-              The Work Genome is a verified dataset of timestamped actions — like a GitHub for how service teams actually deliver work.
-            </p>
           </div>
 
-          <div className="space-y-8">
-            <div className="bg-[#F5F5F5] p-8 rounded-xl">
-              <h4 className="text-lg font-semibold text-[#005EFF] mb-3">Phase 1 (2026 – 2027): Documentation & Verification</h4>
-              <p className="text-[#414651]">Capture meetings and screens to generate timestamp-backed docs; each artifact feeds the verified dataset.</p>
-            </div>
+          <div className="space-y-10">
+            <p className="text-xl text-[#414651] leading-relaxed">
+              The Work Genome is a verified dataset of timestamped actions — like a GitHub for how service teams actually deliver work.
+            </p>
 
-            <div className="bg-[#F5F5F5] p-8 rounded-xl">
-              <h4 className="text-lg font-semibold text-[#005EFF] mb-3">Phase 2 (2028 – 2030): Vibe Tasking — AI-Native Project Management</h4>
-              <p className="text-[#414651]">AI observes workflows and updates tasks autonomously. Dataset evolves into a live operational map.</p>
-            </div>
+            <div className="space-y-6">
+              <div className="flex gap-4 items-start p-8 bg-[#F5F5F5] rounded-xl">
+                <div className="w-12 h-12 rounded-full bg-[#005EFF]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-xl font-bold text-[#005EFF]">1</span>
+                </div>
+                <div>
+                  <h5 className="font-semibold text-[#191F2E] text-lg mb-2">Phase 1 (2026 – 2027): Documentation & Verification</h5>
+                  <p className="text-[#414651] leading-relaxed">
+                    Capture meetings and screens to generate timestamp-backed docs; each artifact feeds the verified dataset.
+                  </p>
+                </div>
+              </div>
 
-            <div className="bg-[#F5F5F5] p-8 rounded-xl">
-              <h4 className="text-lg font-semibold text-[#005EFF] mb-3">Phase 3 (2031 +): Work Genome</h4>
-              <p className="text-[#414651]">Becomes the verification layer for AI-driven labor. "Knowcap Verified" becomes the standard for trustworthy digital work.</p>
+              <div className="flex gap-4 items-start p-8 bg-[#F5F5F5] rounded-xl">
+                <div className="w-12 h-12 rounded-full bg-[#005EFF]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-xl font-bold text-[#005EFF]">2</span>
+                </div>
+                <div>
+                  <h5 className="font-semibold text-[#191F2E] text-lg mb-2">Phase 2 (2028 – 2030): Vibe Tasking — AI-Native Project Management</h5>
+                  <p className="text-[#414651] leading-relaxed">
+                    AI observes workflows and updates tasks autonomously. Dataset evolves into a live operational map.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 items-start p-8 bg-[#F5F5F5] rounded-xl">
+                <div className="w-12 h-12 rounded-full bg-[#005EFF]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-xl font-bold text-[#005EFF]">3</span>
+                </div>
+                <div>
+                  <h5 className="font-semibold text-[#191F2E] text-lg mb-2">Phase 3 (2031 +): Work Genome</h5>
+                  <p className="text-[#414651] leading-relaxed">
+                    Becomes the verification layer for AI-driven labor. "Knowcap Verified" becomes the standard for trustworthy digital work.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Slide 15: The Ask */}
-      <section className="py-28 bg-[#0A0D12] text-white">
-        <div className="max-w-[1024px] mx-auto px-8">
+      <section className="relative min-h-screen flex items-center justify-center bg-[#0A0D12] text-white">
+        <div className="max-w-[1024px] mx-auto px-8 py-20">
           <div className="mb-16">
             <p className="text-sm font-semibold text-[#005EFF] uppercase tracking-[1px] mb-4">SLIDE 15: The Ask</p>
-            <h2 className="text-5xl font-bold leading-[58px] text-white mb-6">
+            <h2 className="text-5xl font-bold leading-[58px] mb-6">
               Raising $750 K SAFE @ $10 M Pre — Scaling the Automated Project Documentation for Service Firms
             </h2>
-            <p className="text-xl text-[#D5D7DA] leading-relaxed mt-6">
-              18-Month Runway
-            </p>
           </div>
 
           <div className="space-y-10">
+            <p className="text-2xl text-[#D5D7DA] font-semibold">18-Month Runway</p>
+
             <div className="bg-white/10 p-8 rounded-xl">
-              <h4 className="text-lg font-semibold text-[#005EFF] mb-4">Use of Funds</h4>
-              <ul className="space-y-3 text-[#D5D7DA]">
-                <li>• <strong className="font-semibold text-white">Growth Engine (45 %):</strong> Ads, referrals, SDR operations.</li>
-                <li>• <strong className="font-semibold text-white">Product Acceleration (30 %):</strong> Mobile app, integrations, Vibe Tasking beta.</li>
-                <li>• <strong className="font-semibold text-white">Core Team & Infrastructure (25 %):</strong> Expand AI and engineering capacity.</li>
-              </ul>
+              <h4 className="text-xl font-semibold mb-6">Use of Funds:</h4>
+              <div className="space-y-4">
+                <div className="flex gap-4 items-center">
+                  <div className="w-16 h-16 rounded-full bg-[#005EFF] flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl font-bold">45%</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-lg">Growth Engine</p>
+                    <p className="text-[#D5D7DA]">Ads, referrals, SDR operations</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 items-center">
+                  <div className="w-16 h-16 rounded-full bg-[#005EFF] flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl font-bold">30%</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-lg">Product Acceleration</p>
+                    <p className="text-[#D5D7DA]">Mobile app, integrations, Vibe Tasking beta</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 items-center">
+                  <div className="w-16 h-16 rounded-full bg-[#005EFF] flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl font-bold">25%</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-lg">Core Team & Infrastructure</p>
+                    <p className="text-[#D5D7DA]">Expand AI and engineering capacity</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="bg-white/10 p-8 rounded-xl">
-              <h4 className="text-lg font-semibold text-[#005EFF] mb-4">Expected Outcomes (by Dec 2026)</h4>
-              <ul className="space-y-3 text-[#D5D7DA]">
-                <li>• <strong className="font-semibold text-white">100 customers → $1.5 M ARR</strong></li>
-                <li>• <strong className="font-semibold text-white">Break-even by Q4 2026</strong></li>
-                <li>• <strong className="font-semibold text-white">Category leadership in AI Verifiability</strong></li>
+              <h4 className="text-xl font-semibold mb-6">Expected Outcomes (by Dec 2026):</h4>
+              <ul className="space-y-3 text-lg">
+                <li className="flex gap-3 items-start">
+                  <CheckCircle2 className="w-6 h-6 text-[#005EFF] flex-shrink-0 mt-1" />
+                  <span>100 customers → $1.5 M ARR</span>
+                </li>
+                <li className="flex gap-3 items-start">
+                  <CheckCircle2 className="w-6 h-6 text-[#005EFF] flex-shrink-0 mt-1" />
+                  <span>Break-even by Q4 2026</span>
+                </li>
+                <li className="flex gap-3 items-start">
+                  <CheckCircle2 className="w-6 h-6 text-[#005EFF] flex-shrink-0 mt-1" />
+                  <span>Category leadership in AI Verifiability</span>
+                </li>
               </ul>
             </div>
 
-            <div className="p-8 bg-[#005EFF] rounded-xl">
-              <p className="text-white text-xl font-medium leading-relaxed">
-                <strong className="font-semibold">Thesis:</strong> Scale what's already working — the system that makes every meeting verifiable by design.
+            <div className="bg-[#005EFF] p-10 rounded-xl text-center">
+              <p className="text-2xl font-bold mb-2">Thesis</p>
+              <p className="text-xl leading-relaxed">
+                Scale what's already working — the system that makes every meeting verifiable by design.
               </p>
             </div>
 
             <div className="text-center pt-8">
               <Button 
                 size="lg" 
-                className="bg-white text-[#191F2E] hover:bg-white/90 font-semibold text-lg px-12 py-6"
+                className="bg-white text-[#0A0D12] hover:bg-[#D5D7DA] text-lg px-12 py-6 h-auto"
                 onClick={() => window.location.href = 'https://knowcap.ai/invest'}
               >
-                Schedule a Strategy Call
-                <ArrowRight className="ml-2 h-5 w-5" />
+                Schedule an Investor Call
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
           </div>
@@ -804,7 +854,7 @@ export default function PitchPage() {
 
       <style jsx global>{`
         .hero-bg {
-          background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 100%);
+          background: linear-gradient(135deg, #FFFFFF 0%, #F5F7FA 100%);
           position: relative;
         }
         
@@ -814,8 +864,7 @@ export default function PitchPage() {
           left: 0;
           right: 0;
           bottom: 0;
-          background: radial-gradient(circle at 30% 20%, rgba(0, 94, 255, 0.08) 0%, transparent 50%),
-                      radial-gradient(circle at 70% 80%, rgba(68, 58, 255, 0.05) 0%, transparent 50%);
+          background: radial-gradient(circle at 30% 50%, rgba(0, 94, 255, 0.08) 0%, transparent 50%);
           pointer-events: none;
         }
       `}</style>
