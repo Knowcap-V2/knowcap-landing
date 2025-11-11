@@ -20,73 +20,24 @@ export default function PitchPage() {
         
         <div className="max-w-[1024px] mx-auto px-8 py-20 relative z-10">
           <div className={`transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-[60px] font-semibold leading-[72px] text-[#191F2E] mb-6 text-center">
+            <h1 className="text-[60px] font-semibold leading-[72px] text-[#191F2E] mb-8 text-center">
               Knowcap Turns Meetings and Screen Work Into Verified Project Documents — Automatically
             </h1>
             
             <p className="text-xl leading-[34px] text-[#535862] mb-12 text-center max-w-4xl mx-auto">
               Category: AI Platform for Verified Project Documentation and Client Accountability
             </p>
-            
-            {/* Comparison Table */}
-            <div className="bg-white rounded-xl border-2 border-[#005EFF]/20 overflow-hidden mb-10">
-              <div className="grid grid-cols-3 border-b-2 border-[#005EFF]/20">
-                <div className="p-6"></div>
-                <div className="p-6 bg-[#F5F5F5] border-l-2 border-[#005EFF]/20">
-                  <p className="text-lg font-semibold text-[#191F2E] text-center">Regular Note-Takers</p>
-                </div>
-                <div className="p-6 bg-[#005EFF]/5 border-l-2 border-[#005EFF]/20">
-                  <p className="text-lg font-semibold text-[#005EFF] text-center">Knowcap.ai</p>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-3 border-b-2 border-[#005EFF]/20">
-                <div className="p-6 bg-[#F5F5F5]">
-                  <p className="text-base font-semibold text-[#191F2E]">Session Context</p>
-                </div>
-                <div className="p-6 border-l-2 border-[#005EFF]/20">
-                  <p className="text-base text-[#535862]">One meeting at a time</p>
-                </div>
-                <div className="p-6 bg-[#005EFF]/5 border-l-2 border-[#005EFF]/20">
-                  <p className="text-base text-[#191F2E] font-medium">Understands the entire project — links meetings, docs, and workflows</p>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-3 border-b-2 border-[#005EFF]/20">
-                <div className="p-6 bg-[#F5F5F5]">
-                  <p className="text-base font-semibold text-[#191F2E]">Input Type</p>
-                </div>
-                <div className="p-6 border-l-2 border-[#005EFF]/20">
-                  <p className="text-base text-[#535862]">Audio only</p>
-                </div>
-                <div className="p-6 bg-[#005EFF]/5 border-l-2 border-[#005EFF]/20">
-                  <p className="text-base text-[#191F2E] font-medium">Audio + Screen + Docs — sees what happens and why</p>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-3">
-                <div className="p-6 bg-[#F5F5F5]">
-                  <p className="text-base font-semibold text-[#191F2E]">Output</p>
-                </div>
-                <div className="p-6 border-l-2 border-[#005EFF]/20">
-                  <p className="text-base text-[#535862]">Summaries</p>
-                </div>
-                <div className="p-6 bg-[#005EFF]/5 border-l-2 border-[#005EFF]/20">
-                  <p className="text-base text-[#191F2E] font-medium">Live Documents + AI Agents trained on project memory</p>
-                </div>
-              </div>
-            </div>
 
-            <div className="space-y-8 mb-10 text-left max-w-4xl mx-auto">
-              <p className="text-lg leading-relaxed text-[#414651]">
+            <div className="space-y-8 mb-12 text-center max-w-4xl mx-auto">
+              <p className="text-xl leading-relaxed text-[#414651]">
                 Knowcap records meetings and screen workflows, then automatically generates contracts, quotations, and SOPs — each line linked to the exact video moment every decision was made.
               </p>
             </div>
 
-            <div className="bg-[#0A0D12] rounded-xl p-8 max-w-3xl mx-auto">
+            <div className="bg-[#0A0D12] rounded-xl p-10 max-w-3xl mx-auto">
               <p className="text-sm font-semibold text-[#D5D7DA] uppercase tracking-wider mb-4">Result</p>
-              <div className="space-y-4 text-left">
-                <p className="text-lg text-white leading-relaxed">
+              <div className="space-y-4">
+                <p className="text-xl text-white leading-relaxed">
                   The first platform that creates verified client documentation from real project activity. Projects document themselves, rework drops ≈ 30 %, and clients can confirm every decision through video-linked proof.
                 </p>
               </div>
