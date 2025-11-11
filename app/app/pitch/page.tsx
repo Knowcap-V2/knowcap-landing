@@ -20,9 +20,13 @@ export default function PitchPage() {
         
         <div className="max-w-[1024px] mx-auto px-8 py-20 relative z-10">
           <div className={`transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-[60px] font-semibold leading-[72px] text-[#191F2E] mb-12 text-center">
+            <h1 className="text-[60px] font-semibold leading-[72px] text-[#191F2E] mb-6 text-center">
               The AI Governance Layer That Watches, Understands, and Executes Work — Not Just Words
             </h1>
+            
+            <p className="text-xl leading-[34px] text-[#535862] mb-12 text-center max-w-4xl mx-auto">
+              Built for professional-services teams — consultants, agencies, and ERP implementers that run on proof, not meetings.
+            </p>
             
             {/* Comparison Table */}
             <div className="bg-white rounded-xl border-2 border-[#005EFF]/20 overflow-hidden mb-10">
