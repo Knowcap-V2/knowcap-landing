@@ -91,14 +91,14 @@ export default function PitchPage() {
               </p>
             </div>
 
-            <div className="bg-[#F5F5F5] rounded-xl p-8 max-w-3xl mx-auto">
-              <p className="text-sm font-semibold text-[#535862] uppercase tracking-wider mb-4">Example</p>
+            <div className="bg-[#0A0D12] rounded-xl p-8 max-w-3xl mx-auto">
+              <p className="text-sm font-semibold text-[#D5D7DA] uppercase tracking-wider mb-4">Example</p>
               <div className="space-y-4 text-left">
-                <p className="text-lg text-[#414651] leading-relaxed">
+                <p className="text-lg text-white leading-relaxed">
                   <span className="inline-block mr-2">🧠</span>
-                  <strong className="font-semibold text-[#191F2E]">Ask Knowcap:</strong> "Are our sales reps following the playbook?"
+                  <strong className="font-semibold text-white">Ask Knowcap:</strong> "Are our sales reps following the playbook?"
                 </p>
-                <p className="text-lg text-[#414651] leading-relaxed pl-8">
+                <p className="text-lg text-[#D5D7DA] leading-relaxed pl-8">
                   <span className="inline-block mr-2">➡️</span>
                   Knowcap reviews every call, measures sentiment, and returns a performance report — each insight linked to the exact video moment.
                 </p>
@@ -277,11 +277,8 @@ export default function PitchPage() {
 
                 <div className="p-6 bg-[#F5F5F5] rounded-xl border-l-4 border-[#005EFF]">
                   <p className="text-sm font-semibold text-[#535862] uppercase tracking-wider mb-3">Example</p>
-                  <p className="text-base text-[#414651] leading-relaxed mb-4">
-                    A consultant attends four client meetings. The manager asks Knowcap, "Did they follow our implementation strategy?"
-                  </p>
-                  <p className="text-base text-[#191F2E] font-medium leading-relaxed">
-                    Knowcap instantly generates a performance review highlighting strengths and gaps — each backed by timestamps from those sessions.
+                  <p className="text-base text-[#414651] leading-relaxed">
+                    A consultant ends a 90-minute session. Knowcap delivers the finalized gap analysis before the call summary even hits Slack — each line backed by visible proof of every step.
                   </p>
                 </div>
 
