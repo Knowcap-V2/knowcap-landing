@@ -287,7 +287,37 @@ export default function PitchPage() {
             </h2>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-10">
+            {/* TAM Visualization - Concentric Circles */}
+            <div className="bg-gradient-to-br from-[#F5F5F5] to-white p-12 rounded-xl">
+              <h4 className="text-lg font-semibold text-[#191F2E] mb-8 text-center">Total Addressable Market</h4>
+              <div className="relative flex items-center justify-center min-h-[400px]">
+                {/* Outer Circle - $3T Professional Services */}
+                <div className="absolute w-[380px] h-[380px] rounded-full bg-gradient-to-br from-[#005EFF]/5 to-[#443AFF]/5 flex items-center justify-center border-2 border-[#005EFF]/20">
+                  <div className="absolute -bottom-12 text-center w-full">
+                    <p className="text-sm font-semibold text-[#191F2E]">$3T Professional Services Market</p>
+                  </div>
+                </div>
+                
+                {/* Middle Circle - $2.25B TAM */}
+                <div className="absolute w-[260px] h-[260px] rounded-full bg-gradient-to-br from-[#005EFF]/15 to-[#443AFF]/10 flex items-center justify-center border-2 border-[#005EFF]/40">
+                  <div className="absolute -bottom-8 text-center w-full">
+                    <p className="text-sm font-semibold text-[#191F2E]">$2.25B TAM</p>
+                    <p className="text-xs text-[#535862]">(Salesforce/SAP/Oracle)</p>
+                  </div>
+                </div>
+                
+                {/* Inner Circle - $110M Entry Market */}
+                <div className="relative w-[160px] h-[160px] rounded-full bg-gradient-to-br from-[#005EFF] to-[#443AFF] flex items-center justify-center shadow-lg border-2 border-[#005EFF]">
+                  <div className="text-center text-white">
+                    <p className="text-2xl font-bold mb-1">$110M</p>
+                    <p className="text-sm font-medium">Odoo Partners</p>
+                    <p className="text-xs opacity-90">Entry Market</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="bg-[#F5F5F5] p-8 rounded-xl space-y-4">
               <p className="text-lg text-[#414651] leading-relaxed">
                 Knowcap starts with <strong className="font-semibold text-[#191F2E]">7 500 Odoo implementation firms</strong> (7 500 × $15 K / year = ≈ $110 M addressable market). These firms lack a verification platform to prove what was done and when.
@@ -459,6 +489,32 @@ export default function PitchPage() {
               $750 K raise funds go-to-market and product acceleration — not burn.
             </p>
 
+            {/* Acquisition Flow Visualization */}
+            <div className="bg-gradient-to-br from-[#005EFF]/5 to-[#443AFF]/5 p-8 rounded-xl">
+              <h4 className="text-lg font-semibold text-[#191F2E] mb-6 text-center">Acquisition Flow Strategy</h4>
+              <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
+                <div className="bg-white px-6 py-3 rounded-lg shadow-sm border-2 border-[#005EFF]">
+                  <p className="font-semibold text-[#005EFF]">Founder Network</p>
+                </div>
+                <ArrowRight className="w-6 h-6 text-[#005EFF] flex-shrink-0" />
+                <div className="bg-white px-6 py-3 rounded-lg shadow-sm border-2 border-[#005EFF]">
+                  <p className="font-semibold text-[#005EFF]">Referrals</p>
+                </div>
+                <ArrowRight className="w-6 h-6 text-[#005EFF] flex-shrink-0" />
+                <div className="bg-white px-6 py-3 rounded-lg shadow-sm border-2 border-[#005EFF]">
+                  <p className="font-semibold text-[#005EFF]">Integrations</p>
+                </div>
+                <ArrowRight className="w-6 h-6 text-[#005EFF] flex-shrink-0" />
+                <div className="bg-white px-6 py-3 rounded-lg shadow-sm border-2 border-[#005EFF]">
+                  <p className="font-semibold text-[#005EFF]">SDR</p>
+                </div>
+                <ArrowRight className="w-6 h-6 text-[#005EFF] flex-shrink-0" />
+                <div className="bg-white px-6 py-3 rounded-lg shadow-sm border-2 border-[#005EFF]">
+                  <p className="font-semibold text-[#005EFF]">Scale</p>
+                </div>
+              </div>
+            </div>
+
             {/* Financial Table */}
             <div className="bg-[#F5F5F5] rounded-xl overflow-hidden">
               <div className="overflow-x-auto">
@@ -515,10 +571,13 @@ export default function PitchPage() {
                 </table>
               </div>
               
-              <div className="p-4 bg-white border-t-2 border-[#005EFF]/20">
-                <p className="text-sm text-[#535862] italic">
-                  Note: Assumes average monthly burn of ≈ $65K through 2026, including GTM hires and infrastructure.
-                </p>
+              <div className="p-6 bg-[#005EFF]/5 border-t-2 border-[#005EFF]">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#005EFF] flex-shrink-0 mt-0.5" />
+                  <p className="text-base text-[#191F2E] font-medium">
+                    <strong>Financial Note:</strong> Assumes average monthly burn of ≈ $65K through 2026, including GTM hires and infrastructure.
+                  </p>
+                </div>
               </div>
             </div>
 
