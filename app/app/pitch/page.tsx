@@ -288,31 +288,25 @@ export default function PitchPage() {
           </div>
 
           <div className="space-y-10">
-            {/* TAM Visualization - Concentric Circles */}
-            <div className="bg-gradient-to-br from-[#F5F5F5] to-white p-12 rounded-xl">
+            {/* TAM Visualization - Nested Rectangles */}
+            <div className="bg-gradient-to-br from-[#F5F5F5] to-white p-8 rounded-xl">
               <h4 className="text-lg font-semibold text-[#191F2E] mb-8 text-center">Total Addressable Market</h4>
-              <div className="relative flex items-center justify-center min-h-[400px]">
-                {/* Outer Circle - $3T Professional Services */}
-                <div className="absolute w-[380px] h-[380px] rounded-full bg-gradient-to-br from-[#005EFF]/5 to-[#443AFF]/5 flex items-center justify-center border-2 border-[#005EFF]/20">
-                  <div className="absolute -bottom-12 text-center w-full">
-                    <p className="text-sm font-semibold text-[#191F2E]">$3T Professional Services Market</p>
-                  </div>
-                </div>
+              
+              {/* Outer Rectangle - $3T Professional Services */}
+              <div className="bg-gradient-to-br from-[#E3F2FD] to-[#BBDEFB] p-6 rounded-xl border-2 border-[#90CAF9]">
+                <p className="text-sm font-semibold text-[#191F2E] mb-4">$3T Professional Services Market</p>
                 
-                {/* Middle Circle - $2.25B TAM */}
-                <div className="absolute w-[260px] h-[260px] rounded-full bg-gradient-to-br from-[#005EFF]/15 to-[#443AFF]/10 flex items-center justify-center border-2 border-[#005EFF]/40">
-                  <div className="absolute -bottom-8 text-center w-full">
-                    <p className="text-sm font-semibold text-[#191F2E]">$2.25B TAM</p>
-                    <p className="text-xs text-[#535862]">(Salesforce/SAP/Oracle)</p>
-                  </div>
-                </div>
-                
-                {/* Inner Circle - $110M Entry Market */}
-                <div className="relative w-[160px] h-[160px] rounded-full bg-gradient-to-br from-[#005EFF] to-[#443AFF] flex items-center justify-center shadow-lg border-2 border-[#005EFF]">
-                  <div className="text-center text-white">
-                    <p className="text-2xl font-bold mb-1">$110M</p>
-                    <p className="text-sm font-medium">Odoo Partners</p>
-                    <p className="text-xs opacity-90">Entry Market</p>
+                {/* Middle Rectangle - $2.25B TAM */}
+                <div className="bg-gradient-to-br from-[#90CAF9] to-[#64B5F6] p-6 rounded-xl border-2 border-[#42A5F5]">
+                  <p className="text-sm font-semibold text-[#191F2E] mb-4">$2.25B TAM (Salesforce/SAP/Oracle)</p>
+                  
+                  {/* Inner Rectangle - $110M Entry Market */}
+                  <div className="bg-gradient-to-br from-[#005EFF] to-[#1976D2] p-8 rounded-xl border-2 border-[#1565C0] shadow-lg">
+                    <div className="text-center text-white">
+                      <p className="text-3xl font-bold mb-2">$110M</p>
+                      <p className="text-base font-semibold mb-1">Odoo Partners</p>
+                      <p className="text-sm opacity-95">Entry Market</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -718,11 +712,31 @@ export default function PitchPage() {
                   </tbody>
                 </table>
               </div>
-              
-              <div className="p-4 bg-white border-t-2 border-[#005EFF]/20">
-                <p className="text-sm text-[#535862]">
-                  <strong>Acquisition flow:</strong> Founder Network → Referrals → Integrations → SDR → Scale
-                </p>
+            </div>
+
+            {/* Visual Acquisition Flow */}
+            <div className="bg-gradient-to-br from-[#005EFF]/5 to-[#443AFF]/5 p-8 rounded-xl">
+              <h4 className="text-lg font-semibold text-[#191F2E] mb-6 text-center">Acquisition Flow Strategy</h4>
+              <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
+                <div className="bg-white px-6 py-3 rounded-lg shadow-sm border-2 border-[#005EFF]">
+                  <p className="font-semibold text-[#005EFF]">Founder Network</p>
+                </div>
+                <ArrowRight className="w-6 h-6 text-[#005EFF] flex-shrink-0" />
+                <div className="bg-white px-6 py-3 rounded-lg shadow-sm border-2 border-[#005EFF]">
+                  <p className="font-semibold text-[#005EFF]">Referrals</p>
+                </div>
+                <ArrowRight className="w-6 h-6 text-[#005EFF] flex-shrink-0" />
+                <div className="bg-white px-6 py-3 rounded-lg shadow-sm border-2 border-[#005EFF]">
+                  <p className="font-semibold text-[#005EFF]">Integrations</p>
+                </div>
+                <ArrowRight className="w-6 h-6 text-[#005EFF] flex-shrink-0" />
+                <div className="bg-white px-6 py-3 rounded-lg shadow-sm border-2 border-[#005EFF]">
+                  <p className="font-semibold text-[#005EFF]">SDR</p>
+                </div>
+                <ArrowRight className="w-6 h-6 text-[#005EFF] flex-shrink-0" />
+                <div className="bg-white px-6 py-3 rounded-lg shadow-sm border-2 border-[#005EFF]">
+                  <p className="font-semibold text-[#005EFF]">Scale</p>
+                </div>
               </div>
             </div>
 
