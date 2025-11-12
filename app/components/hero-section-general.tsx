@@ -28,11 +28,11 @@ export default function HeroSectionGeneral() {
           </div>
           
           <h1 className="hero-heading mb-6">
-            The AI Governance Platform for{' '}
-            <span className="text-[#005EFF]">Professional Teams</span>
+            AI That Turns Meetings and Screen Work Into{' '}
+            <span className="text-[#005EFF]">Verified Project Docs</span>
           </h1>
           <p className="hero-subheading mb-12 max-w-3xl mx-auto">
-            Knowcap watches meetings and screens to auto-create timestamp-backed PRDs, SOPs, and onboarding guides. Your work becomes verified, searchable memory.
+            Every document links to its video proof — giving your team context you can trust.
           </p>
           
           {/* CTA Buttons */}
