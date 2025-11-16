@@ -18,26 +18,26 @@ export default function PitchPage() {
       <section className="relative min-h-screen flex items-center justify-center hero-bg">
         <div className="hero-blur"></div>
         
-        <div className="max-w-[1024px] mx-auto px-8 py-20 relative z-10">
+        <div className="max-w-[1024px] mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20 relative z-10">
           <div className={`transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h1 className="text-[60px] font-semibold leading-[72px] text-[#191F2E] mb-8 text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-semibold leading-tight sm:leading-tight md:leading-[58px] lg:leading-[72px] text-[#191F2E] mb-6 sm:mb-8 text-center">
               Knowcap Turns Meetings and Screen Work Into Verified Project Documents — Automatically
             </h1>
             
-            <p className="text-xl leading-[34px] text-[#535862] mb-12 text-center max-w-4xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl leading-relaxed sm:leading-[28px] md:leading-[34px] text-[#535862] mb-8 sm:mb-10 md:mb-12 text-center max-w-4xl mx-auto">
               Category: AI Platform for Verified Project Documentation and Client Accountability
             </p>
 
-            <div className="space-y-8 mb-12 text-center max-w-4xl mx-auto">
-              <p className="text-xl leading-relaxed text-[#414651]">
+            <div className="space-y-6 sm:space-y-8 mb-8 sm:mb-10 md:mb-12 text-center max-w-4xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed text-[#414651]">
                 Knowcap records meetings and screen workflows, then automatically generates contracts, quotations, and SOPs — each line linked to the exact video moment every decision was made.
               </p>
             </div>
 
-            <div className="bg-[#0A0D12] rounded-xl p-10 max-w-3xl mx-auto">
-              <p className="text-sm font-semibold text-[#D5D7DA] uppercase tracking-wider mb-4">Result</p>
+            <div className="bg-[#0A0D12] rounded-xl p-6 sm:p-8 md:p-10 max-w-3xl mx-auto">
+              <p className="text-xs sm:text-sm font-semibold text-[#D5D7DA] uppercase tracking-wider mb-3 sm:mb-4">Result</p>
               <div className="space-y-4">
-                <p className="text-xl text-white leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed">
                   The first platform that creates verified client documentation from real project activity. Projects document themselves, rework drops ≈ 30 %, and clients can confirm every decision through video-linked proof.
                 </p>
               </div>
