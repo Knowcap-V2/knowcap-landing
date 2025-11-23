@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Knowcap Pitch Deck</title>
+    <title>Knowcap Pitch Deck (Static)</title>
     
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,6 +68,7 @@
         .text-white { color: white; }
         .text-sm { font-size: 0.875rem; }
         .text-xs { font-size: 0.75rem; }
+        .text-lg { font-size: 1.125rem; }
 
         /* --- LAYOUT --- */
         main { overflow-x: hidden; }
@@ -104,18 +105,34 @@
             height: 100%;
         }
         
+        /* Updated Card Dark: Smaller, Centered */
         .card-dark {
             background: var(--dark);
             color: white;
             border: 1px solid #333;
-            padding: 2rem;
+            padding: 1.5rem; 
             border-radius: var(--radius-lg);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 90%; 
+            margin-left: auto;
+            margin-right: auto;
         }
-        .card-dark p { color: #9ca3af; }
+        .card-dark p { color: #9ca3af; margin-bottom: 0; }
         .card-dark .text-white { color: white; }
+        
+        /* Specific override for the milestone progress bar card to allow left alignment internally */
+        .card-dark.left-align {
+            align-items: flex-start;
+            text-align: left;
+            display: block;
+        }
 
         /* --- VISUAL ELEMENTS --- */
-        .hero-bg { background: radial-gradient(circle at 50% 0%, #E3F2FD 0%, #F8FAFC 70%); padding-top: 6rem; }
+        .hero-bg { background: radial-gradient(circle at 50% 0%, #E3F2FD 0%, #F8FAFC 70%); padding-top: 6rem; padding-bottom: 6rem;}
         .number-circle { width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--primary-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--primary); font-weight: 700; margin-right: 1rem; }
         
         /* --- MOBILE OPTIMIZATIONS & TABLES --- */
@@ -263,76 +280,70 @@
 <body>
 
     <main>
-        <!-- SLIDE 1: HERO -->
+        <!-- SLIDE 1: HERO & TRACTION -->
         <section class="hero-bg">
             <div class="container">
+                <!-- 1. HEADLINES -->
                 <div class="fade-in text-center max-w-4xl mx-auto" style="margin-bottom: 4rem;">
                     
                     <h1>Knowcap AI Turns Meetings & Screen Work Into <span class="gradient-text">Verified Project Documents</span></h1>
                     
-                    <p class="text-lg text-dark font-medium mb-4">
-                        Already saving 150 hours per project (30% reduction from a 500-hour baseline)
-                    </p>
-                    <p class="text-gray text-center max-w-3xl mx-auto mb-8">
-                        Automatically converts calls and screen actions into timestamp-linked contracts, SOPs, PRDs, and quotations.
-                    </p>
-
-                    <div class="card-dark max-w-3xl mx-auto">
-                        <p class="text-white text-center mb-0">
-                            Empowers <strong>service firms</strong> to eliminate rework, deliver faster, and prove every decision with verified video context.
+                    <!-- BLACK BOX WITH SUB-HEADLINE -->
+                    <div class="card-dark max-w-3xl mx-auto" style="margin-top: 2rem;">
+                        <p class="text-white text-lg text-center mb-0" style="line-height: 1.6;">
+                            Knowcap watches your calls and your screen at the same time, capturing what was said and what was done. It then turns those moments into structured project documents with the exact steps, decisions, and context already filled in.
                         </p>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- SLIDE 2: TRACTION -->
-        <section>
-            <div class="container fade-in">
-                <div class="mb-12 text-center">
-                    <span class="slide-label">Traction</span>
-                    <h2>$1.85K MRR (Paid Pilot Partners) — 150 hours saved per project</h2>
                 </div>
 
-                <div class="grid grid-cols-3 gap-6">
-                    <div class="card text-center">
-                        <h3 class="text-primary" style="font-size: 2.5rem;">100%</h3>
-                        <p class="font-medium">Renewal Rate</p>
-                        <p class="text-xs text-gray">All pilots renewed after first cycle</p>
-                    </div>
-                    <div class="card text-center">
-                        <h3 class="text-primary" style="font-size: 2.5rem;">14 Days</h3>
-                        <p class="font-medium">Sales Cycle</p>
-                        <p class="text-xs text-gray">High "Hair on Fire" demand intensity</p>
-                    </div>
-                    <div class="card text-center">
-                        <h3 class="text-primary" style="font-size: 2.5rem;">0 hrs</h3>
-                        <p class="font-medium">Manual Reporting</p>
-                        <p class="text-xs text-gray">Eliminated completely</p>
+                <!-- 2. TRACTION -->
+                <div class="fade-in">
+                    <div class="mb-8 text-center">
+                        <span class="slide-label">Traction</span>
+                        <h2>$52K ARR (8 Pilot Partners) — 150 hours saved per project</h2>
                     </div>
 
-                    <div class="card span-3">
-                        <h4 class="text-dark">Timeline</h4>
-                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                                <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">AUG</div>
-                                <div><strong>Founded</strong><p class="mb-0 text-sm text-gray">August 19th, 2025.</p></div>
-                            </div>
-                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                                <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">SEP</div>
-                                <div><strong>1 pilot partner</strong><p class="mb-0 text-sm text-gray">Validated execution gap & workflow model.</p></div>
-                            </div>
-                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                                <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">OCT</div>
-                                <div><strong>Expanded to 4 pilot partners</strong><p class="mb-0 text-sm text-gray">$1.85K MRR.</p></div>
-                            </div>
-                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
-                                <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">NOV</div>
-                                <div><strong>Added $4K/mo committed pipeline</strong><p class="mb-0 text-sm text-gray">Pending Zoom/Teams integration.</p></div>
-                            </div>
-                            <div style="display: flex; gap: 1rem; align-items: flex-start; background: rgba(0,94,255,0.05); padding: 1rem; border-radius: 8px; border: 1px dashed var(--primary);">
-                                <div style="background: white; color: var(--primary); border: 1px solid var(--primary); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">NEXT</div>
-                                <div><strong>Next Milestone</strong><p class="mb-0 text-sm text-dark">4 additional pilot partners at $1K/mo each.</p></div>
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="card text-center">
+                            <h3 class="text-primary" style="font-size: 2.5rem;">100%</h3>
+                            <p class="font-medium">Renewal Rate</p>
+                            <p class="text-xs text-gray">All pilots renewed after first cycle</p>
+                        </div>
+                        <div class="card text-center">
+                            <h3 class="text-primary" style="font-size: 2.5rem;">14 Days</h3>
+                            <p class="font-medium">Sales Cycle</p>
+                            <p class="text-xs text-gray">High "Hair on Fire" demand intensity</p>
+                        </div>
+                        <div class="card text-center">
+                            <h3 class="text-primary" style="font-size: 2.5rem;">0 hrs</h3>
+                            <p class="font-medium">Manual Reporting</p>
+                            <p class="text-xs text-gray">Eliminated completely</p>
+                        </div>
+
+                        <div class="card span-3">
+                            <h4 class="text-dark">Timeline</h4>
+                            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                                <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                    <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">AUG</div>
+                                    <div><strong>Founded</strong><p class="mb-0 text-sm text-gray">August 19th, 2025.</p></div>
+                                </div>
+                                <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                    <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">SEP</div>
+                                    <div><strong>1 pilot partner</strong><p class="mb-0 text-sm text-gray">Validated execution gap & workflow model.</p></div>
+                                </div>
+                                <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                    <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">OCT</div>
+                                    <div><strong>Expanded to 8 pilot partners</strong><p class="mb-0 text-sm text-gray">$52K ARR.</p></div>
+                                </div>
+                                <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                    <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">NOV</div>
+                                    <div><strong>Added $96K/Year committed pipeline</strong><p class="mb-0 text-sm text-gray">Contingent on Zoom, Teams & Odoo integrations.</p></div>
+                                </div>
+                                <div style="display: flex; gap: 1rem; align-items: flex-start; background: rgba(0,94,255,0.05); padding: 1rem; border-radius: 8px; border: 1px dashed var(--primary);">
+                                    <div style="background: white; color: var(--primary); border: 1px solid var(--primary); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">NEXT</div>
+                                    <div><strong>Next Milestone</strong><p class="mb-0 text-sm text-dark">8 additional pilot partners at $12K/year each.</p></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -346,7 +357,7 @@
                 <div class="mb-12">
                     <span class="slide-label">The Problem</span>
                     <h2>Service firms leak 20–40% of project hours due to undocumented work and unverifiable decisions</h2>
-                    <p class="text-center mt-4 text-lg">Where margin disappears:</p>
+                    <p class="text-center mt-4 text-lg">Gartner predicts >70% of ERP initiatives fail to meet original business goals due to poor alignment and scope drift.</p>
                 </div>
 
                 <div class="grid grid-cols-2 gap-6">
@@ -361,7 +372,7 @@
                         <div class="number-circle">2</div>
                         <div>
                             <h5>Scope creep</h5>
-                            <p class="mb-0 text-sm">Clients “remember” extra work without proof.</p>
+                            <p class="mb-0 text-sm">Clients "remember" extra work without proof.</p>
                         </div>
                     </div>
                     <div class="card flex items-start" style="border-left: 4px solid #FF5F56;">
@@ -403,13 +414,13 @@
                         <li class="mb-0"><strong>✓ Generates verifiable artifacts:</strong> contracts, quotations, SOPs, gap analyses</li>
                     </ul>
                 </div>
-                <div class="card-dark max-w-3xl mx-auto text-center mt-spacer">
+                <div class="card-dark text-center mt-spacer">
                      <p class="text-white mb-0"><strong>Result:</strong> Improves accuracy, removes rework loops, and reveals project risks early.</p>
                 </div>
             </div>
         </section>
 
-        <!-- SLIDE 5: HOW IT WORKS -->
+        <!-- SLIDE 5: HOW IT WORKS (Adjusted Layout) -->
         <section style="background: #F5F7FA;">
             <div class="container fade-in">
                 <div class="mb-12 text-center">
@@ -418,11 +429,12 @@
                     <p>Command the AI to Audit, Quote, and Document.</p>
                 </div>
 
+                <!-- Changed to Single Column for Readability without Video -->
                 <div class="max-w-3xl mx-auto space-y-4" style="display: flex; flex-direction: column; gap: 1rem;">
                     <div class="card" style="padding: 1.5rem;">
                         <h5 class="text-primary m-0 mb-2">1. Instant Quality Control</h5>
                         <p class="text-sm font-bold mt-2 mb-1">The Prompt:</p>
-                        <p class="text-sm italic mb-0">"Audit @Junior’s work in these @4_meetings against @Odoo_Implementation_Methodology."</p>
+                        <p class="text-sm italic mb-0">"Audit @Junior's work in these @4_meetings against @Odoo_Implementation_Methodology."</p>
                     </div>
                     <div class="card" style="padding: 1.5rem;">
                         <h5 class="text-primary m-0 mb-2">2. Admin on Autopilot</h5>
@@ -446,7 +458,7 @@
                     <h2>Competitors are Recorders. Knowcap is the Operating System.</h2>
                 </div>
                 
-                <!-- DESKTOP TABLE (Original) -->
+                <!-- DESKTOP TABLE -->
                 <div class="table-container comp-table desktop-only">
                     <table>
                         <thead>
@@ -481,9 +493,8 @@
                     </table>
                 </div>
 
-                <!-- MOBILE CARD LIST (No Scrolling, Blue Column) -->
+                <!-- MOBILE CARD LIST -->
                 <div class="mobile-only">
-                    <!-- Feature 1 -->
                     <div class="mobile-comp-card">
                         <div class="mobile-comp-header">Scope of Memory</div>
                         <div class="mobile-comp-grid">
@@ -574,11 +585,13 @@
                         <span class="slide-label">Market Opportunity</span>
                         <h2>Beachhead: $90M &rarr; Expansion: $5.1B</h2>
                         <div class="card mt-6 tam-text-card" style="height: auto;">
-                            <p class="mb-2 text-xs uppercase tracking-wide text-gray">Bottom-Up Formula</p>
-                            <p class="text-xl font-bold mb-0">
-                                7,500 Partners <span class="text-gray">×</span> $12,000 ACV <span class="text-primary">= $90M</span>
-                            </p>
-                            <p class="text-xs text-gray mt-2 mb-0">Based on proven Odoo Ecosystem pricing.</p>
+                            <p class="mb-2 text-xs uppercase tracking-wide text-gray">Beachhead Logic</p>
+                            <p class="text-lg font-bold mb-1">Odoo Ecosystem — $90M</p>
+                            <p class="text-sm text-gray mb-2">7,500 Partners × $12K ACV</p>
+                            <div style="background: var(--primary-light); padding: 8px; border-radius: 8px;">
+                                <p class="text-xs text-primary font-bold mb-0">Target Penetration:</p>
+                                <p class="text-xs text-dark mb-0">1.3% in 2026 &rarr; 2.6% in 2027</p>
+                            </div>
                         </div>
                     </div>
                     
@@ -604,34 +617,33 @@
                         </div>
                     </div>
 
-                    <!-- MOBILE VIEW (4 Boxes) -->
+                    <!-- MOBILE VIEW -->
                     <div class="mobile-only" style="grid-column: span 2;">
                         <div class="text-center mb-8">
                             <span class="slide-label">Market Opportunity</span>
                             <h2>Beachhead: $90M &rarr; Expansion: $5.1B</h2>
                         </div>
-                        <!-- Box 1 -->
                         <div class="mobile-tam-box">
                             <h5>Bottom-Up Formula</h5>
                             <p>7,500 Partners × $12K ACV = $90M</p>
                         </div>
-                        <!-- Box 2 -->
                         <div class="mobile-tam-box">
                             <h5>Global TAM</h5>
                             <p>430,000 Firms = $5.1B</p>
                         </div>
-                        <!-- Box 3 -->
                         <div class="mobile-tam-box">
                             <h5>Expansion</h5>
                             <p>50,000 Specialized Firms = $600M</p>
                         </div>
-                        <!-- Box 4 -->
                         <div class="mobile-tam-box" style="background: var(--primary); border: none;">
-                            <h5 style="color: rgba(255,255,255,0.8);">Beachhead</h5>
-                            <p style="color: white;">Odoo Ecosystem = $90M</p>
+                            <h5 style="color: rgba(255,255,255,0.8);">Beachhead: Odoo Ecosystem</h5>
+                            <p style="color: white; font-size: 1.5rem;">$90M</p>
+                            <p style="color: rgba(255,255,255,0.9); font-size: 0.85rem; margin-top: 5px;">7,500 Partners × $12K ACV</p>
+                            <div style="background: rgba(255,255,255,0.1); padding: 8px; border-radius: 6px; margin-top: 10px;">
+                                <p style="color: white; font-size: 0.75rem; margin: 0;">Target: 1.3% ('26) &rarr; 2.6% ('27)</p>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -641,7 +653,7 @@
             <div class="container fade-in">
                 <div class="mb-12 text-center">
                     <span class="slide-label">Business Model</span>
-                    <h2>Tier-based SaaS: $1,000–$5,000 per firm per month</h2>
+                    <h2>Tier-based SaaS: $12k–$60k ARR per firm</h2>
                 </div>
 
                 <div class="grid grid-cols-3 gap-6">
@@ -701,7 +713,7 @@
             </div>
         </section>
 
-        <!-- SLIDE 11 & 12 MERGED: FINANCIALS & UNIT ECONOMICS -->
+        <!-- SLIDE 11 & 12 MERGED: FINANCIALS & UNIT ECONOMICS (Updated Table) -->
         <section style="background: #F5F7FA;">
             <div class="container fade-in">
                 <div class="text-center mb-12">
@@ -713,14 +725,26 @@
                     <div>
                         <h3 class="mb-4">Projections</h3>
                         
-                        <!-- DESKTOP TABLE -->
+                        <!-- DESKTOP TABLE (Detailed Breakdown) -->
                         <div class="table-container desktop-only">
                             <table>
-                                <thead><tr><th>Year</th><th>Milestone</th><th>Outcome</th></tr></thead>
+                                <thead><tr><th>Year</th><th>Partner Breakdown</th><th>Outcome</th></tr></thead>
                                 <tbody>
-                                    <tr><td>2025</td><td>4 pilots pending integration</td><td>$1.85K MRR (Pilots)</td></tr>
-                                    <tr><td>2026</td><td>100 customers</td><td>$1.2M ARR</td></tr>
-                                    <tr><td>2027</td><td>300 customers</td><td>$3.6M ARR</td></tr>
+                                    <tr>
+                                        <td>2025</td>
+                                        <td>8 Pilot Partners</td>
+                                        <td>$52K ARR (Current)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2026</td>
+                                        <td>100 Odoo Partners</td>
+                                        <td>$1.2M ARR</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2027</td>
+                                        <td>200 Odoo + 50 Microsoft Dynamics + 50 Oracle</td>
+                                        <td>$3.6M ARR</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -728,15 +752,15 @@
                         <!-- MOBILE PROJECTIONS LIST -->
                         <div class="mobile-only">
                             <div class="mobile-fin-card">
-                                <div><strong>2025</strong><br><small>4 pilots pending integration</small></div>
-                                <div class="text-primary font-bold">$1.85K MRR</div>
+                                <div><strong>2025</strong><br><small>8 Pilot Partners</small></div>
+                                <div class="text-primary font-bold">$52K ARR</div>
                             </div>
                             <div class="mobile-fin-card">
-                                <div><strong>2026</strong><br><small>100 customers</small></div>
+                                <div><strong>2026</strong><br><small>100 Odoo Partners</small></div>
                                 <div class="text-primary font-bold">$1.2M ARR</div>
                             </div>
                             <div class="mobile-fin-card">
-                                <div><strong>2027</strong><br><small>300 customers</small></div>
+                                <div><strong>2027</strong><br><small>200 Odoo + 50 Microsoft Dynamics + 50 Oracle</small></div>
                                 <div class="text-primary font-bold">$3.6M ARR</div>
                             </div>
                         </div>
@@ -751,22 +775,18 @@
                     <div>
                         <h3 class="mb-4">Unit Economics (60-Day Payback)</h3>
                         <div class="mobile-forced-grid gap-4">
-                            <!-- Box 1 -->
                             <div class="card text-center flex flex-col justify-center" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <small class="text-gray uppercase font-bold">Avg Sub</small>
                                 <p class="text-xl font-bold mt-1 mb-0 text-dark">$12K/yr</p>
                             </div>
-                            <!-- Box 2 -->
                             <div class="card text-center flex flex-col justify-center" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <small class="text-gray uppercase font-bold">Gross Margin</small>
                                 <p class="text-xl font-bold mt-1 mb-0 text-primary">85%</p>
                             </div>
-                            <!-- Box 3 -->
                             <div class="card text-center flex flex-col justify-center" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <small class="text-gray uppercase font-bold">CAC</small>
                                 <p class="text-xl font-bold mt-1 mb-0 text-dark">$1.5K</p>
                             </div>
-                            <!-- Box 4 -->
                             <div class="card text-center flex flex-col justify-center" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
                                 <small class="text-gray uppercase font-bold">LTV</small>
                                 <p class="text-xl font-bold mt-1 mb-0 text-dark">$36K+</p>
@@ -794,7 +814,7 @@
                 </div>
 
                 <!-- Quarterly Plan -->
-                <div class="mb-12">
+                <div class="mb-12" style="margin-top: 3rem;">
                     <h4 class="text-center mb-6 text-gray text-sm uppercase tracking-wider">Quarterly Growth Plan</h4>
                     <div class="mobile-forced-grid flex flex-wrap justify-center items-center gap-4" style="justify-content: center;">
                         <div class="milestone-box"><p class="text-gray font-bold mb-1">Q1</p><p class="text-primary text-2xl font-bold mb-0">+15</p></div>
@@ -804,25 +824,25 @@
                     </div>
                 </div>
 
-                <!-- Acquisition Flow -->
-                <div>
+                <!-- Acquisition Flow (Updated SDR) -->
+                <div style="margin-top: 3rem;">
                     <h4 class="text-center mb-6 text-gray text-sm uppercase tracking-wider">Acquisition Flow</h4>
                     <div class="acquisition-container">
                         <div class="acquisition-tag">Network</div><svg class="flow-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         <div class="acquisition-tag">Referrals</div><svg class="flow-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         <div class="acquisition-tag">Integrations</div><svg class="flow-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        <div class="acquisition-tag">SDR</div>
+                        <div class="acquisition-tag">Outbound Sales (SDRs)</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SLIDE 14: TEAM -->
+        <!-- SLIDE 14: TEAM (Updated Trauma Text) -->
         <section style="background: #F5F7FA;">
             <div class="container fade-in">
                 <div class="mb-16 text-center">
                     <span class="slide-label">Team</span>
-                    <h2>Founder-Market Fit: 10 Years Domain Trauma + Top 1% AI Talent</h2>
+                    <h2>Founder-Market Fit: 10 Years of Implementation Scars + Top 1% AI Talent</h2>
                 </div>
                 <div class="grid grid-cols-2 gap-8">
                     <div class="card">
@@ -833,7 +853,7 @@
                     <div class="card">
                         <h3>Hesham Tarek</h3>
                         <p class="text-primary font-bold mb-4">Technical Co-Founder</p>
-                        <p>AI systems architect. <strong>Wrote 100% of Knowcap’s VTE core code.</strong></p>
+                        <p>AI systems architect. <strong>Wrote 100% of Knowcap's VTE core code.</strong></p>
                     </div>
                 </div>
                 <p class="text-center mt-8 text-gray font-medium">Founders with deep domain obsession and proven execution.</p>
@@ -867,7 +887,7 @@
 
                 <div class="grid grid-cols-2 gap-12 items-start">
                     <!-- Milestone Unlock -->
-                    <div class="card-dark">
+                    <div class="card-dark left-align">
                         <h4 class="text-white mb-6">Milestone Unlock (18 Months)</h4>
                         <div style="height: 8px; border-radius: 4px; background: #333; overflow: hidden; display: flex; margin-bottom: 1.5rem;">
                             <div style="width: 45%; background: #005EFF;"></div>
@@ -877,28 +897,40 @@
                         <div class="space-y-4" style="display: grid; gap: 1rem;">
                             <div style="display: flex; gap: 10px; align-items: start;">
                                 <div style="width:40px; text-align:center; font-weight:bold; background:#005EFF; color:white; border-radius:50%;">45%</div>
-                                <div><strong class="text-white">Growth Engine</strong><br><span class="text-sm text-gray">Ads, partner referrals, and outbound SDR operations.</span></div>
+                                <div style="text-align: left;"><strong class="text-white">Growth Engine</strong><br><span class="text-sm text-gray">Ads, partner referrals, and outbound SDR operations.</span></div>
                             </div>
                             <div style="display: flex; gap: 10px; align-items: start;">
                                 <div style="width:40px; text-align:center; font-weight:bold; background:#00C6FF; color:white; border-radius:50%;">30%</div>
-                                <div><strong class="text-white">Product Acceleration</strong><br><span class="text-sm text-gray">Mobile app, deep integrations, and "Vibe Tasking" beta.</span></div>
+                                <div style="text-align: left;"><strong class="text-white">Product Acceleration</strong><br><span class="text-sm text-gray">Mobile app, deep integrations, and "Vibe Tasking" beta.</span></div>
                             </div>
                             <div style="display: flex; gap: 10px; align-items: start;">
                                 <div style="width:40px; text-align:center; font-weight:bold; background:#fff; color:#000; border-radius:50%;">25%</div>
-                                <div><strong class="text-white">Core Team & Infrastructure</strong><br><span class="text-sm text-gray">Expanding AI and engineering capacity.</span></div>
+                                <div style="text-align: left;"><strong class="text-white">Core Team & Infrastructure</strong><br><span class="text-sm text-gray">Expanding AI and engineering capacity.</span></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Outcomes -->
                     <div>
-                        <div class="card-dark mb-6">
+                        <div class="card-dark left-align mb-6">
                             <h4 class="text-white mb-4">Expected Outcomes:</h4>
                             <ul style="list-style: none; padding: 0;" class="space-y-3">
-                                <li style="display:flex; gap:10px;"><span class="text-primary">✓</span> <strong>Immediate:</strong> Deliver Zoom/Teams multimodal integration &rarr; unlock $4K/mo committed pipeline.</li>
-                                <li style="display:flex; gap:10px;"><span class="text-primary">✓</span> <strong>Launch:</strong> Go public with 20–25 paying customers.</li>
-                                <li style="display:flex; gap:10px;"><span class="text-primary">✓</span> <strong>Scale:</strong> Reach 100 customers &rarr; $1.2M ARR.</li>
-                                <li style="display:flex; gap:10px;"><span class="text-primary">✓</span> <strong>Safety:</strong> Achieve break-even profitability by September 2026.</li>
+                                <li style="display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start;">
+                                    <span class="text-primary" style="font-weight: bold;">✓</span> 
+                                    <div><strong>Immediate:</strong> Deliver Zoom, Teams & Odoo multimodal integration → unlock $96K/yr committed pipeline.</div>
+                                </li>
+                                <li style="display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start;">
+                                    <span class="text-primary" style="font-weight: bold;">✓</span> 
+                                    <div><strong>Launch:</strong> Go public with 20–25 paying customers.</div>
+                                </li>
+                                <li style="display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start;">
+                                    <span class="text-primary" style="font-weight: bold;">✓</span> 
+                                    <div><strong>Scale:</strong> Reach 100 customers → $1.2M ARR.</div>
+                                </li>
+                                <li style="display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start;">
+                                    <span class="text-primary" style="font-weight: bold;">✓</span> 
+                                    <div><strong>Safety:</strong> Achieve break-even profitability by September 2026.</div>
+                                </li>
                             </ul>
                         </div>
                         <div style="background: var(--primary); padding: 1.5rem; border-radius: 12px; text-align: center;">
