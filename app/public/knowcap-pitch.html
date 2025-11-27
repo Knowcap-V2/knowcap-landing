@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowcap Pitch Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #005EFF;
+            --primary-dark: #0046bd;
+            --primary-light: rgba(0, 94, 255, 0.08);
+            --dark: #191F2E;
+            --gray-text: #414651;
+            --bg-light: #F5F7FA;
+            --surface-glass: rgba(255, 255, 255, 0.95);
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+            --shadow-md: 0 12px 24px -6px rgba(0,0,0,0.05);
+            --shadow-lg: 0 20px 40px -10px rgba(0,0,0,0.1);
+            --radius-lg: 16px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--bg-light);
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: var(--dark);
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 1.5rem; text-align: center; }
+        h2 { font-size: 2rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        h4 { font-size: 1.125rem; margin-bottom: 1rem; }
+        h5 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .gradient-text {
+            background: linear-gradient(135deg, #005EFF 0%, #00C6FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        p { margin-bottom: 1rem; color: var(--gray-text); font-size: 1rem; }
+        .text-center { text-align: center; }
+        .font-medium { font-weight: 500; }
+        .font-bold { font-weight: 700; }
+        .text-primary { color: var(--primary); }
+        .text-white { color: white; }
+        .text-sm { font-size: 0.875rem; }
+        .text-xs { font-size: 0.75rem; }
+        .text-lg { font-size: 1.125rem; }
+        main { overflow-x: hidden; }
+        section { padding: 5rem 1.5rem; position: relative; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .slide-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: var(--primary-light);
+            padding: 4px 12px;
+            border-radius: 100px;
+        }
+        .grid { display: grid; gap: 1.5rem; }
+        .grid-cols-2 { grid-template-columns: 1fr; }
+        .grid-cols-3 { grid-template-columns: 1fr; }
+        .span-3 { grid-column: span 1; }
+        .card {
+            background: var(--surface-glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            height: 100%;
+        }
+        .card-dark {
+            background: var(--dark);
+            color: white;
+            border: 1px solid #333;
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card-dark p { color: #9ca3af; margin-bottom: 0; }
+        .card-dark .text-white { color: white; }
+        .card-dark.left-align { align-items: flex-start; text-align: left; display: block; }
+        .browser-window {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 1.5rem auto;
+        }
+        .browser-header {
+            background: #F1F1F1;
+            padding: 10px 16px;
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid #E5E5E5;
+            align-items: center;
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot-red { background: #FF5F56; }
+        .dot-yellow { background: #FFBD2E; }
+        .dot-green { background: #27C93F; }
+        .browser-title { font-size: 12px; color: #888; margin-left: 10px; font-family: 'Inter', sans-serif; }
+        video { width: 100%; height: auto; display: block; }
+        .timestamp-link {
+            display: inline-flex;
+            align-items: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: rgba(0, 94, 255, 0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        .timestamp-link:hover { background: rgba(0, 94, 255, 0.15); border-color: var(--primary); }
+        .hero-bg { background: radial-gradient(circle at 50% 0%, #E3F2FD 0%, #F8FAFC 70%); padding-top: 6rem; }
+        .number-circle {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--primary);
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #E5E7EB;
+            box-shadow: var(--shadow-sm);
+            overflow-x: auto;
+        }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        thead { background: var(--dark); color: white; }
+        th { padding: 1rem 1.5rem; text-align: left; font-weight: 600; font-size: 0.9rem; }
+        td { padding: 1rem 1.5rem; border-bottom: 1px solid #E5E7EB; font-size: 0.9rem; color: var(--dark); }
+        tr:last-child td { border-bottom: none; }
+        .comp-table th { background: #F3F4F6; color: #535862; }
+        .comp-table th:first-child { background: white; color: var(--dark); }
+        .comp-table th:last-child { background: var(--primary); color: white; }
+        .col-knowcap { background: rgba(0, 94, 255, 0.04); border-left: 2px solid var(--primary); }
+        .tam-wrapper { position: relative; width: 100%; height: auto; margin: 0 auto; display: block; }
+        .tam-circle {
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: absolute;
+            justify-content: flex-start;
+        }
+        .flow-arrow { color: #CBD5E1; width: 24px; height: 24px; transform: rotate(0deg); margin: 0 0.5rem; }
+        .milestone-box {
+            background: white;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            width: auto;
+            min-width: 120px;
+        }
+        .acquisition-tag {
+            background: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid #E2E8F0;
+            font-weight: 600;
+            color: var(--dark);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+        .acquisition-container { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; }
+        .mt-spacer { margin-top: 3rem; }
+        .btn-primary {
+            display: inline-flex;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            background: white;
+            color: var(--dark);
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+        .btn-white {
+            background-color: white;
+            color: #0A0D12;
+            padding: 12px 32px;
+            border-radius: 6px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .btn-white:hover { opacity: 0.9; }
+        .mobile-forced-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .visible { opacity: 1; transform: translateY(0); }
+        .desktop-only { display: block; }
+        .mobile-only { display: none; }
+        @media (min-width: 768px) {
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.5rem; }
+            section { padding: 7rem 2rem; }
+            .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+            .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+            .span-3 { grid-column: span 3; }
+            .tam-wrapper { height: 720px; }
+            .tam-large {
+                width: 540px;
+                height: 540px;
+                border: 2px solid #BBDEFB;
+                z-index: 1;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                padding-top: 30px;
+            }
+            .tam-medium {
+                width: 360px;
+                height: 360px;
+                background: #E3F2FD;
+                border: 2px solid #64B5F6;
+                z-index: 2;
+                top: 157px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding-top: 40px;
+            }
+            .tam-small {
+                width: 200px;
+                height: 200px;
+                background: var(--primary);
+                color: white;
+                border: 2px solid #0046bd;
+                z-index: 3;
+                top: 330px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding-top: 45px;
+                box-shadow: 0 10px 25px rgba(0, 94, 255, 0.3);
+            }
+            .tam-text-card { max-width: 320px; }
+        }
+        @media (max-width: 767px) {
+            .desktop-only { display: none !important; }
+            .mobile-only { display: block !important; }
+            .acquisition-container { flex-direction: column; }
+            .acquisition-container .flow-arrow { transform: rotate(90deg); margin: 5px 0; }
+            .mobile-comp-card {
+                background: white;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: var(--shadow-sm);
+                border: 1px solid #E5E7EB;
+                margin-bottom: 1.5rem;
+            }
+            .mobile-comp-header {
+                background: var(--dark);
+                color: white;
+                padding: 10px 16px;
+                font-weight: 600;
+                font-size: 0.9rem;
+            }
+            .mobile-comp-grid { display: grid; grid-template-columns: 1fr 1fr; }
+            .mobile-comp-cell { padding: 12px; font-size: 0.85rem; }
+            .mobile-comp-cell.competitor { background: #f9f9f9; color: #666; border-right: 1px solid #eee; }
+            .mobile-comp-cell.knowcap { background: rgba(0, 94, 255, 0.04); color: var(--dark); font-weight: 600; }
+            .mobile-tam-box {
+                background: white;
+                border: 1px solid #E5E7EB;
+                border-radius: 12px;
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+                text-align: center;
+                box-shadow: var(--shadow-sm);
+            }
+            .mobile-tam-box h5 { font-size: 0.9rem; text-transform: uppercase; color: var(--gray-text); margin-bottom: 0.5rem; }
+            .mobile-tam-box p { font-size: 1.2rem; font-weight: 700; color: var(--dark); margin: 0; line-height: 1.3; }
+            .mobile-fin-card {
+                background: white;
+                border: 1px solid #E5E7EB;
+                border-radius: 12px;
+                padding: 1.25rem;
+                margin-bottom: 1rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="hero-bg">
+            <div class="container">
+                <div class="fade-in text-center max-w-4xl mx-auto" style="margin-bottom: 4rem;">
+                    <h1>Knowcap AI Turns Meetings & Screen Work Into <span class="gradient-text">Verified Project Documents</span></h1>
+                    <div class="card-dark max-w-3xl mx-auto" style="margin-top: 2rem;">
+                        <p class="text-white text-lg text-center mb-0" style="line-height: 1.6;">
+                            Knowcap watches your calls and your screen at the same time, capturing what was said and what was done. It then turns those moments into structured project documents with the exact steps, decisions, and context already filled in.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-in mb-16" style="margin-bottom: 6rem;">
+                    <div class="mb-8 text-center">
+                        <span class="slide-label">Traction</span>
+                        <h2>$4.3k MRR (8 Pilot Partners) — 150 hours saved per project</h2>
+                    </div>
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="card text-center">
+                            <h3 class="text-primary" style="font-size: 2.5rem;">100%</h3>
+                            <p class="font-medium">Renewal Rate</p>
+                            <p class="text-xs text-gray">All pilots renewed after first cycle</p>
+                        </div>
+                        <div class="card text-center">
+                            <h3 class="text-primary" style="font-size: 2.5rem;">14 Days</h3>
+                            <p class="font-medium">Sales Cycle</p>
+                            <p class="text-xs text-gray">High "Hair on Fire" demand intensity</p>
+                        </div>
+                        <div class="card text-center">
+                            <h3 class="text-primary" style="font-size: 2.5rem;">0 hrs</h3>
+                            <p class="font-medium">Manual Reporting</p>
+                            <p class="text-xs text-gray">Eliminated completely</p>
+                        </div>
+                        <div class="card span-3">
+                            <h4 class="text-dark">Timeline</h4>
+                            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                                <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                    <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">AUG</div>
+                                    <div><strong>Founded</strong><p class="mb-0 text-sm text-gray">August 19th, 2025.</p></div>
+                                </div>
+                                <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                    <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">SEP</div>
+                                    <div><strong>1 pilot partner</strong><p class="mb-0 text-sm text-gray">Validated execution gap & workflow model.</p></div>
+                                </div>
+                                <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                    <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">OCT</div>
+                                    <div><strong>Expanded to 8 pilot partners</strong><p class="mb-0 text-sm text-gray">$4.3k MRR.</p></div>
+                                </div>
+                                <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                    <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">NOV</div>
+                                    <div><strong>Added $8k/Month committed pipeline</strong><p class="mb-0 text-sm text-gray">Contingent on Zoom, Teams & Odoo integrations.</p></div>
+                                </div>
+                                <div style="display: flex; gap: 1rem; align-items: flex-start; background: rgba(0,94,255,0.05); padding: 1rem; border-radius: 8px; border: 1px dashed var(--primary);">
+                                    <div style="background: white; color: var(--primary); border: 1px solid var(--primary); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">NEXT</div>
+                                    <div><strong>Next Milestone</strong><p class="mb-0 text-sm text-dark">8 additional pilot partners at $1k/month each.</p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in" style="max-width: 900px; margin: 0 auto;">
+                    <div class="mb-12 text-center">
+                        <span class="slide-label">Introduction</span>
+                        <h3>Founder Welcome Message</h3>
+                        <div class="browser-window">
+                            <div class="browser-header">
+                                <div class="dot dot-red"></div>
+                                <div class="dot dot-yellow"></div>
+                                <div class="dot dot-green"></div>
+                                <div class="browser-title">founder_message.mp4</div>
+                            </div>
+                            <video controls preload="metadata">
+                                <source src="https://storage.googleapis.com/knowcap-ai.firebasestorage.app/projects/pXXvyBuGPEL517wC5ABL/public/1909a4c1-10c8-4f85-b522-57e5ff2948bf/97ce300d-4b71-4574-b6ed-1fdf3a4d9064.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <span class="slide-label">Demo</span>
+                        <h3>6-Minute Detailed Walkthrough</h3>
+                        <p class="text-sm text-gray mb-4">Click the blue timestamps below to jump to specific features.</p>
+                        <div class="browser-window">
+                            <div class="browser-header">
+                                <div class="dot dot-red"></div>
+                                <div class="dot dot-yellow"></div>
+                                <div class="dot dot-green"></div>
+                                <div class="browser-title">knowcap_platform_demo.mp4</div>
+                            </div>
+                            <video id="detailedVideo" controls preload="metadata">
+                                <source src="https://storage.googleapis.com/knowcap-ai.firebasestorage.app/projects/pXXvyBuGPEL517wC5ABL/public/8c233846-bd49-4a75-9ece-f8cb4feebc86/061fb893-775c-43d1-888f-0cf4546596a4.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: #F5F7FA;">
+            <div class="container fade-in">
+                <div class="mb-12">
+                    <span class="slide-label">The Problem</span>
+                    <h2>Service firms leak 20–40% of project hours due to undocumented work and unverifiable decisions</h2>
+                    <p class="text-center mt-4 text-lg">Gartner predicts >70% of ERP initiatives fail to meet original business goals due to poor alignment and scope drift.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="card flex items-start">
+                        <div class="number-circle">1</div>
+                        <div>
+                            <h5>Process drift</h5>
+                            <p class="mb-0 text-sm">Juniors skip or sequence steps incorrectly. <span class="timestamp-link" onclick="seekAndPlay(61, 'detailedVideo')">▶ 01:01</span></p>
+                        </div>
+                    </div>
+                    <div class="card flex items-start">
+                        <div class="number-circle">2</div>
+                        <div>
+                            <h5>Scope creep</h5>
+                            <p class="mb-0 text-sm">Clients “remember” extra work without proof. <span class="timestamp-link" onclick="seekAndPlay(73, 'detailedVideo')">▶ 01:13</span></p>
+                        </div>
+                    </div>
+                    <div class="card flex items-start" style="border-left: 4px solid #FF5F56;">
+                        <div class="number-circle" style="background: rgba(255,95,86,0.1); color: #FF5F56;">3</div>
+                        <div>
+                            <h5>Manual documentation</h5>
+                            <p class="mb-0 text-sm">2–3 hours/meeting rewriting notes. <span class="timestamp-link" onclick="seekAndPlay(83, 'detailedVideo')">▶ 01:23</span></p>
+                        </div>
+                    </div>
+                    <div class="card flex items-start">
+                        <div class="number-circle">4</div>
+                        <div>
+                            <h5>Knowledge loss</h5>
+                            <p class="mb-0 text-sm">Seniors repeatedly explain the same workflows. <span class="timestamp-link" onclick="seekAndPlay(89, 'detailedVideo')">▶ 01:29</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-dark text-center mt-spacer">
+                    <p class="text-white mb-0"><strong>Impact:</strong> Payroll is 70–90% of cost; losing 10% of billable hours can erase 100% of project profit.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">The Solution</span>
+                    <h2>Knowcap recovers 30% of total delivery time by turning real work into verifiable, timestamped documentation</h2>
+                </div>
+                <div class="card max-w-3xl mx-auto">
+                    <ul class="text-lg" style="list-style: none; padding: 0;">
+                        <li class="mb-4"><strong>✓ Captures context:</strong> call participation, real-time screen observation, document uploads</li>
+                        <li class="mb-4"><strong>✓ Understands execution:</strong> detects fields, clicks, steps, configurations</li>
+                        <li class="mb-4"><strong>✓ Compares against expectations:</strong> matches actions to SOPs, requirements, and agreements</li>
+                        <li class="mb-4"><strong>✓ Flags drifts:</strong> Project is At Risk from the original scope</li>
+                        <li class="mb-0"><strong>✓ Generates verifiable artifacts:</strong> contracts, quotations, SOPs, gap analyses</li>
+                    </ul>
+                </div>
+                <div class="card-dark text-center mt-spacer">
+                    <p class="text-white mb-0"><strong>Result:</strong> Improves accuracy, removes rework loops, and reveals project risks early.</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: #F5F7FA;">
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">How It Works</span>
+                    <h2>It writes the documents you hate writing.</h2>
+                    <p>Command the AI to Audit, Quote, and Document.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="card" style="padding: 1.5rem;">
+                            <h5 class="text-primary m-0 mb-2">1. Instant Quality Control</h5>
+                            <p class="text-sm font-bold mt-2 mb-1">The Prompt:</p>
+                            <p class="text-sm italic mb-0">"Audit @Junior’s work in these @4_meetings against @Odoo_Implementation_Methodology." <button class="timestamp-link" onclick="seekAndPlay(1, 'tutorialVideo')">▶ 00:01</button></p>
+                        </div>
+                        <div class="card" style="padding: 1.5rem;">
+                            <h5 class="text-primary m-0 mb-2">2. Admin on Autopilot</h5>
+                            <p class="text-sm font-bold mt-2 mb-1">The Prompt:</p>
+                            <p class="text-sm italic mb-0">"Draft Quotation based on @Kickoff_Meeting and @Requirements_Doc." <button class="timestamp-link" onclick="seekAndPlay(99, 'tutorialVideo')">▶ 01:39</button></p>
+                        </div>
+                        <div class="card" style="padding: 1.5rem;">
+                            <h5 class="text-primary m-0 mb-2">3. Automated Knowledge Base</h5>
+                            <p class="text-sm font-bold mt-2 mb-1">The Prompt:</p>
+                            <p class="text-sm italic mb-0">"Watch @Senior_Config_Session and generate a step-by-step Guide for our 3 new Juniors" <button class="timestamp-link" onclick="seekAndPlay(137, 'tutorialVideo')">▶ 02:17</button></p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="browser-window">
+                            <div class="browser-header">
+                                <div class="dot dot-red"></div>
+                                <div class="dot dot-yellow"></div>
+                                <div class="dot dot-green"></div>
+                                <div class="browser-title">knowcap_workflows.mp4</div>
+                            </div>
+                            <video id="tutorialVideo" controls preload="metadata">
+                                <source src="https://storage.googleapis.com/knowcap-ai.firebasestorage.app/projects/pXXvyBuGPEL517wC5ABL/public/1455c260-8965-4f53-a2ce-4552534ce645/0f947a19-14eb-4d5a-b945-5036fa0a15bc.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">Why Knowcap Wins</span>
+                    <h2>Competitors are Recorders. Knowcap is the Operating System.</h2>
+                </div>
+                <div class="table-container comp-table desktop-only">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Otter/Loom (The Recorders)</th>
+                                <th>Knowcap (The Intelligence)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Scope of Memory</strong></td>
+                                <td>Meeting-Level (Session Based)<br><small class="text-gray">Forgets previous context once call ends.</small></td>
+                                <td class="col-knowcap"><strong>Project-Level (Continuous)</strong><br><small>Synthesizes months of context.</small></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Integration Depth</strong></td>
+                                <td>Surface Level (Audio only)<br><small class="text-gray">Passive recording.</small></td>
+                                <td class="col-knowcap"><strong>Deep ERP Write Access</strong><br><small>Reads/Writes to Odoo & CRM directly.</small></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Language</strong></td>
+                                <td>Single Language<br><small class="text-gray">Confused by syntax switching.</small></td>
+                                <td class="col-knowcap"><strong>Fluid Code-Switching</strong><br><small>Parses mixed syntax instantly.</small></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Trust</strong></td>
+                                <td>"Black Box"<br><small class="text-gray">Prone to hallucinations.</small></td>
+                                <td class="col-knowcap"><strong>Verified Artifacts</strong><br><small>1-Click Hyperlinks to source video.</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mobile-only">
+                    <div class="mobile-comp-card">
+                        <div class="mobile-comp-header">Scope of Memory</div>
+                        <div class="mobile-comp-grid">
+                            <div class="mobile-comp-cell competitor">
+                                <strong>Meeting-Level (Session)</strong><br>
+                                <small>Forgets previous context once call ends.</small>
+                            </div>
+                            <div class="mobile-comp-cell knowcap">
+                                <strong>Project-Level (Continuous)</strong><br>
+                                <small>Synthesizes months of context.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-comp-card">
+                        <div class="mobile-comp-header">Integration Depth</div>
+                        <div class="mobile-comp-grid">
+                            <div class="mobile-comp-cell competitor">
+                                <strong>Surface Level (Audio)</strong><br>
+                                <small>Passive recording.</small>
+                            </div>
+                            <div class="mobile-comp-cell knowcap">
+                                <strong>Deep ERP Write Access</strong><br>
+                                <small>Reads/Writes to Odoo & CRM.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-comp-card">
+                        <div class="mobile-comp-header">Language</div>
+                        <div class="mobile-comp-grid">
+                            <div class="mobile-comp-cell competitor">
+                                <strong>Single Language</strong><br>
+                                <small>Confused by syntax switching.</small>
+                            </div>
+                            <div class="mobile-comp-cell knowcap">
+                                <strong>Fluid Code-Switching</strong><br>
+                                <small>Parses mixed syntax instantly.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-comp-card">
+                        <div class="mobile-comp-header">Trust</div>
+                        <div class="mobile-comp-grid">
+                            <div class="mobile-comp-cell competitor">
+                                <strong>"Black Box"</strong><br>
+                                <small>Prone to hallucinations.</small>
+                            </div>
+                            <div class="mobile-comp-cell knowcap">
+                                <strong>Verified Artifacts</strong><br>
+                                <small>1-Click Hyperlinks to source video.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: #F5F7FA;">
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">Why Now</span>
+                    <h2>Multimodal AI only became capable of understanding workflows in 2024–2025.</h2>
+                    <p class="mt-4">What changed?</p>
+                </div>
+                <div class="card max-w-3xl mx-auto">
+                    <ul class="text-lg" style="list-style: none; padding: 0;">
+                        <li class="mb-4"><strong>✓</strong> Models interpret UI, screens, workflows</li>
+                        <li class="mb-4"><strong>✓</strong> Million-token windows &rarr; project-level memory</li>
+                        <li class="mb-4"><strong>✓</strong> Mixed-language models handle consultant conversations</li>
+                        <li class="mb-4"><strong>✓</strong> New APIs combine speech + screen capture</li>
+                        <li class="mb-0"><strong>✓</strong> Vector DB + RAG support multi-month retrieval</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container fade-in">
+                <div class="grid grid-cols-2 gap-8 items-center">
+                    <div class="desktop-only">
+                        <span class="slide-label">Market Opportunity</span>
+                        <h2>Beachhead: $90M &rarr; Expansion: $5.1B</h2>
+                        <div class="card mt-6 tam-text-card" style="height: auto;">
+                            <p class="mb-2 text-xs uppercase tracking-wide text-gray">Beachhead Logic</p>
+                            <p class="text-lg font-bold mb-1">Odoo Ecosystem — $90M</p>
+                            <p class="text-sm text-gray mb-2">7,500 Partners × $12K ACV</p>
+                            <div style="background: var(--primary-light); padding: 8px; border-radius: 8px;">
+                                <p class="text-xs text-primary font-bold mb-0">Target Penetration:</p>
+                                <p class="text-xs text-dark mb-0">1.3% in 2026 &rarr; 2.6% in 2027</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tam-wrapper desktop-only">
+                        <div class="tam-circle tam-large">
+                            <h5 class="uppercase tracking-widest text-sm font-bold mb-0">Global TAM</h5>
+                            <p class="text-xs text-gray mb-1">Professional Service Agencies</p>
+                            <p class="text-sm text-gray font-bold mb-0">430,000 Firms × $12,000 ACV =</p>
+                            <h3 class="text-dark">$5.1B</h3>
+                        </div>
+                        <div class="tam-circle tam-medium">
+                            <h5 class="uppercase tracking-widest text-sm font-bold mb-0">Expansion</h5>
+                            <p class="text-xs text-dark mb-1">Specialized ERP Integrators</p>
+                            <p class="text-sm text-dark font-bold mb-0">50,000 Firms × $12,000 ACV =</p>
+                            <h3 class="text-dark">$600M</h3>
+                        </div>
+                        <div class="tam-circle tam-small">
+                            <h5 class="uppercase tracking-widest text-sm font-bold mb-0 text-white opacity-80">Beachhead</h5>
+                            <p class="text-xs text-white opacity-90 mb-1">Odoo Ecosystem</p>
+                            <p class="text-sm text-white font-bold mb-0">7,500 Partners × $12,000 ACV</p>
+                            <h3 class="text-white mb-0">= $90M</h3>
+                        </div>
+                    </div>
+                    <div class="mobile-only" style="grid-column: span 2;">
+                        <div class="text-center mb-8">
+                            <span class="slide-label">Market Opportunity</span>
+                            <h2>Beachhead: $90M &rarr; Expansion: $5.1B</h2>
+                        </div>
+                        <div class="mobile-tam-box">
+                            <h5>Bottom-Up Formula</h5>
+                            <p>7,500 Partners × $12K ACV = $90M</p>
+                        </div>
+                        <div class="mobile-tam-box">
+                            <h5>Global TAM</h5>
+                            <p>430,000 Firms = $5.1B</p>
+                        </div>
+                        <div class="mobile-tam-box">
+                            <h5>Expansion</h5>
+                            <p>50,000 Specialized Firms = $600M</p>
+                        </div>
+                        <div class="mobile-tam-box" style="background: var(--primary); border: none;">
+                            <h5 style="color: rgba(255,255,255,0.8);">Beachhead: Odoo Ecosystem</h5>
+                            <p style="color: white; font-size: 1.5rem;">$90M</p>
+                            <p style="color: rgba(255,255,255,0.9); font-size: 0.85rem; margin-top: 5px;">7,500 Partners × $12K ACV</p>
+                            <div style="background: rgba(255,255,255,0.1); padding: 8px; border-radius: 6px; margin-top: 10px;">
+                                <p style="color: white; font-size: 0.75rem; margin: 0;">Target: 1.3% ('26) &rarr; 2.6% ('27)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: #F5F7FA;">
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">Business Model</span>
+                    <h2>Tier-based SaaS: $1k–$5k MRR per firm</h2>
+                </div>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="card text-center" style="border: 2px solid var(--primary);">
+                        <h4 class="text-primary">Core</h4>
+                        <p class="text-dark" style="font-size: 2rem; font-weight:700;">$1,000<span class="text-sm text-gray">/mo</span></p>
+                        <p class="text-xs text-gray mt-2">Up to 10 seats</p>
+                    </div>
+                    <div class="card text-center">
+                        <h4 class="text-primary">Growth</h4>
+                        <p class="text-dark" style="font-size: 2rem; font-weight:700;">$2,500<span class="text-sm text-gray">/mo</span></p>
+                        <p class="text-xs text-gray mt-2">Up to 30 seats</p>
+                    </div>
+                    <div class="card text-center">
+                        <h4 class="text-primary">Enterprise</h4>
+                        <p class="text-dark" style="font-size: 2rem; font-weight:700;">$5,000<span class="text-sm text-gray">/mo</span></p>
+                        <p class="text-xs text-gray mt-2">Unlimited seats</p>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 5rem;">
+                    <h4 class="mb-4">Why customers pay</h4>
+                    <ul class="text-gray" style="list-style-position: inside;">
+                        <li>150 hours saved per project</li>
+                        <li>Recover 30% of lost billable time</li>
+                        <li>Verified memory compounds value & reduces churn</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">Go-To-Market</span>
+                    <h2>Clear path to 100 customers &rarr; $100k MRR</h2>
+                </div>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="card">
+                        <div class="number-circle mb-4">1</div>
+                        <h5>Phase 1: Direct Founder Sales via Odoo Network</h5>
+                        <p class="text-sm">500+ warm introductions available via CEO's previous status as Gold Partner.</p>
+                    </div>
+                    <div class="card">
+                        <div class="number-circle mb-4">2</div>
+                        <h5>Phase 2: Referrals & Case Studies</h5>
+                        <p class="text-sm">Verified ROI expands into IT consultancies and agencies</p>
+                    </div>
+                    <div class="card">
+                        <div class="number-circle mb-4">3</div>
+                        <h5>Phase 3: Integrations & Marketplaces</h5>
+                        <p class="text-sm">Odoo App Store, Jira, ClickUp, Slack, and Open AI Agent Marketplace</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: #F5F7FA;">
+            <div class="container fade-in">
+                <div class="text-center mb-12">
+                    <span class="slide-label">Financials & Unit Economics</span>
+                    <h2>Path to Profitability: Break-even by Sept 2026</h2>
+                </div>
+                <div class="grid grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="mb-4">Projections</h3>
+                        <div class="table-container desktop-only">
+                            <table>
+                                <thead><tr><th>Year</th><th>Partner Breakdown</th><th>Outcome</th></tr></thead>
+                                <tbody>
+                                    <tr>
+                                        <td>2025</td>
+                                        <td>8 Pilot Partners</td>
+                                        <td>$4.3k MRR (Current)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2026</td>
+                                        <td>100 Odoo Partners</td>
+                                        <td>$100k MRR</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2027</td>
+                                        <td>200 Odoo + 50 Microsoft Dynamics + 50 Oracle</td>
+                                        <td>$300k MRR</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mobile-only">
+                            <div class="mobile-fin-card">
+                                <div><strong>2025</strong><br><small>8 Pilot Partners</small></div>
+                                <div class="text-primary font-bold">$4.3k MRR</div>
+                            </div>
+                            <div class="mobile-fin-card">
+                                <div><strong>2026</strong><br><small>100 Odoo Partners</small></div>
+                                <div class="text-primary font-bold">$100k MRR</div>
+                            </div>
+                            <div class="mobile-fin-card">
+                                <div><strong>2027</strong><br><small>200 Odoo + 50 Microsoft Dynamics + 50 Oracle</small></div>
+                                <div class="text-primary font-bold">$300k MRR</div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-spacer">
+                            <div class="card" style="display: inline-block; padding: 0.75rem 1.5rem; width: auto; height: auto;">
+                                <p class="mb-0 text-dark"><strong>Break-even:</strong> Sept 2026 (~50 customers)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="mb-4">Unit Economics (60-Day Payback)</h3>
+                        <div class="mobile-forced-grid gap-4">
+                            <div class="card text-center flex flex-col justify-center" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <small class="text-gray uppercase font-bold">Avg Sub</small>
+                                <p class="text-xl font-bold mt-1 mb-0 text-dark">$1k/mo</p>
+                            </div>
+                            <div class="card text-center flex flex-col justify-center" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <small class="text-gray uppercase font-bold">Gross Margin</small>
+                                <p class="text-xl font-bold mt-1 mb-0 text-primary">85%</p>
+                            </div>
+                            <div class="card text-center flex flex-col justify-center" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <small class="text-gray uppercase font-bold">CAC</small>
+                                <p class="text-xl font-bold mt-1 mb-0 text-dark">$1.5K</p>
+                            </div>
+                            <div class="card text-center flex flex-col justify-center" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <small class="text-gray uppercase font-bold">LTV</small>
+                                <p class="text-xl font-bold mt-1 mb-0 text-dark">$36K+</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container fade-in">
+                <div class="mb-16 text-center">
+                    <span class="slide-label">Path to 100 Customers</span>
+                    <h2>Execution-driven quarterly plan for predictable scale</h2>
+                </div>
+                <div class="card mb-12">
+                    <h4>Outcome</h4>
+                    <ul style="list-style: disc; padding-left: 1.5rem;">
+                        <li>50 customers &rarr; break-even September 2026</li>
+                        <li>100 customers &rarr; $100k MRR</li>
+                    </ul>
+                </div>
+                <div class="mb-12" style="margin-top: 3rem;">
+                    <h4 class="text-center mb-6 text-gray text-sm uppercase tracking-wider">Quarterly Growth Plan</h4>
+                    <div class="mobile-forced-grid flex flex-wrap justify-center items-center gap-4" style="justify-content: center;">
+                        <div class="milestone-box"><p class="text-gray font-bold mb-1">Q1</p><p class="text-primary text-2xl font-bold mb-0">+15</p></div>
+                        <div class="milestone-box"><p class="text-gray font-bold mb-1">Q2</p><p class="text-primary text-2xl font-bold mb-0">+23</p></div>
+                        <div class="milestone-box"><p class="text-gray font-bold mb-1">Q3</p><p class="text-primary text-2xl font-bold mb-0">+25</p></div>
+                        <div class="milestone-box"><p class="text-gray font-bold mb-1">Q4</p><p class="text-primary text-2xl font-bold mb-0">+37</p></div>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem;">
+                    <h4 class="text-center mb-6 text-gray text-sm uppercase tracking-wider">Acquisition Flow</h4>
+                    <div class="acquisition-container">
+                        <div class="acquisition-tag">Network</div><svg class="flow-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        <div class="acquisition-tag">Referrals</div><svg class="flow-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        <div class="acquisition-tag">Integrations</div><svg class="flow-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        <div class="acquisition-tag">Outbound Sales (SDRs)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: #F5F7FA;">
+            <div class="container fade-in">
+                <div class="mb-16 text-center">
+                    <span class="slide-label">Team</span>
+                    <h2>Founder-Market Fit: 10 Years of Implementation Scars + Top 1% AI Talent</h2>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="card">
+                        <h3>Hassan Sam Arslan</h3>
+                        <p class="text-primary font-bold mb-4">Founder/CEO</p>
+                        <p>Co-founded Ariika ($0 &rarr; $20M). Former Odoo Gold Partner. <strong>Lost $200k on unbilled scope creep in previous agency.</strong></p>
+                    </div>
+                    <div class="card">
+                        <h3>Hesham Tarek</h3>
+                        <p class="text-primary font-bold mb-4">Technical Co-Founder</p>
+                        <p>AI systems architect. <strong>Wrote 100% of Knowcap’s VTE core code.</strong></p>
+                    </div>
+                </div>
+                <p class="text-center mt-8 text-gray font-medium">Founders with deep domain obsession and proven execution.</p>
+            </div>
+        </section>
+
+        <section>
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">Product Vision</span>
+                    <h2>From Documentation &rarr; Automation &rarr; The Verification Standard</h2>
+                </div>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="card" style="border-top: 4px solid var(--primary);"><div class="number-circle mb-4">1</div><h5>Phase 1: Documentation & Verification</h5></div>
+                    <div class="card" style="border-top: 4px solid #00C6FF;"><div class="number-circle mb-4">2</div><h5>Phase 2: Vibe Tasking (AI creates & completes tasks)</h5></div>
+                    <div class="card" style="border-top: 4px solid var(--dark);"><div class="number-circle mb-4" style="background: var(--dark); color: white;">3</div><h5>Phase 3: The Verification Standard (The global dataset for project truth)</h5></div>
+                </div>
+                <div class="card-dark mt-spacer text-center"><p class="text-white mb-0"><strong>Moat:</strong> verified datasets competitors cannot replicate.</p></div>
+            </div>
+        </section>
+
+        <section class="bg-dark" style="background: #0A0D12; color: white; min-height: 90vh; display: flex; align-items: center;">
+            <div class="container fade-in">
+                <div class="text-center mb-16">
+                    <span class="slide-label" style="background: rgba(255,255,255,0.1); color: white;">The Ask</span>
+                    <h2 style="color: white;">Raising $750K <span style="font-weight:400; color:#888;">(SAFE @ $10M Pre)</span></h2>
+                    <p style="color: #aaa;">To reach 100 customers & break-even at 50 (September 2026)</p>
+                </div>
+                <div class="grid grid-cols-2 gap-12 items-start">
+                    <div class="card-dark left-align">
+                        <h4 class="text-white mb-6">Milestone Unlock (18 Months)</h4>
+                        <div style="height: 8px; border-radius: 4px; background: #333; overflow: hidden; display: flex; margin-bottom: 1.5rem;">
+                            <div style="width: 45%; background: #005EFF;"></div>
+                            <div style="width: 30%; background: #00C6FF;"></div>
+                            <div style="width: 25%; background: #fff;"></div>
+                        </div>
+                        <div class="space-y-4" style="display: grid; gap: 1rem;">
+                            <div style="display: flex; gap: 10px; align-items: start;">
+                                <div style="width:40px; text-align:center; font-weight:bold; background:#005EFF; color:white; border-radius:50%;">45%</div>
+                                <div style="text-align: left;"><strong class="text-white">Growth Engine</strong><br><span class="text-sm text-gray">Ads, partner referrals, and outbound SDR operations.</span></div>
+                            </div>
+                            <div style="display: flex; gap: 10px; align-items: start;">
+                                <div style="width:40px; text-align:center; font-weight:bold; background:#00C6FF; color:white; border-radius:50%;">30%</div>
+                                <div style="text-align: left;"><strong class="text-white">Product Acceleration</strong><br><span class="text-sm text-gray">Mobile app, deep integrations, and "Vibe Tasking" beta.</span></div>
+                            </div>
+                            <div style="display: flex; gap: 10px; align-items: start;">
+                                <div style="width:40px; text-align:center; font-weight:bold; background:#fff; color:#000; border-radius:50%;">25%</div>
+                                <div style="text-align: left;"><strong class="text-white">Core Team & Infrastructure</strong><br><span class="text-sm text-gray">Expanding AI and engineering capacity.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card-dark left-align mb-6">
+                            <h4 class="text-white mb-4">Expected Outcomes:</h4>
+                            <ul style="list-style: none; padding: 0;" class="space-y-3">
+                                <li style="display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start;">
+                                    <span class="text-primary" style="font-weight: bold;">✓</span>
+                                    <div><strong>Immediate:</strong> Deliver Zoom, Teams & Odoo multimodal integration → unlock $8k/month committed pipeline.</div>
+                                </li>
+                                <li style="display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start;">
+                                    <span class="text-primary" style="font-weight: bold;">✓</span>
+                                    <div><strong>Launch:</strong> Go public with 20–25 paying customers.</div>
+                                </li>
+                                <li style="display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start;">
+                                    <span class="text-primary" style="font-weight: bold;">✓</span>
+                                    <div><strong>Scale:</strong> Reach 100 customers → $100k MRR.</div>
+                                </li>
+                                <li style="display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start;">
+                                    <span class="text-primary" style="font-weight: bold;">✓</span>
+                                    <div><strong>Safety:</strong> Achieve break-even profitability by September 2026.</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="background: var(--primary); padding: 1.5rem; border-radius: 12px; text-align: center;">
+                            <p class="text-white font-bold mb-2">Thesis</p>
+                            <p class="text-white text-sm mb-0">Capture the Odoo ecosystem first — then expand to all professional service firms with a verified AI delivery layer.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 6rem;">
+                    <a href="https://knowcap.ai/invest" class="btn-white">
+                        Schedule an Investor Call &rarr;
+                    </a>
+                    <div class="mt-6">
+                        <a href="https://share.knowcap.ai/?token=6b654198-54a4-4092-9cf9-e829cecd153c" style="color: #888; font-size: 0.8rem; text-decoration: underline;">Watch 2 min demo on how i created this Interactive Pitch Deck</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        function seekAndPlay(time, videoId) {
+            const video = document.getElementById(videoId);
+            if (video) {
+                video.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                video.currentTime = time;
+                video.play().catch(e => console.log("Auto-play prevented:", e));
+            }
+        }
+    </script>
+</body>
+</html>
