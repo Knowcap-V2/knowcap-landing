@@ -10,40 +10,65 @@ export const dynamic = 'force-dynamic' // Force rebuild for Gmail API deployment
 // Get Gmail OAuth access token from Abacus.AI auth secrets (runtime only)
 function getGmailAccessToken(): string | null {
   try {
+    console.log('[TOKEN] Attempting to read Gmail OAuth token...')
+    
     // This path is only accessed at runtime in the deployed environment
     // Using environment variable to avoid build-time path detection
     const homeDir = process.env.HOME
     if (!homeDir) {
-      console.error('HOME environment variable not set')
+      console.error('[TOKEN] ❌ HOME environment variable not set')
       return null
     }
     
+    console.log('[TOKEN] HOME directory:', homeDir)
     const authSecretsPath = `${homeDir}/.config/abacusai_auth_secrets.json`
+    console.log('[TOKEN] Checking path:', authSecretsPath)
     
     if (fs.existsSync(authSecretsPath)) {
+      console.log('[TOKEN] ✅ Auth secrets file exists')
       const secrets = JSON.parse(fs.readFileSync(authSecretsPath, 'utf-8'))
-      return secrets?.gmailuser?.secrets?.access_token?.value || null
+      const token = secrets?.gmailuser?.secrets?.access_token?.value || null
+      
+      if (token) {
+        console.log('[TOKEN] ✅ Token found, length:', token.length)
+      } else {
+        console.error('[TOKEN] ❌ Token not found in secrets file structure')
+        console.error('[TOKEN] Available keys:', Object.keys(secrets))
+      }
+      
+      return token
+    } else {
+      console.error('[TOKEN] ❌ Auth secrets file does NOT exist at:', authSecretsPath)
     }
-  } catch (error) {
-    console.error('Error reading Gmail OAuth token:', error)
+  } catch (error: any) {
+    console.error('[TOKEN] ❌ Error reading Gmail OAuth token:', error.message)
   }
   return null
 }
 
 // Send email using Gmail API
 async function sendGmailEmail(to: string, subject: string, htmlBody: string) {
+  console.log('[EMAIL] 🚀 Starting email send process')
+  console.log('[EMAIL] 📧 To:', to)
+  console.log('[EMAIL] 📝 Subject:', subject)
+  
   const accessToken = getGmailAccessToken()
   
   if (!accessToken) {
+    console.error('[EMAIL] ❌ OAuth token not found!')
     throw new Error('Gmail OAuth token not found. Please reconnect Gmail.')
   }
+  
+  console.log('[EMAIL] ✅ Access token found (length:', accessToken.length, ')')
 
   // Create OAuth2 client
   const oauth2Client = new google.auth.OAuth2()
   oauth2Client.setCredentials({ access_token: accessToken })
+  console.log('[EMAIL] ✅ OAuth2 client created')
 
   // Create Gmail API client
   const gmail = google.gmail({ version: 'v1', auth: oauth2Client })
+  console.log('[EMAIL] ✅ Gmail API client initialized')
 
   // Create email message
   const message = [
@@ -64,13 +89,15 @@ async function sendGmailEmail(to: string, subject: string, htmlBody: string) {
     .replace(/=+$/, '')
 
   // Send email
+  console.log('[EMAIL] 📤 Sending email via Gmail API...')
   const result = await gmail.users.messages.send({
     userId: 'me',
     requestBody: {
       raw: encodedMessage
     }
   })
-
+  
+  console.log('[EMAIL] ✅ Email sent successfully! Message ID:', result.data.id)
   return result.data
 }
 
@@ -154,8 +181,9 @@ export async function POST(request: NextRequest) {
       )
 
       console.log('✅ Beta application email sent successfully to hsa@knowcap.ai')
-    } catch (emailError) {
-      console.error('Error sending email:', emailError)
+    } catch (emailError: any) {
+      console.error('[EMAIL] ❌ Error sending email:', emailError.message)
+      console.error('[EMAIL] Full error:', JSON.stringify(emailError, null, 2))
       // Don't fail the request if email fails - data is already saved
     }
 
