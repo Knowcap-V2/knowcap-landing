@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Download, RefreshCw, Mail, Building, User, Calendar } from 'lucide-react'
+import { Input } from '@/components/ui/input'
+import { Download, RefreshCw, Mail, Building, User, Calendar, Lock, LogOut } from 'lucide-react'
 
 interface BetaApplication {
   id: string
@@ -20,6 +21,39 @@ export default function BetaApplicationsPage() {
   const [applications, setApplications] = useState<BetaApplication[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [passcode, setPasscode] = useState('')
+  const [passcodeError, setPasscodeError] = useState('')
+
+  // Check if already authenticated from session
+  useEffect(() => {
+    const authenticated = sessionStorage.getItem('betaapp_authenticated')
+    if (authenticated === 'true') {
+      setIsAuthenticated(true)
+    } else {
+      setLoading(false)
+    }
+  }, [])
+
+  const handlePasscodeSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setPasscodeError('')
+    
+    if (passcode === '2686') {
+      setIsAuthenticated(true)
+      sessionStorage.setItem('betaapp_authenticated', 'true')
+      setPasscode('')
+    } else {
+      setPasscodeError('Invalid passcode. Please try again.')
+      setPasscode('')
+    }
+  }
+
+  const handleLogout = () => {
+    setIsAuthenticated(false)
+    sessionStorage.removeItem('betaapp_authenticated')
+    setApplications([])
+  }
 
   const fetchApplications = async () => {
     setLoading(true)
@@ -40,8 +74,10 @@ export default function BetaApplicationsPage() {
   }
 
   useEffect(() => {
-    fetchApplications()
-  }, [])
+    if (isAuthenticated) {
+      fetchApplications()
+    }
+  }, [isAuthenticated])
 
   const downloadCSV = () => {
     const headers = ['ID', 'Name', 'Email', 'Company', 'Role', 'Submitted', 'Motivation']
@@ -71,6 +107,48 @@ export default function BetaApplicationsPage() {
     window.URL.revokeObjectURL(url)
   }
 
+  // Show passcode form if not authenticated
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-[#F5F5F5] to-[#E5E5E5] flex items-center justify-center py-12 px-4">
+        <Card className="w-full max-w-md p-8">
+          <div className="text-center mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#005EFF]/10 mb-4">
+              <Lock className="w-8 h-8 text-[#005EFF]" />
+            </div>
+            <h1 className="text-2xl font-bold text-[#0A0D12] mb-2">Admin Access Required</h1>
+            <p className="text-gray-600">Enter passcode to view beta applications</p>
+          </div>
+
+          <form onSubmit={handlePasscodeSubmit} className="space-y-4">
+            <div>
+              <Input
+                type="password"
+                placeholder="Enter passcode"
+                value={passcode}
+                onChange={(e) => setPasscode(e.target.value)}
+                className="text-center text-lg tracking-widest"
+                autoFocus
+              />
+            </div>
+
+            {passcodeError && (
+              <p className="text-sm text-red-600 text-center">{passcodeError}</p>
+            )}
+
+            <Button
+              type="submit"
+              className="w-full bg-[#005EFF] text-white hover:bg-[#0047CC] transition-colors"
+              disabled={!passcode}
+            >
+              Access Dashboard
+            </Button>
+          </form>
+        </Card>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F5F5F5] to-[#E5E5E5] py-12 px-4">
       <div className="max-w-7xl mx-auto">
@@ -84,6 +162,14 @@ export default function BetaApplicationsPage() {
               </p>
             </div>
             <div className="flex gap-3">
+              <Button
+                onClick={handleLogout}
+                variant="outline"
+                className="border-gray-300 text-gray-600 hover:bg-gray-100 transition-colors"
+              >
+                <LogOut className="w-4 h-4 mr-2" />
+                Logout
+              </Button>
               <Button
                 onClick={fetchApplications}
                 disabled={loading}
