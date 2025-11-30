@@ -1,22 +1,77 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
-import nodemailer from 'nodemailer'
+import { google } from 'googleapis'
+import * as fs from 'fs'
 
 const prisma = new PrismaClient()
 
 export const dynamic = 'force-dynamic'
 
-// Create email transporter
-async function createEmailTransporter() {
-  return nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    auth: {
-      user: 'hsa@knowcap.ai',
-      pass: process.env.GMAIL_APP_PASSWORD || ''
+// Get Gmail OAuth access token from Abacus.AI auth secrets (runtime only)
+function getGmailAccessToken(): string | null {
+  try {
+    // This path is only accessed at runtime in the deployed environment
+    // Using environment variable to avoid build-time path detection
+    const homeDir = process.env.HOME
+    if (!homeDir) {
+      console.error('HOME environment variable not set')
+      return null
+    }
+    
+    const authSecretsPath = `${homeDir}/.config/abacusai_auth_secrets.json`
+    
+    if (fs.existsSync(authSecretsPath)) {
+      const secrets = JSON.parse(fs.readFileSync(authSecretsPath, 'utf-8'))
+      return secrets?.gmailuser?.secrets?.access_token?.value || null
+    }
+  } catch (error) {
+    console.error('Error reading Gmail OAuth token:', error)
+  }
+  return null
+}
+
+// Send email using Gmail API
+async function sendGmailEmail(to: string, subject: string, htmlBody: string) {
+  const accessToken = getGmailAccessToken()
+  
+  if (!accessToken) {
+    throw new Error('Gmail OAuth token not found. Please reconnect Gmail.')
+  }
+
+  // Create OAuth2 client
+  const oauth2Client = new google.auth.OAuth2()
+  oauth2Client.setCredentials({ access_token: accessToken })
+
+  // Create Gmail API client
+  const gmail = google.gmail({ version: 'v1', auth: oauth2Client })
+
+  // Create email message
+  const message = [
+    'Content-Type: text/html; charset=utf-8',
+    'MIME-Version: 1.0',
+    `From: "Knowcap Beta Applications" <hsa@smetools.io>`,
+    `To: ${to}`,
+    `Subject: ${subject}`,
+    '',
+    htmlBody
+  ].join('\n')
+
+  // Encode message in base64url format
+  const encodedMessage = Buffer.from(message)
+    .toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '')
+
+  // Send email
+  const result = await gmail.users.messages.send({
+    userId: 'me',
+    requestBody: {
+      raw: encodedMessage
     }
   })
+
+  return result.data
 }
 
 export async function POST(request: NextRequest) {
@@ -63,8 +118,6 @@ export async function POST(request: NextRequest) {
 
     // Try to send email
     try {
-      const transporter = await createEmailTransporter()
-
       const htmlBody = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #005EFF;">New Beta Application Submission</h2>
@@ -94,12 +147,11 @@ export async function POST(request: NextRequest) {
         </div>
       `
 
-      await transporter.sendMail({
-        from: '"Knowcap Beta Applications" <hsa@knowcap.ai>',
-        to: 'hsa@knowcap.ai',
-        subject: `New Beta Application: ${name} from ${company}`,
-        html: htmlBody
-      })
+      await sendGmailEmail(
+        'hsa@knowcap.ai',
+        `New Beta Application: ${name} from ${company}`,
+        htmlBody
+      )
 
       console.log('✅ Beta application email sent successfully to hsa@knowcap.ai')
     } catch (emailError) {
