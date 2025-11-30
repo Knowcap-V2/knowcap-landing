@@ -1,104 +1,51 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
-import { google } from 'googleapis'
-import * as fs from 'fs'
+import nodemailer from 'nodemailer'
 
 const prisma = new PrismaClient()
 
-export const dynamic = 'force-dynamic' // Force rebuild for Gmail API deployment
+export const dynamic = 'force-dynamic'
 
-// Get Gmail OAuth access token from Abacus.AI auth secrets (runtime only)
-function getGmailAccessToken(): string | null {
-  try {
-    console.log('[TOKEN] Attempting to read Gmail OAuth token...')
-    
-    // This path is only accessed at runtime in the deployed environment
-    // Using environment variable to avoid build-time path detection
-    const homeDir = process.env.HOME
-    if (!homeDir) {
-      console.error('[TOKEN] ❌ HOME environment variable not set')
-      return null
-    }
-    
-    console.log('[TOKEN] HOME directory:', homeDir)
-    const authSecretsPath = `${homeDir}/.config/abacusai_auth_secrets.json`
-    console.log('[TOKEN] Checking path:', authSecretsPath)
-    
-    if (fs.existsSync(authSecretsPath)) {
-      console.log('[TOKEN] ✅ Auth secrets file exists')
-      const secrets = JSON.parse(fs.readFileSync(authSecretsPath, 'utf-8'))
-      const token = secrets?.gmailuser?.secrets?.access_token?.value || null
-      
-      if (token) {
-        console.log('[TOKEN] ✅ Token found, length:', token.length)
-      } else {
-        console.error('[TOKEN] ❌ Token not found in secrets file structure')
-        console.error('[TOKEN] Available keys:', Object.keys(secrets))
-      }
-      
-      return token
-    } else {
-      console.error('[TOKEN] ❌ Auth secrets file does NOT exist at:', authSecretsPath)
-    }
-  } catch (error: any) {
-    console.error('[TOKEN] ❌ Error reading Gmail OAuth token:', error.message)
-  }
-  return null
-}
-
-// Send email using Gmail API
-async function sendGmailEmail(to: string, subject: string, htmlBody: string) {
-  console.log('[EMAIL] 🚀 Starting email send process')
+// Send email using SMTP with Gmail App Password
+async function sendEmail(to: string, subject: string, htmlBody: string) {
+  console.log('[EMAIL] 🚀 Starting email send process via SMTP')
   console.log('[EMAIL] 📧 To:', to)
   console.log('[EMAIL] 📝 Subject:', subject)
   
-  const accessToken = getGmailAccessToken()
+  // Check for Gmail App Password
+  const gmailPassword = process.env.GMAIL_APP_PASSWORD
+  const gmailUser = process.env.GMAIL_USER || 'hsa@knowcap.ai'
   
-  if (!accessToken) {
-    console.error('[EMAIL] ❌ OAuth token not found!')
-    throw new Error('Gmail OAuth token not found. Please reconnect Gmail.')
+  if (!gmailPassword) {
+    console.error('[EMAIL] ❌ GMAIL_APP_PASSWORD not set in environment variables')
+    throw new Error('Gmail App Password not configured. Please set GMAIL_APP_PASSWORD environment variable.')
   }
   
-  console.log('[EMAIL] ✅ Access token found (length:', accessToken.length, ')')
+  console.log('[EMAIL] ✅ Gmail credentials found')
+  console.log('[EMAIL] 📧 Sending from:', gmailUser)
 
-  // Create OAuth2 client
-  const oauth2Client = new google.auth.OAuth2()
-  oauth2Client.setCredentials({ access_token: accessToken })
-  console.log('[EMAIL] ✅ OAuth2 client created')
-
-  // Create Gmail API client
-  const gmail = google.gmail({ version: 'v1', auth: oauth2Client })
-  console.log('[EMAIL] ✅ Gmail API client initialized')
-
-  // Create email message
-  const message = [
-    'Content-Type: text/html; charset=utf-8',
-    'MIME-Version: 1.0',
-    `From: "Knowcap Beta Applications" <hsa@smetools.io>`,
-    `To: ${to}`,
-    `Subject: ${subject}`,
-    '',
-    htmlBody
-  ].join('\n')
-
-  // Encode message in base64url format
-  const encodedMessage = Buffer.from(message)
-    .toString('base64')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-    .replace(/=+$/, '')
-
-  // Send email
-  console.log('[EMAIL] 📤 Sending email via Gmail API...')
-  const result = await gmail.users.messages.send({
-    userId: 'me',
-    requestBody: {
-      raw: encodedMessage
+  // Create SMTP transporter
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: gmailUser,
+      pass: gmailPassword
     }
   })
   
-  console.log('[EMAIL] ✅ Email sent successfully! Message ID:', result.data.id)
-  return result.data
+  console.log('[EMAIL] ✅ SMTP transporter created')
+
+  // Send email
+  console.log('[EMAIL] 📤 Sending email via SMTP...')
+  const info = await transporter.sendMail({
+    from: `"Knowcap Beta Applications" <${gmailUser}>`,
+    to: to,
+    subject: subject,
+    html: htmlBody
+  })
+  
+  console.log('[EMAIL] ✅ Email sent successfully! Message ID:', info.messageId)
+  return info
 }
 
 export async function POST(request: NextRequest) {
@@ -174,7 +121,7 @@ export async function POST(request: NextRequest) {
         </div>
       `
 
-      await sendGmailEmail(
+      await sendEmail(
         'hsa@knowcap.ai',
         `New Beta Application: ${name} from ${company}`,
         htmlBody
