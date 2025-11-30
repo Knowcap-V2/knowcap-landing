@@ -5,7 +5,7 @@ import * as fs from 'fs'
 
 const prisma = new PrismaClient()
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-dynamic' // Force rebuild for Gmail API deployment
 
 // Get Gmail OAuth access token from Abacus.AI auth secrets (runtime only)
 function getGmailAccessToken(): string | null {
