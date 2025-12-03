@@ -339,7 +339,7 @@ export default function OfferPage() {
               </div>
 
               <br />
-              <a href="#" className="btn-primary">Activate Pilot License</a>
+              <a href="https://buy.stripe.com/5kQ14n4Tm9STca94bH0co05" className="btn-primary">Activate Pilot License</a>
               <p className="text-xs text-gray mt-4">Offer expires when the last 2 spots are filled.</p>
             </div>
           </div>
