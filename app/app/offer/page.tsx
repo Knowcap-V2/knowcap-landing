@@ -235,11 +235,11 @@ export default function OfferPage() {
               <div className="card-dark max-w-3xl mx-auto" style={{ marginTop: '2rem' }}>
                 <h3 className="text-white mb-2">The Cost of Inaction</h3>
                 <p className="text-white text-lg mb-0" style={{ lineHeight: '1.6' }}>
-                  You pay a Senior Consultant ~70k EGP/mo, but you bill them at <strong>$50 USD/hr</strong>.
+                  You pay a Senior Consultant ~70k EGP/month ($2k-5k USD), but you bill them at <strong>$75 USD/hr</strong>.
                   <br /><br />
-                  When they waste <strong>180 hours</strong> on rework and support, you aren&apos;t losing cheap EGP. You are losing <strong>$9,000 USD</strong> in billable revenue per project.
+                  When they waste <strong>180 hours</strong> on rework and support, you aren&apos;t losing cheap salaries. You are losing <strong>$13,500 USD</strong> in billable revenue per project.
                   <br />
-                  <span style={{ color: '#FF5F56', fontSize: '0.9rem' }}>(That is equal to 6 months of their salary burned.)</span>
+                  <span style={{ color: '#FF5F56', fontSize: '0.9rem' }}>(That is 4-7x their monthly salary burned.)</span>
                 </p>
               </div>
             </div>
