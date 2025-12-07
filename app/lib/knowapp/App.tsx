@@ -102,8 +102,12 @@ const App: React.FC = () => {
   // 1. Create Source Immediately (Instant UI Feedback)
   // 2. Persist Media & Start Analysis in Background
   const handleUploadFiles = async (notebookId: string, files: FileList) => {
+    console.log(`[Knowapp] handleUploadFiles called with ${files.length} file(s)`);
     const nb = notebooks.find(n => n.id === notebookId);
-    if (!nb) return;
+    if (!nb) {
+      console.error('[Knowapp] Notebook not found:', notebookId);
+      return;
+    }
 
     const newSources: Source[] = [];
     const backgroundQueue: { sourceId: string, file: File, type: Source['type'] }[] = [];
@@ -117,8 +121,11 @@ const App: React.FC = () => {
         else if (file.type.startsWith('video/')) type = 'video';
         else if (file.type === 'application/pdf') type = 'pdf';
 
+        console.log(`[Knowapp] Processing file: ${file.name} (${file.type}) -> type: ${type}, size: ${file.size} bytes`);
+
         // Use Blob URL for immediate playback/display without waiting for Base64 conversion
         const blobUrl = (type === 'audio' || type === 'video' || type === 'pdf') ? URL.createObjectURL(file) : undefined;
+        console.log(`[Knowapp] Created blob URL for ${file.name}: ${blobUrl}`);
 
         // Initial Source State
         const source: Source = {
@@ -135,16 +142,19 @@ const App: React.FC = () => {
             videoData: (type === 'video' || type === 'pdf') ? blobUrl : undefined,
         };
 
+        console.log(`[Knowapp] Created source object for ${sourceId}:`, { id: sourceId, title: file.name, type, status: 'processing' });
         newSources.push(source);
         backgroundQueue.push({ sourceId, file, type });
         
         // Handle text immediately if simple
         if (type === 'text') {
+             console.log(`[Knowapp] Reading text file immediately: ${file.name}`);
              const reader = new FileReader();
              reader.onload = (e) => {
                  source.content = e.target?.result as string || "";
                  source.processingStatus = 'completed';
                  source.processingProgress = 100;
+                 console.log(`[Knowapp] Text file ${sourceId} completed immediately`);
                  updateSourceInState(notebookId, source);
              };
              reader.readAsText(file);
@@ -152,6 +162,7 @@ const App: React.FC = () => {
     }
 
     // 1. Update UI IMMEDIATELY
+    console.log(`[Knowapp] Updating UI with ${newSources.length} new source(s)`);
     const updatedNb = { ...nb, sources: [...newSources, ...nb.sources] };
     handleUpdateNotebook(updatedNb);
 
@@ -163,15 +174,18 @@ const App: React.FC = () => {
 
             try {
                 // Save File object directly to IndexedDB (Fast!)
+                console.log(`[Knowapp] Saving ${item.file.name} to IndexedDB`);
                 if (item.type === 'audio' || item.type === 'video' || item.type === 'pdf') {
                     await saveMediaToDB(item.sourceId, item.file);
+                    console.log(`[Knowapp] Successfully saved ${item.file.name} to IndexedDB`);
                 }
                 
                 // Now start AI
+                console.log(`[Knowapp] Starting AI analysis for ${item.file.name}`);
                 processSourceBackground(notebookId, item.sourceId, item.file);
 
             } catch (err) {
-                console.error("Background processing failed", err);
+                console.error(`[Knowapp] Background processing failed for ${item.file.name}:`, err);
                 updateSourceInState(notebookId, {
                     id: item.sourceId,
                     processingStatus: 'failed',
@@ -234,10 +248,12 @@ const App: React.FC = () => {
   };
 
   const processSourceBackground = async (notebookId: string, sourceId: string, fileOrBlob: File | Blob | string) => {
+      console.log(`[Knowapp] Starting background processing for source ${sourceId}`);
       const abortController = new AbortController();
       setAbortControllers(prev => ({...prev, [sourceId]: abortController}));
       
       // Update status to analyzing to switch UI mode
+      console.log(`[Knowapp] Transitioning source ${sourceId} to 'analyzing' status`);
       updateSourceInState(notebookId, { id: sourceId, processingStatus: 'analyzing' });
 
       let progressInterval: number | undefined;
@@ -245,6 +261,7 @@ const App: React.FC = () => {
 
       const setProgress = (val: number) => {
           currentP = val;
+          console.log(`[Knowapp] Progress update for ${sourceId}: ${val}%`);
           updateSourceInState(notebookId, { 
               id: sourceId, 
               processingStatus: 'analyzing', 
@@ -253,6 +270,7 @@ const App: React.FC = () => {
       };
 
       const onProgress = (status: string) => {
+          console.log(`[Knowapp] Progress status for ${sourceId}: ${status}`);
           if (progressInterval) clearInterval(progressInterval);
 
           let p = 10;
@@ -281,15 +299,19 @@ const App: React.FC = () => {
           if (fileOrBlob instanceof File || fileOrBlob instanceof Blob) {
              mimeType = fileOrBlob.type;
           }
+          console.log(`[Knowapp] Processing file with mimeType: ${mimeType}`);
 
           const knownSpeakers = getKnownSpeakers();
           let result;
 
           if (mimeType.startsWith('video/')) {
+              console.log(`[Knowapp] Calling analyzeScreenRecording for ${sourceId}`);
               result = await analyzeScreenRecording(fileOrBlob, mimeType, knownSpeakers, onProgress, abortController.signal);
           } else if (mimeType.startsWith('audio/')) {
+              console.log(`[Knowapp] Calling analyzeAudio for ${sourceId}`);
               result = await analyzeAudio(fileOrBlob, mimeType, knownSpeakers, onProgress, abortController.signal);
           } else if (mimeType === 'application/pdf') {
+              console.log(`[Knowapp] Processing PDF for ${sourceId}`);
               // Convert blob to base64 for PDF analysis helper
               let b64 = "";
               if (typeof fileOrBlob === 'string') b64 = fileOrBlob;
@@ -305,6 +327,7 @@ const App: React.FC = () => {
           }
 
           if (result) {
+               console.log(`[Knowapp] Analysis completed successfully for ${sourceId}`, result);
                // Auto-save known speakers logic...
                const speakers = (result as any).speakers || [];
                speakers.forEach((s: any) => {
@@ -324,6 +347,7 @@ const App: React.FC = () => {
                     return { ...s, name, color: colors[colorIdx] };
                });
 
+               console.log(`[Knowapp] Setting source ${sourceId} to 'completed' status`);
                updateSourceInState(notebookId, {
                    id: sourceId,
                    content: `${result.summary}\n\n--- TRANSCRIPT ---\n\n${result.transcription}`,
@@ -331,15 +355,25 @@ const App: React.FC = () => {
                    processingStatus: 'completed',
                    processingProgress: 100
                });
+          } else {
+               console.error(`[Knowapp] Analysis returned null/undefined for ${sourceId}`);
+               updateSourceInState(notebookId, {
+                   id: sourceId,
+                   processingStatus: 'failed',
+                   processingError: "Analysis returned no results"
+               });
           }
       } catch (err: any) {
           if (err.message !== 'Aborted') {
-            console.error(err);
+            console.error(`[Knowapp] Analysis failed for ${sourceId}:`, err);
+            console.error(`[Knowapp] Error stack:`, err.stack);
             updateSourceInState(notebookId, {
                 id: sourceId,
                 processingStatus: 'failed',
                 processingError: err.message || "Analysis failed"
             });
+          } else {
+            console.log(`[Knowapp] Processing aborted for ${sourceId}`);
           }
       } finally {
           if (progressInterval) clearInterval(progressInterval);
@@ -348,6 +382,7 @@ const App: React.FC = () => {
              delete next[sourceId];
              return next;
           });
+          console.log(`[Knowapp] Cleanup completed for ${sourceId}`);
       }
   };
 
