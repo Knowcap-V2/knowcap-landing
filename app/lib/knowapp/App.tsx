@@ -26,7 +26,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const checkKey = async () => {
-      // Check if Gemini API key is configured
+      // Check if Gemini API key is configured (updated for production)
       const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
       setHasApiKey(!!apiKey && apiKey !== 'placeholder_will_be_configured');
     };
