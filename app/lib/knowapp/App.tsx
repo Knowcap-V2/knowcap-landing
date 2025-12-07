@@ -7,7 +7,7 @@ import { ScreenRecorder } from './components/ScreenRecorder';
 import { Notebook, Source, Speaker } from './types';
 import { loadNotebooks, saveNotebooks, createNotebook, hydrateNotebook, getKnownSpeakers, saveKnownSpeaker } from './services/storage';
 import { analyzeAudio, analyzeScreenRecording, analyzeDocument } from './services/geminiService';
-import { saveMediaToDB, getMediaFromDB } from './services/db';
+import { saveMediaToDB, getMediaFromDB, deleteMediaFromDB } from './services/db';
 import { Loader2, Key } from 'lucide-react';
 
 const App: React.FC = () => {
@@ -80,21 +80,41 @@ const App: React.FC = () => {
     try { await saveNotebooks(newNotebooks); } catch (err) { console.error(err); }
   };
 
-  const handleCancelUpload = (sourceId: string) => {
+  const handleCancelUpload = async (sourceId: string) => {
+    console.log('[DELETE] Cancelling/deleting source:', sourceId);
+    
+    // Abort ongoing upload if there's an active controller
     if (abortControllers[sourceId]) {
+      console.log('[DELETE] Aborting active upload for source:', sourceId);
       abortControllers[sourceId].abort();
       setAbortControllers(prev => {
         const next = {...prev};
         delete next[sourceId];
         return next;
       });
-      // Remove source from notebook
-      if (activeNotebookId) {
-        const nb = notebooks.find(n => n.id === activeNotebookId);
-        if (nb) {
-            const updated = { ...nb, sources: nb.sources.filter(s => s.id !== sourceId) };
-            handleUpdateNotebook(updated);
+    }
+    
+    // Always remove source from notebook (works for both active uploads and old stuck files)
+    if (activeNotebookId) {
+      const nb = notebooks.find(n => n.id === activeNotebookId);
+      if (nb) {
+        console.log('[DELETE] Removing source from notebook:', sourceId);
+        const sourceToDelete = nb.sources.find(s => s.id === sourceId);
+        
+        // Clean up media blob from IndexedDB if it exists
+        if (sourceToDelete) {
+          try {
+            console.log('[DELETE] Cleaning up media from IndexedDB for source:', sourceId);
+            await deleteMediaFromDB(sourceId);
+            console.log('[DELETE] Successfully deleted media from IndexedDB');
+          } catch (err) {
+            console.error('[DELETE] Failed to delete media from IndexedDB:', err);
+          }
         }
+        
+        const updated = { ...nb, sources: nb.sources.filter(s => s.id !== sourceId) };
+        await handleUpdateNotebook(updated);
+        console.log('[DELETE] Source successfully removed from notebook');
       }
     }
   };
