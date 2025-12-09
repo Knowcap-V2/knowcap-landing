@@ -36,11 +36,32 @@ export default function BetaAppDashboard() {
         fetch('/api/recruitment-applications')
       ])
 
-      if (betaRes.ok) setBetaApplications(await betaRes.json())
-      if (contactRes.ok) setContactSubmissions(await contactRes.json())
-      if (recruitmentRes.ok) setRecruitmentApplications(await recruitmentRes.json())
+      if (betaRes.ok) {
+        const data = await betaRes.json()
+        setBetaApplications(Array.isArray(data) ? data : [])
+      } else {
+        setBetaApplications([])
+      }
+      
+      if (contactRes.ok) {
+        const data = await contactRes.json()
+        setContactSubmissions(Array.isArray(data) ? data : [])
+      } else {
+        setContactSubmissions([])
+      }
+      
+      if (recruitmentRes.ok) {
+        const data = await recruitmentRes.json()
+        setRecruitmentApplications(Array.isArray(data) ? data : [])
+      } else {
+        setRecruitmentApplications([])
+      }
     } catch (error) {
       console.error('Error fetching data:', error)
+      // Ensure arrays are set even on error
+      setBetaApplications([])
+      setContactSubmissions([])
+      setRecruitmentApplications([])
     }
     setLoading(false)
   }
