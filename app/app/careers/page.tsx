@@ -378,13 +378,21 @@ export default function CareersPage() {
                 <h4 className="text-center" style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>Meet the Founding Team</h4>
                 <div className="grid-layout" style={{ gap: '2rem', maxWidth: '600px', margin: '0 auto', gridTemplateColumns: '1fr 1fr' }}>
                   <div className="team-member-card">
-                    <div style={{ width: '120px', height: '120px', borderRadius: '50%', overflow: 'hidden', margin: '0 auto 1rem auto', position: 'relative' }}>
+                    <div style={{ 
+                      width: '120px', 
+                      height: '120px', 
+                      borderRadius: '50%', 
+                      overflow: 'hidden', 
+                      margin: '0 auto 1rem auto', 
+                      position: 'relative',
+                      backgroundColor: '#f0f0f0',
+                      border: '2px solid #e0e0e0'
+                    }}>
                       <Image 
                         src="/hassan-profile.jpg" 
                         alt="Hassan Sam Arslan" 
-                        width={120} 
-                        height={120}
-                        style={{ objectFit: 'cover' }}
+                        fill
+                        style={{ objectFit: 'cover', objectPosition: 'center' }}
                         priority
                       />
                     </div>
