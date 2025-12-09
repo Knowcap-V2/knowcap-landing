@@ -1,12 +1,56 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Footer from '@/components/footer'
 
 export default function CareersPage() {
+  const [currentView, setCurrentView] = useState<string>('home')
+  const [currentJobId, setCurrentJobId] = useState<string>('')
+
   useEffect(() => {
     document.title = 'Knowcap.ai | Careers'
+    
+    // Handle initial hash
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1) || 'home'
+      navigateTo(hash)
+    }
+    
+    handleHashChange()
+    window.addEventListener('hashchange', handleHashChange)
+    
+    return () => window.removeEventListener('hashchange', handleHashChange)
   }, [])
+
+  const navigateTo = (pageId: string) => {
+    if (pageId === 'home') {
+      setCurrentView('home')
+      setCurrentJobId('')
+    } else {
+      setCurrentView('detail')
+      setCurrentJobId(pageId)
+    }
+    window.scrollTo(0, 0)
+    window.location.hash = pageId
+  }
+
+  // Handle content injection when job changes
+  useEffect(() => {
+    if (currentView === 'detail' && currentJobId && typeof window !== 'undefined') {
+      const container = document.getElementById('dynamic-job-content')
+      if (container && (window as any).jobData && (window as any).jobData[currentJobId]) {
+        const jobInfo = (window as any).jobData[currentJobId]
+        const easyApplyForm = (window as any).easyApplyForm
+        container.innerHTML = '<h1>' + jobInfo.title + '</h1>' + jobInfo.content + (easyApplyForm || '')
+        
+        // Attach form handler
+        const form = container.querySelector('form')
+        if (form) {
+          form.addEventListener('submit', (window as any).handleFormSubmit)
+        }
+      }
+    }
+  }, [currentView, currentJobId])
 
   return (
     <>
@@ -112,7 +156,7 @@ export default function CareersPage() {
       `}</style>
 
       <main className="careers-page">
-        <div id="home" className="page-view active">
+        <div id="home" className="page-view" style={{ display: currentView === 'home' ? 'block' : 'none' }}>
           <header className="hero-bg">
             <div className="container text-center">
               <div style={{ marginBottom: '1.5rem' }}>
@@ -187,7 +231,7 @@ export default function CareersPage() {
                 <h4>Founding AI Engineer (Path to CTO)</h4>
                 <p>The technical soul of the company. A partner to build the core AI engine from scratch and evolve into the CTO as we scale.</p>
                 <p><strong>💰 Compensation:</strong> EGP 840k - 2.4M Annually + Founding Equity (2.0% - 10.0%)</p>
-                <button onClick={() => (window as any).navigateTo('founding-ai-engineer')} className="btn btn-primary">Learn More & Apply →</button>
+                <button onClick={() => navigateTo('founding-ai-engineer')} className="btn btn-primary">Learn More & Apply →</button>
               </article>
             </div>
 
@@ -196,12 +240,12 @@ export default function CareersPage() {
               <article className="card job-card">
                 <h4>Head of Growth (Revenue Partner)</h4>
                 <p>The engine that turns our potential into a calendar full of qualified demos. You own the strategy, the funnel, and the data.</p>
-                <button onClick={() => (window as any).navigateTo('head-of-growth')} className="btn btn-primary">Learn More & Apply →</button>
+                <button onClick={() => navigateTo('head-of-growth')} className="btn btn-primary">Learn More & Apply →</button>
               </article>
               <article className="card job-card">
                 <h4>Content Creator Interns</h4>
                 <p>Our frontline storytellers. Your mission is to turn our journey into a must-watch &apos;Build in Public&apos; reality show. (3 roles available).</p>
-                <button onClick={() => (window as any).navigateTo('content-creator-intern')} className="btn btn-primary">Learn More & Apply →</button>
+                <button onClick={() => navigateTo('content-creator-intern')} className="btn btn-primary">Learn More & Apply →</button>
               </article>
             </div>
 
@@ -210,29 +254,29 @@ export default function CareersPage() {
               <article className="card job-card">
                 <h4>Product Manager</h4>
                 <p>The CEO of our core intellectual property, owning the roadmap that transforms raw interactions into structured, verifiable insights.</p>
-                <button onClick={() => (window as any).navigateTo('product-manager')} className="btn btn-primary">Learn More & Apply →</button>
+                <button onClick={() => navigateTo('product-manager')} className="btn btn-primary">Learn More & Apply →</button>
               </article>
               <article className="card job-card">
                 <h4>AI Trust & Reliability Specialist (QA)</h4>
                 <p>The guardian of our verification promise. You are the last line of defense protecting our users from a single piece of bad data.</p>
-                <button onClick={() => (window as any).navigateTo('qa-specialist')} className="btn btn-primary">Learn More & Apply →</button>
+                <button onClick={() => navigateTo('qa-specialist')} className="btn btn-primary">Learn More & Apply →</button>
               </article>
               <article className="card job-card">
                 <h4>Executive Assistant</h4>
                 <p>The operational backbone of the company. Your mission is to create leverage and reclaim executive time as our most valuable resource.</p>
-                <button onClick={() => (window as any).navigateTo('executive-assistant')} className="btn btn-primary">Learn More & Apply →</button>
+                <button onClick={() => navigateTo('executive-assistant')} className="btn btn-primary">Learn More & Apply →</button>
               </article>
             </div>
           </section>
         </div>
 
-        <div id="job-detail-template" className="page-view">
+        <div id="job-detail-template" className="page-view" style={{ display: currentView === 'detail' ? 'block' : 'none' }}>
           <header className="container">
-            <a href="#" onClick={(e) => { e.preventDefault(); (window as any).navigateTo('home'); }} className="back-link"><i className="fa-solid fa-arrow-left"></i> Back to All Roles</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); navigateTo('home'); }} className="back-link"><i className="fa-solid fa-arrow-left"></i> Back to All Roles</a>
           </header>
           <div className="container section" style={{ paddingTop: '1rem' }}>
             <div className="grid-layout">
-              <div className="main-content">
+              <div className="main-content" id="dynamic-job-content">
                 {/* Dynamic job content will be injected here */}
               </div>
               <aside className="sidebar">
@@ -451,25 +495,11 @@ export default function CareersPage() {
           </div>
         \\\`;
 
-        window.navigateTo = function(pageId) {
-          document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
-
-          if (pageId === 'home') {
-            document.getElementById('home').classList.add('active');
-          } else {
-            const jobInfo = jobData[pageId];
-            if (jobInfo) {
-              mainContentContainer.innerHTML = '<h1>' + jobInfo.title + '</h1>' + jobInfo.content + easyApplyForm;
-              document.getElementById('job-detail-template').classList.add('active');
-            } else {
-              document.getElementById('home').classList.add('active');
-            }
-          }
-          window.scrollTo(0, 0);
-          window.location.hash = pageId;
-        }
+        // Expose data to window for React component
+        window.jobData = jobData;
+        window.easyApplyForm = easyApplyForm;
         
-        function handleFormSubmit(event) {
+        window.handleFormSubmit = function(event) {
           event.preventDefault();
           const formData = new FormData(event.target);
           const role = window.location.hash.substring(1);
@@ -492,14 +522,6 @@ export default function CareersPage() {
             alert('There was an error submitting your application. Please try again.');
           });
         }
-
-        window.addEventListener('hashchange', () => {
-          const hash = window.location.hash.substring(1) || 'home';
-          window.navigateTo(hash);
-        });
-
-        const initialHash = window.location.hash.substring(1) || 'home';
-        window.navigateTo(initialHash);
       `}} />
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />

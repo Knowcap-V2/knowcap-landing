@@ -1,15 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import Link from 'next/link'
 import { Users, TrendingUp, Handshake, HeartHandshake, UserCog } from 'lucide-react'
 import Footer from '@/components/footer'
 
 export default function MeetUsPage() {
-  const [mounted, setMounted] = useState(false)
-
   useEffect(() => {
     document.title = 'Meet Us | Knowcap.ai'
-    setMounted(true)
   }, [])
 
   const stakeholders = [
@@ -20,7 +18,7 @@ export default function MeetUsPage() {
       description: 'Discuss your project challenges and explore how Knowcap can help your team.',
       color: '#005EFF',
       bgColor: 'rgba(0, 94, 255, 0.08)',
-      reclaim_url: 'https://reclaim.ai/m/knowcap/book'
+      route: '/book'
     },
     {
       id: 'invest',
@@ -29,7 +27,7 @@ export default function MeetUsPage() {
       description: 'Explore Knowcap vision, opportunities, and strategic growth roadmap.',
       color: '#10B981',
       bgColor: 'rgba(16, 185, 129, 0.08)',
-      reclaim_url: 'https://reclaim.ai/m/knowcap/invest'
+      route: '/invest'
     },
     {
       id: 'partner',
@@ -38,7 +36,7 @@ export default function MeetUsPage() {
       description: 'Build the future of AI-powered delivery together with strategic collaboration.',
       color: '#8B5CF6',
       bgColor: 'rgba(139, 92, 246, 0.08)',
-      reclaim_url: 'https://reclaim.ai/m/knowcap/partner'
+      route: '/partner'
     },
     {
       id: 'team',
@@ -47,7 +45,7 @@ export default function MeetUsPage() {
       description: 'Connect with the people building Knowcap and explore mindset alignment.',
       color: '#F59E0B',
       bgColor: 'rgba(245, 158, 11, 0.08)',
-      reclaim_url: 'https://reclaim.ai/m/knowcap/team'
+      route: '/team'
     },
     {
       id: 'vendor',
@@ -56,25 +54,9 @@ export default function MeetUsPage() {
       description: 'Discuss B2B partnerships and collaboration opportunities with Knowcap.',
       color: '#EF4444',
       bgColor: 'rgba(239, 68, 68, 0.08)',
-      reclaim_url: 'https://reclaim.ai/m/knowcap/vendor'
+      route: '/vendor'
     }
   ]
-
-  const [activeStakeholder, setActiveStakeholder] = useState(stakeholders[0])
-
-  useEffect(() => {
-    if (!mounted) return
-
-    // Load Reclaim.ai script
-    const script = document.createElement('script')
-    script.src = 'https://reclaim.ai/assets/js/embed.min.js'
-    script.async = true
-    document.body.appendChild(script)
-
-    return () => {
-      document.body.removeChild(script)
-    }
-  }, [mounted, activeStakeholder])
 
   return (
     <main className="min-h-screen" style={{ background: 'var(--bg-light-pitch)' }}>
@@ -95,21 +77,21 @@ export default function MeetUsPage() {
       {/* Stakeholder Selection */}
       <section className="py-16" style={{ background: 'var(--bg-light-pitch)' }}>
         <div className="max-w-[1100px] mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {stakeholders.map((stakeholder) => {
               const Icon = stakeholder.icon
-              const isActive = activeStakeholder.id === stakeholder.id
               
               return (
-                <button
+                <Link
                   key={stakeholder.id}
-                  onClick={() => setActiveStakeholder(stakeholder)}
-                  className="pitch-card text-left transition-all hover:scale-105"
+                  href={stakeholder.route}
+                  className="pitch-card text-left transition-all hover:scale-105 block"
                   style={{
                     padding: '2rem',
-                    border: isActive ? `2px solid ${stakeholder.color}` : '2px solid transparent',
-                    background: isActive ? stakeholder.bgColor : 'var(--surface-glass)',
-                    cursor: 'pointer'
+                    border: '2px solid transparent',
+                    background: 'var(--surface-glass)',
+                    cursor: 'pointer',
+                    textDecoration: 'none'
                   }}
                 >
                   <div 
@@ -130,52 +112,10 @@ export default function MeetUsPage() {
                   >
                     {stakeholder.description}
                   </p>
-                </button>
+                </Link>
               )
             })}
           </div>
-
-          {/* Active Stakeholder Booking */}
-          <div className="pitch-card" style={{ padding: '3rem' }}>
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center gap-3 mb-4">
-                {(() => {
-                  const Icon = activeStakeholder.icon
-                  return (
-                    <div 
-                      className="w-12 h-12 rounded-xl flex items-center justify-center"
-                      style={{ background: activeStakeholder.bgColor }}
-                    >
-                      <Icon className="w-6 h-6" style={{ color: activeStakeholder.color }} />
-                    </div>
-                  )
-                })()}
-                <h2 
-                  className="text-3xl font-bold"
-                  style={{ fontFamily: "'Space Grotesk', sans-serif", color: 'var(--dark-bg)' }}
-                >
-                  {activeStakeholder.title}
-                </h2>
-              </div>
-              <p 
-                className="text-lg"
-                style={{ fontFamily: "'Inter', sans-serif", color: 'var(--gray-text)' }}
-              >
-                {activeStakeholder.description}
-              </p>
-            </div>
-
-            {/* Reclaim.ai Widget */}
-            <div className="max-w-2xl mx-auto">
-              <div 
-                className="reclaim-scheduler"
-                data-url={activeStakeholder.reclaim_url}
-                style={{ minHeight: '600px' }}
-              ></div>
-            </div>
-          </div>
-
-
         </div>
       </section>
 
