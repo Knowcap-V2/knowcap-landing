@@ -2,7 +2,6 @@
 'use client'
 
 import { useEffect } from 'react'
-import PageHeader from '@/components/page-header'
 import PrivacyPolicyContent from '@/components/privacy-policy-content'
 import { ThemeToggle } from '@/components/theme-toggle'
 import Footer from '@/components/footer'
@@ -14,8 +13,7 @@ export default function PolicyPage() {
 
   return (
     <>
-      <PageHeader />
-      <main className="min-h-screen bg-background" style={{ paddingTop: '4rem' }}>
+      <main className="min-h-screen bg-background" style={{  }}>
       {/* Theme Toggle - Fixed position top right */}
       <div className="fixed top-6 right-6 z-50">
         <ThemeToggle />

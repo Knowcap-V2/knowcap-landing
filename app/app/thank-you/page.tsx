@@ -4,7 +4,6 @@ import { useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { CheckCircle, Instagram, MessageCircle, ArrowRight } from 'lucide-react'
-import PageHeader from '@/components/page-header'
 import Footer from '@/components/footer'
 
 function ThankYouContent() {
@@ -48,8 +47,7 @@ function ThankYouContent() {
 
   return (
     <>
-      <PageHeader />
-      <main className="min-h-screen" style={{ background: 'var(--bg-light-pitch)', paddingTop: '4rem' }}>
+      <main className="min-h-screen" style={{ background: 'var(--bg-light-pitch)' }}>
       {/* Thank You Section */}
       <section className="relative py-24" style={{ background: 'radial-gradient(circle at 50% 0%, #E3F2FD 0%, #F8FAFC 70%)' }}>
         <div className="hero-blur"></div>

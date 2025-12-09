@@ -2,7 +2,6 @@
 
 import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import PageHeader from '@/components/page-header';
 
 // Dynamically import the App component with no SSR to avoid hydration issues
 // since it uses browser APIs (localStorage, IndexedDB, microphone, screen capture)
@@ -16,8 +15,7 @@ export default function MVPPage() {
 
   return (
     <>
-      <PageHeader />
-      <div style={{ paddingTop: '4rem', height: '100vh' }}>
+      <div style={{ height: '100vh' }}>
         <KnowApp />
       </div>
     </>

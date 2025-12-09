@@ -1,11 +1,9 @@
 'use client'
 
-import PageHeader from '@/components/page-header'
 
 export default function PitchPage() {
   return (
     <>
-      <PageHeader />
       <div style={{ 
         width: '100%', 
         height: 'calc(100vh - 4rem)', 

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { Lock, LogOut, Download, Trash2 } from 'lucide-react'
-import PageHeader from '@/components/page-header'
 
 export default function BetaAppDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -203,8 +202,7 @@ export default function BetaAppDashboard() {
 
   return (
     <>
-      <PageHeader />
-      <div className="min-h-screen" style={{ background: 'var(--bg-light-pitch)', paddingTop: '4rem' }}>
+      <div className="min-h-screen" style={{ background: 'var(--bg-light-pitch)' }}>
       <div className="container max-w-[1400px] mx-auto px-6 py-8">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">

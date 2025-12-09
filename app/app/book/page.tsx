@@ -1,7 +1,6 @@
 
 'use client'
 import { useEffect } from 'react'
-import PageHeader from '@/components/page-header'
 import Footer from '@/components/footer'
 
 export default function BookPage() {
@@ -31,8 +30,7 @@ export default function BookPage() {
 
   return (
     <>
-      <PageHeader />
-      <main className="min-h-screen bg-white" style={{ paddingTop: '4rem' }}>
+      <main className="min-h-screen bg-white" style={{  }}>
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">

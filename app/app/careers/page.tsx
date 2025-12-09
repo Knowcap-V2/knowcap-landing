@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import PageHeader from '@/components/page-header'
 import Footer from '@/components/footer'
 
 // Job data as a TypeScript const
@@ -321,9 +320,8 @@ export default function CareersPage() {
         }
       `}</style>
 
-      <PageHeader />
       
-      <main className="careers-page" style={{ paddingTop: '4rem' }}>
+      <main className="careers-page" style={{  }}>
         {/* HOME VIEW */}
         {currentView === 'home' && (
           <div id="home">
