@@ -17,21 +17,19 @@ export default function HeroSectionGeneral() {
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-bg">
       <div className="hero-blur"></div>
-      <div className="max-w-[1280px] mx-auto px-8 py-20 text-center relative z-10">
+      <div className="max-w-[1100px] mx-auto px-6 py-20 text-center relative z-10">
         {/* Hero Text */}
-        <div className={`mb-12 max-w-[1024px] mx-auto transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`mb-12 max-w-[900px] mx-auto transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           {/* Trust Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E6F2FF] border border-[#005EFF]/20 mb-6">
-            <span className="text-sm font-semibold text-[#005EFF]">
-              Teams using Knowcap cut onboarding time by 70%
-            </span>
+          <div className="slide-label mb-6">
+            Teams using Knowcap cut onboarding time by 70%
           </div>
           
-          <h1 className="hero-heading mb-6">
+          <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '3.5rem', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: '1.2', marginBottom: '1.5rem' }}>
             AI That Turns Meetings and Screen Work Into{' '}
-            <span className="text-[#005EFF]">Verified Project Docs</span>
+            <span className="gradient-text">Verified Project Docs</span>
           </h1>
-          <p className="hero-subheading mb-12 max-w-3xl mx-auto">
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '1.125rem', color: 'var(--gray-text)', lineHeight: '1.6', marginBottom: '3rem' }} className="max-w-3xl mx-auto">
             Every document links to its video proof — giving your team context you can trust.
           </p>
           
@@ -54,45 +52,45 @@ export default function HeroSectionGeneral() {
         </div>
 
         {/* Feature Cards */}
-        <div className={`grid grid-cols-2 md:grid-cols-5 gap-6 mb-16 max-w-[1024px] mx-auto transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="flex flex-col items-center text-center">
-            <div className="w-16 h-16 rounded-full bg-[#E6F2FF] flex items-center justify-center mb-4">
-              <CheckCircle2 className="w-8 h-8 text-[#005EFF]" />
+        <div className={`grid grid-cols-2 md:grid-cols-5 gap-6 mb-16 max-w-[900px] mx-auto transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="pitch-card flex flex-col items-center text-center" style={{ padding: '1.5rem' }}>
+            <div className="w-16 h-16 rounded-full flex items-center justify-center mb-4" style={{ background: 'var(--primary-light)' }}>
+              <CheckCircle2 className="w-8 h-8" style={{ color: 'var(--primary-blue)' }} />
             </div>
-            <h3 className="text-base font-semibold text-[#191F2E] mb-2 min-h-[48px] flex items-center justify-center">Keep Projects Accountable</h3>
-            <p className="text-sm text-[#535862]">AI-powered governance flags risks and verifies decisions.</p>
+            <h3 className="text-base font-semibold text-[#191F2E] mb-2 min-h-[48px] flex items-center justify-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Keep Projects Accountable</h3>
+            <p className="text-sm text-[#535862]" style={{ fontFamily: "'Inter', sans-serif" }}>AI-powered governance flags risks and verifies decisions.</p>
           </div>
           
-          <div className="flex flex-col items-center text-center">
+          <div className="pitch-card flex flex-col items-center text-center" style={{ padding: '1.5rem' }}>
             <div className="w-16 h-16 rounded-full bg-[#FFF4E6] flex items-center justify-center mb-4">
               <Lightbulb className="w-8 h-8 text-[#FF9500]" />
             </div>
-            <h3 className="text-base font-semibold text-[#191F2E] mb-2 min-h-[48px] flex items-center justify-center">Get Instant Answers</h3>
-            <p className="text-sm text-[#535862]">Deploy AI agents trained on your project's verified memory.</p>
+            <h3 className="text-base font-semibold text-[#191F2E] mb-2 min-h-[48px] flex items-center justify-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Get Instant Answers</h3>
+            <p className="text-sm text-[#535862]" style={{ fontFamily: "'Inter', sans-serif" }}>Deploy AI agents trained on your project's verified memory.</p>
           </div>
           
-          <div className="flex flex-col items-center text-center">
+          <div className="pitch-card flex flex-col items-center text-center" style={{ padding: '1.5rem' }}>
             <div className="w-16 h-16 rounded-full bg-[#E6F9F2] flex items-center justify-center mb-4">
               <FileText className="w-8 h-8 text-[#00C48C]" />
             </div>
-            <h3 className="text-base font-semibold text-[#191F2E] mb-2 min-h-[48px] flex items-center justify-center">Instant Documentation</h3>
-            <p className="text-sm text-[#535862]">Auto-generate PRDs, SOPs, and guides from any meeting.</p>
+            <h3 className="text-base font-semibold text-[#191F2E] mb-2 min-h-[48px] flex items-center justify-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Instant Documentation</h3>
+            <p className="text-sm text-[#535862]" style={{ fontFamily: "'Inter', sans-serif" }}>Auto-generate PRDs, SOPs, and guides from any meeting.</p>
           </div>
           
-          <div className="flex flex-col items-center text-center">
+          <div className="pitch-card flex flex-col items-center text-center" style={{ padding: '1.5rem' }}>
             <div className="w-16 h-16 rounded-full bg-[#F3E6FF] flex items-center justify-center mb-4">
               <Brain className="w-8 h-8 text-[#9747FF]" />
             </div>
-            <h3 className="text-base font-semibold text-[#191F2E] mb-2 min-h-[48px] flex items-center justify-center">A Searchable Memory</h3>
-            <p className="text-sm text-[#535862]">Every meeting, doc, and decision, instantly verifiable.</p>
+            <h3 className="text-base font-semibold text-[#191F2E] mb-2 min-h-[48px] flex items-center justify-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>A Searchable Memory</h3>
+            <p className="text-sm text-[#535862]" style={{ fontFamily: "'Inter', sans-serif" }}>Every meeting, doc, and decision, instantly verifiable.</p>
           </div>
           
-          <div className="flex flex-col items-center text-center">
+          <div className="pitch-card flex flex-col items-center text-center" style={{ padding: '1.5rem' }}>
             <div className="w-16 h-16 rounded-full bg-[#FFE6F2] flex items-center justify-center mb-4">
               <LineChart className="w-8 h-8 text-[#FF3B69]" />
             </div>
-            <h3 className="text-base font-semibold text-[#191F2E] mb-2 min-h-[48px] flex items-center justify-center">Spot Risks Automatically</h3>
-            <p className="text-sm text-[#535862]">Project intelligence flags delays and scope creep for you.</p>
+            <h3 className="text-base font-semibold text-[#191F2E] mb-2 min-h-[48px] flex items-center justify-center" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Spot Risks Automatically</h3>
+            <p className="text-sm text-[#535862]" style={{ fontFamily: "'Inter', sans-serif" }}>Project intelligence flags delays and scope creep for you.</p>
           </div>
         </div>
 

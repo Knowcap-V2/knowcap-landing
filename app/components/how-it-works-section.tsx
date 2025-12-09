@@ -74,14 +74,15 @@ export default function HowItWorksSection() {
   }
 
   return (
-    <section className="relative py-24 bg-white overflow-hidden">
-      <div className="max-w-[1280px] mx-auto px-8 relative z-10">
+    <section className="relative py-24 bg-white overflow-hidden" style={{ padding: '7rem 2rem' }}>
+      <div className="max-w-[1100px] mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#191F2E] mb-6">
+          <div className="slide-label mb-4">How It Works</div>
+          <h2 className="text-4xl md:text-5xl mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, letterSpacing: '-0.02em', lineHeight: '1.2', color: 'var(--dark-bg)' }}>
             How Knowcap Works
           </h2>
-          <p className="text-lg text-[#535862] max-w-3xl mx-auto">
+          <p className="text-lg max-w-3xl mx-auto" style={{ fontFamily: "'Inter', sans-serif", color: 'var(--gray-text)' }}>
             From capture to proof. A simple loop that turns all your project assets into a single, verifiable memory.
           </p>
         </div>

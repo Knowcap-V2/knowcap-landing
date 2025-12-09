@@ -30,8 +30,8 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <section className="py-20 md:py-24 bg-[#F5F5F5]">
-      <div className="max-w-[900px] mx-auto px-8">
+    <section className="py-20 md:py-24 bg-[#F5F5F5]" style={{ padding: '7rem 2rem', background: 'var(--bg-light-pitch)' }}>
+      <div className="max-w-[1100px] mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -39,7 +39,8 @@ export default function FAQSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="section-heading mb-6">
+          <div className="slide-label mb-4">FAQ</div>
+          <h2 className="mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '2.5rem', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: '1.2', color: 'var(--dark-bg)' }}>
             Frequently Asked Questions
           </h2>
         </motion.div>

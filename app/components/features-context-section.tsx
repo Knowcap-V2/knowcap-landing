@@ -41,11 +41,11 @@ export default function FeaturesContextSection() {
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#005EFF]/5 to-transparent"></div>
       
-      <div className="max-w-[1280px] mx-auto px-8 relative z-10">
+      <div className="max-w-[1100px] mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <p className="text-sm font-semibold text-[#005EFF] mb-4 uppercase tracking-wider">// Features</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <div className="slide-label mb-4">Features</div>
+          <h2 className="text-4xl md:text-5xl text-white mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, letterSpacing: '-0.02em', lineHeight: '1.2' }}>
             Run Projects on Proof, Not Just Memory.
           </h2>
           <p className="text-lg text-gray-400 max-w-4xl mx-auto">

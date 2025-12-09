@@ -13,7 +13,7 @@ import FloatingCTA from '@/components/floating-cta'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen" style={{ background: 'var(--bg-light-pitch)', fontFamily: "'Inter', sans-serif" }}>
       <HeroSectionGeneral />
       <FeaturesContextSection />
       <HowItWorksSection />

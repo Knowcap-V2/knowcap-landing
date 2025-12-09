@@ -53,8 +53,8 @@ export default function ROISection() {
   }
 
   return (
-    <section className="py-20 md:py-24 bg-white">
-      <div className="max-w-[1280px] mx-auto px-8">
+    <section className="py-20 md:py-24 bg-white" style={{ padding: '7rem 2rem', background: 'var(--bg-light-pitch)' }}>
+      <div className="max-w-[1100px] mx-auto px-6">
         {/* Section Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -63,10 +63,11 @@ export default function ROISection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#191F2E] mb-6">
+          <div className="slide-label mb-4">ROI & Impact</div>
+          <h2 className="text-4xl md:text-5xl mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, letterSpacing: '-0.02em', lineHeight: '1.2', color: 'var(--dark-bg)' }}>
             The ROI of AI-Powered Governance
           </h2>
-          <p className="text-lg text-[#535862] max-w-3xl mx-auto">
+          <p className="text-lg max-w-3xl mx-auto" style={{ fontFamily: "'Inter', sans-serif", color: 'var(--gray-text)' }}>
             It's not just about memory—it's about measurable results. See how teams like yours are changing the way they deliver projects.
           </p>
         </motion.div>
