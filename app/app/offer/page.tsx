@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import PageHeader from '@/components/page-header'
 import Footer from '@/components/footer'
 
 export default function OfferPage() {
@@ -222,7 +223,9 @@ export default function OfferPage() {
         }
       `}</style>
 
-      <main className="offer-page">
+      <PageHeader />
+
+      <main className="offer-page" style={{ paddingTop: '4rem' }}>
         {/* HERO SECTION */}
         <section className="hero-bg">
           <div className="container">

@@ -1,8 +1,8 @@
 
 'use client'
-import Footer from '@/components/footer'
-
 import { useEffect } from 'react'
+import PageHeader from '@/components/page-header'
+import Footer from '@/components/footer'
 
 export default function PartnerPage() {
   useEffect(() => {
@@ -30,7 +30,9 @@ export default function PartnerPage() {
   }, [])
 
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      <PageHeader />
+      <main className="min-h-screen bg-white" style={{ paddingTop: '4rem' }}>
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
@@ -53,5 +55,6 @@ export default function PartnerPage() {
       </div>
       <Footer />
       </main>
+    </>
   )
 }

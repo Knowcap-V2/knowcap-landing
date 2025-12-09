@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import PageHeader from '@/components/page-header'
 import ContactForm from '@/components/contact-form'
 import Footer from '@/components/footer'
 
@@ -10,7 +11,9 @@ export default function ContactUsPage() {
   }, [])
 
   return (
-    <main className="min-h-screen" style={{ background: 'var(--bg-light-pitch)' }}>
+    <>
+      <PageHeader />
+      <main className="min-h-screen" style={{ background: 'var(--bg-light-pitch)', paddingTop: '4rem' }}>
       {/* Hero Section */}
       <section className="relative py-24 bg-white" style={{ background: 'radial-gradient(circle at 50% 0%, #E3F2FD 0%, #F8FAFC 70%)' }}>
         <div className="hero-blur"></div>
@@ -38,5 +41,6 @@ export default function ContactUsPage() {
 
       <Footer />
     </main>
+    </>
   )
 }

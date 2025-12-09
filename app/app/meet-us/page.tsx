@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import { Users, TrendingUp, Handshake, HeartHandshake, UserCog } from 'lucide-react'
+import PageHeader from '@/components/page-header'
 import Footer from '@/components/footer'
 
 export default function MeetUsPage() {
@@ -59,7 +60,9 @@ export default function MeetUsPage() {
   ]
 
   return (
-    <main className="min-h-screen" style={{ background: 'var(--bg-light-pitch)' }}>
+    <>
+      <PageHeader />
+      <main className="min-h-screen" style={{ background: 'var(--bg-light-pitch)', paddingTop: '4rem' }}>
       {/* Hero Section */}
       <section className="relative py-24 bg-white" style={{ background: 'radial-gradient(circle at 50% 0%, #E3F2FD 0%, #F8FAFC 70%)' }}>
         <div className="hero-blur"></div>
@@ -121,5 +124,6 @@ export default function MeetUsPage() {
 
       <Footer />
     </main>
+    </>
   )
 }
