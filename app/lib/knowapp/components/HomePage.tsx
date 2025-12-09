@@ -90,32 +90,53 @@ export const HomePage: React.FC<HomePageProps> = ({ notebooks, onSelectNotebook,
           --radius-lg: 16px;
         }
         
-        .pitch-container {
-          font-family: 'Inter', sans-serif;
-          background: var(--bg-light);
-          min-height: 100vh;
-          padding: 3rem 1.5rem;
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
         }
         
-        .pitch-title {
+        .pitch-container {
+          font-family: 'Inter', sans-serif;
+          line-height: 1.6;
+          color: var(--dark);
+          background: var(--bg-light);
+          -webkit-font-smoothing: antialiased;
+          overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
           font-family: 'Space Grotesk', sans-serif;
           font-weight: 700;
           letter-spacing: -0.02em;
           line-height: 1.2;
           color: var(--dark);
+        }
+        
+        h1 {
           font-size: 2.5rem;
           margin-bottom: 1.5rem;
           text-align: center;
         }
         
-        .pitch-subtitle {
-          font-family: 'Space Grotesk', sans-serif;
-          font-weight: 600;
-          letter-spacing: -0.02em;
-          line-height: 1.3;
-          color: var(--dark);
+        h2 {
           font-size: 2rem;
           margin-bottom: 1rem;
+        }
+        
+        h3 {
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+        
+        h4 {
+          font-size: 1.125rem;
+          margin-bottom: 1rem;
+        }
+        
+        h5 {
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
         }
         
         .gradient-text {
@@ -123,6 +144,54 @@ export const HomePage: React.FC<HomePageProps> = ({ notebooks, onSelectNotebook,
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           display: inline-block;
+        }
+        
+        p {
+          margin-bottom: 1rem;
+          color: var(--gray-text);
+          font-size: 1rem;
+        }
+        
+        .text-center {
+          text-align: center;
+        }
+        
+        .font-medium {
+          font-weight: 500;
+        }
+        
+        .font-bold {
+          font-weight: 700;
+        }
+        
+        .text-primary {
+          color: var(--primary);
+        }
+        
+        .text-white {
+          color: white;
+        }
+        
+        .text-sm {
+          font-size: 0.875rem;
+        }
+        
+        .text-xs {
+          font-size: 0.75rem;
+        }
+        
+        .text-lg {
+          font-size: 1.125rem;
+        }
+        
+        section {
+          padding: 5rem 1.5rem;
+          position: relative;
+        }
+        
+        .container {
+          max-width: 1100px;
+          margin: 0 auto;
         }
         
         .slide-label {
@@ -139,28 +208,58 @@ export const HomePage: React.FC<HomePageProps> = ({ notebooks, onSelectNotebook,
           border-radius: 100px;
         }
         
-        .pitch-card {
+        .grid {
+          display: grid;
+          gap: 1.5rem;
+        }
+        
+        .grid-cols-2 {
+          grid-template-columns: 1fr;
+        }
+        
+        .grid-cols-3 {
+          grid-template-columns: 1fr;
+        }
+        
+        .card {
           background: var(--surface-glass);
           backdrop-filter: blur(12px);
           border: 1px solid rgba(255, 255, 255, 0.6);
           border-radius: var(--radius-lg);
           padding: 1.5rem;
           box-shadow: var(--shadow-sm);
+          height: 100%;
           transition: all 0.3s ease;
         }
         
-        .pitch-card:hover {
+        .card:hover {
           transform: translateY(-2px);
           box-shadow: var(--shadow-md);
         }
         
-        .pitch-card-dark {
+        .card-dark {
           background: var(--dark);
           color: white;
           border: 1px solid #333;
           padding: 1.5rem;
           border-radius: var(--radius-lg);
           text-align: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          max-width: 90%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        
+        .card-dark p {
+          color: #9ca3af;
+          margin-bottom: 0;
+        }
+        
+        .card-dark .text-white {
+          color: white;
         }
         
         .fade-in {
@@ -177,33 +276,38 @@ export const HomePage: React.FC<HomePageProps> = ({ notebooks, onSelectNotebook,
         .hero-bg {
           background: radial-gradient(circle at 50% 0%, #E3F2FD 0%, #F8FAFC 70%);
           padding: 3rem 1.5rem;
-          margin: -3rem -1.5rem 3rem -1.5rem;
-          border-radius: 0 0 2rem 2rem;
         }
         
         @media (min-width: 768px) {
-          .pitch-title {
+          h1 {
             font-size: 3.5rem;
           }
-          .pitch-subtitle {
+          h2 {
             font-size: 2.5rem;
+          }
+          section {
+            padding: 7rem 2rem;
+          }
+          .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          .grid-cols-3 {
+            grid-template-columns: repeat(3, 1fr);
           }
         }
       `}</style>
       
       <div className="pitch-container">
-        <div className="hero-bg fade-in">
-          <div className="max-w-4xl mx-auto text-center mb-8">
-            <h1 className="pitch-title">
-              Welcome to <span className="gradient-text">Knowcap MVP</span>
-            </h1>
-            <div className="pitch-card-dark max-w-3xl mx-auto" style={{ marginTop: '2rem' }}>
-              <p style={{ fontSize: '1.125rem', lineHeight: '1.6', marginBottom: 0, color: 'white' }}>
+        <section className="hero-bg">
+          <div className="container fade-in text-center" style={{ maxWidth: '900px', marginBottom: '4rem' }}>
+            <h1>Welcome to <span className="gradient-text">Knowcap MVP</span></h1>
+            <div className="card-dark" style={{ maxWidth: '800px', marginTop: '2rem' }}>
+              <p className="text-white text-lg text-center" style={{ lineHeight: '1.6', marginBottom: 0 }}>
                 AI That Turns Meetings and Screen Work Into Verified Project Documents
               </p>
             </div>
           </div>
-        </div>
+        </section>
 
       {/* Floating Action Buttons */}
       <div className="fixed bottom-8 right-8 z-50 flex flex-col gap-4 items-end">
@@ -236,23 +340,43 @@ export const HomePage: React.FC<HomePageProps> = ({ notebooks, onSelectNotebook,
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto mb-16 fade-in">
-        <div className="text-center mb-8">
-          <span className="slide-label">Your Notebooks</span>
-          <h2 className="pitch-subtitle">Project Intelligence Hub</h2>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section style={{ background: 'var(--bg-light)' }}>
+        <div className="container fade-in">
+          <div className="text-center" style={{ marginBottom: '3rem' }}>
+            <span className="slide-label">Your Notebooks</span>
+            <h2>Project Intelligence Hub</h2>
+          </div>
+          
+          <div className="grid grid-cols-3" style={{ gap: '1.5rem' }}>
           
           {/* Create New Card */}
           <button 
             onClick={onCreateNotebook}
-            className="pitch-card aspect-[4/3] rounded-2xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center gap-3 hover:border-[var(--primary)] hover:bg-[var(--primary-light)] transition-all group"
+            className="card border-2 border-dashed border-gray-300"
+            style={{ 
+              aspectRatio: '4/3',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.75rem',
+              cursor: 'pointer',
+              border: '2px dashed #D1D5DB'
+            }}
           >
-            <div className="w-14 h-14 rounded-full bg-[var(--dark)] text-white flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Plus className="w-7 h-7" />
+            <div style={{
+              width: '3.5rem',
+              height: '3.5rem',
+              borderRadius: '50%',
+              background: 'var(--dark)',
+              color: 'white',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <Plus style={{ width: '1.75rem', height: '1.75rem' }} />
             </div>
-            <span className="font-semibold text-[var(--gray-text)] text-lg">New Notebook</span>
+            <span className="font-medium" style={{ color: 'var(--gray-text)', fontSize: '1.125rem' }}>New Notebook</span>
           </button>
 
           {/* Notebook Cards */}
@@ -260,46 +384,112 @@ export const HomePage: React.FC<HomePageProps> = ({ notebooks, onSelectNotebook,
             <button 
               key={notebook.id}
               onClick={() => onSelectNotebook(notebook.id)}
-              className="pitch-card aspect-[4/3] relative rounded-2xl p-6 flex flex-col justify-between text-left overflow-hidden group"
+              className="card"
+              style={{ 
+                aspectRatio: '4/3',
+                position: 'relative',
+                padding: '1.5rem',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                textAlign: 'left',
+                overflow: 'hidden',
+                cursor: 'pointer'
+              }}
             >
               {/* Cover Decoration */}
-              <div className={`absolute top-0 left-0 w-full h-full ${notebook.coverColor} opacity-30 group-hover:opacity-40 transition-opacity z-0`}></div>
-              <div className="absolute top-0 right-0 w-24 h-24 bg-white/30 rounded-bl-full z-0"></div>
+              <div className={`${notebook.coverColor}`} style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                opacity: 0.3,
+                zIndex: 0
+              }}></div>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                width: '6rem',
+                height: '6rem',
+                background: 'rgba(255, 255, 255, 0.3)',
+                borderBottomLeftRadius: '100%',
+                zIndex: 0
+              }}></div>
 
-              <div className="relative z-10">
-                 <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-md mb-4">
-                   <Book className="w-6 h-6 text-[var(--primary)]" />
+              <div style={{ position: 'relative', zIndex: 10 }}>
+                 <div style={{
+                   width: '3rem',
+                   height: '3rem',
+                   background: 'white',
+                   borderRadius: '0.75rem',
+                   display: 'flex',
+                   alignItems: 'center',
+                   justifyContent: 'center',
+                   boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
+                   marginBottom: '1rem'
+                 }}>
+                   <Book style={{ width: '1.5rem', height: '1.5rem', color: 'var(--primary)' }} />
                  </div>
-                 <h3 className="text-xl font-semibold text-[var(--dark)] leading-tight line-clamp-2" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                 <h3 className="font-bold" style={{ 
+                   fontSize: '1.25rem',
+                   color: 'var(--dark)',
+                   lineHeight: '1.3',
+                   fontFamily: 'Space Grotesk, sans-serif',
+                   overflow: 'hidden',
+                   display: '-webkit-box',
+                   WebkitLineClamp: 2,
+                   WebkitBoxOrient: 'vertical'
+                 }}>
                    {notebook.title}
                  </h3>
               </div>
 
-              <div className="relative z-10 flex justify-between items-end">
-                <span className="text-xs font-bold text-[var(--primary)] uppercase tracking-wide">
+              <div style={{ 
+                position: 'relative',
+                zIndex: 10,
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'flex-end'
+              }}>
+                <span className="font-bold text-primary" style={{ 
+                  fontSize: '0.75rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
+                }}>
                   {notebook.sources.length} Sources
                 </span>
-                <span className="text-xs text-[var(--gray-text)]">
+                <span className="text-xs" style={{ color: 'var(--gray-text)' }}>
                   {new Date(notebook.updatedAt).toLocaleDateString()}
                 </span>
               </div>
             </button>
           ))}
         </div>
-      </div>
-
-      <div className="max-w-6xl mx-auto mb-16 fade-in">
-        <div className="text-center mb-8">
-          <span className="slide-label">Recent Activity</span>
-          <h2 className="pitch-subtitle">Latest Sources Across Projects</h2>
         </div>
-        
-        {recentSources.length === 0 ? (
-          <div className="pitch-card rounded-2xl p-8 min-h-[100px] flex items-center justify-center text-[var(--gray-text)] text-base">
-            No sources yet. Create a notebook and add some sources to get started!
+      </section>
+
+      <section style={{ background: '#F5F7FA' }}>
+        <div className="container fade-in">
+          <div className="text-center" style={{ marginBottom: '3rem' }}>
+            <span className="slide-label">Recent Activity</span>
+            <h2>Latest Sources Across Projects</h2>
           </div>
-        ) : (
-          <div className="grid gap-4">
+          
+          {recentSources.length === 0 ? (
+            <div className="card" style={{ 
+              padding: '2rem',
+              minHeight: '100px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'var(--gray-text)'
+            }}>
+              No sources yet. Create a notebook and add some sources to get started!
+            </div>
+          ) : (
+            <div className="grid" style={{ gap: '1rem', gridTemplateColumns: '1fr' }}>
             {recentSources.map(({ source, notebookId, notebookTitle }) => {
               const isUploading = source.processingStatus === 'processing';
               const isAnalyzing = source.processingStatus === 'analyzing' || source.processingStatus === 'transcribing';
@@ -309,81 +499,146 @@ export const HomePage: React.FC<HomePageProps> = ({ notebooks, onSelectNotebook,
               return (
                 <div
                   key={source.id}
-                  className="pitch-card group rounded-2xl p-5 cursor-pointer hover:border-[var(--primary)]"
+                  className="card"
                   onClick={() => onSelectNotebook(notebookId)}
-                  style={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
+                  style={{ 
+                    padding: '1.25rem',
+                    cursor: 'pointer',
+                    border: '1px solid rgba(0, 0, 0, 0.08)'
+                  }}
                 >
-                  <div className="flex justify-between items-start mb-3">
-                    <div className="flex items-center gap-4 flex-1">
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 shadow-sm ${
-                        source.type === 'video' ? 'bg-purple-100 text-purple-600' : 
-                        source.type === 'pdf' ? 'bg-red-100 text-red-600' : 
-                        'bg-[var(--primary-light)] text-[var(--primary)]'
-                      }`}>
-                        {source.type === 'video' ? <Monitor className="w-6 h-6" /> : 
-                         source.type === 'pdf' ? <FileText className="w-6 h-6" /> : 
-                         <Mic className="w-6 h-6" />}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.75rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
+                      <div style={{
+                        width: '3rem',
+                        height: '3rem',
+                        borderRadius: '0.75rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                        boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+                        background: source.type === 'video' ? '#F3E8FF' : source.type === 'pdf' ? '#FEE2E2' : 'var(--primary-light)',
+                        color: source.type === 'video' ? '#9333EA' : source.type === 'pdf' ? '#DC2626' : 'var(--primary)'
+                      }}>
+                        {source.type === 'video' ? <Monitor style={{ width: '1.5rem', height: '1.5rem' }} /> : 
+                         source.type === 'pdf' ? <FileText style={{ width: '1.5rem', height: '1.5rem' }} /> : 
+                         <Mic style={{ width: '1.5rem', height: '1.5rem' }} />}
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-[var(--dark)] truncate text-lg" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <h3 className="font-bold" style={{ 
+                          color: 'var(--dark)',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
+                          fontSize: '1.125rem',
+                          fontFamily: 'Space Grotesk, sans-serif'
+                        }}>
                           {source.title}
                         </h3>
-                        <div className="flex items-center gap-2 mt-1">
-                          <span className="text-xs text-[var(--gray-text)]">from</span>
-                          <span className="text-xs font-semibold text-[var(--primary)] truncate max-w-[200px]">{notebookTitle}</span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.25rem' }}>
+                          <span className="text-xs" style={{ color: 'var(--gray-text)' }}>from</span>
+                          <span className="text-xs font-bold text-primary" style={{ 
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                            maxWidth: '200px'
+                          }}>{notebookTitle}</span>
                         </div>
                         {isUploading ? (
-                          <div className="flex items-center gap-2 text-xs text-[var(--primary)] mt-1 font-medium">
-                            <Loader2 className="w-3 h-3 animate-spin" />
-                            <span>{source.processingProgress}% Uploading...</span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.25rem' }}>
+                            <Loader2 style={{ width: '0.75rem', height: '0.75rem', animation: 'spin 1s linear infinite' }} />
+                            <span className="text-xs font-medium text-primary">{source.processingProgress}% Uploading...</span>
                           </div>
                         ) : isAnalyzing ? (
-                          <div className="flex items-center gap-2 text-xs text-[var(--gray-text)] mt-1">
-                            <Loader2 className="w-3 h-3 animate-spin" />
-                            <span>Loading Intelligence...</span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.25rem' }}>
+                            <Loader2 style={{ width: '0.75rem', height: '0.75rem', animation: 'spin 1s linear infinite' }} />
+                            <span className="text-xs" style={{ color: 'var(--gray-text)' }}>Loading Intelligence...</span>
                           </div>
                         ) : isFailed ? (
-                          <div className="flex items-center gap-2 text-xs text-red-500 mt-1 font-medium">
-                            <AlertCircle className="w-3 h-3" />
-                            <span>Failed</span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.25rem' }}>
+                            <AlertCircle style={{ width: '0.75rem', height: '0.75rem', color: '#EF4444' }} />
+                            <span className="text-xs font-medium" style={{ color: '#EF4444' }}>Failed</span>
                           </div>
                         ) : (
-                          <span className="text-xs text-[var(--gray-text)]">{new Date(source.createdAt).toLocaleDateString()}</span>
+                          <span className="text-xs" style={{ color: 'var(--gray-text)' }}>{new Date(source.createdAt).toLocaleDateString()}</span>
                         )}
                       </div>
                     </div>
                     
-                    <div className="flex items-center gap-2 relative z-10">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', position: 'relative', zIndex: 10 }}>
                       {!isUploading && (
                         <button
                           onClick={(e) => handleViewSource(notebookId, e)}
-                          className="p-2.5 rounded-xl bg-white shadow-sm border border-gray-200 hover:bg-[var(--primary-light)] hover:border-[var(--primary)] text-[var(--gray-text)] hover:text-[var(--primary)] transition-all"
+                          style={{
+                            padding: '0.625rem',
+                            borderRadius: '0.75rem',
+                            background: 'white',
+                            boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+                            border: '1px solid #E5E7EB',
+                            color: 'var(--gray-text)',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s'
+                          }}
                           title="Open in Notebook"
                         >
-                          <Eye className="w-4 h-4" />
+                          <Eye style={{ width: '1rem', height: '1rem' }} />
                         </button>
                       )}
                       
                       {!isUploading && (source.type === 'audio' || source.type === 'video') && source.audioData && (
                         <button
                           onClick={(e) => toggleAudio(source, e)}
-                          className="p-2.5 rounded-xl bg-white shadow-sm border border-gray-200 hover:bg-[var(--primary-light)] hover:border-[var(--primary)] text-[var(--gray-text)] hover:text-[var(--primary)] transition-all"
+                          style={{
+                            padding: '0.625rem',
+                            borderRadius: '0.75rem',
+                            background: 'white',
+                            boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
+                            border: '1px solid #E5E7EB',
+                            color: 'var(--gray-text)',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s'
+                          }}
                           title={playingSourceId === source.id ? "Pause" : "Play"}
                         >
-                          {playingSourceId === source.id ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                          {playingSourceId === source.id ? <Pause style={{ width: '1rem', height: '1rem' }} /> : <Play style={{ width: '1rem', height: '1rem' }} />}
                         </button>
                       )}
                     </div>
                   </div>
 
                   {isUploading && (
-                    <div className="mt-3 bg-gray-100 rounded-full h-2 w-full overflow-hidden">
-                      <div className="h-full transition-all duration-300" style={{ width: `${source.processingProgress}%`, background: 'var(--primary)' }}></div>
+                    <div style={{ 
+                      marginTop: '0.75rem',
+                      background: '#F3F4F6',
+                      borderRadius: '9999px',
+                      height: '0.5rem',
+                      width: '100%',
+                      overflow: 'hidden'
+                    }}>
+                      <div style={{ 
+                        height: '100%',
+                        width: `${source.processingProgress}%`,
+                        background: 'var(--primary)',
+                        transition: 'all 0.3s'
+                      }}></div>
                     </div>
                   )}
                   
                   {!isUploading && source.content && (
-                    <div className="text-sm text-[var(--gray-text)] line-clamp-2 bg-[var(--primary-light)] p-3 rounded-lg font-mono text-xs mt-3">
+                    <div style={{
+                      fontSize: '0.75rem',
+                      color: 'var(--gray-text)',
+                      overflow: 'hidden',
+                      display: '-webkit-box',
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: 'vertical',
+                      background: 'var(--primary-light)',
+                      padding: '0.75rem',
+                      borderRadius: '0.5rem',
+                      fontFamily: 'monospace',
+                      marginTop: '0.75rem'
+                    }}>
                       {source.content.slice(0, 150)}...
                     </div>
                   )}
@@ -392,7 +647,8 @@ export const HomePage: React.FC<HomePageProps> = ({ notebooks, onSelectNotebook,
             })}
           </div>
         )}
-      </div>
+        </div>
+      </section>
     </div>
     </>
   );
