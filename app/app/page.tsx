@@ -10,6 +10,7 @@ import TrustSection from '@/components/trust-section'
 import FAQSection from '@/components/faq-section'
 import PersonalNoteSectionGeneral from '@/components/personal-note-section-general'
 import FloatingCTA from '@/components/floating-cta'
+import Footer from '@/components/footer'
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <FAQSection />
       <PersonalNoteSectionGeneral />
       <FloatingCTA />
+      <Footer />
     </main>
   )
 }

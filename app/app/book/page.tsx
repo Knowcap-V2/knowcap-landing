@@ -1,5 +1,6 @@
 
 'use client'
+import Footer from '@/components/footer'
 
 import { useEffect } from 'react'
 
@@ -58,6 +59,7 @@ export default function BookPage() {
           </div>
         </div>
       </div>
-    </main>
+      <Footer />
+      </main>
   )
 }

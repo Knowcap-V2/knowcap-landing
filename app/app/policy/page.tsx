@@ -1,6 +1,7 @@
 
 import PrivacyPolicyContent from '@/components/privacy-policy-content'
 import { ThemeToggle } from '@/components/theme-toggle'
+import Footer from '@/components/footer'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function PolicyPage() {
         <ThemeToggle />
       </div>
       <PrivacyPolicyContent />
+          <Footer />
     </main>
   )
 }

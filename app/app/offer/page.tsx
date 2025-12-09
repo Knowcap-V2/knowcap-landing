@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import Footer from '@/components/footer'
 
 export default function OfferPage() {
   useEffect(() => {
@@ -361,6 +362,8 @@ export default function OfferPage() {
             </div>
           </div>
         </section>
+        
+        <Footer />
       </main>
     </>
   )
