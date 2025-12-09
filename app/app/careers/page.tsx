@@ -208,9 +208,15 @@ export default function CareersPage() {
 
       if (response.ok) {
         alert('Thank you for your application! We will be in touch if your profile is a strong match.')
-        e.currentTarget.reset()
+        // Reset form safely
+        try {
+          e.currentTarget.reset()
+        } catch (resetError) {
+          console.error('Form reset error:', resetError)
+        }
       } else {
-        throw new Error('Submission failed')
+        const errorData = await response.json().catch(() => ({ message: 'Submission failed' }))
+        throw new Error(errorData.message || 'Submission failed')
       }
     } catch (error) {
       console.error('Error:', error)
