@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
 
             <div style="margin: 20px 0;">
               <p><strong>Resume:</strong> ${resume.name}</p>
-              <p style="font-size: 0.9rem; color: #6B7280;">Note: Resume file not attached. Please check the admin dashboard at https://knowcap.ai/betaapp</p>
+              <p style="font-size: 0.9rem; color: #6B7280;">Note: Resume file not attached. Please check the admin dashboard at https://knowcap.ai/admin</p>
             </div>
 
             <hr style="border: 1px solid #E5E7EB; margin: 20px 0;" />

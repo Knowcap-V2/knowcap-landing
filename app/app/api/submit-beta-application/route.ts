@@ -116,7 +116,7 @@ export async function POST(request: NextRequest) {
           </p>
           
           <p style="margin-top: 20px;">
-            <a href="https://knowcap.ai/betaapp" style="background-color: #005EFF; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">View All Applications</a>
+            <a href="https://knowcap.ai/admin" style="background-color: #005EFF; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">View All Applications</a>
           </p>
         </div>
       `

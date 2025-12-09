@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Lock, LogOut, Download } from 'lucide-react'
+import { Lock, LogOut, Download, Trash2 } from 'lucide-react'
 
 export default function BetaAppDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -17,7 +17,7 @@ export default function BetaAppDashboard() {
   useEffect(() => {
     document.title = 'Admin Dashboard | Knowcap.ai'
     // Check if already authenticated
-    const authenticated = sessionStorage.getItem('betaapp_authenticated')
+    const authenticated = sessionStorage.getItem('admin_authenticated')
     if (authenticated === 'true') {
       setIsAuthenticated(true)
       fetchData()
@@ -70,7 +70,7 @@ export default function BetaAppDashboard() {
     e.preventDefault()
     if (passcode === '2686') {
       setIsAuthenticated(true)
-      sessionStorage.setItem('betaapp_authenticated', 'true')
+      sessionStorage.setItem('admin_authenticated', 'true')
       setError('')
       fetchData()
     } else {
@@ -79,7 +79,7 @@ export default function BetaAppDashboard() {
   }
 
   const handleLogout = () => {
-    sessionStorage.removeItem('betaapp_authenticated')
+    sessionStorage.removeItem('admin_authenticated')
     setIsAuthenticated(false)
     setPasscode('')
   }
@@ -100,6 +100,66 @@ export default function BetaAppDashboard() {
     a.download = filename
     a.click()
     window.URL.revokeObjectURL(url)
+  }
+
+  const handleDeleteBeta = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this beta application?')) return
+    
+    try {
+      const response = await fetch(`/api/delete-beta-application?id=${id}`, {
+        method: 'DELETE'
+      })
+      
+      if (response.ok) {
+        setBetaApplications(betaApplications.filter(app => app.id !== id))
+        alert('Application deleted successfully')
+      } else {
+        throw new Error('Failed to delete')
+      }
+    } catch (error) {
+      console.error('Delete error:', error)
+      alert('Failed to delete application')
+    }
+  }
+
+  const handleDeleteContact = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this contact submission?')) return
+    
+    try {
+      const response = await fetch(`/api/delete-contact-submission?id=${id}`, {
+        method: 'DELETE'
+      })
+      
+      if (response.ok) {
+        setContactSubmissions(contactSubmissions.filter(sub => sub.id !== id))
+        alert('Submission deleted successfully')
+      } else {
+        throw new Error('Failed to delete')
+      }
+    } catch (error) {
+      console.error('Delete error:', error)
+      alert('Failed to delete submission')
+    }
+  }
+
+  const handleDeleteRecruitment = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this recruitment application?')) return
+    
+    try {
+      const response = await fetch(`/api/delete-recruitment-application?id=${id}`, {
+        method: 'DELETE'
+      })
+      
+      if (response.ok) {
+        setRecruitmentApplications(recruitmentApplications.filter(app => app.id !== id))
+        alert('Application deleted successfully')
+      } else {
+        throw new Error('Failed to delete')
+      }
+    } catch (error) {
+      console.error('Delete error:', error)
+      alert('Failed to delete application')
+    }
   }
 
   if (!isAuthenticated) {
@@ -219,7 +279,14 @@ export default function BetaAppDashboard() {
                 ) : (
                   <div className="space-y-4">
                     {betaApplications.map((app) => (
-                      <div key={app.id} className="pitch-card" style={{ padding: '2rem' }}>
+                      <div key={app.id} className="pitch-card" style={{ padding: '2rem', position: 'relative' }}>
+                        <button
+                          onClick={() => handleDeleteBeta(app.id)}
+                          className="absolute top-4 right-4 p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-colors"
+                          title="Delete application"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
                             <p className="text-sm text-gray-500 mb-1">Name</p>
@@ -273,7 +340,14 @@ export default function BetaAppDashboard() {
                 ) : (
                   <div className="space-y-4">
                     {contactSubmissions.map((submission) => (
-                      <div key={submission.id} className="pitch-card" style={{ padding: '2rem' }}>
+                      <div key={submission.id} className="pitch-card" style={{ padding: '2rem', position: 'relative' }}>
+                        <button
+                          onClick={() => handleDeleteContact(submission.id)}
+                          className="absolute top-4 right-4 p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-colors"
+                          title="Delete submission"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
                             <p className="text-sm text-gray-500 mb-1">Name</p>
@@ -329,7 +403,14 @@ export default function BetaAppDashboard() {
                 ) : (
                   <div className="space-y-4">
                     {recruitmentApplications.map((app) => (
-                      <div key={app.id} className="pitch-card" style={{ padding: '2rem' }}>
+                      <div key={app.id} className="pitch-card" style={{ padding: '2rem', position: 'relative' }}>
+                        <button
+                          onClick={() => handleDeleteRecruitment(app.id)}
+                          className="absolute top-4 right-4 p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition-colors"
+                          title="Delete application"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
                             <p className="text-sm text-gray-500 mb-1">Name</p>
