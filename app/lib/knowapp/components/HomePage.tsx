@@ -73,229 +73,6 @@ export const HomePage: React.FC<HomePageProps> = ({ notebooks, onSelectNotebook,
 
   return (
     <>
-      <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
-        
-        :root {
-          --primary: #005EFF;
-          --primary-dark: #0046bd;
-          --primary-light: rgba(0, 94, 255, 0.08);
-          --dark: #191F2E;
-          --gray-text: #414651;
-          --bg-light: #F5F7FA;
-          --surface-glass: rgba(255, 255, 255, 0.95);
-          --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
-          --shadow-md: 0 12px 24px -6px rgba(0,0,0,0.05);
-          --shadow-lg: 0 20px 40px -10px rgba(0,0,0,0.1);
-          --radius-lg: 16px;
-        }
-        
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-        
-        .pitch-container {
-          font-family: 'Inter', sans-serif;
-          line-height: 1.6;
-          color: var(--dark);
-          background: var(--bg-light);
-          -webkit-font-smoothing: antialiased;
-          overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4, h5 {
-          font-family: 'Space Grotesk', sans-serif;
-          font-weight: 700;
-          letter-spacing: -0.02em;
-          line-height: 1.2;
-          color: var(--dark);
-        }
-        
-        h1 {
-          font-size: 2.5rem;
-          margin-bottom: 1.5rem;
-          text-align: center;
-        }
-        
-        h2 {
-          font-size: 2rem;
-          margin-bottom: 1rem;
-        }
-        
-        h3 {
-          font-size: 1.5rem;
-          margin-bottom: 0.5rem;
-        }
-        
-        h4 {
-          font-size: 1.125rem;
-          margin-bottom: 1rem;
-        }
-        
-        h5 {
-          font-size: 1rem;
-          margin-bottom: 0.5rem;
-        }
-        
-        .gradient-text {
-          background: linear-gradient(135deg, #005EFF 0%, #00C6FF 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          display: inline-block;
-        }
-        
-        p {
-          margin-bottom: 1rem;
-          color: var(--gray-text);
-          font-size: 1rem;
-        }
-        
-        .text-center {
-          text-align: center;
-        }
-        
-        .font-medium {
-          font-weight: 500;
-        }
-        
-        .font-bold {
-          font-weight: 700;
-        }
-        
-        .text-primary {
-          color: var(--primary);
-        }
-        
-        .text-white {
-          color: white;
-        }
-        
-        .text-sm {
-          font-size: 0.875rem;
-        }
-        
-        .text-xs {
-          font-size: 0.75rem;
-        }
-        
-        .text-lg {
-          font-size: 1.125rem;
-        }
-        
-        section {
-          padding: 5rem 1.5rem;
-          position: relative;
-        }
-        
-        .container {
-          max-width: 1100px;
-          margin: 0 auto;
-        }
-        
-        .slide-label {
-          font-family: 'Space Grotesk', sans-serif;
-          font-size: 0.75rem;
-          font-weight: 700;
-          color: var(--primary);
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          margin-bottom: 1rem;
-          display: inline-block;
-          background: var(--primary-light);
-          padding: 4px 12px;
-          border-radius: 100px;
-        }
-        
-        .grid {
-          display: grid;
-          gap: 1.5rem;
-        }
-        
-        .grid-cols-2 {
-          grid-template-columns: 1fr;
-        }
-        
-        .grid-cols-3 {
-          grid-template-columns: 1fr;
-        }
-        
-        .card {
-          background: var(--surface-glass);
-          backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.6);
-          border-radius: var(--radius-lg);
-          padding: 1.5rem;
-          box-shadow: var(--shadow-sm);
-          height: 100%;
-          transition: all 0.3s ease;
-        }
-        
-        .card:hover {
-          transform: translateY(-2px);
-          box-shadow: var(--shadow-md);
-        }
-        
-        .card-dark {
-          background: var(--dark);
-          color: white;
-          border: 1px solid #333;
-          padding: 1.5rem;
-          border-radius: var(--radius-lg);
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          max-width: 90%;
-          margin-left: auto;
-          margin-right: auto;
-        }
-        
-        .card-dark p {
-          color: #9ca3af;
-          margin-bottom: 0;
-        }
-        
-        .card-dark .text-white {
-          color: white;
-        }
-        
-        .fade-in {
-          opacity: 0;
-          transform: translateY(20px);
-          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        
-        .fade-in.visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        
-        .hero-bg {
-          background: radial-gradient(circle at 50% 0%, #E3F2FD 0%, #F8FAFC 70%);
-          padding: 3rem 1.5rem;
-        }
-        
-        @media (min-width: 768px) {
-          h1 {
-            font-size: 3.5rem;
-          }
-          h2 {
-            font-size: 2.5rem;
-          }
-          section {
-            padding: 7rem 2rem;
-          }
-          .grid-cols-2 {
-            grid-template-columns: repeat(2, 1fr);
-          }
-          .grid-cols-3 {
-            grid-template-columns: repeat(3, 1fr);
-          }
-        }
-      `}</style>
       
       <div className="pitch-container">
         <section className="hero-bg">
@@ -352,7 +129,7 @@ export const HomePage: React.FC<HomePageProps> = ({ notebooks, onSelectNotebook,
           {/* Create New Card */}
           <button 
             onClick={onCreateNotebook}
-            className="card border-2 border-dashed border-gray-300"
+            className="pitch-card border-2 border-dashed border-gray-300"
             style={{ 
               aspectRatio: '4/3',
               display: 'flex',
@@ -384,7 +161,7 @@ export const HomePage: React.FC<HomePageProps> = ({ notebooks, onSelectNotebook,
             <button 
               key={notebook.id}
               onClick={() => onSelectNotebook(notebook.id)}
-              className="card"
+              className="pitch-card"
               style={{ 
                 aspectRatio: '4/3',
                 position: 'relative',
@@ -478,7 +255,7 @@ export const HomePage: React.FC<HomePageProps> = ({ notebooks, onSelectNotebook,
           </div>
           
           {recentSources.length === 0 ? (
-            <div className="card" style={{ 
+            <div className="pitch-card" style={{ 
               padding: '2rem',
               minHeight: '100px',
               display: 'flex',
@@ -499,7 +276,7 @@ export const HomePage: React.FC<HomePageProps> = ({ notebooks, onSelectNotebook,
               return (
                 <div
                   key={source.id}
-                  className="card"
+                  className="pitch-card"
                   onClick={() => onSelectNotebook(notebookId)}
                   style={{ 
                     padding: '1.25rem',
