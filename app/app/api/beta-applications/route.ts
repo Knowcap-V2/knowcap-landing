@@ -13,14 +13,7 @@ export async function GET() {
       }
     })
 
-    return NextResponse.json(
-      { 
-        success: true, 
-        applications,
-        count: applications.length
-      },
-      { status: 200 }
-    )
+    return NextResponse.json(applications, { status: 200 })
   } catch (error) {
     console.error('Error fetching beta applications:', error)
     
