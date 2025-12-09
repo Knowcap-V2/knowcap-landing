@@ -13,24 +13,9 @@ export default function Footer() {
             <h3 className="text-2xl font-bold mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif", color: 'white' }}>
               Knowcap.ai
             </h3>
-            <p className="text-gray-400 mb-6" style={{ fontFamily: "'Inter', sans-serif", lineHeight: '1.6' }}>
+            <p className="text-gray-400" style={{ fontFamily: "'Inter', sans-serif", lineHeight: '1.6' }}>
               AI-powered governance platform that turns meetings and screen work into verified project documentation.
             </p>
-            <div className="space-y-3">
-              <div>
-                <p className="text-sm text-gray-500 mb-1">Questions? Reach out directly</p>
-                <a 
-                  href="mailto:hsa@knowcap.ai" 
-                  className="text-lg font-semibold hover:text-[#005EFF] transition-colors"
-                  style={{ color: 'white' }}
-                >
-                  hsa@knowcap.ai
-                </a>
-              </div>
-              <p className="text-sm text-gray-400">
-                Every message is read and answered personally within 24 hours.
-              </p>
-            </div>
           </div>
 
           {/* Product Column */}
@@ -46,15 +31,6 @@ export default function Footer() {
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   Knowcap MVP
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/pitch" 
-                  className="text-gray-400 hover:text-white transition-colors"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
-                >
-                  Pitch Deck
                 </Link>
               </li>
               <li>

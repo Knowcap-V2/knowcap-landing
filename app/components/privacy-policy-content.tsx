@@ -40,7 +40,7 @@ export default function PrivacyPolicyContent() {
             className="text-center mb-12"
           >
             <div className="flex items-center justify-center gap-2 mb-6">
-              <Shield className="w-6 h-6 text-cyan-400" />
+              <Shield className="w-6 h-6 text-[#005EFF]" />
               <span className="text-sm font-medium text-muted-foreground">Legal Information</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -61,7 +61,7 @@ export default function PrivacyPolicyContent() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-card border border-border rounded-lg p-4 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg group"
                 >
-                  <section.icon className="w-5 h-5 text-cyan-400 mx-auto mb-2 group-hover:scale-110 transition-transform duration-300" />
+                  <section.icon className="w-5 h-5 text-[#005EFF] mx-auto mb-2 group-hover:scale-110 transition-transform duration-300" />
                   <p className="text-sm font-medium text-center">{section.title}</p>
                 </motion.a>
               ))}
@@ -83,8 +83,8 @@ export default function PrivacyPolicyContent() {
             className="bg-card border border-border rounded-lg p-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <FileText className="w-6 h-6 text-cyan-400" />
-              <h2 className="text-2xl font-bold text-cyan-300">1. Introduction</h2>
+              <FileText className="w-6 h-6 text-[#005EFF]" />
+              <h2 className="text-2xl font-bold text-[#0052CC]">1. Introduction</h2>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-4">
               This Privacy Policy describes how SMETOOLS LLC ("Knowcap," "we," "us," or "our") collects, uses, shares, and protects your information when you use our Chrome Extension (the "Extension") and related services (collectively, the "Service"). Your privacy is of the utmost importance to us. By using the Service, you agree to the collection and use of information in accordance with this policy.
@@ -100,8 +100,8 @@ export default function PrivacyPolicyContent() {
             className="bg-card border border-border rounded-lg p-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Lock className="w-6 h-6 text-cyan-400" />
-              <h2 className="text-2xl font-bold text-cyan-300">2. Description of Service</h2>
+              <Lock className="w-6 h-6 text-[#005EFF]" />
+              <h2 className="text-2xl font-bold text-[#0052CC]">2. Description of Service</h2>
             </div>
             <p className="text-muted-foreground leading-relaxed">
               The Knowcap Chrome Extension provides a service to help users record, transcribe, and organize their Google Meetings and other screen-captured content. It features an AI-powered bot that can automatically join and record meetings, as well as tools for manual screen, camera, and audio recording. All captured content is processed for transcription and uploaded to the user's account at app.knowcap.ai for easy access and management.
@@ -118,8 +118,8 @@ export default function PrivacyPolicyContent() {
             className="bg-card border border-border rounded-lg p-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Eye className="w-6 h-6 text-cyan-400" />
-              <h2 className="text-2xl font-bold text-cyan-300">3. Information We Collect</h2>
+              <Eye className="w-6 h-6 text-[#005EFF]" />
+              <h2 className="text-2xl font-bold text-[#0052CC]">3. Information We Collect</h2>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-6">
               In the last 12 months, we have collected the following categories of personal information:
@@ -127,7 +127,7 @@ export default function PrivacyPolicyContent() {
             
             <div className="space-y-6">
               <div className="border-l-4 border-cyan-500 bg-cyan-500/5 p-4 rounded-r-lg">
-                <h3 className="font-bold text-cyan-300 mb-2">A. Identifiers</h3>
+                <h3 className="font-bold text-[#0052CC] mb-2">A. Identifiers</h3>
                 <p className="text-sm text-muted-foreground mb-2"><strong>Information You Provide:</strong> Name and email address when you create a Knowcap account.</p>
                 <p className="text-sm text-muted-foreground"><strong>Sources:</strong> Directly from you.</p>
               </div>
@@ -139,7 +139,7 @@ export default function PrivacyPolicyContent() {
               </div>
 
               <div className="border-l-4 border-cyan-500 bg-cyan-500/5 p-4 rounded-r-lg">
-                <h3 className="font-bold text-cyan-300 mb-2">C. Internet or Other Electronic Network Activity Information</h3>
+                <h3 className="font-bold text-[#0052CC] mb-2">C. Internet or Other Electronic Network Activity Information</h3>
                 <p className="text-sm text-muted-foreground mb-2"><strong>Information Collected Automatically:</strong> We may collect anonymous data about your interaction with the Extension, such as feature usage and performance metrics. We also detect meet.google.com URLs to enable the extension's core functionality.</p>
                 <p className="text-sm text-muted-foreground"><strong>Sources:</strong> Automatically from your device and browser.</p>
               </div>
@@ -151,7 +151,7 @@ export default function PrivacyPolicyContent() {
               </div>
 
               <div className="border-l-4 border-cyan-500 bg-cyan-500/5 p-4 rounded-r-lg">
-                <h3 className="font-bold text-cyan-300 mb-2">E. Other Information You Provide</h3>
+                <h3 className="font-bold text-[#0052CC] mb-2">E. Other Information You Provide</h3>
                 <p className="text-sm text-muted-foreground mb-2"><strong>Information You Provide:</strong> We store settings you configure, such as the custom name for your meeting bot, auto-join preferences, and the default project for your recordings.</p>
                 <p className="text-sm text-muted-foreground"><strong>Sources:</strong> Directly from you.</p>
               </div>
@@ -167,8 +167,8 @@ export default function PrivacyPolicyContent() {
             className="bg-card border border-border rounded-lg p-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Lock className="w-6 h-6 text-cyan-400" />
-              <h2 className="text-2xl font-bold text-cyan-300">4. How We Use Your Information</h2>
+              <Lock className="w-6 h-6 text-[#005EFF]" />
+              <h2 className="text-2xl font-bold text-[#0052CC]">4. How We Use Your Information</h2>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-4">
               We use the information we collect for the following business and commercial purposes:
@@ -177,35 +177,35 @@ export default function PrivacyPolicyContent() {
               <li className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <span className="font-semibold text-cyan-300">To Provide and Maintain the Service:</span>
+                  <span className="font-semibold text-[#0052CC]">To Provide and Maintain the Service:</span>
                   <span className="text-muted-foreground"> To allow the bot to join meetings, record content, generate transcripts, and upload the final video to your Knowcap account.</span>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <span className="font-semibold text-cyan-300">To Personalize Your Experience:</span>
+                  <span className="font-semibold text-[#0052CC]">To Personalize Your Experience:</span>
                   <span className="text-muted-foreground"> To remember your settings and preferences.</span>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <span className="font-semibold text-cyan-300">To Organize Your Content:</span>
+                  <span className="font-semibold text-[#0052CC]">To Organize Your Content:</span>
                   <span className="text-muted-foreground"> To associate your recordings with the projects you designate on app.knowcap.ai.</span>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <span className="font-semibold text-cyan-300">For Communication:</span>
+                  <span className="font-semibold text-[#0052CC]">For Communication:</span>
                   <span className="text-muted-foreground"> To send important notices about your account or changes to our services.</span>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
                 <div>
-                  <span className="font-semibold text-cyan-300">For Security and Improvement:</span>
+                  <span className="font-semibold text-[#0052CC]">For Security and Improvement:</span>
                   <span className="text-muted-foreground"> To secure our services, prevent abuse, and analyze usage patterns to improve the Extension.</span>
                 </div>
               </li>
@@ -222,8 +222,8 @@ export default function PrivacyPolicyContent() {
             className="bg-card border border-border rounded-lg p-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Users className="w-6 h-6 text-cyan-400" />
-              <h2 className="text-2xl font-bold text-cyan-300">5. Data Sharing and Disclosure</h2>
+              <Users className="w-6 h-6 text-[#005EFF]" />
+              <h2 className="text-2xl font-bold text-[#0052CC]">5. Data Sharing and Disclosure</h2>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-6">
               We do not sell your personal information or "share" it for cross-context behavioral advertising. We may disclose your information with the following categories of third parties for business purposes:
@@ -269,7 +269,7 @@ export default function PrivacyPolicyContent() {
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-lg p-4">
-                  <h4 className="font-bold text-cyan-300 mb-2">Legal Compliance</h4>
+                  <h4 className="font-bold text-[#0052CC] mb-2">Legal Compliance</h4>
                   <p className="text-sm text-muted-foreground">We may disclose your information if required by law or in response to a valid request from a law enforcement or government agency.</p>
                 </div>
                 <div className="bg-blue-500/5 border border-blue-500/20 rounded-lg p-4">
@@ -289,20 +289,20 @@ export default function PrivacyPolicyContent() {
             className="bg-card border border-border rounded-lg p-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Shield className="w-6 h-6 text-cyan-400" />
-              <h2 className="text-2xl font-bold text-cyan-300">6. Data Storage, Security, and Retention</h2>
+              <Shield className="w-6 h-6 text-[#005EFF]" />
+              <h2 className="text-2xl font-bold text-[#0052CC]">6. Data Storage, Security, and Retention</h2>
             </div>
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold text-cyan-300 mb-2">Storage and Security:</h3>
+                <h3 className="font-semibold text-[#0052CC] mb-2">Storage and Security:</h3>
                 <p className="text-muted-foreground">All recorded data is securely uploaded to and stored on our servers, hosted by Google Cloud Platform, with industry-standard security measures including end-to-end encryption.</p>
               </div>
               <div>
-                <h3 className="font-semibold text-cyan-300 mb-2">Source Code Management:</h3>
+                <h3 className="font-semibold text-[#0052CC] mb-2">Source Code Management:</h3>
                 <p className="text-muted-foreground">Our Extension's source code is managed in private GitHub repositories with strictly limited access.</p>
               </div>
               <div>
-                <h3 className="font-semibold text-cyan-300 mb-2">Data Retention:</h3>
+                <h3 className="font-semibold text-[#0052CC] mb-2">Data Retention:</h3>
                 <p className="text-muted-foreground">We retain your personal information for as long as your account is active. If you delete your account, your data will be permanently deleted from our production systems within 90 days, except where retention is required for legal or security purposes.</p>
               </div>
             </div>
@@ -318,12 +318,12 @@ export default function PrivacyPolicyContent() {
             className="bg-card border border-border rounded-lg p-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Shield className="w-6 h-6 text-cyan-400" />
-              <h2 className="text-2xl font-bold text-cyan-300">7. Your Rights and Choices</h2>
+              <Shield className="w-6 h-6 text-[#005EFF]" />
+              <h2 className="text-2xl font-bold text-[#0052CC]">7. Your Rights and Choices</h2>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-lg p-4">
-                <h4 className="font-bold text-cyan-300 mb-2">Access and Deletion</h4>
+                <h4 className="font-bold text-[#0052CC] mb-2">Access and Deletion</h4>
                 <p className="text-sm text-muted-foreground">You can access, manage, and delete your recordings and transcripts at any time through your dashboard.</p>
               </div>
               <div className="bg-blue-500/5 border border-blue-500/20 rounded-lg p-4">
@@ -331,7 +331,7 @@ export default function PrivacyPolicyContent() {
                 <p className="text-sm text-muted-foreground">You can enable or disable features like auto-joining directly within the Extension's settings.</p>
               </div>
               <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-lg p-4">
-                <h4 className="font-bold text-cyan-300 mb-2">Uninstalling</h4>
+                <h4 className="font-bold text-[#0052CC] mb-2">Uninstalling</h4>
                 <p className="text-sm text-muted-foreground">You can stop all information collection by uninstalling the Extension from your browser.</p>
               </div>
             </div>
@@ -346,8 +346,8 @@ export default function PrivacyPolicyContent() {
             className="bg-card border border-border rounded-lg p-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Shield className="w-6 h-6 text-cyan-400" />
-              <h2 className="text-2xl font-bold text-cyan-300">8. Your California Privacy Rights (CCPA/CPRA)</h2>
+              <Shield className="w-6 h-6 text-[#005EFF]" />
+              <h2 className="text-2xl font-bold text-[#0052CC]">8. Your California Privacy Rights (CCPA/CPRA)</h2>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-6">
               If you are a California resident, you have specific rights regarding your personal information:
@@ -356,15 +356,15 @@ export default function PrivacyPolicyContent() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                  <span className="text-cyan-300 font-medium">Right to Know and Access</span>
+                  <span className="text-[#0052CC] font-medium">Right to Know and Access</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                  <span className="text-cyan-300 font-medium">Right to Delete</span>
+                  <span className="text-[#0052CC] font-medium">Right to Delete</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                  <span className="text-cyan-300 font-medium">Right to Correct</span>
+                  <span className="text-[#0052CC] font-medium">Right to Correct</span>
                 </div>
               </div>
               <div className="space-y-2">
@@ -379,7 +379,7 @@ export default function PrivacyPolicyContent() {
               </div>
             </div>
             <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-4">
-              <h4 className="font-bold text-cyan-300 mb-2">How to Exercise Your Rights:</h4>
+              <h4 className="font-bold text-[#0052CC] mb-2">How to Exercise Your Rights:</h4>
               <p className="text-sm text-muted-foreground">To exercise these rights, please submit a verifiable consumer request to us by emailing hsa@smetools.io or shady@smetools.io.</p>
             </div>
           </motion.div>
@@ -393,8 +393,8 @@ export default function PrivacyPolicyContent() {
             className="bg-card border border-border rounded-lg p-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Shield className="w-6 h-6 text-cyan-400" />
-              <h2 className="text-2xl font-bold text-cyan-300">9. Children's Privacy</h2>
+              <Shield className="w-6 h-6 text-[#005EFF]" />
+              <h2 className="text-2xl font-bold text-[#0052CC]">9. Children's Privacy</h2>
             </div>
             <p className="text-muted-foreground leading-relaxed">
               Our Service is not directed to individuals under the age of 16. We do not knowingly collect personal information from children under 16. If we become aware that a child under 16 has provided us with personal information, we will take steps to delete such information.
@@ -410,8 +410,8 @@ export default function PrivacyPolicyContent() {
             className="bg-card border border-border rounded-lg p-8"
           >
             <div className="flex items-center gap-3 mb-6">
-              <FileText className="w-6 h-6 text-cyan-400" />
-              <h2 className="text-2xl font-bold text-cyan-300">10. Changes to This Privacy Policy</h2>
+              <FileText className="w-6 h-6 text-[#005EFF]" />
+              <h2 className="text-2xl font-bold text-[#0052CC]">10. Changes to This Privacy Policy</h2>
             </div>
             <p className="text-muted-foreground leading-relaxed">
               We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Effective Date" at the top. We encourage you to review this policy periodically.
@@ -428,25 +428,25 @@ export default function PrivacyPolicyContent() {
             className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-lg p-8 text-center"
           >
             <div className="flex items-center justify-center gap-3 mb-6">
-              <Mail className="w-6 h-6 text-cyan-400" />
-              <h2 className="text-2xl font-bold text-cyan-300">11. Contact Us</h2>
+              <Mail className="w-6 h-6 text-[#005EFF]" />
+              <h2 className="text-2xl font-bold text-[#0052CC]">11. Contact Us</h2>
             </div>
             <div className="space-y-4">
               <div>
-                <h3 className="font-bold text-cyan-300 mb-2">SMETOOLS LLC</h3>
+                <h3 className="font-bold text-[#0052CC] mb-2">SMETOOLS LLC</h3>
                 <p className="text-muted-foreground">101 Dowd Ct, Folsom, CA 95630</p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a 
                   href="mailto:hsa@smetools.io" 
-                  className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium"
+                  className="text-[#005EFF] hover:text-[#0052CC] transition-colors font-medium"
                 >
                   hsa@smetools.io
                 </a>
                 <span className="text-muted-foreground hidden sm:block">•</span>
                 <a 
                   href="mailto:shady@smetools.io" 
-                  className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium"
+                  className="text-[#005EFF] hover:text-[#0052CC] transition-colors font-medium"
                 >
                   shady@smetools.io
                 </a>
