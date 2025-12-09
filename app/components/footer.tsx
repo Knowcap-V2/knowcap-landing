@@ -26,7 +26,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link 
-                  href="/MVP" 
+                  href="/mvp" 
                   className="text-gray-400 hover:text-white transition-colors"
                   style={{ fontFamily: "'Inter', sans-serif" }}
                 >
