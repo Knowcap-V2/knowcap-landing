@@ -400,8 +400,25 @@ export default function CareersPage() {
                     <p>Founder & CEO</p>
                   </div>
                   <div className="team-member-card">
-                    <div className="team-photo-placeholder"><i className="fa-solid fa-user"></i></div>
-                    <h4>Shady</h4>
+                    <div style={{ 
+                      width: '120px', 
+                      height: '120px', 
+                      borderRadius: '50%', 
+                      overflow: 'hidden', 
+                      margin: '0 auto 1rem auto', 
+                      position: 'relative',
+                      backgroundColor: '#f0f0f0',
+                      border: '2px solid #e0e0e0'
+                    }}>
+                      <Image 
+                        src="/shady-profile.jpg" 
+                        alt="Shady Deeb" 
+                        fill
+                        style={{ objectFit: 'cover', objectPosition: 'center' }}
+                        priority
+                      />
+                    </div>
+                    <h4>Shady Deeb</h4>
                     <p>Founding Partner</p>
                   </div>
                 </div>
