@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { X } from 'lucide-react'
 
 interface ContactFormProps {
@@ -9,6 +10,7 @@ interface ContactFormProps {
 }
 
 export default function ContactForm({ onClose, isModal = false }: ContactFormProps) {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -32,10 +34,8 @@ export default function ContactForm({ onClose, isModal = false }: ContactFormPro
 
       if (response.ok) {
         setStatus('success')
-        setFormData({ name: '', email: '', company: '', subject: '', message: '' })
-        setTimeout(() => {
-          if (onClose) onClose()
-        }, 2000)
+        // Redirect to thank you page
+        router.push('/thank-you?type=contact')
       } else {
         const error = await response.json()
         throw new Error(error.message || 'Failed to submit')

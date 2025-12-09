@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Footer from '@/components/footer'
 
 // Job data as a TypeScript const
@@ -162,6 +163,7 @@ const jobData: Record<string, { title: string; content: string }> = {
 }
 
 export default function CareersPage() {
+  const router = useRouter()
   const [currentView, setCurrentView] = useState<string>('home')
   const [currentJobId, setCurrentJobId] = useState<string>('')
 
@@ -207,13 +209,8 @@ export default function CareersPage() {
       })
 
       if (response.ok) {
-        alert('Thank you for your application! We will be in touch if your profile is a strong match.')
-        // Reset form safely
-        try {
-          e.currentTarget.reset()
-        } catch (resetError) {
-          console.error('Form reset error:', resetError)
-        }
+        // Redirect to thank you page
+        router.push('/thank-you?type=application')
       } else {
         const errorData = await response.json().catch(() => ({ message: 'Submission failed' }))
         throw new Error(errorData.message || 'Submission failed')

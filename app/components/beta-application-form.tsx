@@ -2,6 +2,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -16,6 +17,7 @@ interface BetaApplicationFormProps {
 }
 
 export default function BetaApplicationForm({ open, onOpenChange }: BetaApplicationFormProps) {
+  const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [formData, setFormData] = useState({
@@ -53,20 +55,10 @@ export default function BetaApplicationForm({ open, onOpenChange }: BetaApplicat
       }
 
       setIsSuccess(true)
-      toast.success('Application submitted successfully!')
       
-      // Reset form after 2 seconds and close dialog
-      setTimeout(() => {
-        setFormData({
-          name: '',
-          email: '',
-          company: '',
-          role: '',
-          motivation: ''
-        })
-        setIsSuccess(false)
-        onOpenChange(false)
-      }, 2000)
+      // Close modal and redirect to thank you page
+      onOpenChange(false)
+      router.push('/thank-you?type=beta')
     } catch (error) {
       console.error('Error submitting form:', error)
       toast.error(error instanceof Error ? error.message : 'Failed to submit application. Please try again.')
