@@ -175,21 +175,7 @@ export default function MeetUsPage() {
             </div>
           </div>
 
-          {/* Contact Alternative */}
-          <div className="mt-12 text-center">
-            <div className="inline-block pitch-card" style={{ padding: '2rem' }}>
-              <p className="text-sm text-gray-600 mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>
-                Prefer email? Reach out directly:
-              </p>
-              <a 
-                href="mailto:hsa@knowcap.ai" 
-                className="text-xl font-semibold" 
-                style={{ color: 'var(--primary-blue)', fontFamily: "'Space Grotesk', sans-serif" }}
-              >
-                hsa@knowcap.ai
-              </a>
-            </div>
-          </div>
+
         </div>
       </section>
 

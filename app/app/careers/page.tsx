@@ -188,8 +188,8 @@ export default function CareersPage() {
               <div className="w-24 h-24 rounded-full bg-gray-200 mx-auto mb-4 flex items-center justify-center">
                 <User className="w-12 h-12 text-gray-400" />
               </div>
-              <h4 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '1.25rem' }}>Hassan Sam Arslan</h4>
-              <p style={{ color: 'var(--primary-blue)' }}>Founder & CEO</p>
+              <h4 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '1.25rem' }}>Founder & CEO</h4>
+              <p style={{ color: 'var(--primary-blue)' }}>Leadership Team</p>
             </div>
             <div className="text-center pitch-card" style={{ padding: '2rem' }}>
               <div className="w-24 h-24 rounded-full bg-gray-200 mx-auto mb-4 flex items-center justify-center">

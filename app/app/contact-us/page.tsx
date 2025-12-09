@@ -32,27 +32,7 @@ export default function ContactUsPage() {
             <ContactForm />
           </div>
 
-          {/* Contact Info */}
-          <div className="mt-12 text-center">
-            <div className="inline-block pitch-card" style={{ padding: '2rem' }}>
-              <h3 className="text-xl font-bold mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif", color: 'var(--dark-bg)' }}>
-                Direct Contact
-              </h3>
-              <p className="text-gray-600 mb-4" style={{ fontFamily: "'Inter', sans-serif" }}>
-                Prefer email? Reach out directly:
-              </p>
-              <a 
-                href="mailto:hsa@knowcap.ai" 
-                className="text-2xl font-semibold" 
-                style={{ color: 'var(--primary-blue)', fontFamily: "'Space Grotesk', sans-serif" }}
-              >
-                hsa@knowcap.ai
-              </a>
-              <p className="text-sm text-gray-500 mt-3" style={{ fontFamily: "'Inter', sans-serif" }}>
-                Every message is read and answered personally within 24 hours.
-              </p>
-            </div>
-          </div>
+
         </div>
       </section>
 

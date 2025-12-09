@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button'
 const benefits = [
   'Early access to Knowcap.ai platform',
   'Direct input on feature development',
-  'Quarterly strategy sessions with Hassan',
+  'Quarterly strategy sessions with the founding team',
   'Priority technical support',
   'Revenue share opportunities', 
   'Cross-referral network access',

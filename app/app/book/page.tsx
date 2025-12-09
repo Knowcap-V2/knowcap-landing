@@ -48,15 +48,7 @@ export default function BookPage() {
             <div id="reclaim-embed-container" />
           </div>
 
-          {/* Additional Info */}
-          <div className="mt-12 text-center text-gray-600">
-            <p className="text-sm">
-              Need immediate assistance? Email us at{' '}
-              <a href="mailto:hassan@knowcap.ai" className="text-blue-600 hover:text-blue-700 transition-colors">
-                hassan@knowcap.ai
-              </a>
-            </p>
-          </div>
+
         </div>
       </div>
       <Footer />

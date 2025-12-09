@@ -95,7 +95,7 @@ export default function Footer() {
         <div className="border-t border-gray-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-400" style={{ fontFamily: "'Inter', sans-serif" }}>
-              © 2025 Knowcap.ai • Built by Hassan, for Professional Teams
+              © 2025 Knowcap.ai • Built for Professional Teams
             </p>
             <div className="flex gap-6">
               <Link href="/policy" className="text-sm text-gray-400 hover:text-white transition-colors">

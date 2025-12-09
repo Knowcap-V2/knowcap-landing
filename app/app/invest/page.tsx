@@ -39,7 +39,7 @@ export default function InvestPage() {
               Explore Knowcap.ai's Vision and Opportunities
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              A focused conversation with Hassan Sam Arslan about Knowcap's mission, traction, and strategic growth plans — ideal for investors and advisors exploring collaboration or future involvement.
+              A focused conversation about Knowcap's mission, traction, and strategic growth plans — ideal for investors and advisors exploring collaboration or future involvement.
             </p>
           </div>
 
@@ -48,15 +48,7 @@ export default function InvestPage() {
             <div id="reclaim-embed-container" />
           </div>
 
-          {/* Additional Info */}
-          <div className="mt-12 text-center text-gray-600">
-            <p className="text-sm">
-              Need immediate assistance? Email us at{' '}
-              <a href="mailto:hassan@knowcap.ai" className="text-blue-600 hover:text-blue-700 transition-colors">
-                hassan@knowcap.ai
-              </a>
-            </p>
-          </div>
+
         </div>
       </div>
       <Footer />
