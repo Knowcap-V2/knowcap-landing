@@ -1,304 +1,362 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { Card } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Input } from '@/components/ui/input'
-import { Download, RefreshCw, Mail, Building, User, Calendar, Lock, LogOut } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Lock, LogOut, Download } from 'lucide-react'
 
-interface BetaApplication {
-  id: string
-  name: string
-  email: string
-  company: string
-  role: string
-  motivation: string
-  createdAt: string
-}
-
-export default function BetaApplicationsPage() {
-  const [applications, setApplications] = useState<BetaApplication[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+export default function BetaAppDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [passcode, setPasscode] = useState('')
-  const [passcodeError, setPasscodeError] = useState('')
+  const [error, setError] = useState('')
+  const [activeTab, setActiveTab] = useState<'beta' | 'contact' | 'recruitment'>('beta')
+  
+  const [betaApplications, setBetaApplications] = useState<any[]>([])
+  const [contactSubmissions, setContactSubmissions] = useState<any[]>([])
+  const [recruitmentApplications, setRecruitmentApplications] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
 
-  // Check if already authenticated from session
   useEffect(() => {
+    document.title = 'Admin Dashboard | Knowcap.ai'
+    // Check if already authenticated
     const authenticated = sessionStorage.getItem('betaapp_authenticated')
     if (authenticated === 'true') {
       setIsAuthenticated(true)
+      fetchData()
     } else {
       setLoading(false)
     }
   }, [])
 
-  const handlePasscodeSubmit = async (e: React.FormEvent) => {
+  const fetchData = async () => {
+    setLoading(true)
+    try {
+      // Fetch all three types of data
+      const [betaRes, contactRes, recruitmentRes] = await Promise.all([
+        fetch('/api/beta-applications'),
+        fetch('/api/contact-submissions'),
+        fetch('/api/recruitment-applications')
+      ])
+
+      if (betaRes.ok) setBetaApplications(await betaRes.json())
+      if (contactRes.ok) setContactSubmissions(await contactRes.json())
+      if (recruitmentRes.ok) setRecruitmentApplications(await recruitmentRes.json())
+    } catch (error) {
+      console.error('Error fetching data:', error)
+    }
+    setLoading(false)
+  }
+
+  const handlePasscodeSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setPasscodeError('')
-    
     if (passcode === '2686') {
       setIsAuthenticated(true)
       sessionStorage.setItem('betaapp_authenticated', 'true')
-      setPasscode('')
+      setError('')
+      fetchData()
     } else {
-      setPasscodeError('Invalid passcode. Please try again.')
-      setPasscode('')
+      setError('Invalid passcode')
     }
   }
 
   const handleLogout = () => {
-    setIsAuthenticated(false)
     sessionStorage.removeItem('betaapp_authenticated')
-    setApplications([])
+    setIsAuthenticated(false)
+    setPasscode('')
   }
 
-  const fetchApplications = async () => {
-    setLoading(true)
-    setError('')
-    try {
-      const response = await fetch('/api/beta-applications')
-      if (!response.ok) {
-        throw new Error('Failed to fetch applications')
-      }
-      const data = await response.json()
-      setApplications(data.applications || [])
-    } catch (err) {
-      setError('Failed to load applications. Please try again.')
-      console.error(err)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      fetchApplications()
-    }
-  }, [isAuthenticated])
-
-  const downloadCSV = () => {
-    const headers = ['ID', 'Name', 'Email', 'Company', 'Role', 'Submitted', 'Motivation']
-    const rows = applications.map(app => [
-      app.id,
-      app.name,
-      app.email,
-      app.company,
-      app.role,
-      new Date(app.createdAt).toLocaleString(),
-      `"${app.motivation.replace(/"/g, '""')}"`
-    ])
-    
-    const csv = [
-      headers.join(','),
-      ...rows.map(row => row.join(','))
-    ].join('\n')
-    
+  const exportToCSV = (data: any[], filename: string, columns: string[]) => {
+    const headers = columns.join(',')
+    const rows = data.map(item => 
+      columns.map(col => {
+        const value = item[col] || ''
+        return `"${String(value).replace(/"/g, '""')}"`
+      }).join(',')
+    )
+    const csv = [headers, ...rows].join('\n')
     const blob = new Blob([csv], { type: 'text/csv' })
     const url = window.URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = `beta-applications-${new Date().toISOString().split('T')[0]}.csv`
-    document.body.appendChild(a)
+    a.download = filename
     a.click()
-    document.body.removeChild(a)
     window.URL.revokeObjectURL(url)
   }
 
-  // Show passcode form if not authenticated
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#F5F5F5] to-[#E5E5E5] flex items-center justify-center py-12 px-4">
-        <Card className="w-full max-w-md p-8">
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg-light-pitch)' }}>
+        <div className="pitch-card max-w-md w-full" style={{ padding: '3rem' }}>
           <div className="text-center mb-6">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#005EFF]/10 mb-4">
-              <Lock className="w-8 h-8 text-[#005EFF]" />
+            <div className="w-16 h-16 rounded-full bg-blue-100 mx-auto mb-4 flex items-center justify-center">
+              <Lock className="w-8 h-8 text-blue-600" />
             </div>
-            <h1 className="text-2xl font-bold text-[#0A0D12] mb-2">Admin Access Required</h1>
-            <p className="text-gray-600">Enter passcode to view beta applications</p>
+            <h1 className="text-2xl font-bold mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Admin Dashboard</h1>
+            <p className="text-gray-600">Enter passcode to access</p>
           </div>
 
-          <form onSubmit={handlePasscodeSubmit} className="space-y-4">
-            <div>
-              <Input
+          <form onSubmit={handlePasscodeSubmit}>
+            <div className="mb-6">
+              <input
                 type="password"
-                placeholder="Enter passcode"
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
-                className="text-center text-lg tracking-widest"
+                placeholder="Enter passcode"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none"
                 autoFocus
               />
+              {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
             </div>
 
-            {passcodeError && (
-              <p className="text-sm text-red-600 text-center">{passcodeError}</p>
-            )}
-
-            <Button
+            <button
               type="submit"
-              className="w-full bg-[#005EFF] text-white hover:bg-[#0047CC] transition-colors"
-              disabled={!passcode}
+              className="w-full py-3 rounded-lg font-semibold text-white transition-all"
+              style={{ background: 'var(--primary-blue)' }}
             >
               Access Dashboard
-            </Button>
+            </button>
           </form>
-        </Card>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F5F5F5] to-[#E5E5E5] py-12 px-4">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen" style={{ background: 'var(--bg-light-pitch)' }}>
+      <div className="container max-w-[1400px] mx-auto px-6 py-8">
         {/* Header */}
-        <div className="mb-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <h1 className="text-4xl font-bold text-[#0A0D12] mb-2">Beta Applications</h1>
-              <p className="text-gray-600">
-                Total Applications: <span className="font-semibold text-[#005EFF]">{applications.length}</span>
-              </p>
-            </div>
-            <div className="flex gap-3">
-              <Button
-                onClick={handleLogout}
-                variant="outline"
-                className="border-gray-300 text-gray-600 hover:bg-gray-100 transition-colors"
-              >
-                <LogOut className="w-4 h-4 mr-2" />
-                Logout
-              </Button>
-              <Button
-                onClick={fetchApplications}
-                disabled={loading}
-                className="bg-white text-[#005EFF] border border-[#005EFF] hover:bg-[#005EFF] hover:text-white transition-colors"
-              >
-                <RefreshCw className={`w-4 h-4 mr-2 ${loading ? 'animate-spin' : ''}`} />
-                Refresh
-              </Button>
-              <Button
-                onClick={downloadCSV}
-                disabled={applications.length === 0}
-                className="bg-[#005EFF] text-white hover:bg-[#0047CC] transition-colors"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Export CSV
-              </Button>
-            </div>
-          </div>
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Admin Dashboard</h1>
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition-colors"
+          >
+            <LogOut className="w-4 h-4" />
+            Logout
+          </button>
         </div>
 
-        {/* Error Message */}
-        {error && (
-          <Card className="p-4 mb-6 bg-red-50 border-red-200">
-            <p className="text-red-600">{error}</p>
-          </Card>
-        )}
+        {/* Tabs */}
+        <div className="flex gap-4 mb-8 border-b border-gray-300">
+          <button
+            onClick={() => setActiveTab('beta')}
+            className={`px-6 py-3 font-semibold transition-colors ${
+              activeTab === 'beta' 
+                ? 'border-b-2 border-blue-600 text-blue-600' 
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            Beta Applications ({betaApplications.length})
+          </button>
+          <button
+            onClick={() => setActiveTab('contact')}
+            className={`px-6 py-3 font-semibold transition-colors ${
+              activeTab === 'contact' 
+                ? 'border-b-2 border-blue-600 text-blue-600' 
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            Contact Us ({contactSubmissions.length})
+          </button>
+          <button
+            onClick={() => setActiveTab('recruitment')}
+            className={`px-6 py-3 font-semibold transition-colors ${
+              activeTab === 'recruitment' 
+                ? 'border-b-2 border-blue-600 text-blue-600' 
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            Recruitment ({recruitmentApplications.length})
+          </button>
+        </div>
 
-        {/* Loading State */}
-        {loading && (
-          <Card className="p-12 text-center">
-            <RefreshCw className="w-8 h-8 animate-spin mx-auto mb-4 text-[#005EFF]" />
-            <p className="text-gray-600">Loading applications...</p>
-          </Card>
-        )}
+        {loading ? (
+          <div className="text-center py-12">
+            <p className="text-gray-600">Loading...</p>
+          </div>
+        ) : (
+          <>
+            {/* Beta Applications Tab */}
+            {activeTab === 'beta' && (
+              <div>
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Beta Applications</h2>
+                  <button
+                    onClick={() => exportToCSV(betaApplications, 'beta-applications.csv', ['name', 'email', 'company', 'role', 'motivation', 'createdAt'])}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Export CSV
+                  </button>
+                </div>
 
-        {/* Empty State */}
-        {!loading && applications.length === 0 && !error && (
-          <Card className="p-12 text-center">
-            <Mail className="w-16 h-16 mx-auto mb-4 text-gray-400" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No Applications Yet</h3>
-            <p className="text-gray-600">Beta applications will appear here once submitted.</p>
-          </Card>
-        )}
-
-        {/* Applications List */}
-        {!loading && applications.length > 0 && (
-          <div className="space-y-4">
-            {applications.map((app, index) => (
-              <Card key={app.id} className="p-6 hover:shadow-lg transition-shadow border-l-4 border-l-[#005EFF]">
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
-                  <div className="flex-1 space-y-3">
-                    {/* Header */}
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <div className="flex items-center gap-3 mb-1">
-                          <h3 className="text-xl font-bold text-[#0A0D12]">{app.name}</h3>
-                          <Badge variant="outline" className="bg-[#005EFF]/10 text-[#005EFF] border-[#005EFF]/20">
-                            #{index + 1}
-                          </Badge>
-                        </div>
-                        <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-                          <div className="flex items-center gap-1">
-                            <Mail className="w-4 h-4" />
-                            <a href={`mailto:${app.email}`} className="hover:text-[#005EFF] transition-colors">
-                              {app.email}
-                            </a>
+                {betaApplications.length === 0 ? (
+                  <div className="pitch-card text-center" style={{ padding: '3rem' }}>
+                    <p className="text-gray-600">No applications yet</p>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {betaApplications.map((app) => (
+                      <div key={app.id} className="pitch-card" style={{ padding: '2rem' }}>
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div>
+                            <p className="text-sm text-gray-500 mb-1">Name</p>
+                            <p className="font-semibold">{app.name}</p>
                           </div>
-                          <div className="flex items-center gap-1">
-                            <Building className="w-4 h-4" />
-                            <span>{app.company}</span>
+                          <div>
+                            <p className="text-sm text-gray-500 mb-1">Email</p>
+                            <p className="font-semibold">{app.email}</p>
                           </div>
-                          <div className="flex items-center gap-1">
-                            <User className="w-4 h-4" />
-                            <span>{app.role}</span>
+                          <div>
+                            <p className="text-sm text-gray-500 mb-1">Company</p>
+                            <p className="font-semibold">{app.company}</p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-gray-500 mb-1">Role</p>
+                            <p className="font-semibold">{app.role}</p>
+                          </div>
+                          <div className="md:col-span-2">
+                            <p className="text-sm text-gray-500 mb-1">Motivation</p>
+                            <p className="text-gray-700">{app.motivation}</p>
+                          </div>
+                          <div className="md:col-span-2">
+                            <p className="text-sm text-gray-500">Submitted: {new Date(app.createdAt).toLocaleString()}</p>
                           </div>
                         </div>
                       </div>
-                    </div>
-
-                    {/* Motivation */}
-                    <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                      <h4 className="font-semibold text-sm text-gray-700 mb-2">What brings them to Knowcap:</h4>
-                      <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">{app.motivation}</p>
-                    </div>
+                    ))}
                   </div>
+                )}
+              </div>
+            )}
 
-                  {/* Metadata */}
-                  <div className="lg:text-right space-y-2">
-                    <div className="flex items-center gap-2 lg:justify-end text-sm text-gray-500">
-                      <Calendar className="w-4 h-4" />
-                      <span>{new Date(app.createdAt).toLocaleDateString()}</span>
-                    </div>
-                    <p className="text-xs text-gray-400">
-                      {new Date(app.createdAt).toLocaleTimeString()}
-                    </p>
-                    <p className="text-xs text-gray-400 font-mono">ID: {app.id}</p>
-                  </div>
+            {/* Contact Submissions Tab */}
+            {activeTab === 'contact' && (
+              <div>
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Contact Submissions</h2>
+                  <button
+                    onClick={() => exportToCSV(contactSubmissions, 'contact-submissions.csv', ['name', 'email', 'company', 'subject', 'message', 'createdAt'])}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Export CSV
+                  </button>
                 </div>
-              </Card>
-            ))}
-          </div>
-        )}
 
-        {/* Footer Stats */}
-        {!loading && applications.length > 0 && (
-          <Card className="mt-8 p-6 bg-gradient-to-r from-[#005EFF]/5 to-[#443AFF]/5 border-[#005EFF]/20">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div>
-                <p className="text-3xl font-bold text-[#005EFF]">{applications.length}</p>
-                <p className="text-sm text-gray-600 mt-1">Total Applications</p>
+                {contactSubmissions.length === 0 ? (
+                  <div className="pitch-card text-center" style={{ padding: '3rem' }}>
+                    <p className="text-gray-600">No submissions yet</p>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {contactSubmissions.map((submission) => (
+                      <div key={submission.id} className="pitch-card" style={{ padding: '2rem' }}>
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div>
+                            <p className="text-sm text-gray-500 mb-1">Name</p>
+                            <p className="font-semibold">{submission.name}</p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-gray-500 mb-1">Email</p>
+                            <p className="font-semibold">{submission.email}</p>
+                          </div>
+                          {submission.company && (
+                            <div>
+                              <p className="text-sm text-gray-500 mb-1">Company</p>
+                              <p className="font-semibold">{submission.company}</p>
+                            </div>
+                          )}
+                          <div>
+                            <p className="text-sm text-gray-500 mb-1">Subject</p>
+                            <p className="font-semibold">{submission.subject}</p>
+                          </div>
+                          <div className="md:col-span-2">
+                            <p className="text-sm text-gray-500 mb-1">Message</p>
+                            <p className="text-gray-700 whitespace-pre-wrap">{submission.message}</p>
+                          </div>
+                          <div className="md:col-span-2">
+                            <p className="text-sm text-gray-500">Submitted: {new Date(submission.createdAt).toLocaleString()}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
+            )}
+
+            {/* Recruitment Applications Tab */}
+            {activeTab === 'recruitment' && (
               <div>
-                <p className="text-3xl font-bold text-[#005EFF]">
-                  {new Set(applications.map(a => a.company)).size}
-                </p>
-                <p className="text-sm text-gray-600 mt-1">Unique Companies</p>
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Recruitment Applications</h2>
+                  <button
+                    onClick={() => exportToCSV(recruitmentApplications, 'recruitment-applications.csv', ['fullName', 'email', 'role', 'linkedin', 'portfolio', 'aiProject', 'resumePath', 'createdAt'])}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    Export CSV
+                  </button>
+                </div>
+
+                {recruitmentApplications.length === 0 ? (
+                  <div className="pitch-card text-center" style={{ padding: '3rem' }}>
+                    <p className="text-gray-600">No applications yet</p>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    {recruitmentApplications.map((app) => (
+                      <div key={app.id} className="pitch-card" style={{ padding: '2rem' }}>
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div>
+                            <p className="text-sm text-gray-500 mb-1">Name</p>
+                            <p className="font-semibold">{app.fullName}</p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-gray-500 mb-1">Email</p>
+                            <p className="font-semibold">{app.email}</p>
+                          </div>
+                          <div>
+                            <p className="text-sm text-gray-500 mb-1">Role</p>
+                            <p className="font-semibold">{app.role}</p>
+                          </div>
+                          {app.linkedin && (
+                            <div>
+                              <p className="text-sm text-gray-500 mb-1">LinkedIn</p>
+                              <a href={app.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{app.linkedin}</a>
+                            </div>
+                          )}
+                          {app.portfolio && (
+                            <div>
+                              <p className="text-sm text-gray-500 mb-1">Portfolio</p>
+                              <a href={app.portfolio} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{app.portfolio}</a>
+                            </div>
+                          )}
+                          {app.aiProject && (
+                            <div className="md:col-span-2">
+                              <p className="text-sm text-gray-500 mb-1">AI Project</p>
+                              <p className="text-gray-700 whitespace-pre-wrap">{app.aiProject}</p>
+                            </div>
+                          )}
+                          {app.resumePath && (
+                            <div>
+                              <p className="text-sm text-gray-500 mb-1">Resume</p>
+                              <p className="text-gray-700">{app.resumePath}</p>
+                            </div>
+                          )}
+                          <div className="md:col-span-2">
+                            <p className="text-sm text-gray-500">Submitted: {new Date(app.createdAt).toLocaleString()}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-              <div>
-                <p className="text-3xl font-bold text-[#005EFF]">
-                  {applications.filter(a => {
-                    const date = new Date(a.createdAt)
-                    const today = new Date()
-                    return date.toDateString() === today.toDateString()
-                  }).length}
-                </p>
-                <p className="text-sm text-gray-600 mt-1">Today</p>
-              </div>
-            </div>
-          </Card>
+            )}
+          </>
         )}
       </div>
     </div>

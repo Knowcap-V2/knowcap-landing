@@ -22,3 +22,32 @@ model BetaApplication {
     @@index([email])
     @@index([createdAt])
 }
+
+model ContactSubmission {
+    id        String   @id @default(cuid())
+    name      String
+    email     String
+    company   String?
+    subject   String
+    message   String   @db.Text
+    createdAt DateTime @default(now())
+
+    @@index([email])
+    @@index([createdAt])
+}
+
+model RecruitmentApplication {
+    id         String   @id @default(cuid())
+    fullName   String
+    email      String
+    role       String
+    linkedin   String?
+    portfolio  String?
+    aiProject  String?  @db.Text
+    resumePath String?
+    createdAt  DateTime @default(now())
+
+    @@index([email])
+    @@index([role])
+    @@index([createdAt])
+}
