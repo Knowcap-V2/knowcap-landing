@@ -12,6 +12,7 @@ export async function POST(request: NextRequest) {
     const linkedin = formData.get('linkedin') as string
     const portfolio = formData.get('portfolio') as string
     const aiProject = formData.get('ai_project') as string
+    const additionalInfo = formData.get('additional_info') as string
     const role = formData.get('role') as string
     const resume = formData.get('resume') as File
 
@@ -32,6 +33,7 @@ export async function POST(request: NextRequest) {
         linkedin: linkedin || null,
         portfolio: portfolio || null,
         aiProject: aiProject || null,
+        additionalInfo: additionalInfo || null,
         resumePath: resume.name // Store filename for reference
       }
     })
@@ -66,6 +68,13 @@ export async function POST(request: NextRequest) {
               <div style="margin: 20px 0;">
                 <h3 style="font-family: 'Space Grotesk', sans-serif;">AI Project:</h3>
                 <p style="white-space: pre-wrap; line-height: 1.6;">${aiProject}</p>
+              </div>
+            ` : ''}
+
+            ${additionalInfo ? `
+              <div style="margin: 20px 0;">
+                <h3 style="font-family: 'Space Grotesk', sans-serif;">Additional Information:</h3>
+                <p style="white-space: pre-wrap; line-height: 1.6;">${additionalInfo}</p>
               </div>
             ` : ''}
 

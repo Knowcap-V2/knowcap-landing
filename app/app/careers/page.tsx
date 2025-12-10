@@ -598,8 +598,12 @@ export default function CareersPage() {
                           <input type="url" id="portfolio" name="portfolio" />
                         </div>
                         <div className="form-group">
-                          <label htmlFor="ai_project">Something Cool You Did with AI</label>
+                          <label htmlFor="ai_project">Something Cool You Did with AI (Optional)</label>
                           <textarea id="ai_project" name="ai_project" placeholder="Share a project you've built, or a concept you'd love to bring to life." rows={3}></textarea>
+                        </div>
+                        <div className="form-group">
+                          <label htmlFor="additional_info">Anything you would like to share? (Optional)</label>
+                          <textarea id="additional_info" name="additional_info" placeholder="Any additional information you'd like us to know..." rows={3}></textarea>
                         </div>
                         <div className="form-group">
                           <label htmlFor="resume">Resume / CV</label>
