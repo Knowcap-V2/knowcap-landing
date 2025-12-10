@@ -573,6 +573,22 @@ export default function CareersPage() {
                           <input type="email" id="email" name="email" required />
                         </div>
                         <div className="form-group">
+                          <label htmlFor="referral_source">Where did you hear about us?</label>
+                          <select id="referral_source" name="referral_source" required>
+                            <option value="">Select an option...</option>
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="twitter">Twitter / X</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="friend">Friend or Colleague</option>
+                            <option value="job_board">Job Board</option>
+                            <option value="google">Google Search</option>
+                            <option value="event">Event or Conference</option>
+                            <option value="university">University / Career Center</option>
+                            <option value="other">Other</option>
+                          </select>
+                        </div>
+                        <div className="form-group">
                           <label htmlFor="linkedin">LinkedIn Profile (Optional)</label>
                           <input type="url" id="linkedin" name="linkedin" />
                         </div>

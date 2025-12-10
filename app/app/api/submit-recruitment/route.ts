@@ -9,6 +9,7 @@ export async function POST(request: NextRequest) {
     const formData = await request.formData()
     const fullName = formData.get('fullName') as string
     const email = formData.get('email') as string
+    const referralSource = formData.get('referral_source') as string
     const linkedin = formData.get('linkedin') as string
     const portfolio = formData.get('portfolio') as string
     const aiProject = formData.get('ai_project') as string
@@ -17,7 +18,7 @@ export async function POST(request: NextRequest) {
     const resume = formData.get('resume') as File
 
     // Validate required fields
-    if (!fullName || !email || !role || !resume) {
+    if (!fullName || !email || !referralSource || !role || !resume) {
       return NextResponse.json(
         { message: 'Missing required fields' },
         { status: 400 }
@@ -30,6 +31,7 @@ export async function POST(request: NextRequest) {
         fullName,
         email,
         role,
+        referralSource: referralSource || null,
         linkedin: linkedin || null,
         portfolio: portfolio || null,
         aiProject: aiProject || null,
@@ -60,6 +62,7 @@ export async function POST(request: NextRequest) {
               <p><strong>Role:</strong> ${role}</p>
               <p><strong>Name:</strong> ${fullName}</p>
               <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Heard About Us:</strong> ${referralSource}</p>
               ${linkedin ? `<p><strong>LinkedIn:</strong> <a href="${linkedin}">${linkedin}</a></p>` : ''}
               ${portfolio ? `<p><strong>Portfolio:</strong> <a href="${portfolio}">${portfolio}</a></p>` : ''}
             </div>

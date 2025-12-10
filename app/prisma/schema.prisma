@@ -41,6 +41,7 @@ model RecruitmentApplication {
     fullName       String
     email          String
     role           String
+    referralSource String?
     linkedin       String?
     portfolio      String?
     aiProject      String?  @db.Text

@@ -389,7 +389,7 @@ export default function BetaAppDashboard() {
                 <div className="flex justify-between items-center mb-6">
                   <h2 className="text-xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Recruitment Applications</h2>
                   <button
-                    onClick={() => exportToCSV(recruitmentApplications, 'recruitment-applications.csv', ['fullName', 'email', 'role', 'linkedin', 'portfolio', 'aiProject', 'additionalInfo', 'resumePath', 'createdAt'])}
+                    onClick={() => exportToCSV(recruitmentApplications, 'recruitment-applications.csv', ['fullName', 'email', 'role', 'referralSource', 'linkedin', 'portfolio', 'aiProject', 'additionalInfo', 'resumePath', 'createdAt'])}
                     className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
                   >
                     <Download className="w-4 h-4" />
@@ -425,6 +425,12 @@ export default function BetaAppDashboard() {
                             <p className="text-sm text-gray-500 mb-1">Role</p>
                             <p className="font-semibold">{app.role}</p>
                           </div>
+                          {app.referralSource && (
+                            <div>
+                              <p className="text-sm text-gray-500 mb-1">Heard About Us</p>
+                              <p className="text-gray-700">{app.referralSource}</p>
+                            </div>
+                          )}
                           {app.linkedin && (
                             <div>
                               <p className="text-sm text-gray-500 mb-1">LinkedIn</p>
