@@ -195,17 +195,55 @@ const jobData: Record<string, { title: string; content: string }> = {
       <div class="card">
         <h3 style="margin-top: 0;">The Opportunity</h3>
         <p style="font-size: 1.1rem;">We are looking for a true business partner to serve as the operational backbone of the company. This isn't a typical EA role; you are the CEO's force multiplier. Your primary mission is to create leverage and reclaim executive time as the company's most valuable resource. You will own the systems that allow leadership to focus exclusively on building the product, selling to customers, and hiring our team. You will have immense ownership, and your impact will be felt across the entire organization.</p>
-        <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0;">
-        <h3 style="margin-top: 0;">Compensation</h3>
-        <p style="margin-bottom: 0;"><strong>Salary Range:</strong> EGP 480,000 - 800,000 annually (approx. EGP 40,000 - 67,000 monthly).</p>
       </div>
       <div class="card">
-        <h3 style="margin-top: 0;">The Mission: Architecting the CEO's Operating System</h3>
-        <p>Your mission is to design, implement, and run the core operating system for the CEO's office. Success in this role means the CEO can operate at maximum efficiency, confident that nothing is falling through the cracks.</p>
+        <h3 style="margin-top: 0;">What This Role Is</h3>
+        <p style="margin-bottom: 0;">This is a full-time, on-site role based at our headquarters in New Cairo. You will work directly with (Hassan Sam Arslan) the CEO every day. We are looking for a career-oriented individual who wants to build a company and grow with us.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top: 0;">The Mission: What You'll Actually Do</h3>
+        <p>Your mission is to design, implement, and run the core operating system for the CEO's office. Success is measured by your ability to create order from chaos and generate leverage for the founder. This breaks down into four key pillars:</p>
+        
+        <h4><strong>1. The Gatekeeper: Mastering Information Flow</strong></h4>
+        <p>You are the primary filter for all inbound communication. Your goal is to protect the CEO from noise and ensure his attention is only on the most critical items.</p>
+        <ul>
+          <li><strong>Inbox Mastery:</strong> You will have full authority over the CEO's inbox with the goal of driving it to "Inbox Zero" daily. This involves aggressively archiving, unsubscribing, and filtering all non-essential mail.</li>
+          <li><strong>Triage & Action:</strong> You will read, process, and take action on emails. This includes responding on the CEO's behalf for scheduling, handling common inquiries, and delegating tasks to other team members when appropriate.</li>
+          <li><strong>Daily Briefings:</strong> You will synthesize the most critical emails and action items into a concise daily briefing for the CEO to review.</li>
+        </ul>
+
+        <h4 style="margin-top: 2rem;"><strong>2. The Architect: Building the CEO's Operating System</strong></h4>
+        <p>You don't just manage tasks; you build the systems that make the founder's office run. You are obsessively organized and love creating processes.</p>
+        <ul>
+          <li><strong>Guardian of the Calendar:</strong> You will be the sole owner of the CEO's calendar, with the authority to enforce the "Perfect Week" principle. You will protect his morning "Deep Work" blocks at all costs.</li>
+          <li><strong>Meeting Architecture:</strong> You will ensure every meeting the CEO attends is a valuable use of time. This means confirming attendees, ensuring there is a clear written agenda, and circulating pre-read materials 24 hours in advance.</li>
+          <li><strong>SOP Development:</strong> You will document and create Standard Operating Procedures (SOPs) for recurring tasks, such as travel booking, expense reporting, and meeting preparation, to ensure consistency and efficiency.</li>
+        </ul>
+
+        <h4 style="margin-top: 2rem;"><strong>3. The Communicator: Mastering the Follow-Up</strong></h4>
+        <p>Nothing gets dropped. You are the glue that connects conversations to actions and ensures accountability across the organization.</p>
+        <ul>
+          <li><strong>Action Item Tracking:</strong> You will attend key meetings with the primary goal of capturing all action items, decisions, and deadlines. You will be responsible for entering these into our project management system and ensuring they are assigned to the correct owner.</li>
+          <li><strong>The "Closed Loop" System:</strong> Your superpower is the follow-up. You will relentlessly track open items, send reminders to team members, and ensure that every loop opened in a meeting is eventually "closed" with a resolution.</li>
+          <li><strong>Creative Problem Solving:</strong> When conflicts or problems arise, you don't just report them; you are expected to come to the table with 1-2 potential creative solutions.</li>
+        </ul>
+
+        <h4 style="margin-top: 2rem;"><strong>4. The Operator: Seamless Execution</strong></h4>
+        <p>You will manage the core logistics that allow the CEO to operate at maximum efficiency.</p>
+        <ul>
+          <li><strong>Travel Logistics:</strong> You will manage all aspects of business travel, including booking flights and accommodations, managing itineraries, and scheduling key meetings during trips.</li>
+          <li><strong>Expense Management:</strong> You will handle all expense reporting and receipt management for the CEO.</li>
+          <li><strong>Event Coordination:</strong> You will assist with the planning and coordination of internal and external events, such as team offsites or investor meetings.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-top: 0;">This Role Is For You If...</h3>
         <ul style="margin-bottom: 0;">
-          <li><strong>Protect the "Deep Work" Blocks:</strong> You will be the guardian of the CEO's calendar, enforcing the "Perfect Week" principle. Mornings are for building the business (creative, high-focus work); afternoons are for meetings. Your defense of this schedule is critical to our success.</li>
-          <li><strong>Drive the Inbox to Zero:</strong> You will have full authority over the CEO's inbox. Your goal is to drive it to zero daily by aggressively filtering noise, archiving, handling all scheduling, and responding on the CEO's behalf. You will surface only the most critical communications that require direct executive attention.</li>
-          <li><strong>Read the Play & Look Ahead:</strong> You won't just manage today. You will be constantly looking 2-6 weeks ahead on the calendar, anticipating conflicts, confirming travel, and ensuring every upcoming meeting has a clear agenda and desired outcome.</li>
+          <li><strong>You Are a Natural Systems-Builder:</strong> You genuinely find joy in creating order from chaos. Your default response to a recurring problem is to build a checklist, a template, or a process to ensure it never happens again.</li>
+          <li><strong>You Are Obsessed with "Closing the Loop":</strong> The thought of an unanswered email or an untracked action item makes you uncomfortable. You have a natural, relentless drive to follow up until a task is verifiably complete.</li>
+          <li><strong>You Are a World-Class Filter:</strong> You have an intuitive ability to distinguish between what is merely "urgent" and what is truly "important." You take pride in being a trusted filter that allows your leader to focus on what matters most.</li>
+          <li><strong>You Are a Proactive Problem-Solver:</strong> You don't just identify problems; you bring solutions. You think one step ahead and are constantly looking for ways to improve efficiency and remove friction.</li>
+          <li><strong>You Thrive in a High-Velocity Environment:</strong> You are calm and collected under pressure and are comfortable with the ambiguity and shifting priorities of a seed-stage startup.</li>
         </ul>
       </div>
     `
