@@ -12,11 +12,7 @@ const jobData: Record<string, { title: string; content: string }> = {
     content: `
       <div class="card">
         <h3 style="margin-top: 0;">The Opportunity</h3>
-        <p style="font-size: 1.1rem;">We are looking for a partner, not an employee. We bring 10 years of domain expertise in Service Delivery and a 'hair-on-fire' sales pipeline of 500+ potential agency clients. We need You to build the technical soul of the company. You will start by shipping code Day 1, and as the team scales, you will have the path to evolve into the CTO role, owning the entire technical organization.</p>
-        <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0;">
-        <h3 style="margin-top: 0;">Compensation</h3>
-        <p>The total compensation for this role is a combination of a competitive salary and significant founding team equity. The expected salary range is <strong>EGP 840,000 - 2,400,000 annually (approx. EGP 70,000 - 200,000 monthly)</strong>.</p>
-        <p style="margin-bottom: 0;"><strong>Our Compensation Philosophy:</strong> Our cash salary is benchmarked at the top of the Egyptian market. We believe in providing an exceptional living for our team locally. However, this is a founding team role, not a standard salaried position. The primary financial opportunity is not in the monthly salary, but in the <strong>significant, life-changing equity package (2.0% - 10.0%)</strong>. We are looking for a partner to build this company with us and share in the massive upside of that success.</p>
+        <p style="font-size: 1.1rem; margin-bottom: 0;">We are looking for a partner, not an employee. We bring 10 years of domain expertise in Service Delivery and a 'hair-on-fire' sales pipeline of 500+ potential agency clients. We need You to build the technical soul of the company. You will start by shipping code Day 1, and as the team scales, you will have the path to evolve into the CTO role, owning the entire technical organization.</p>
       </div>
       <div class="card">
         <h3 style="margin-top: 0;">The Challenges You Will Solve Immediately</h3>
@@ -95,9 +91,6 @@ const jobData: Record<string, { title: string; content: string }> = {
           <h4 style="margin-top: 0; color: var(--primary); font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-triangle-exclamation"></i> The Reality Check: We are Pre-PMF</h4>
           <p style="margin-bottom: 0; font-size: 1rem;">We have a strong initial hypothesis targeting Odoo Partners, but we are transparent: <strong>We are still finding Product-Market Fit.</strong> Our target market could shift at any moment. We need a Revenue Partner who thrives in ambiguity, tests segments, and invalidates bad ideas fast.</p>
         </div>
-        <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0;">
-        <h3 style="margin-top: 0;">Compensation</h3>
-        <p style="margin-bottom: 0;"><strong>Salary Range:</strong> EGP 600,000 - 1,800,000 annually (approx. EGP 50,000 - 150,000 monthly), plus performance-based options.</p>
       </div>
       <div class="card">
         <h3 style="margin-top: 0;">Key Responsibilities (The "What")</h3>
@@ -133,10 +126,7 @@ const jobData: Record<string, { title: string; content: string }> = {
     content: `
       <div class="card">
         <h3 style="margin-top: 0;">The Opportunity</h3>
-        <p style="font-size: 1.1rem;">Forget boring internships where you just fetch coffee. You are our media team. We're a startup building world-changing AI, and your mission is to turn our journey into a viral 'Build in Public' show on TikTok, Reels, and LinkedIn. Your camera is your all-access pass to the startup reality show everyone wishes they could see.</p>
-        <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0;">
-        <h3 style="margin-top: 0;">Compensation</h3>
-        <p style="margin-bottom: 0;">This is a competitive paid internship, with an expected monthly stipend of <strong>EGP 8,000 - 12,000</strong>, depending on your portfolio and experience.</p>
+        <p style="font-size: 1.1rem; margin-bottom: 0;">Forget boring internships where you just fetch coffee. You are our media team. We're a startup building world-changing AI, and your mission is to turn our journey into a viral 'Build in Public' show on TikTok, Reels, and LinkedIn. Your camera is your all-access pass to the startup reality show everyone wishes they could see.</p>
       </div>
       <div class="card">
         <h3 style="margin-top: 0;">The Mission</h3>
@@ -154,10 +144,7 @@ const jobData: Record<string, { title: string; content: string }> = {
     content: `
       <div class="card">
         <h3 style="margin-top: 0;">The Opportunity</h3>
-        <p style="font-size: 1.1rem;">We are not building another project management tool. We are building the source of truth for all project work—the Verified Delivery OS. As our first Product Manager, you are the CEO of our core intellectual property. You will own the roadmap that transforms raw, messy service delivery interactions into structured, verifiable insights.</p>
-        <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0;">
-        <h3 style="margin-top: 0;">Compensation</h3>
-        <p style="margin-bottom: 0;"><strong>Salary Range:</strong> EGP 900,000 - 1,500,000 annually (approx. EGP 75,000 - 125,000 monthly), plus equity options.</p>
+        <p style="font-size: 1.1rem; margin-bottom: 0;">We are not building another project management tool. We are building the source of truth for all project work—the Verified Delivery OS. As our first Product Manager, you are the CEO of our core intellectual property. You will own the roadmap that transforms raw, messy service delivery interactions into structured, verifiable insights.</p>
       </div>
       <div class="card">
         <h3 style="margin-top: 0;">The Mission</h3>
@@ -174,10 +161,7 @@ const jobData: Record<string, { title: string; content: string }> = {
     content: `
       <div class="card">
         <h3 style="margin-top: 0;">The Opportunity</h3>
-        <p style="font-size: 1.1rem;">In a world of AI hallucinations, trust is our most valuable asset. We are looking for a specialist who is obsessed with the truth. Your job is not just to find bugs, but to be the guardian of our verification promise. You are the last line of defense protecting our users from a single piece of bad data.</p>
-        <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 2rem 0;">
-        <h3 style="margin-top: 0;">Compensation</h3>
-        <p style="margin-bottom: 0;"><strong>Salary Range:</strong> EGP 600,000 - 950,000 annually (approx. EGP 50,000 - 79,000 monthly).</p>
+        <p style="font-size: 1.1rem; margin-bottom: 0;">In a world of AI hallucinations, trust is our most valuable asset. We are looking for a specialist who is obsessed with the truth. Your job is not just to find bugs, but to be the guardian of our verification promise. You are the last line of defense protecting our users from a single piece of bad data.</p>
       </div>
       <div class="card">
         <h3 style="margin-top: 0;">The Mission</h3>
@@ -520,7 +504,6 @@ export default function CareersPage() {
                 <article className="card job-card">
                   <h4>Founding AI Engineer (Path to CTO)</h4>
                   <p>The technical soul of the company. A partner to build the core AI engine from scratch and evolve into the CTO as we scale.</p>
-                  <p><strong>💰 Compensation:</strong> EGP 840k - 2.4M Annually + Founding Equity (2.0% - 10.0%)</p>
                   <button onClick={() => navigateTo('founding-ai-engineer')} className="btn btn-primary">Learn More & Apply →</button>
                 </article>
               </div>
