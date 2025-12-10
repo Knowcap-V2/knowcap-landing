@@ -19,6 +19,55 @@ const jobData: Record<string, { title: string; content: string }> = {
         <p style="margin-bottom: 0;"><strong>Our Compensation Philosophy:</strong> Our cash salary is benchmarked at the top of the Egyptian market. We believe in providing an exceptional living for our team locally. However, this is a founding team role, not a standard salaried position. The primary financial opportunity is not in the monthly salary, but in the <strong>significant, life-changing equity package (2.0% - 10.0%)</strong>. We are looking for a partner to build this company with us and share in the massive upside of that success.</p>
       </div>
       <div class="card">
+        <h3 style="margin-top: 0;">The Challenges You Will Solve Immediately</h3>
+        <p>This is not a "chatbot project." This is applied AI engineering where system design is as important as code. We need an engineer who can operate at the architecture and implementation level across:</p>
+        <p><strong>Multimodal Alignment (High Priority):</strong></p>
+        <ul>
+          <li>Synchronizing transcript events with screen/video events.</li>
+          <li>Structuring user actions, clicks, workflow steps, and metadata.</li>
+          <li>Turning raw, multi-hour meetings into actionable, correctly-chunked knowledge units.</li>
+        </ul>
+        <p><strong>RAG / Retrieval Layer:</strong></p>
+        <ul>
+          <li>Designing and implementing a hybrid search strategy.</li>
+          <li>Developing a robust chunking strategy for complex documents and transcripts.</li>
+          <li>Selecting, tuning, and managing vector databases (e.g., Pinecone, Weaviate).</li>
+          <li>Building and optimizing reranking pipelines to ensure retrieval precision (e.g., Cohere, Voyage).</li>
+        </ul>
+        <p><strong>Orchestration & Reliability Layer:</strong></p>
+        <ul>
+          <li>Building and maintaining complex LLM workflows (e.g., LangChain, LangGraph).</li>
+          <li>Implementing intelligent model routing (small, fast models for simple tasks; large models for complex reasoning).</li>
+          <li>Establishing guardrails and deterministic fallbacks to ensure reliable and predictable outputs.</li>
+        </ul>
+        <p><strong>Evaluation & Observability:</strong></p>
+        <ul style="margin-bottom: 0;">
+          <li>Creating a metrics-driven framework to measure and reduce hallucinations.</li>
+          <li>Building regression testing suites for our AI pipeline.</li>
+          <li>Ensuring source alignment and the "verifiability" of every piece of generated content.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-top: 0;">Your Profile: Must-Haves & Nice-to-Haves</h3>
+        <p>To succeed in this role from day one, you need a strong foundation in building production-grade AI systems.</p>
+        <p><strong>Must-Haves:</strong></p>
+        <ul>
+          <li>5-7+ years of professional software engineering experience, with a proven track record of shipping and maintaining complex systems in a cloud environment.</li>
+          <li>Deep, hands-on experience building and optimizing Retrieval-Augmented Generation (RAG) pipelines. This is non-negotiable. You should be an expert in chunking, embedding, and hybrid search strategies.</li>
+          <li>Strong architectural and systems-thinking ability. You know how to design for scalability, cost, and reliability. You understand the trade-offs between different models and approaches.</li>
+          <li>High proficiency in Python and its ecosystem for AI/ML development.</li>
+          <li>A pragmatic, high-ownership mindset suited for a fast-paced, ambiguous startup environment. You are a builder who wants to own the problem from end to end.</li>
+        </ul>
+        <p><strong>Nice-to-Haves:</strong></p>
+        <ul style="margin-bottom: 0;">
+          <li>Direct, hands-on experience with multimodal AI models (processing both image/video and text).</li>
+          <li>Experience with orchestration frameworks like LangChain, LangGraph, or equivalent.</li>
+          <li>Familiarity with building real-time or low-latency data streaming pipelines.</li>
+          <li>A public portfolio (GitHub, blog, etc.) demonstrating your passion for building and your expertise in AI.</li>
+          <li>Experience in the professional services, ERP, or Odoo ecosystem is a significant plus.</li>
+        </ul>
+      </div>
+      <div class="card">
         <h3 style="margin-top: 0;">The Mission (The "Evolution")</h3>
         <p><strong>Phase 1 (Months 1-6):</strong> You are the <strong>Lead Architect & Coder</strong>. You will build the <strong>Visual Transcription Engine (VTE)</strong>—the system that watches screens and audio to eliminate 20–40% of project rework. You optimize for <strong>Unit Economics</strong> and <strong>Latency</strong>.</p>
         <p><strong>Phase 2 (Months 6-12):</strong> You become the <strong>Engineering Lead</strong>. You will hire 2-3 junior engineers to scale what you built.</p>
