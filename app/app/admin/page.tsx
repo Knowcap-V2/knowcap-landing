@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Lock, LogOut, Download, Trash2 } from 'lucide-react'
+import { Lock, LogOut, Download, Trash2, RefreshCw } from 'lucide-react'
 
 export default function BetaAppDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -264,13 +264,23 @@ export default function BetaAppDashboard() {
               <div>
                 <div className="flex justify-between items-center mb-6">
                   <h2 className="text-xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Beta Applications</h2>
-                  <button
-                    onClick={() => exportToCSV(betaApplications, 'beta-applications.csv', ['name', 'email', 'company', 'role', 'motivation', 'createdAt'])}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-                  >
-                    <Download className="w-4 h-4" />
-                    Export CSV
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={fetchData}
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                      title="Refresh data"
+                    >
+                      <RefreshCw className="w-4 h-4" />
+                      Refresh
+                    </button>
+                    <button
+                      onClick={() => exportToCSV(betaApplications, 'beta-applications.csv', ['name', 'email', 'company', 'role', 'motivation', 'createdAt'])}
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                    >
+                      <Download className="w-4 h-4" />
+                      Export CSV
+                    </button>
+                  </div>
                 </div>
 
                 {betaApplications.length === 0 ? (
@@ -325,13 +335,23 @@ export default function BetaAppDashboard() {
               <div>
                 <div className="flex justify-between items-center mb-6">
                   <h2 className="text-xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Contact Submissions</h2>
-                  <button
-                    onClick={() => exportToCSV(contactSubmissions, 'contact-submissions.csv', ['name', 'email', 'company', 'subject', 'message', 'createdAt'])}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-                  >
-                    <Download className="w-4 h-4" />
-                    Export CSV
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={fetchData}
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                      title="Refresh data"
+                    >
+                      <RefreshCw className="w-4 h-4" />
+                      Refresh
+                    </button>
+                    <button
+                      onClick={() => exportToCSV(contactSubmissions, 'contact-submissions.csv', ['name', 'email', 'company', 'subject', 'message', 'createdAt'])}
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                    >
+                      <Download className="w-4 h-4" />
+                      Export CSV
+                    </button>
+                  </div>
                 </div>
 
                 {contactSubmissions.length === 0 ? (
@@ -388,13 +408,23 @@ export default function BetaAppDashboard() {
               <div>
                 <div className="flex justify-between items-center mb-6">
                   <h2 className="text-xl font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Recruitment Applications</h2>
-                  <button
-                    onClick={() => exportToCSV(recruitmentApplications, 'recruitment-applications.csv', ['fullName', 'email', 'role', 'referralSource', 'linkedin', 'portfolio', 'aiProject', 'additionalInfo', 'resumePath', 'createdAt'])}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-                  >
-                    <Download className="w-4 h-4" />
-                    Export CSV
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={fetchData}
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                      title="Refresh data"
+                    >
+                      <RefreshCw className="w-4 h-4" />
+                      Refresh
+                    </button>
+                    <button
+                      onClick={() => exportToCSV(recruitmentApplications, 'recruitment-applications.csv', ['fullName', 'email', 'role', 'referralSource', 'linkedin', 'portfolio', 'aiProject', 'additionalInfo', 'resumePath', 'createdAt'])}
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                    >
+                      <Download className="w-4 h-4" />
+                      Export CSV
+                    </button>
+                  </div>
                 </div>
 
                 {recruitmentApplications.length === 0 ? (
