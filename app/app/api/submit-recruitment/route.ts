@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 import nodemailer from 'nodemailer'
+import { uploadFile } from '@/lib/s3'
 
 const prisma = new PrismaClient()
 
@@ -25,7 +26,22 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Save to database (without resume for now - would need file storage)
+    // Upload resume to S3
+    let cloud_storage_path: string | null = null
+    try {
+      const buffer = Buffer.from(await resume.arrayBuffer())
+      // Resumes are private files, so isPublic = false
+      cloud_storage_path = await uploadFile(buffer, resume.name, false)
+      console.log('[RESUME UPLOAD] Successfully uploaded resume to S3:', cloud_storage_path)
+    } catch (uploadError) {
+      console.error('[RESUME UPLOAD ERROR]', uploadError)
+      return NextResponse.json(
+        { message: 'Failed to upload resume' },
+        { status: 500 }
+      )
+    }
+
+    // Save to database with S3 path
     const application = await prisma.recruitmentApplication.create({
       data: {
         fullName,
@@ -36,7 +52,9 @@ export async function POST(request: NextRequest) {
         portfolio: portfolio || null,
         aiProject: aiProject || null,
         additionalInfo: additionalInfo || null,
-        resumePath: resume.name // Store filename for reference
+        resumePath: resume.name, // Store filename for reference
+        cloud_storage_path: cloud_storage_path,
+        isPublic: false // Resumes are private
       }
     })
 

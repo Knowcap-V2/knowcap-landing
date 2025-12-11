@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Lock, LogOut, Download, Trash2, RefreshCw } from 'lucide-react'
+import { Lock, LogOut, Download, Trash2, RefreshCw, FileDown } from 'lucide-react'
 
 export default function BetaAppDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -159,6 +159,31 @@ export default function BetaAppDashboard() {
     } catch (error) {
       console.error('Delete error:', error)
       alert('Failed to delete application')
+    }
+  }
+
+  const handleDownloadResume = async (id: string, filename: string) => {
+    try {
+      const response = await fetch(`/api/download-resume?id=${id}`)
+      
+      if (!response.ok) {
+        const error = await response.json()
+        throw new Error(error.message || 'Failed to download resume')
+      }
+      
+      const data = await response.json()
+      
+      // Create a temporary anchor element and trigger download
+      const a = document.createElement('a')
+      a.href = data.url
+      a.download = filename
+      a.target = '_blank'
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+    } catch (error) {
+      console.error('Download error:', error)
+      alert('Failed to download resume. The file may not be available.')
     }
   }
 
@@ -488,7 +513,22 @@ export default function BetaAppDashboard() {
                           {app.resumePath && (
                             <div>
                               <p className="text-sm text-gray-500 mb-1">Resume</p>
-                              <p className="text-gray-700">{app.resumePath}</p>
+                              <div className="flex items-center gap-2">
+                                <p className="text-gray-700">{app.resumePath}</p>
+                                {app.cloud_storage_path && (
+                                  <button
+                                    onClick={() => handleDownloadResume(app.id, app.resumePath)}
+                                    className="flex items-center gap-1 px-3 py-1 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors text-sm"
+                                    title="Download resume"
+                                  >
+                                    <FileDown className="w-4 h-4" />
+                                    Download
+                                  </button>
+                                )}
+                                {!app.cloud_storage_path && (
+                                  <span className="text-xs text-gray-500 italic">(File not available)</span>
+                                )}
+                              </div>
                             </div>
                           )}
                           <div className="md:col-span-2">

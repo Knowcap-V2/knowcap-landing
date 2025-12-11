@@ -37,17 +37,19 @@ model ContactSubmission {
 }
 
 model RecruitmentApplication {
-    id             String   @id @default(cuid())
-    fullName       String
-    email          String
-    role           String
-    referralSource String?
-    linkedin       String?
-    portfolio      String?
-    aiProject      String?  @db.Text
-    additionalInfo String?  @db.Text
-    resumePath     String?
-    createdAt      DateTime @default(now())
+    id                  String   @id @default(cuid())
+    fullName            String
+    email               String
+    role                String
+    referralSource      String?
+    linkedin            String?
+    portfolio           String?
+    aiProject           String?  @db.Text
+    additionalInfo      String?  @db.Text
+    resumePath          String?
+    cloud_storage_path  String?
+    isPublic            Boolean  @default(false)
+    createdAt           DateTime @default(now())
 
     @@index([email])
     @@index([role])
