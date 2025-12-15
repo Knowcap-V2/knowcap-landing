@@ -3,6 +3,9 @@ import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
+// Force dynamic rendering to prevent caching
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   try {
     const applications = await prisma.recruitmentApplication.findMany({
