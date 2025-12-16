@@ -26,6 +26,21 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Check for duplicate application (same email + role)
+    const existingApplication = await prisma.recruitmentApplication.findFirst({
+      where: {
+        email: email.toLowerCase().trim(),
+        role: role
+      }
+    })
+
+    if (existingApplication) {
+      return NextResponse.json(
+        { message: `You have already applied for this position. If you need to update your application, please contact us at hsa@knowcap.ai` },
+        { status: 409 } // 409 Conflict status code
+      )
+    }
+
     // Upload resume to S3
     let cloud_storage_path: string | null = null
     try {

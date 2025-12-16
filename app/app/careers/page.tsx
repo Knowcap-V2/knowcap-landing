@@ -238,6 +238,7 @@ export default function CareersPage() {
   const router = useRouter()
   const [currentView, setCurrentView] = useState<string>('home')
   const [currentJobId, setCurrentJobId] = useState<string>('')
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
 
   useEffect(() => {
     document.title = 'Knowcap.ai | Careers'
@@ -271,6 +272,13 @@ export default function CareersPage() {
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    
+    // Prevent double submission
+    if (isSubmitting) {
+      return
+    }
+    
+    setIsSubmitting(true)
     const formData = new FormData(e.currentTarget)
     formData.append('role', currentJobId)
 
@@ -285,10 +293,12 @@ export default function CareersPage() {
         router.push('/thank-you?type=application')
       } else {
         const errorData = await response.json().catch(() => ({ message: 'Submission failed' }))
+        setIsSubmitting(false) // Re-enable button on error
         throw new Error(errorData.message || 'Submission failed')
       }
     } catch (error) {
       console.error('Error:', error)
+      setIsSubmitting(false) // Re-enable button on error
       alert('There was an error submitting your application. Please try again.')
     }
   }
@@ -608,7 +618,14 @@ export default function CareersPage() {
                           <label htmlFor="resume">Resume / CV</label>
                           <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required />
                         </div>
-                        <button type="submit" className="btn btn-primary">Submit Application</button>
+                        <button 
+                          type="submit" 
+                          className="btn btn-primary" 
+                          disabled={isSubmitting}
+                          style={{ opacity: isSubmitting ? 0.6 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
+                        >
+                          {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                        </button>
                       </form>
                     </div>
                   </div>
