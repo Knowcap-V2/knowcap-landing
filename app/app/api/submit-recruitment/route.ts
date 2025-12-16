@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
 
     if (existingApplication) {
       return NextResponse.json(
-        { message: `You have already applied for this position. If you need to update your application, please contact us at hsa@knowcap.ai` },
+        { message: `You have already submitted an application with this email for this position. If you need to update your application, please contact us at hsa@knowcap.ai` },
         { status: 409 } // 409 Conflict status code
       )
     }

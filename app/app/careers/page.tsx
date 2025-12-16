@@ -292,9 +292,12 @@ export default function CareersPage() {
         // Redirect to thank you page
         router.push('/thank-you?type=application')
       } else {
-        const errorData = await response.json().catch(() => ({ message: 'Submission failed' }))
+        const errorData = await response.json().catch(() => ({ message: 'There was an error submitting your application. Please try again.' }))
         setIsSubmitting(false) // Re-enable button on error
-        throw new Error(errorData.message || 'Submission failed')
+        
+        // Display the server's error message (e.g., duplicate application message)
+        alert(errorData.message)
+        return
       }
     } catch (error) {
       console.error('Error:', error)
