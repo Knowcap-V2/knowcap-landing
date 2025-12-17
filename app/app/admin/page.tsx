@@ -1006,9 +1006,19 @@ export default function BetaAppDashboard() {
 
     {/* Application Detail Modal */}
     {selectedApplication && (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setSelectedApplication(null)}>
-        <div className="pitch-card max-w-3xl w-full max-h-[90vh] overflow-y-auto" style={{ padding: '2rem' }} onClick={(e) => e.stopPropagation()}>
-          <div className="flex justify-between items-start mb-6">
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto" 
+        onClick={() => setSelectedApplication(null)}
+        style={{ backdropFilter: 'blur(4px)' }}
+      >
+        <div 
+          className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full my-8 relative" 
+          style={{ maxHeight: 'calc(100vh - 4rem)' }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Scrollable Content */}
+          <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 4rem)', padding: '2rem' }}>
+            <div className="flex justify-between items-start mb-6">
             <div>
               <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 {selectedApplication.fullName}
@@ -1028,168 +1038,184 @@ export default function BetaAppDashboard() {
             const badge = getRecommendationBadge(selectedApplication.recommendation)
             const BadgeIcon = badge.icon
             return (
-              <div className="mb-6 p-4 rounded-lg bg-gray-50">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className={`px-6 py-3 rounded-lg ${getScoreBgColor(selectedApplication.aiScore)}`}>
-                    <p className="text-sm text-gray-600 mb-1">AI Score</p>
-                    <p className={`text-4xl font-bold ${getScoreColor(selectedApplication.aiScore)}`}>
+              <div className="mb-6 p-5 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200">
+                <div className="flex items-stretch gap-4 mb-4">
+                  <div className={`px-6 py-4 rounded-xl ${getScoreBgColor(selectedApplication.aiScore)} flex flex-col justify-center items-center min-w-[140px] shadow-sm`}>
+                    <p className="text-xs text-gray-600 mb-2 font-medium uppercase tracking-wide">AI Score</p>
+                    <p className={`text-5xl font-bold ${getScoreColor(selectedApplication.aiScore)}`}>
                       {selectedApplication.aiScore}
                     </p>
+                    <p className="text-xs text-gray-600 mt-1">out of 100</p>
                   </div>
-                  <div className={`flex-1 px-4 py-3 rounded-lg ${badge.color} text-white`}>
-                    <div className="flex items-center gap-2 mb-1">
-                      <BadgeIcon className="w-5 h-5" />
-                      <p className="font-semibold">Recommendation</p>
+                  <div className={`flex-1 px-5 py-4 rounded-xl ${badge.color} text-white flex flex-col justify-center shadow-sm`}>
+                    <div className="flex items-center gap-2 mb-2">
+                      <BadgeIcon className="w-6 h-6" />
+                      <p className="font-semibold text-sm uppercase tracking-wide">Recommendation</p>
                     </div>
-                    <p className="text-lg font-bold">{badge.label}</p>
+                    <p className="text-2xl font-bold">{badge.label}</p>
                   </div>
                 </div>
 
                 {/* AI Analysis */}
                 {selectedApplication.aiAnalysis && (
-                  <div className="mb-4">
-                    <h4 className="font-semibold mb-2 flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-purple-600" />
+                  <div className="mb-5 p-4 bg-white rounded-lg border border-gray-200">
+                    <h4 className="font-bold mb-3 flex items-center gap-2 text-lg">
+                      <Sparkles className="w-5 h-5 text-purple-600" />
                       AI Analysis
                     </h4>
-                    <p className="text-gray-700 whitespace-pre-wrap">{selectedApplication.aiAnalysis}</p>
+                    <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">{selectedApplication.aiAnalysis}</p>
                   </div>
                 )}
 
-                {/* Strengths */}
-                {selectedApplication.strengths && (() => {
-                  try {
-                    const strengths = JSON.parse(selectedApplication.strengths)
-                    if (strengths.length > 0) {
-                      return (
-                        <div className="mb-4">
-                          <h4 className="font-semibold mb-2 flex items-center gap-2 text-green-700">
-                            <CheckCircle className="w-4 h-4" />
-                            Strengths
-                          </h4>
-                          <ul className="list-disc list-inside space-y-1">
-                            {strengths.map((strength: string, i: number) => (
-                              <li key={i} className="text-gray-700">{strength}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )
-                    }
-                  } catch (e) {}
-                  return null
-                })()}
+                {/* Strengths and Weaknesses Grid */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  {/* Strengths */}
+                  {selectedApplication.strengths && (() => {
+                    try {
+                      const strengths = JSON.parse(selectedApplication.strengths)
+                      if (strengths.length > 0) {
+                        return (
+                          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+                            <h4 className="font-bold mb-3 flex items-center gap-2 text-green-700 text-lg">
+                              <CheckCircle className="w-5 h-5" />
+                              Strengths
+                            </h4>
+                            <ul className="space-y-2">
+                              {strengths.map((strength: string, i: number) => (
+                                <li key={i} className="flex items-start gap-2 text-gray-800">
+                                  <span className="text-green-600 mt-1">✓</span>
+                                  <span className="flex-1">{strength}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )
+                      }
+                    } catch (e) {}
+                    return null
+                  })()}
 
-                {/* Weaknesses */}
-                {selectedApplication.weaknesses && (() => {
-                  try {
-                    const weaknesses = JSON.parse(selectedApplication.weaknesses)
-                    if (weaknesses.length > 0) {
-                      return (
-                        <div>
-                          <h4 className="font-semibold mb-2 flex items-center gap-2 text-orange-700">
-                            <AlertCircle className="w-4 h-4" />
-                            Areas for Consideration
-                          </h4>
-                          <ul className="list-disc list-inside space-y-1">
-                            {weaknesses.map((weakness: string, i: number) => (
-                              <li key={i} className="text-gray-700">{weakness}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )
-                    }
-                  } catch (e) {}
-                  return null
-                })()}
+                  {/* Weaknesses */}
+                  {selectedApplication.weaknesses && (() => {
+                    try {
+                      const weaknesses = JSON.parse(selectedApplication.weaknesses)
+                      if (weaknesses.length > 0) {
+                        return (
+                          <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                            <h4 className="font-bold mb-3 flex items-center gap-2 text-orange-700 text-lg">
+                              <AlertCircle className="w-5 h-5" />
+                              Areas for Consideration
+                            </h4>
+                            <ul className="space-y-2">
+                              {weaknesses.map((weakness: string, i: number) => (
+                                <li key={i} className="flex items-start gap-2 text-gray-800">
+                                  <span className="text-orange-600 mt-1">⚠</span>
+                                  <span className="flex-1">{weakness}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )
+                      }
+                    } catch (e) {}
+                    return null
+                  })()}
+                </div>
               </div>
             )
           })()}
 
           {/* Application Details */}
-          <div className="space-y-4">
-            <div>
-              <p className="text-sm text-gray-500 mb-1">Email</p>
-              <p className="font-semibold">{selectedApplication.email}</p>
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <h3 className="text-xl font-bold mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              Application Details
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="p-3 bg-gray-50 rounded-lg">
+                <p className="text-xs text-gray-500 mb-1 font-medium uppercase tracking-wide">Email</p>
+                <p className="font-semibold text-gray-900 break-all">{selectedApplication.email}</p>
+              </div>
+
+              {selectedApplication.referralSource && (
+                <div className="p-3 bg-gray-50 rounded-lg">
+                  <p className="text-xs text-gray-500 mb-1 font-medium uppercase tracking-wide">Heard About Us</p>
+                  <p className="text-gray-900 font-medium">{selectedApplication.referralSource}</p>
+                </div>
+              )}
+
+              {selectedApplication.linkedin && (
+                <div className="p-3 bg-gray-50 rounded-lg">
+                  <p className="text-xs text-gray-500 mb-1 font-medium uppercase tracking-wide">LinkedIn</p>
+                  <a href={selectedApplication.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all font-medium">
+                    {selectedApplication.linkedin}
+                  </a>
+                </div>
+              )}
+
+              {selectedApplication.portfolio && (
+                <div className="p-3 bg-gray-50 rounded-lg">
+                  <p className="text-xs text-gray-500 mb-1 font-medium uppercase tracking-wide">Portfolio</p>
+                  <a href={selectedApplication.portfolio} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all font-medium">
+                    {selectedApplication.portfolio}
+                  </a>
+                </div>
+              )}
+
+              <div className="p-3 bg-gray-50 rounded-lg">
+                <p className="text-xs text-gray-500 mb-1 font-medium uppercase tracking-wide">Submitted</p>
+                <p className="text-gray-900 font-medium">{new Date(selectedApplication.createdAt).toLocaleString()}</p>
+              </div>
+
+              {selectedApplication.resumePath && (
+                <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                  <p className="text-xs text-blue-700 mb-2 font-medium uppercase tracking-wide">Resume</p>
+                  <div className="flex items-center gap-2">
+                    <p className="text-gray-900 font-medium flex-1 text-sm">{selectedApplication.resumePath}</p>
+                    {selectedApplication.cloud_storage_path && (
+                      <button
+                        onClick={() => handleDownloadResume(selectedApplication.id, selectedApplication.resumePath)}
+                        className="flex items-center gap-1 px-3 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors text-sm font-semibold"
+                      >
+                        <FileDown className="w-4 h-4" />
+                        Download
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
 
-            {selectedApplication.referralSource && (
-              <div>
-                <p className="text-sm text-gray-500 mb-1">Heard About Us</p>
-                <p className="text-gray-700">{selectedApplication.referralSource}</p>
-              </div>
-            )}
-
-            {selectedApplication.linkedin && (
-              <div>
-                <p className="text-sm text-gray-500 mb-1">LinkedIn</p>
-                <a href={selectedApplication.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all">
-                  {selectedApplication.linkedin}
-                </a>
-              </div>
-            )}
-
-            {selectedApplication.portfolio && (
-              <div>
-                <p className="text-sm text-gray-500 mb-1">Portfolio</p>
-                <a href={selectedApplication.portfolio} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all">
-                  {selectedApplication.portfolio}
-                </a>
-              </div>
-            )}
-
             {selectedApplication.aiProject && (
-              <div>
-                <p className="text-sm text-gray-500 mb-1">AI Project</p>
-                <p className="text-gray-700 whitespace-pre-wrap">{selectedApplication.aiProject}</p>
+              <div className="mt-4 p-4 bg-purple-50 rounded-lg border border-purple-200">
+                <p className="text-xs text-purple-700 mb-2 font-medium uppercase tracking-wide">AI Project</p>
+                <p className="text-gray-800 whitespace-pre-wrap leading-relaxed">{selectedApplication.aiProject}</p>
               </div>
             )}
 
             {selectedApplication.additionalInfo && (
-              <div>
-                <p className="text-sm text-gray-500 mb-1">Additional Information</p>
-                <p className="text-gray-700 whitespace-pre-wrap">{selectedApplication.additionalInfo}</p>
+              <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <p className="text-xs text-blue-700 mb-2 font-medium uppercase tracking-wide">Additional Information</p>
+                <p className="text-gray-800 whitespace-pre-wrap leading-relaxed">{selectedApplication.additionalInfo}</p>
               </div>
             )}
-
-            {selectedApplication.resumePath && (
-              <div>
-                <p className="text-sm text-gray-500 mb-1">Resume</p>
-                <div className="flex items-center gap-2">
-                  <p className="text-gray-700">{selectedApplication.resumePath}</p>
-                  {selectedApplication.cloud_storage_path && (
-                    <button
-                      onClick={() => handleDownloadResume(selectedApplication.id, selectedApplication.resumePath)}
-                      className="flex items-center gap-1 px-3 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors text-sm"
-                    >
-                      <FileDown className="w-4 h-4" />
-                      Download
-                    </button>
-                  )}
-                </div>
-              </div>
-            )}
-
-            <div>
-              <p className="text-sm text-gray-500 mb-1">Submitted</p>
-              <p className="text-gray-700">{new Date(selectedApplication.createdAt).toLocaleString()}</p>
-            </div>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-gray-200 flex gap-2">
-            <button
-              onClick={() => setSelectedApplication(null)}
-              className="flex-1 px-4 py-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors font-semibold"
-            >
-              Close
-            </button>
-            {selectedApplication.email && (
-              <a
-                href={`mailto:${selectedApplication.email}`}
-                className="flex-1 px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors font-semibold text-center"
+            <div className="mt-8 pt-5 border-t border-gray-200 flex gap-3 sticky bottom-0 bg-white pb-2" style={{ boxShadow: '0 -4px 6px -1px rgba(0, 0, 0, 0.05)' }}>
+              <button
+                onClick={() => setSelectedApplication(null)}
+                className="flex-1 px-6 py-3 rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all font-semibold text-base shadow-sm hover:shadow-md"
               >
-                Send Email
-              </a>
-            )}
+                Close
+              </button>
+              {selectedApplication.email && (
+                <a
+                  href={`mailto:${selectedApplication.email}`}
+                  className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 transition-all font-semibold text-base text-center shadow-md hover:shadow-lg"
+                >
+                  📧 Send Email
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
