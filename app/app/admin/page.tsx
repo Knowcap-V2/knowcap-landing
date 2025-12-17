@@ -1,13 +1,13 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Lock, LogOut, Download, Trash2, RefreshCw, FileDown, Sparkles, TrendingUp, Users, Briefcase, Star, Award, AlertCircle, CheckCircle, Clock, Filter, ArrowUpDown, Eye, X } from 'lucide-react'
+import { Lock, LogOut, Download, Trash2, RefreshCw, FileDown, Sparkles, TrendingUp, Users, Briefcase, Star, Award, AlertCircle, CheckCircle, Clock, Filter, ArrowUpDown, Eye, X, Send, Bot, User } from 'lucide-react'
 
 export default function BetaAppDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [passcode, setPasscode] = useState('')
   const [error, setError] = useState('')
-  const [activeTab, setActiveTab] = useState<'beta' | 'contact' | 'recruitment' | 'dashboard'>('dashboard')
+  const [activeTab, setActiveTab] = useState<'beta' | 'contact' | 'recruitment' | 'dashboard' | 'ai-assistant'>('dashboard')
   
   const [betaApplications, setBetaApplications] = useState<any[]>([])
   const [contactSubmissions, setContactSubmissions] = useState<any[]>([])
@@ -21,6 +21,11 @@ export default function BetaAppDashboard() {
   const [sortBy, setSortBy] = useState<'score' | 'date' | 'name'>('date')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc')
   const [selectedApplication, setSelectedApplication] = useState<any>(null)
+  
+  // AI Assistant chat state
+  const [chatMessages, setChatMessages] = useState<Array<{role: 'user' | 'assistant', content: string, timestamp: Date}>>([])
+  const [chatInput, setChatInput] = useState('')
+  const [chatLoading, setChatLoading] = useState(false)
 
   useEffect(() => {
     document.title = 'Admin Dashboard | Knowcap.ai'
@@ -220,6 +225,53 @@ export default function BetaAppDashboard() {
       alert('Failed to download resume. The file may not be available.')
     }
   }
+  const handleSendMessage = async () => {
+    if (!chatInput.trim() || chatLoading) return
+    
+    const userMessage = {
+      role: 'user' as const,
+      content: chatInput,
+      timestamp: new Date()
+    }
+    
+    setChatMessages(prev => [...prev, userMessage])
+    setChatInput('')
+    setChatLoading(true)
+    
+    try {
+      const response = await fetch('/api/chat-agent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [{ role: 'user', content: chatInput }],
+          conversationHistory: chatMessages.map(m => ({ role: m.role, content: m.content }))
+        })
+      })
+      
+      if (!response.ok) throw new Error('Failed to get response')
+      
+      const data = await response.json()
+      
+      const assistantMessage = {
+        role: 'assistant' as const,
+        content: data.message,
+        timestamp: new Date()
+      }
+      
+      setChatMessages(prev => [...prev, assistantMessage])
+    } catch (error) {
+      console.error('Chat error:', error)
+      const errorMessage = {
+        role: 'assistant' as const,
+        content: 'Sorry, I encountered an error. Please try again.',
+        timestamp: new Date()
+      }
+      setChatMessages(prev => [...prev, errorMessage])
+    } finally {
+      setChatLoading(false)
+    }
+  }
+
 
   // Helper functions for displaying scores and recommendations
   const getScoreColor = (score: number | null) => {
@@ -442,6 +494,18 @@ export default function BetaAppDashboard() {
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             Contact Us ({contactSubmissions.length})
+          </button>
+          <button
+            onClick={() => setActiveTab('ai-assistant')}
+            className={`px-6 py-3 font-semibold transition-colors flex items-center gap-2 ${
+              activeTab === 'ai-assistant' 
+                ? 'border-b-2 border-purple-600 text-purple-600' 
+                : 'text-gray-600 hover:text-gray-900'
+            }`}
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
+            <Bot className="w-5 h-5" />
+            AI Assistant
           </button>
         </div>
 
@@ -1003,6 +1067,176 @@ export default function BetaAppDashboard() {
         )}
       </div>
     </div>
+
+        {/* AI Assistant Tab */}
+        {activeTab === 'ai-assistant' && (
+          <div className="max-w-6xl mx-auto">
+            {/* Welcome Card */}
+            {chatMessages.length === 0 && (
+              <div className="mb-6 p-8 bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl border border-purple-200">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                    <Bot className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-900" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      AI Recruitment Assistant
+                    </h2>
+                    <p className="text-purple-700 font-medium">Powered by GPT-4</p>
+                  </div>
+                </div>
+                
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  Hi Hassan! I'm your AI assistant for recruitment. I can help you:
+                </p>
+                
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-white rounded-lg border border-purple-100">
+                    <h3 className="font-bold text-purple-700 mb-2">🔍 Find Candidates</h3>
+                    <p className="text-sm text-gray-600">Query by role, score, skills, or any criteria</p>
+                  </div>
+                  <div className="p-4 bg-white rounded-lg border border-purple-100">
+                    <h3 className="font-bold text-purple-700 mb-2">📊 Compare Profiles</h3>
+                    <p className="text-sm text-gray-600">Side-by-side analysis of top candidates</p>
+                  </div>
+                  <div className="p-4 bg-white rounded-lg border border-purple-100">
+                    <h3 className="font-bold text-purple-700 mb-2">✉️ Draft Emails</h3>
+                    <p className="text-sm text-gray-600">Personalized outreach with booking links</p>
+                  </div>
+                  <div className="p-4 bg-white rounded-lg border border-purple-100">
+                    <h3 className="font-bold text-purple-700 mb-2">📧 Send Invites</h3>
+                    <p className="text-sm text-gray-600">Email directly from hsa@knowcap.ai</p>
+                  </div>
+                </div>
+                
+                <div className="mt-6 p-4 bg-purple-100 rounded-lg">
+                  <p className="text-sm text-purple-800 font-medium mb-2">💡 Try asking:</p>
+                  <ul className="text-sm text-purple-700 space-y-1">
+                    <li>• "Who are my top 3 AI engineer candidates?"</li>
+                    <li>• "Show me Product Managers with 75+ scores"</li>
+                    <li>• "Draft an interview invite for Belal Bahr"</li>
+                    <li>• "Compare Mohamed Ibrahim and Ahmed Mahdi"</li>
+                  </ul>
+                </div>
+              </div>
+            )}
+            
+            {/* Chat Messages */}
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 mb-6" style={{ height: '600px', display: 'flex', flexDirection: 'column' }}>
+              {/* Messages Container */}
+              <div className="flex-1 overflow-y-auto p-6 space-y-4">
+                {chatMessages.length === 0 && (
+                  <div className="text-center text-gray-400 py-20">
+                    <Bot className="w-16 h-16 mx-auto mb-4 opacity-30" />
+                    <p>Start a conversation to get help with recruitment</p>
+                  </div>
+                )}
+                
+                {chatMessages.map((message, index) => (
+                  <div 
+                    key={index}
+                    className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                  >
+                    {message.role === 'assistant' && (
+                      <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Bot className="w-4 h-4 text-white" />
+                      </div>
+                    )}
+                    
+                    <div className={`max-w-[70%] ${message.role === 'user' ? 'order-1' : ''}`}>
+                      <div 
+                        className={`px-4 py-3 rounded-2xl ${
+                          message.role === 'user' 
+                            ? 'bg-blue-600 text-white' 
+                            : 'bg-gray-100 text-gray-900 border border-gray-200'
+                        }`}
+                        style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}
+                      >
+                        {message.content}
+                      </div>
+                      <p className="text-xs text-gray-400 mt-1 px-2">
+                        {message.timestamp.toLocaleTimeString()}
+                      </p>
+                    </div>
+                    
+                    {message.role === 'user' && (
+                      <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <User className="w-4 h-4 text-white" />
+                      </div>
+                    )}
+                  </div>
+                ))}
+                
+                {chatLoading && (
+                  <div className="flex gap-3 justify-start">
+                    <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Bot className="w-4 h-4 text-white" />
+                    </div>
+                    <div className="px-4 py-3 rounded-2xl bg-gray-100 border border-gray-200">
+                      <div className="flex gap-1">
+                        <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                        <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                        <div className="w-2 h-2 bg-purple-600 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+              
+              {/* Input Area */}
+              <div className="p-4 border-t border-gray-200 bg-gray-50 rounded-b-2xl">
+                <div className="flex gap-3">
+                  <input
+                    type="text"
+                    value={chatInput}
+                    onChange={(e) => setChatInput(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && !e.shiftKey && handleSendMessage()}
+                    placeholder="Ask about candidates, draft emails, compare applicants..."
+                    className="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                    disabled={chatLoading}
+                  />
+                  <button
+                    onClick={handleSendMessage}
+                    disabled={chatLoading || !chatInput.trim()}
+                    className="px-6 py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center gap-2 font-semibold"
+                  >
+                    <Send className="w-4 h-4" />
+                    Send
+                  </button>
+                </div>
+                <p className="text-xs text-gray-500 mt-2">
+                  Press Enter to send • Shift+Enter for new line
+                </p>
+              </div>
+            </div>
+            
+            {/* Quick Stats for Context */}
+            <div className="grid md:grid-cols-4 gap-4">
+              <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <p className="text-sm text-blue-700 font-medium">Total Applications</p>
+                <p className="text-2xl font-bold text-blue-900">{recruitmentApplications.length}</p>
+              </div>
+              <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+                <p className="text-sm text-green-700 font-medium">Strong Candidates</p>
+                <p className="text-2xl font-bold text-green-900">
+                  {recruitmentApplications.filter(a => a.aiScore && a.aiScore >= 80).length}
+                </p>
+              </div>
+              <div className="p-4 bg-purple-50 rounded-lg border border-purple-200">
+                <p className="text-sm text-purple-700 font-medium">Average Score</p>
+                <p className="text-2xl font-bold text-purple-900">
+                  {Math.round(recruitmentApplications.reduce((sum, a) => sum + (a.aiScore || 0), 0) / recruitmentApplications.length || 0)}
+                </p>
+              </div>
+              <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                <p className="text-sm text-orange-700 font-medium">Emails Sent</p>
+                <p className="text-2xl font-bold text-orange-900">
+                  {chatMessages.filter(m => m.content.includes('Email sent to')).length}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
     {/* Application Detail Modal */}
     {selectedApplication && (

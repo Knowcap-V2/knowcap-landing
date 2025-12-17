@@ -59,9 +59,27 @@ model RecruitmentApplication {
     weaknesses          String?  @db.Text // JSON array of weaknesses
     recommendation      String?  // "strong_fit" | "good_fit" | "moderate_fit" | "weak_fit"
 
+    // Relations
+    emailLogs           EmailLog[]
+
     @@index([email])
     @@index([role])
     @@index([createdAt])
     @@index([aiScore])
     @@index([recommendation])
+}
+
+model EmailLog {
+    id                String   @id @default(cuid())
+    applicationId     String
+    application       RecruitmentApplication @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+    recipientEmail    String
+    recipientName     String
+    subject           String
+    body              String   @db.Text
+    sentAt            DateTime @default(now())
+    sentBy            String   @default("ai_assistant") // "ai_assistant" or user identifier
+    
+    @@index([applicationId])
+    @@index([sentAt])
 }
