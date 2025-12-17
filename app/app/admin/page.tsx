@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Lock, LogOut, Download, Trash2, RefreshCw, FileDown } from 'lucide-react'
+import { Lock, LogOut, Download, Trash2, RefreshCw, FileDown, Sparkles } from 'lucide-react'
 
 export default function BetaAppDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -13,6 +13,7 @@ export default function BetaAppDashboard() {
   const [contactSubmissions, setContactSubmissions] = useState<any[]>([])
   const [recruitmentApplications, setRecruitmentApplications] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const [scoringInProgress, setScoringInProgress] = useState(false)
 
   useEffect(() => {
     document.title = 'Admin Dashboard | Knowcap.ai'
@@ -161,6 +162,32 @@ export default function BetaAppDashboard() {
       alert('Failed to delete application')
     }
   }
+
+  const handleScoreAll = async () => {
+    if (!confirm('This will score all unscored applications using AI. This may take a few minutes. Continue?')) return
+    
+    setScoringInProgress(true)
+    try {
+      const response = await fetch('/api/score-application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ bulkScore: true })
+      })
+      
+      if (response.ok) {
+        const result = await response.json()
+        alert(`Successfully scored ${result.count} applications!`)
+        await fetchData()
+      } else {
+        throw new Error('Scoring failed')
+      }
+    } catch (error) {
+      console.error('Scoring error:', error)
+      alert('Failed to score applications. Please try again.')
+    }
+    setScoringInProgress(false)
+  }
+
 
   const handleDownloadResume = async (id: string, filename: string) => {
     try {
@@ -441,6 +468,19 @@ export default function BetaAppDashboard() {
                     >
                       <RefreshCw className="w-4 h-4" />
                       Refresh
+                    </button>
+                    <button
+                      onClick={handleScoreAll}
+                      disabled={scoringInProgress}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                        scoringInProgress
+                          ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                          : 'bg-purple-600 text-white hover:bg-purple-700'
+                      }`}
+                      title="Score all applications with AI"
+                    >
+                      <Sparkles className="w-4 h-4" />
+                      {scoringInProgress ? 'Scoring...' : 'Score All with AI'}
                     </button>
                     <button
                       onClick={() => exportToCSV(recruitmentApplications, 'recruitment-applications.csv', ['fullName', 'email', 'role', 'referralSource', 'linkedin', 'portfolio', 'aiProject', 'additionalInfo', 'resumePath', 'createdAt'])}

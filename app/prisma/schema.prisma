@@ -50,8 +50,18 @@ model RecruitmentApplication {
     cloud_storage_path  String?
     isPublic            Boolean  @default(false)
     createdAt           DateTime @default(now())
+    
+    // AI Scoring fields
+    aiScore             Int?     // 0-100 score
+    aiAnalysis          String?  @db.Text // Detailed analysis from AI
+    scoredAt            DateTime? // When the scoring was done
+    strengths           String?  @db.Text // JSON array of strengths
+    weaknesses          String?  @db.Text // JSON array of weaknesses
+    recommendation      String?  // "strong_fit" | "good_fit" | "moderate_fit" | "weak_fit"
 
     @@index([email])
     @@index([role])
     @@index([createdAt])
+    @@index([aiScore])
+    @@index([recommendation])
 }
