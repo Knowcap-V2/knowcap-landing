@@ -179,38 +179,56 @@ Respond with raw JSON only.`
       ]
     }
 
-    // Call LLM API
-    const response = await fetch('https://apps.abacus.ai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.ABACUSAI_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: 'gpt-4.1-mini',
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: userContent }
-        ],
-        response_format: { type: 'json_object' },
-        max_tokens: 2000,
-        temperature: 0.3
+    // Call LLM API with timeout
+    console.log('[SCORING] Calling LLM API...')
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 120000) // 2 minute timeout
+    
+    try {
+      const response = await fetch('https://apps.abacus.ai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.ABACUSAI_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: 'gpt-4.1-mini',
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: userContent }
+          ],
+          response_format: { type: 'json_object' },
+          max_tokens: 2000,
+          temperature: 0.3
+        }),
+        signal: controller.signal
       })
-    })
 
-    if (!response.ok) {
-      throw new Error(`LLM API error: ${response.statusText}`)
-    }
+      clearTimeout(timeout)
 
-    const data = await response.json()
-    const result = JSON.parse(data.choices[0].message.content)
+      if (!response.ok) {
+        const errorText = await response.text()
+        throw new Error(`LLM API error (${response.status}): ${errorText}`)
+      }
 
-    return {
-      score: Math.min(100, Math.max(0, result.score)),
-      analysis: result.analysis,
-      strengths: result.strengths || [],
-      weaknesses: result.weaknesses || [],
-      recommendation: result.recommendation
+      const data = await response.json()
+      console.log('[SCORING] LLM API response received')
+      const result = JSON.parse(data.choices[0].message.content)
+
+      return {
+        score: Math.min(100, Math.max(0, result.score)),
+        analysis: result.analysis,
+        strengths: result.strengths || [],
+        weaknesses: result.weaknesses || [],
+        recommendation: result.recommendation
+      }
+    } catch (error) {
+      clearTimeout(timeout)
+      if (error instanceof Error && error.name === 'AbortError') {
+        console.error('[SCORING ERROR] LLM API timeout')
+        throw new Error('LLM API request timed out')
+      }
+      throw error
     }
   } catch (error) {
     console.error('[SCORING ERROR]', error)
@@ -240,33 +258,54 @@ export async function POST(request: NextRequest) {
         }
       })
 
+      console.log(`[SCORING] Starting bulk scoring for ${applications.length} applications`)
+
       const scoredApplications = []
+      const errors = []
 
-      for (const app of applications) {
-        const jobDescription = getJobDescription(app.role)
-        if (!jobDescription) continue
-
-        const scoring = await scoreApplication(app, jobDescription)
-
-        const updated = await prisma.recruitmentApplication.update({
-          where: { id: app.id },
-          data: {
-            aiScore: scoring.score,
-            aiAnalysis: scoring.analysis,
-            strengths: JSON.stringify(scoring.strengths),
-            weaknesses: JSON.stringify(scoring.weaknesses),
-            recommendation: scoring.recommendation,
-            scoredAt: new Date()
+      for (let i = 0; i < applications.length; i++) {
+        const app = applications[i]
+        try {
+          console.log(`[SCORING] Processing ${i + 1}/${applications.length}: ${app.fullName} (${app.role})`)
+          
+          const jobDescription = getJobDescription(app.role)
+          if (!jobDescription) {
+            console.log(`[SCORING] No job description found for role: ${app.role}`)
+            continue
           }
-        })
 
-        scoredApplications.push(updated)
+          const scoring = await scoreApplication(app, jobDescription)
+
+          const updated = await prisma.recruitmentApplication.update({
+            where: { id: app.id },
+            data: {
+              aiScore: scoring.score,
+              aiAnalysis: scoring.analysis,
+              strengths: JSON.stringify(scoring.strengths),
+              weaknesses: JSON.stringify(scoring.weaknesses),
+              recommendation: scoring.recommendation,
+              scoredAt: new Date()
+            }
+          })
+
+          scoredApplications.push(updated)
+          console.log(`[SCORING] Successfully scored ${app.fullName}: ${scoring.score}/100 (${scoring.recommendation})`)
+        } catch (error) {
+          console.error(`[SCORING ERROR] Failed to score ${app.fullName}:`, error)
+          errors.push({ name: app.fullName, error: error instanceof Error ? error.message : 'Unknown error' })
+        }
       }
 
-      return NextResponse.json({
-        message: `Scored ${scoredApplications.length} applications`,
-        count: scoredApplications.length
-      })
+      const response = {
+        message: `Scored ${scoredApplications.length} of ${applications.length} applications`,
+        count: scoredApplications.length,
+        total: applications.length,
+        errors: errors.length > 0 ? errors : undefined
+      }
+
+      console.log(`[SCORING] Completed: ${scoredApplications.length} successful, ${errors.length} errors`)
+
+      return NextResponse.json(response)
     } else if (applicationId) {
       // Score single application
       const application = await prisma.recruitmentApplication.findUnique({
