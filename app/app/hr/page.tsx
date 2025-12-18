@@ -5,7 +5,7 @@ import Footer from '@/components/footer'
 export default function HRPage() {
   useEffect(() => {
     // Set page title
-    document.title = 'Schedule HR Consultation - Knowcap.ai'
+    document.title = 'Schedule Your Interview - Knowcap.ai'
     
     // Load the Reclaim script
     const script = document.createElement('script')
@@ -35,10 +35,10 @@ export default function HRPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#1a1d29]">
-              Schedule HR Consultation
+              Schedule Your Interview
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Book a session with our HR team to discuss recruitment strategies, candidate management, and AI-powered hiring solutions.
+              Select a convenient time slot for your interview with our HR team. We look forward to meeting you!
             </p>
           </div>
 
