@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Lock, LogOut, Download, Trash2, RefreshCw, FileDown, Sparkles, TrendingUp, Users, Briefcase, Star, Award, AlertCircle, CheckCircle, Clock, Filter, ArrowUpDown, Eye, X, Mail } from 'lucide-react'
+import { Lock, LogOut, Download, Trash2, RefreshCw, FileDown, Sparkles, TrendingUp, Users, Briefcase, Star, Award, AlertCircle, CheckCircle, Clock, Filter, ArrowUpDown, Eye, X, Mail, Search } from 'lucide-react'
 import AIAssistantWidget from '@/components/ai-assistant-widget'
 
 export default function BetaAppDashboard() {
@@ -21,6 +21,7 @@ export default function BetaAppDashboard() {
   const [selectedRecommendation, setSelectedRecommendation] = useState<string>('all')
   const [sortBy, setSortBy] = useState<'score' | 'date' | 'name'>('date')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc')
+  const [searchQuery, setSearchQuery] = useState<string>('')
   const [selectedApplication, setSelectedApplication] = useState<any>(null)
 
   useEffect(() => {
@@ -320,6 +321,15 @@ export default function BetaAppDashboard() {
   // Get filtered and sorted applications
   const getFilteredApplications = () => {
     let filtered = [...recruitmentApplications]
+    
+    // Search filter (by name or email)
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim()
+      filtered = filtered.filter(app => 
+        app.fullName.toLowerCase().includes(query) || 
+        app.email.toLowerCase().includes(query)
+      )
+    }
     
     if (selectedRole !== 'all') {
       filtered = filtered.filter(app => app.role === selectedRole)
@@ -863,6 +873,28 @@ export default function BetaAppDashboard() {
                     </div>
                   </div>
 
+                  {/* Search Bar */}
+                  <div className="pitch-card mb-6" style={{ padding: '1.5rem' }}>
+                    <div className="relative">
+                      <Search className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                      <input
+                        type="text"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        placeholder="Search by name or email..."
+                        className="w-full pl-10 pr-10 py-3 rounded-lg border border-gray-300 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none"
+                      />
+                      {searchQuery && (
+                        <button
+                          onClick={() => setSearchQuery('')}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                        >
+                          <X className="w-5 h-5" />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
                   {/* Filters */}
                   <div className="pitch-card mb-6" style={{ padding: '1.5rem' }}>
                     <div className="flex items-center gap-4 flex-wrap">
@@ -915,19 +947,20 @@ export default function BetaAppDashboard() {
                       </div>
                     </div>
                     
-                    {(selectedRole !== 'all' || selectedRecommendation !== 'all') && (
+                    {(selectedRole !== 'all' || selectedRecommendation !== 'all' || searchQuery.trim()) && (
                       <div className="mt-3 pt-3 border-t border-gray-200">
                         <p className="text-sm text-gray-600">
                           Showing {filteredApps.length} of {recruitmentApplications.length} applications
-                          {selectedRole !== 'all' || selectedRecommendation !== 'all' ? (
+                          {selectedRole !== 'all' || selectedRecommendation !== 'all' || searchQuery.trim() ? (
                             <button
                               onClick={() => {
                                 setSelectedRole('all')
                                 setSelectedRecommendation('all')
+                                setSearchQuery('')
                               }}
                               className="ml-2 text-blue-600 hover:underline"
                             >
-                              Clear filters
+                              Clear all filters
                             </button>
                           ) : null}
                         </p>
