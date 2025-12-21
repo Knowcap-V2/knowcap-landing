@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Lock, LogOut, Download, Trash2, RefreshCw, FileDown, Sparkles, TrendingUp, Users, Briefcase, Star, Award, AlertCircle, CheckCircle, Clock, Filter, ArrowUpDown, Eye, X } from 'lucide-react'
+import { Lock, LogOut, Download, Trash2, RefreshCw, FileDown, Sparkles, TrendingUp, Users, Briefcase, Star, Award, AlertCircle, CheckCircle, Clock, Filter, ArrowUpDown, Eye, X, Mail } from 'lucide-react'
 import AIAssistantWidget from '@/components/ai-assistant-widget'
 
 export default function BetaAppDashboard() {
@@ -168,6 +168,60 @@ export default function BetaAppDashboard() {
     } catch (error) {
       console.error('Delete error:', error)
       alert('Failed to delete application')
+    }
+  }
+
+  const handleSendInterviewInvitation = async (id: string, name: string) => {
+    if (!confirm(`Send interview invitation email to ${name}?`)) return
+    
+    try {
+      const response = await fetch('/api/send-interview-invitation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ applicationId: id })
+      })
+      
+      const result = await response.json()
+      
+      if (response.ok) {
+        // Update the local state to reflect the new status
+        setRecruitmentApplications(recruitmentApplications.map(app => 
+          app.id === id ? { ...app, interviewStatus: 'Link Sent' } : app
+        ))
+        alert(`✅ Interview invitation sent to ${name}!`)
+      } else {
+        throw new Error(result.error || 'Failed to send invitation')
+      }
+    } catch (error: any) {
+      console.error('Send invitation error:', error)
+      alert(error.message || 'Failed to send interview invitation')
+    }
+  }
+
+  const handleMarkAsBooked = async (id: string, name: string) => {
+    if (!confirm(`Mark ${name}'s interview as booked?`)) return
+    
+    try {
+      const response = await fetch('/api/update-interview-status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ applicationId: id, status: 'Interview Booked' })
+      })
+      
+      const result = await response.json()
+      
+      if (response.ok) {
+        // Update the local state to reflect the new status
+        setRecruitmentApplications(recruitmentApplications.map(app => 
+          app.id === id ? { ...app, interviewStatus: 'Interview Booked' } : app
+        ))
+        alert(`✅ ${name}'s interview marked as booked!`)
+      } else {
+        throw new Error(result.error || 'Failed to update status')
+      }
+    } catch (error: any) {
+      console.error('Update status error:', error)
+      alert(error.message || 'Failed to update interview status')
     }
   }
 
@@ -980,6 +1034,52 @@ export default function BetaAppDashboard() {
                           <div className="md:col-span-2">
                             <p className="text-sm text-gray-500">Submitted: {new Date(app.createdAt).toLocaleString()}</p>
                           </div>
+                          
+                          {/* Interview Status and Actions */}
+                          <div className="md:col-span-2 mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <div className="flex items-center justify-between flex-wrap gap-3">
+                              <div className="flex items-center gap-2">
+                                <span className="text-sm font-medium text-gray-700">Interview Status:</span>
+                                <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                                  app.interviewStatus === 'Interview Booked' ? 'bg-green-100 text-green-700' :
+                                  app.interviewStatus === 'Link Sent' ? 'bg-blue-100 text-blue-700' :
+                                  'bg-gray-100 text-gray-700'
+                                }`}>
+                                  {app.interviewStatus || 'Pending'}
+                                </span>
+                              </div>
+                              
+                              <div className="flex gap-2">
+                                {(!app.interviewStatus || app.interviewStatus === 'Pending') && (
+                                  <button
+                                    onClick={() => handleSendInterviewInvitation(app.id, app.fullName)}
+                                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-600 text-white hover:bg-purple-700 transition-colors text-sm"
+                                  >
+                                    <Mail className="w-4 h-4" />
+                                    Send Interview Link
+                                  </button>
+                                )}
+                                
+                                {app.interviewStatus === 'Link Sent' && (
+                                  <button
+                                    onClick={() => handleMarkAsBooked(app.id, app.fullName)}
+                                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors text-sm"
+                                  >
+                                    <CheckCircle className="w-4 h-4" />
+                                    Mark as Booked
+                                  </button>
+                                )}
+                                
+                                {app.interviewStatus === 'Interview Booked' && (
+                                  <span className="flex items-center gap-2 px-4 py-2 rounded-lg bg-green-50 text-green-700 text-sm font-medium">
+                                    <CheckCircle className="w-4 h-4" />
+                                    Interview Scheduled
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                          
                           {app.aiScore !== null && app.aiAnalysis && (
                             <div className="md:col-span-2">
                               <button

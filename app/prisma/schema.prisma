@@ -58,6 +58,9 @@ model RecruitmentApplication {
     strengths           String?  @db.Text // JSON array of strengths
     weaknesses          String?  @db.Text // JSON array of weaknesses
     recommendation      String?  // "strong_fit" | "good_fit" | "moderate_fit" | "weak_fit"
+    
+    // Interview Status
+    interviewStatus     String   @default("Pending") // "Pending" | "Link Sent" | "Interview Booked"
 
     // Relations
     emailLogs           EmailLog[]
@@ -67,6 +70,7 @@ model RecruitmentApplication {
     @@index([createdAt])
     @@index([aiScore])
     @@index([recommendation])
+    @@index([interviewStatus])
 }
 
 model EmailLog {
