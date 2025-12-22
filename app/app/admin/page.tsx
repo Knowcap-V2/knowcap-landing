@@ -357,6 +357,12 @@ export default function BetaAppDashboard() {
     }
   }
 
+  const handleViewInterviewPrep = () => {
+    if (interviewPrepData) {
+      setShowInterviewPrep(true)
+    }
+  }
+
   // Helper functions for displaying scores and recommendations
   const getScoreColor = (score: number | null) => {
     if (score === null) return 'text-gray-400'
@@ -1536,30 +1542,76 @@ export default function BetaAppDashboard() {
 
           {/* Interview Prep Button */}
           <div className="mt-6 pt-6 border-t border-gray-200">
-            <button
-              onClick={handleGenerateInterviewPrep}
-              disabled={generatingPrep}
-              className={`w-full px-6 py-4 rounded-xl font-semibold text-white transition-all flex items-center justify-center gap-3 ${
-                generatingPrep
-                  ? 'bg-purple-400 cursor-not-allowed'
-                  : 'bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 shadow-lg hover:shadow-xl'
-              }`}
-            >
-              {generatingPrep ? (
-                <>
-                  <Loader className="w-5 h-5 animate-spin" />
-                  Generating Interview Questions...
-                </>
+            {(() => {
+              // Check if we have prep data for current application
+              const hasInterviewPrep = interviewPrepData && 
+                interviewPrepData.candidate && 
+                selectedApplication &&
+                interviewPrepData.candidate.name === selectedApplication.fullName
+              
+              return hasInterviewPrep ? (
+                <div className="space-y-3">
+                  <button
+                    onClick={handleViewInterviewPrep}
+                    className="w-full px-6 py-4 rounded-xl font-semibold text-white transition-all flex items-center justify-center gap-3 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 shadow-lg hover:shadow-xl"
+                  >
+                    <Eye className="w-5 h-5" />
+                    View Interview Prep Questions
+                  </button>
+                  <button
+                    onClick={handleGenerateInterviewPrep}
+                    disabled={generatingPrep}
+                    className={`w-full px-4 py-2 rounded-lg font-medium transition-all flex items-center justify-center gap-2 ${
+                      generatingPrep
+                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {generatingPrep ? (
+                      <>
+                        <Loader className="w-4 h-4 animate-spin" />
+                        Regenerating...
+                      </>
+                    ) : (
+                      <>
+                        <RefreshCw className="w-4 h-4" />
+                        Regenerate Questions
+                      </>
+                    )}
+                  </button>
+                  <p className="text-xs text-gray-500 text-center mt-2">
+                    Click to view previously generated questions or regenerate new ones
+                  </p>
+                </div>
               ) : (
                 <>
-                  <MessageSquare className="w-5 h-5" />
-                  Generate AI Interview Prep Questions
+                  <button
+                    onClick={handleGenerateInterviewPrep}
+                    disabled={generatingPrep}
+                    className={`w-full px-6 py-4 rounded-xl font-semibold text-white transition-all flex items-center justify-center gap-3 ${
+                      generatingPrep
+                        ? 'bg-purple-400 cursor-not-allowed'
+                        : 'bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 shadow-lg hover:shadow-xl'
+                    }`}
+                  >
+                    {generatingPrep ? (
+                      <>
+                        <Loader className="w-5 h-5 animate-spin" />
+                        Generating Interview Questions...
+                      </>
+                    ) : (
+                      <>
+                        <MessageSquare className="w-5 h-5" />
+                        Generate AI Interview Prep Questions
+                      </>
+                    )}
+                  </button>
+                  <p className="text-xs text-gray-500 text-center mt-2">
+                    Get tailored interview questions based on the job description and candidate's profile
+                  </p>
                 </>
-              )}
-            </button>
-            <p className="text-xs text-gray-500 text-center mt-2">
-              Get tailored interview questions based on the job description and candidate's profile
-            </p>
+              )
+            })()}
           </div>
 
           {/* Application Details */}
