@@ -61,6 +61,7 @@ model RecruitmentApplication {
     
     // Interview Status
     interviewStatus     String   @default("Pending") // "Pending" | "Link Sent" | "Interview Booked"
+    meetingLink         String?  // Meeting link for interview (Zoom, Meet, etc.)
 
     // Relations
     emailLogs           EmailLog[]

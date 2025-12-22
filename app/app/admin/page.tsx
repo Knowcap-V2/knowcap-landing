@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Lock, LogOut, Download, Trash2, RefreshCw, FileDown, Sparkles, TrendingUp, Users, Briefcase, Star, Award, AlertCircle, CheckCircle, Clock, Filter, ArrowUpDown, Eye, X, Mail, Search } from 'lucide-react'
+import { Lock, LogOut, Download, Trash2, RefreshCw, FileDown, Sparkles, TrendingUp, Users, Briefcase, Star, Award, AlertCircle, CheckCircle, Clock, Filter, ArrowUpDown, Eye, X, Mail, Search, Link as LinkIcon, Loader, MessageSquare, Save } from 'lucide-react'
 import AIAssistantWidget from '@/components/ai-assistant-widget'
 
 export default function BetaAppDashboard() {
@@ -23,6 +23,15 @@ export default function BetaAppDashboard() {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc')
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [selectedApplication, setSelectedApplication] = useState<any>(null)
+  
+  // Interview prep state
+  const [interviewPrepData, setInterviewPrepData] = useState<any>(null)
+  const [showInterviewPrep, setShowInterviewPrep] = useState(false)
+  const [generatingPrep, setGeneratingPrep] = useState(false)
+  
+  // Meeting link state
+  const [meetingLinkInput, setMeetingLinkInput] = useState<string>('')
+  const [savingMeetingLink, setSavingMeetingLink] = useState(false)
 
   useEffect(() => {
     document.title = 'Admin Dashboard | Knowcap.ai'
@@ -35,6 +44,13 @@ export default function BetaAppDashboard() {
       setLoading(false)
     }
   }, [])
+
+  // Initialize meeting link input when application is selected
+  useEffect(() => {
+    if (selectedApplication) {
+      setMeetingLinkInput(selectedApplication.meetingLink || '')
+    }
+  }, [selectedApplication])
 
   const fetchData = async () => {
     setLoading(true)
@@ -274,6 +290,70 @@ export default function BetaAppDashboard() {
     } catch (error) {
       console.error('Download error:', error)
       alert('Failed to download resume. The file may not be available.')
+    }
+  }
+
+  const handleSaveMeetingLink = async () => {
+    if (!selectedApplication) return
+    
+    setSavingMeetingLink(true)
+    try {
+      const response = await fetch('/api/update-meeting-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          applicationId: selectedApplication.id,
+          meetingLink: meetingLinkInput.trim()
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to save meeting link')
+      }
+
+      // Update the local state
+      const updatedApp = { ...selectedApplication, meetingLink: meetingLinkInput.trim() }
+      setSelectedApplication(updatedApp)
+      
+      // Update in the list
+      setRecruitmentApplications(prev =>
+        prev.map(app => app.id === selectedApplication.id ? updatedApp : app)
+      )
+
+      alert('Meeting link saved successfully!')
+    } catch (error) {
+      console.error('Error saving meeting link:', error)
+      alert('Failed to save meeting link')
+    } finally {
+      setSavingMeetingLink(false)
+    }
+  }
+
+  const handleGenerateInterviewPrep = async () => {
+    if (!selectedApplication) return
+    
+    setGeneratingPrep(true)
+    try {
+      const response = await fetch('/api/generate-interview-prep', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          applicationId: selectedApplication.id
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to generate interview prep')
+      }
+
+      const data = await response.json()
+      setInterviewPrepData(data)
+      setShowInterviewPrep(true)
+    } catch (error) {
+      console.error('Error generating interview prep:', error)
+      alert('Failed to generate interview prep questions')
+    } finally {
+      setGeneratingPrep(false)
     }
   }
 
@@ -1139,6 +1219,147 @@ export default function BetaAppDashboard() {
     </div>
 
     {/* Application Detail Modal */}
+    {/* Interview Prep Modal */}
+    {showInterviewPrep && interviewPrepData && (
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[60] p-4 overflow-y-auto" 
+        onClick={() => setShowInterviewPrep(false)}
+        style={{ backdropFilter: 'blur(4px)' }}
+      >
+        <div 
+          className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full my-8 relative" 
+          style={{ maxHeight: 'calc(100vh - 4rem)' }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 4rem)', padding: '2rem' }}>
+            {/* Header */}
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <h2 className="text-2xl font-bold mb-2 flex items-center gap-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  <MessageSquare className="w-7 h-7 text-purple-600" />
+                  Interview Preparation Guide
+                </h2>
+                {interviewPrepData.candidate && (
+                  <p className="text-gray-600">
+                    For: <span className="font-semibold">{interviewPrepData.candidate.name}</span> · {interviewPrepData.candidate.role}
+                  </p>
+                )}
+              </div>
+              <button
+                onClick={() => setShowInterviewPrep(false)}
+                className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Overall Strategy */}
+            {interviewPrepData.interviewPrep.overallStrategy && (
+              <div className="mb-6 p-5 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200">
+                <h3 className="font-bold text-lg mb-3 text-purple-900">Interview Strategy</h3>
+                <p className="text-gray-800 leading-relaxed">{interviewPrepData.interviewPrep.overallStrategy}</p>
+              </div>
+            )}
+
+            {/* Key Areas to Probe */}
+            {interviewPrepData.interviewPrep.keyAreasToProbe && interviewPrepData.interviewPrep.keyAreasToProbe.length > 0 && (
+              <div className="mb-6 p-5 rounded-xl bg-blue-50 border border-blue-200">
+                <h3 className="font-bold text-lg mb-3 text-blue-900">Key Areas to Probe</h3>
+                <div className="flex flex-wrap gap-2">
+                  {interviewPrepData.interviewPrep.keyAreasToProbe.map((area: string, i: number) => (
+                    <span key={i} className="px-3 py-1 bg-blue-200 text-blue-900 rounded-full text-sm font-medium">
+                      {area}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Interview Questions */}
+            {interviewPrepData.interviewPrep.questions && interviewPrepData.interviewPrep.questions.length > 0 ? (
+              <div className="space-y-6">
+                <h3 className="text-xl font-bold mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  Interview Questions ({interviewPrepData.interviewPrep.questions.length})
+                </h3>
+                {interviewPrepData.interviewPrep.questions.map((q: any, i: number) => (
+                  <div key={i} className="p-5 rounded-xl border-2 border-gray-200 hover:border-purple-300 transition-colors bg-white">
+                    <div className="flex items-start gap-3 mb-4">
+                      <span className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm">
+                        {i + 1}
+                      </span>
+                      <div className="flex-1">
+                        <h4 className="font-bold text-lg text-gray-900 mb-2">{q.question}</h4>
+                        {q.rationale && (
+                          <p className="text-sm text-gray-600 italic mb-3">
+                            <span className="font-semibold">Why ask this:</span> {q.rationale}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-4 ml-11">
+                      {/* Ideal Answer */}
+                      {q.idealAnswer && (
+                        <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+                          <h5 className="font-bold text-sm mb-2 flex items-center gap-2 text-green-800">
+                            <CheckCircle className="w-4 h-4" />
+                            What to Listen For
+                          </h5>
+                          <p className="text-sm text-gray-800 leading-relaxed">{q.idealAnswer}</p>
+                        </div>
+                      )}
+
+                      {/* Red Flags */}
+                      {q.redFlags && (
+                        <div className="p-4 bg-red-50 rounded-lg border border-red-200">
+                          <h5 className="font-bold text-sm mb-2 flex items-center gap-2 text-red-800">
+                            <AlertCircle className="w-4 h-4" />
+                            Red Flags
+                          </h5>
+                          <p className="text-sm text-gray-800 leading-relaxed">{q.redFlags}</p>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Follow-up Questions */}
+                    {q.followUps && q.followUps.length > 0 && (
+                      <div className="mt-4 ml-11 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                        <h5 className="font-bold text-sm mb-2 text-blue-800">Follow-up Questions:</h5>
+                        <ul className="space-y-1">
+                          {q.followUps.map((followUp: string, j: number) => (
+                            <li key={j} className="text-sm text-gray-800 flex items-start gap-2">
+                              <span className="text-blue-600 mt-1">→</span>
+                              <span className="flex-1">{followUp}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="p-8 text-center bg-gray-50 rounded-lg">
+                <p className="text-gray-600">
+                  {interviewPrepData.interviewPrep.rawResponse || 'No questions generated'}
+                </p>
+              </div>
+            )}
+
+            {/* Close Button */}
+            <div className="mt-8 pt-5 border-t border-gray-200 flex justify-center">
+              <button
+                onClick={() => setShowInterviewPrep(false)}
+                className="px-8 py-3 rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all font-semibold text-base shadow-sm hover:shadow-md"
+              >
+                Close Interview Prep
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+
     {selectedApplication && (
       <div 
         className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto" 
@@ -1258,6 +1479,88 @@ export default function BetaAppDashboard() {
               </div>
             )
           })()}
+
+          {/* Meeting Link Section */}
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <h3 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <LinkIcon className="w-5 h-5 text-blue-600" />
+              Interview Meeting Link
+            </h3>
+            <div className="flex gap-3 items-start mb-4">
+              <div className="flex-1">
+                <input
+                  type="url"
+                  value={meetingLinkInput}
+                  onChange={(e) => setMeetingLinkInput(e.target.value)}
+                  placeholder="https://zoom.us/j/... or https://meet.google.com/..."
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none text-sm"
+                />
+                <p className="text-xs text-gray-500 mt-1">Add a Zoom, Google Meet, or Teams link for the interview</p>
+              </div>
+              <button
+                onClick={handleSaveMeetingLink}
+                disabled={savingMeetingLink}
+                className={`px-5 py-3 rounded-lg font-semibold text-white transition-all flex items-center gap-2 ${
+                  savingMeetingLink
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-blue-600 hover:bg-blue-700'
+                }`}
+              >
+                {savingMeetingLink ? (
+                  <>
+                    <Loader className="w-4 h-4 animate-spin" />
+                    Saving...
+                  </>
+                ) : (
+                  <>
+                    <Save className="w-4 h-4" />
+                    Save
+                  </>
+                )}
+              </button>
+            </div>
+            {selectedApplication.meetingLink && (
+              <div className="p-3 bg-green-50 rounded-lg border border-green-200 mb-4">
+                <p className="text-xs text-green-700 mb-1 font-medium">Saved Meeting Link:</p>
+                <a 
+                  href={selectedApplication.meetingLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline break-all text-sm font-medium"
+                >
+                  {selectedApplication.meetingLink}
+                </a>
+              </div>
+            )}
+          </div>
+
+          {/* Interview Prep Button */}
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <button
+              onClick={handleGenerateInterviewPrep}
+              disabled={generatingPrep}
+              className={`w-full px-6 py-4 rounded-xl font-semibold text-white transition-all flex items-center justify-center gap-3 ${
+                generatingPrep
+                  ? 'bg-purple-400 cursor-not-allowed'
+                  : 'bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 shadow-lg hover:shadow-xl'
+              }`}
+            >
+              {generatingPrep ? (
+                <>
+                  <Loader className="w-5 h-5 animate-spin" />
+                  Generating Interview Questions...
+                </>
+              ) : (
+                <>
+                  <MessageSquare className="w-5 h-5" />
+                  Generate AI Interview Prep Questions
+                </>
+              )}
+            </button>
+            <p className="text-xs text-gray-500 text-center mt-2">
+              Get tailored interview questions based on the job description and candidate's profile
+            </p>
+          </div>
 
           {/* Application Details */}
           <div className="mt-6 pt-6 border-t border-gray-200">
