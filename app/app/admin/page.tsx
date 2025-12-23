@@ -19,6 +19,7 @@ export default function BetaAppDashboard() {
   // Dashboard filters and state
   const [selectedRole, setSelectedRole] = useState<string>('all')
   const [selectedRecommendation, setSelectedRecommendation] = useState<string>('all')
+  const [selectedStatus, setSelectedStatus] = useState<string>('all')
   const [sortBy, setSortBy] = useState<'score' | 'date' | 'name'>('date')
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc')
   const [searchQuery, setSearchQuery] = useState<string>('')
@@ -26,7 +27,6 @@ export default function BetaAppDashboard() {
   
   // Interview prep state
   const [interviewPrepData, setInterviewPrepData] = useState<any>(null)
-  const [showInterviewPrep, setShowInterviewPrep] = useState(false)
   const [generatingPrep, setGeneratingPrep] = useState(false)
   
   // Meeting link state
@@ -359,18 +359,13 @@ export default function BetaAppDashboard() {
 
       const data = await response.json()
       setInterviewPrepData(data)
-      setShowInterviewPrep(true)
+      // Questions will display inline in the application modal
+      alert('Interview prep questions generated! Scroll down to see them.')
     } catch (error) {
       console.error('Error generating interview prep:', error)
       alert('Failed to generate interview prep questions')
     } finally {
       setGeneratingPrep(false)
-    }
-  }
-
-  const handleViewInterviewPrep = () => {
-    if (interviewPrepData) {
-      setShowInterviewPrep(true)
     }
   }
 
@@ -518,6 +513,10 @@ export default function BetaAppDashboard() {
     
     if (selectedRecommendation !== 'all') {
       filtered = filtered.filter(app => app.recommendation === selectedRecommendation)
+    }
+    
+    if (selectedStatus !== 'all') {
+      filtered = filtered.filter(app => app.interviewStatus === selectedStatus)
     }
     
     // Sort
@@ -1107,6 +1106,18 @@ export default function BetaAppDashboard() {
                         <option value="weak_fit">Weak Fit</option>
                       </select>
 
+                      <select
+                        value={selectedStatus}
+                        onChange={(e) => setSelectedStatus(e.target.value)}
+                        className="px-3 py-2 rounded-lg border border-gray-300 text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none"
+                      >
+                        <option value="all">All Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Link Sent">Link Sent</option>
+                        <option value="Interview Booked">Interview Booked</option>
+                        <option value="Interviewed">Interviewed</option>
+                      </select>
+
                       <div className="flex items-center gap-2 ml-auto">
                         <ArrowUpDown className="w-4 h-4 text-gray-600" />
                         <span className="text-sm font-medium text-gray-700">Sort by:</span>
@@ -1128,15 +1139,16 @@ export default function BetaAppDashboard() {
                       </div>
                     </div>
                     
-                    {(selectedRole !== 'all' || selectedRecommendation !== 'all' || searchQuery.trim()) && (
+                    {(selectedRole !== 'all' || selectedRecommendation !== 'all' || selectedStatus !== 'all' || searchQuery.trim()) && (
                       <div className="mt-3 pt-3 border-t border-gray-200">
                         <p className="text-sm text-gray-600">
                           Showing {filteredApps.length} of {recruitmentApplications.length} applications
-                          {selectedRole !== 'all' || selectedRecommendation !== 'all' || searchQuery.trim() ? (
+                          {selectedRole !== 'all' || selectedRecommendation !== 'all' || selectedStatus !== 'all' || searchQuery.trim() ? (
                             <button
                               onClick={() => {
                                 setSelectedRole('all')
                                 setSelectedRecommendation('all')
+                                setSelectedStatus('all')
                                 setSearchQuery('')
                               }}
                               className="ml-2 text-blue-600 hover:underline"
@@ -1319,147 +1331,7 @@ export default function BetaAppDashboard() {
       </div>
     </div>
 
-    {/* Application Detail Modal */}
-    {/* Interview Prep Modal */}
-    {showInterviewPrep && interviewPrepData && (
-      <div 
-        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[60] p-4 overflow-y-auto" 
-        onClick={() => setShowInterviewPrep(false)}
-        style={{ backdropFilter: 'blur(4px)' }}
-      >
-        <div 
-          className="bg-white rounded-2xl shadow-2xl max-w-5xl w-full my-8 relative" 
-          style={{ maxHeight: 'calc(100vh - 4rem)' }}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 4rem)', padding: '2rem' }}>
-            {/* Header */}
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <h2 className="text-2xl font-bold mb-2 flex items-center gap-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  <MessageSquare className="w-7 h-7 text-purple-600" />
-                  Interview Preparation Guide
-                </h2>
-                {interviewPrepData.candidate && (
-                  <p className="text-gray-600">
-                    For: <span className="font-semibold">{interviewPrepData.candidate.name}</span> · {interviewPrepData.candidate.role}
-                  </p>
-                )}
-              </div>
-              <button
-                onClick={() => setShowInterviewPrep(false)}
-                className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-
-            {/* Overall Strategy */}
-            {interviewPrepData.interviewPrep.overallStrategy && (
-              <div className="mb-6 p-5 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200">
-                <h3 className="font-bold text-lg mb-3 text-purple-900">Interview Strategy</h3>
-                <p className="text-gray-800 leading-relaxed">{interviewPrepData.interviewPrep.overallStrategy}</p>
-              </div>
-            )}
-
-            {/* Key Areas to Probe */}
-            {interviewPrepData.interviewPrep.keyAreasToProbe && interviewPrepData.interviewPrep.keyAreasToProbe.length > 0 && (
-              <div className="mb-6 p-5 rounded-xl bg-blue-50 border border-blue-200">
-                <h3 className="font-bold text-lg mb-3 text-blue-900">Key Areas to Probe</h3>
-                <div className="flex flex-wrap gap-2">
-                  {interviewPrepData.interviewPrep.keyAreasToProbe.map((area: string, i: number) => (
-                    <span key={i} className="px-3 py-1 bg-blue-200 text-blue-900 rounded-full text-sm font-medium">
-                      {area}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Interview Questions */}
-            {interviewPrepData.interviewPrep.questions && interviewPrepData.interviewPrep.questions.length > 0 ? (
-              <div className="space-y-6">
-                <h3 className="text-xl font-bold mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  Interview Questions ({interviewPrepData.interviewPrep.questions.length})
-                </h3>
-                {interviewPrepData.interviewPrep.questions.map((q: any, i: number) => (
-                  <div key={i} className="p-5 rounded-xl border-2 border-gray-200 hover:border-purple-300 transition-colors bg-white">
-                    <div className="flex items-start gap-3 mb-4">
-                      <span className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm">
-                        {i + 1}
-                      </span>
-                      <div className="flex-1">
-                        <h4 className="font-bold text-lg text-gray-900 mb-2">{q.question}</h4>
-                        {q.rationale && (
-                          <p className="text-sm text-gray-600 italic mb-3">
-                            <span className="font-semibold">Why ask this:</span> {q.rationale}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4 ml-11">
-                      {/* Ideal Answer */}
-                      {q.idealAnswer && (
-                        <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-                          <h5 className="font-bold text-sm mb-2 flex items-center gap-2 text-green-800">
-                            <CheckCircle className="w-4 h-4" />
-                            What to Listen For
-                          </h5>
-                          <p className="text-sm text-gray-800 leading-relaxed">{q.idealAnswer}</p>
-                        </div>
-                      )}
-
-                      {/* Red Flags */}
-                      {q.redFlags && (
-                        <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-                          <h5 className="font-bold text-sm mb-2 flex items-center gap-2 text-red-800">
-                            <AlertCircle className="w-4 h-4" />
-                            Red Flags
-                          </h5>
-                          <p className="text-sm text-gray-800 leading-relaxed">{q.redFlags}</p>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Follow-up Questions */}
-                    {q.followUps && q.followUps.length > 0 && (
-                      <div className="mt-4 ml-11 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                        <h5 className="font-bold text-sm mb-2 text-blue-800">Follow-up Questions:</h5>
-                        <ul className="space-y-1">
-                          {q.followUps.map((followUp: string, j: number) => (
-                            <li key={j} className="text-sm text-gray-800 flex items-start gap-2">
-                              <span className="text-blue-600 mt-1">→</span>
-                              <span className="flex-1">{followUp}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="p-8 text-center bg-gray-50 rounded-lg">
-                <p className="text-gray-600">
-                  {interviewPrepData.interviewPrep.rawResponse || 'No questions generated'}
-                </p>
-              </div>
-            )}
-
-            {/* Close Button */}
-            <div className="mt-8 pt-5 border-t border-gray-200 flex justify-center">
-              <button
-                onClick={() => setShowInterviewPrep(false)}
-                className="px-8 py-3 rounded-xl bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all font-semibold text-base shadow-sm hover:shadow-md"
-              >
-                Close Interview Prep
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    )}
+    <div style={{display: 'none'}}>debug</div>
 
     {/* Interview Feedback Modal */}
     {showInterviewFeedback && selectedApplication && (
@@ -1800,41 +1672,7 @@ export default function BetaAppDashboard() {
                 selectedApplication &&
                 interviewPrepData.candidate.name === selectedApplication.fullName
               
-              return hasInterviewPrep ? (
-                <div className="space-y-3">
-                  <button
-                    onClick={handleViewInterviewPrep}
-                    className="w-full px-6 py-4 rounded-xl font-semibold text-white transition-all flex items-center justify-center gap-3 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 shadow-lg hover:shadow-xl"
-                  >
-                    <Eye className="w-5 h-5" />
-                    View Interview Prep Questions
-                  </button>
-                  <button
-                    onClick={handleGenerateInterviewPrep}
-                    disabled={generatingPrep}
-                    className={`w-full px-4 py-2 rounded-lg font-medium transition-all flex items-center justify-center gap-2 ${
-                      generatingPrep
-                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    {generatingPrep ? (
-                      <>
-                        <Loader className="w-4 h-4 animate-spin" />
-                        Regenerating...
-                      </>
-                    ) : (
-                      <>
-                        <RefreshCw className="w-4 h-4" />
-                        Regenerate Questions
-                      </>
-                    )}
-                  </button>
-                  <p className="text-xs text-gray-500 text-center mt-2">
-                    Click to view previously generated questions or regenerate new ones
-                  </p>
-                </div>
-              ) : (
+              return (
                 <>
                   <button
                     onClick={handleGenerateInterviewPrep}
@@ -1842,28 +1680,153 @@ export default function BetaAppDashboard() {
                     className={`w-full px-6 py-4 rounded-xl font-semibold text-white transition-all flex items-center justify-center gap-3 ${
                       generatingPrep
                         ? 'bg-purple-400 cursor-not-allowed'
+                        : hasInterviewPrep
+                        ? 'bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 shadow-lg hover:shadow-xl'
                         : 'bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 shadow-lg hover:shadow-xl'
                     }`}
                   >
                     {generatingPrep ? (
                       <>
                         <Loader className="w-5 h-5 animate-spin" />
-                        Generating Interview Questions...
+                        {hasInterviewPrep ? 'Regenerating...' : 'Generating Interview Questions...'}
                       </>
                     ) : (
                       <>
-                        <MessageSquare className="w-5 h-5" />
-                        Generate AI Interview Prep Questions
+                        {hasInterviewPrep ? (
+                          <>
+                            <RefreshCw className="w-5 h-5" />
+                            Regenerate Interview Prep Questions
+                          </>
+                        ) : (
+                          <>
+                            <MessageSquare className="w-5 h-5" />
+                            Generate AI Interview Prep Questions
+                          </>
+                        )}
                       </>
                     )}
                   </button>
                   <p className="text-xs text-gray-500 text-center mt-2">
-                    Get tailored interview questions based on the job description and candidate's profile
+                    {hasInterviewPrep 
+                      ? 'Questions displayed below. Click to regenerate new ones.'
+                      : 'Get tailored interview questions based on the job description and candidate's profile'}
                   </p>
                 </>
               )
             })()}
           </div>
+
+          {/* Interview Prep Questions Display (Inline) */}
+          {(() => {
+            const hasInterviewPrep = interviewPrepData && 
+              interviewPrepData.candidate && 
+              selectedApplication &&
+              interviewPrepData.candidate.name === selectedApplication.fullName
+            
+            if (!hasInterviewPrep) return null
+            
+            return (
+              <div className="mt-6 pt-6 border-t border-gray-200">
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  <MessageSquare className="w-6 h-6 text-purple-600" />
+                  Interview Preparation Guide
+                </h3>
+
+                {/* Overall Strategy */}
+                {interviewPrepData.interviewPrep.overallStrategy && (
+                  <div className="mb-4 p-4 rounded-lg bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200">
+                    <h4 className="font-bold text-base mb-2 text-purple-900">Interview Strategy</h4>
+                    <p className="text-sm text-gray-800 leading-relaxed">{interviewPrepData.interviewPrep.overallStrategy}</p>
+                  </div>
+                )}
+
+                {/* Key Areas to Probe */}
+                {interviewPrepData.interviewPrep.keyAreasToProbe && interviewPrepData.interviewPrep.keyAreasToProbe.length > 0 && (
+                  <div className="mb-4 p-4 rounded-lg bg-blue-50 border border-blue-200">
+                    <h4 className="font-bold text-base mb-2 text-blue-900">Key Areas to Probe</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {interviewPrepData.interviewPrep.keyAreasToProbe.map((area: string, i: number) => (
+                        <span key={i} className="px-2 py-1 bg-blue-200 text-blue-900 rounded-full text-xs font-medium">
+                          {area}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Interview Questions */}
+                {interviewPrepData.interviewPrep.questions && interviewPrepData.interviewPrep.questions.length > 0 ? (
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-bold mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      Interview Questions ({interviewPrepData.interviewPrep.questions.length})
+                    </h4>
+                    {interviewPrepData.interviewPrep.questions.map((q: any, i: number) => (
+                      <div key={i} className="p-4 rounded-lg border border-gray-200 bg-gray-50">
+                        <div className="flex items-start gap-3 mb-3">
+                          <span className="flex-shrink-0 w-7 h-7 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-sm">
+                            {i + 1}
+                          </span>
+                          <div className="flex-1">
+                            <h5 className="font-bold text-base text-gray-900 mb-1">{q.question}</h5>
+                            {q.rationale && (
+                              <p className="text-xs text-gray-600 italic mb-2">
+                                <span className="font-semibold">Why ask this:</span> {q.rationale}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="space-y-3 pl-10">
+                          {/* Ideal Answer */}
+                          {q.idealAnswer && (
+                            <div className="p-3 bg-green-50 rounded-lg border border-green-200">
+                              <h6 className="font-bold text-xs mb-1 flex items-center gap-1 text-green-800">
+                                <CheckCircle className="w-3 h-3" />
+                                What to Listen For
+                              </h6>
+                              <p className="text-xs text-gray-800 leading-relaxed">{q.idealAnswer}</p>
+                            </div>
+                          )}
+
+                          {/* Red Flags */}
+                          {q.redFlags && (
+                            <div className="p-3 bg-red-50 rounded-lg border border-red-200">
+                              <h6 className="font-bold text-xs mb-1 flex items-center gap-1 text-red-800">
+                                <AlertCircle className="w-3 h-3" />
+                                Red Flags
+                              </h6>
+                              <p className="text-xs text-gray-800 leading-relaxed">{q.redFlags}</p>
+                            </div>
+                          )}
+
+                          {/* Follow-up Questions */}
+                          {q.followUps && q.followUps.length > 0 && (
+                            <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                              <h6 className="font-bold text-xs mb-1 text-blue-800">Follow-up Questions:</h6>
+                              <ul className="space-y-1">
+                                {q.followUps.map((followUp: string, j: number) => (
+                                  <li key={j} className="text-xs text-gray-800 flex items-start gap-1">
+                                    <span className="text-blue-600 mt-0.5">→</span>
+                                    <span className="flex-1">{followUp}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="p-6 text-center bg-gray-50 rounded-lg">
+                    <p className="text-sm text-gray-600">
+                      {interviewPrepData.interviewPrep.rawResponse || 'No questions generated'}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )
+          })()}
 
           {/* Mark as Interviewed Button */}
           {selectedApplication.interviewStatus === 'Interview Booked' && (
