@@ -32,6 +32,16 @@ export default function BetaAppDashboard() {
   // Meeting link state
   const [meetingLinkInput, setMeetingLinkInput] = useState<string>('')
   const [savingMeetingLink, setSavingMeetingLink] = useState(false)
+  
+  // Admin notes state
+  const [adminNotesInput, setAdminNotesInput] = useState<string>('')
+  const [savingAdminNotes, setSavingAdminNotes] = useState(false)
+  
+  // Interview feedback state
+  const [showInterviewFeedback, setShowInterviewFeedback] = useState(false)
+  const [interviewFeedbackInput, setInterviewFeedbackInput] = useState<string>('')
+  const [interviewRatingInput, setInterviewRatingInput] = useState<number>(0)
+  const [savingInterviewFeedback, setSavingInterviewFeedback] = useState(false)
 
   useEffect(() => {
     document.title = 'Admin Dashboard | Knowcap.ai'
@@ -45,10 +55,11 @@ export default function BetaAppDashboard() {
     }
   }, [])
 
-  // Initialize meeting link input when application is selected
+  // Initialize meeting link and admin notes when application is selected
   useEffect(() => {
     if (selectedApplication) {
       setMeetingLinkInput(selectedApplication.meetingLink || '')
+      setAdminNotesInput(selectedApplication.adminNotes || '')
     }
   }, [selectedApplication])
 
@@ -360,6 +371,90 @@ export default function BetaAppDashboard() {
   const handleViewInterviewPrep = () => {
     if (interviewPrepData) {
       setShowInterviewPrep(true)
+    }
+  }
+
+  const handleSaveAdminNotes = async () => {
+    if (!selectedApplication) return
+    
+    setSavingAdminNotes(true)
+    try {
+      const response = await fetch('/api/update-admin-notes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          applicationId: selectedApplication.id,
+          adminNotes: adminNotesInput.trim()
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to save admin notes')
+      }
+
+      // Update the local state
+      const updatedApp = { ...selectedApplication, adminNotes: adminNotesInput.trim() }
+      setSelectedApplication(updatedApp)
+      
+      // Update in the list
+      setRecruitmentApplications(prev =>
+        prev.map(app => app.id === selectedApplication.id ? updatedApp : app)
+      )
+
+      alert('Admin notes saved successfully!')
+    } catch (error) {
+      console.error('Error saving admin notes:', error)
+      alert('Failed to save admin notes')
+    } finally {
+      setSavingAdminNotes(false)
+    }
+  }
+
+  const handleSaveInterviewFeedback = async () => {
+    if (!selectedApplication) return
+    
+    if (interviewRatingInput === 0) {
+      alert('Please select a rating before submitting')
+      return
+    }
+    
+    setSavingInterviewFeedback(true)
+    try {
+      const response = await fetch('/api/update-interview-feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          applicationId: selectedApplication.id,
+          interviewFeedback: interviewFeedbackInput.trim(),
+          interviewRating: interviewRatingInput
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to save interview feedback')
+      }
+
+      // Update the local state
+      const updatedApp = { 
+        ...selectedApplication, 
+        interviewFeedback: interviewFeedbackInput.trim(),
+        interviewRating: interviewRatingInput,
+        interviewStatus: 'Interviewed'
+      }
+      setSelectedApplication(updatedApp)
+      
+      // Update in the list
+      setRecruitmentApplications(prev =>
+        prev.map(app => app.id === selectedApplication.id ? updatedApp : app)
+      )
+
+      setShowInterviewFeedback(false)
+      alert('Interview feedback saved successfully!')
+    } catch (error) {
+      console.error('Error saving interview feedback:', error)
+      alert('Failed to save interview feedback')
+    } finally {
+      setSavingInterviewFeedback(false)
     }
   }
 
@@ -1366,6 +1461,119 @@ export default function BetaAppDashboard() {
       </div>
     )}
 
+    {/* Interview Feedback Modal */}
+    {showInterviewFeedback && selectedApplication && (
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[60] p-4 overflow-y-auto" 
+        onClick={() => setShowInterviewFeedback(false)}
+        style={{ backdropFilter: 'blur(4px)' }}
+      >
+        <div 
+          className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full my-8 relative p-8" 
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header */}
+          <div className="flex justify-between items-start mb-6">
+            <div>
+              <h2 className="text-2xl font-bold mb-2 flex items-center gap-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                <CheckCircle className="w-7 h-7 text-orange-600" />
+                Interview Feedback
+              </h2>
+              <p className="text-gray-600">
+                For: <span className="font-semibold">{selectedApplication.fullName}</span>
+              </p>
+            </div>
+            <button
+              onClick={() => setShowInterviewFeedback(false)}
+              className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Star Rating */}
+          <div className="mb-6">
+            <label className="block text-sm font-bold text-gray-700 mb-3">
+              Overall Rating <span className="text-red-500">*</span>
+            </label>
+            <div className="flex gap-2 items-center">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <button
+                  key={star}
+                  type="button"
+                  onClick={() => setInterviewRatingInput(star)}
+                  className="transition-transform hover:scale-110 focus:outline-none"
+                >
+                  <Star
+                    className={`w-10 h-10 ${
+                      star <= interviewRatingInput
+                        ? 'fill-yellow-400 text-yellow-400'
+                        : 'text-gray-300 hover:text-yellow-200'
+                    }`}
+                  />
+                </button>
+              ))}
+              {interviewRatingInput > 0 && (
+                <span className="ml-3 text-lg font-bold text-gray-700">
+                  {interviewRatingInput}/5
+                </span>
+              )}
+            </div>
+            {interviewRatingInput === 0 && (
+              <p className="text-xs text-red-500 mt-1">Please select a rating</p>
+            )}
+          </div>
+
+          {/* Feedback Textarea */}
+          <div className="mb-6">
+            <label className="block text-sm font-bold text-gray-700 mb-2">
+              Interview Notes & Feedback
+            </label>
+            <textarea
+              value={interviewFeedbackInput}
+              onChange={(e) => setInterviewFeedbackInput(e.target.value)}
+              placeholder="Share your thoughts about the interview, candidate's performance, key strengths, areas of concern, etc..."
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-orange-600 focus:ring-2 focus:ring-orange-100 outline-none text-sm min-h-[180px] resize-y"
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              Provide detailed feedback to help with the hiring decision
+            </p>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex gap-3 justify-end pt-4 border-t border-gray-200">
+            <button
+              onClick={() => setShowInterviewFeedback(false)}
+              className="px-6 py-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all font-semibold"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleSaveInterviewFeedback}
+              disabled={savingInterviewFeedback || interviewRatingInput === 0}
+              className={`px-6 py-3 rounded-lg font-semibold text-white transition-all flex items-center gap-2 ${
+                savingInterviewFeedback || interviewRatingInput === 0
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 shadow-lg hover:shadow-xl'
+              }`}
+            >
+              {savingInterviewFeedback ? (
+                <>
+                  <Loader className="w-5 h-5 animate-spin" />
+                  Saving...
+                </>
+              ) : (
+                <>
+                  <Save className="w-5 h-5" />
+                  Save Feedback
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+
     {selectedApplication && (
       <div 
         className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto" 
@@ -1485,6 +1693,49 @@ export default function BetaAppDashboard() {
               </div>
             )
           })()}
+
+          {/* Admin Notes Section */}
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <h3 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <Save className="w-5 h-5 text-purple-600" />
+              Admin Notes
+            </h3>
+            <div className="space-y-3">
+              <textarea
+                value={adminNotesInput}
+                onChange={(e) => setAdminNotesInput(e.target.value)}
+                placeholder="Add your notes about this candidate..."
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-purple-600 focus:ring-2 focus:ring-purple-100 outline-none text-sm min-h-[120px] resize-y"
+              />
+              <button
+                onClick={handleSaveAdminNotes}
+                disabled={savingAdminNotes}
+                className={`px-5 py-2 rounded-lg font-semibold text-white transition-all flex items-center gap-2 ${
+                  savingAdminNotes
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-purple-600 hover:bg-purple-700'
+                }`}
+              >
+                {savingAdminNotes ? (
+                  <>
+                    <Loader className="w-4 h-4 animate-spin" />
+                    Saving...
+                  </>
+                ) : (
+                  <>
+                    <Save className="w-4 h-4" />
+                    Save Notes
+                  </>
+                )}
+              </button>
+              {selectedApplication.adminNotes && (
+                <div className="p-3 bg-purple-50 rounded-lg border border-purple-200">
+                  <p className="text-xs text-purple-700 font-medium mb-1">Previously Saved:</p>
+                  <p className="text-sm text-gray-700 whitespace-pre-wrap">{selectedApplication.adminNotes}</p>
+                </div>
+              )}
+            </div>
+          </div>
 
           {/* Meeting Link Section */}
           <div className="mt-6 pt-6 border-t border-gray-200">
@@ -1613,6 +1864,63 @@ export default function BetaAppDashboard() {
               )
             })()}
           </div>
+
+          {/* Mark as Interviewed Button */}
+          {selectedApplication.interviewStatus === 'Interview Booked' && (
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <button
+                onClick={() => {
+                  setInterviewFeedbackInput(selectedApplication.interviewFeedback || '')
+                  setInterviewRatingInput(selectedApplication.interviewRating || 0)
+                  setShowInterviewFeedback(true)
+                }}
+                className="w-full px-6 py-4 rounded-xl font-semibold text-white transition-all flex items-center justify-center gap-3 bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 shadow-lg hover:shadow-xl"
+              >
+                <CheckCircle className="w-5 h-5" />
+                Mark as Interviewed
+              </button>
+              <p className="text-xs text-gray-500 text-center mt-2">
+                Click here after completing the interview to add feedback and rating
+              </p>
+            </div>
+          )}
+
+          {/* Interview Feedback Display */}
+          {selectedApplication.interviewStatus === 'Interviewed' && selectedApplication.interviewFeedback && (
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <h3 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                <CheckCircle className="w-5 h-5 text-green-600" />
+                Interview Completed
+              </h3>
+              <div className="space-y-4">
+                {/* Star Rating Display */}
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-semibold text-gray-700">Rating:</span>
+                  <div className="flex gap-1">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star
+                        key={star}
+                        className={`w-6 h-6 ${
+                          star <= (selectedApplication.interviewRating || 0)
+                            ? 'fill-yellow-400 text-yellow-400'
+                            : 'text-gray-300'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-sm font-bold text-gray-700">
+                    ({selectedApplication.interviewRating}/5)
+                  </span>
+                </div>
+                
+                {/* Feedback Text */}
+                <div className="p-4 bg-green-50 rounded-lg border border-green-200">
+                  <p className="text-xs text-green-700 font-medium mb-2">Interview Feedback:</p>
+                  <p className="text-sm text-gray-700 whitespace-pre-wrap">{selectedApplication.interviewFeedback}</p>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Application Details */}
           <div className="mt-6 pt-6 border-t border-gray-200">

@@ -60,8 +60,13 @@ model RecruitmentApplication {
     recommendation      String?  // "strong_fit" | "good_fit" | "moderate_fit" | "weak_fit"
     
     // Interview Status
-    interviewStatus     String   @default("Pending") // "Pending" | "Link Sent" | "Interview Booked"
+    interviewStatus     String   @default("Pending") // "Pending" | "Link Sent" | "Interview Booked" | "Interviewed"
     meetingLink         String?  // Meeting link for interview (Zoom, Meet, etc.)
+    
+    // Admin Notes & Interview Feedback
+    adminNotes          String?  @db.Text // General notes from admin
+    interviewFeedback   String?  @db.Text // Post-interview feedback
+    interviewRating     Int?     // 1-5 star rating from interview
 
     // Relations
     emailLogs           EmailLog[]
