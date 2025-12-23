@@ -1314,16 +1314,98 @@ export default function BetaAppDashboard() {
                               </div>
                             </div>
                             
-                            {/* Interview Feedback Display */}
-                            {app.interviewFeedback && (
+                            {/* Meeting Link Section */}
+                            <div className="mt-4 pt-4 border-t border-gray-200">
+                              <div className="flex items-start gap-2">
+                                <LinkIcon className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                                <div className="flex-1">
+                                  <p className="text-sm font-semibold text-blue-800 mb-2">Interview Meeting Link</p>
+                                  {app.meetingLink ? (
+                                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                                      <a 
+                                        href={app.meetingLink} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="text-sm text-blue-600 hover:underline break-all"
+                                      >
+                                        {app.meetingLink}
+                                      </a>
+                                      <button
+                                        onClick={() => setSelectedApplication(app)}
+                                        className="ml-2 text-xs text-gray-600 hover:text-gray-800"
+                                      >
+                                        (Edit)
+                                      </button>
+                                    </div>
+                                  ) : (
+                                    <button
+                                      onClick={() => setSelectedApplication(app)}
+                                      className="text-sm text-gray-500 hover:text-blue-600 underline"
+                                    >
+                                      + Add meeting link
+                                    </button>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                            
+                            {/* Interview Rating & Feedback Section */}
+                            {(app.interviewRating || app.interviewFeedback || app.interviewStatus === 'Interviewed') && (
                               <div className="mt-4 pt-4 border-t border-gray-200">
                                 <div className="flex items-start gap-2">
-                                  <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                                  <Star className="w-5 h-5 text-yellow-600 mt-0.5 flex-shrink-0" />
                                   <div className="flex-1">
-                                    <p className="text-sm font-semibold text-green-800 mb-2">Interview Feedback</p>
-                                    <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
-                                      <p className="text-sm text-gray-700 whitespace-pre-wrap">{app.interviewFeedback}</p>
-                                    </div>
+                                    <p className="text-sm font-semibold text-yellow-800 mb-2">Interview Results</p>
+                                    
+                                    {/* Rating Display */}
+                                    {app.interviewRating ? (
+                                      <div className="mb-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                        <div className="flex items-center justify-between">
+                                          <div className="flex items-center gap-2">
+                                            <span className="text-yellow-600 text-lg">
+                                              {'⭐'.repeat(app.interviewRating)}
+                                            </span>
+                                            <span className="text-sm text-gray-600">({app.interviewRating}/5)</span>
+                                          </div>
+                                          <button
+                                            onClick={() => setSelectedApplication(app)}
+                                            className="text-xs text-gray-600 hover:text-gray-800"
+                                          >
+                                            Edit
+                                          </button>
+                                        </div>
+                                      </div>
+                                    ) : app.interviewStatus === 'Interviewed' && (
+                                      <button
+                                        onClick={() => setSelectedApplication(app)}
+                                        className="mb-3 text-sm text-gray-500 hover:text-yellow-600 underline"
+                                      >
+                                        + Add rating
+                                      </button>
+                                    )}
+                                    
+                                    {/* Feedback Display */}
+                                    {app.interviewFeedback ? (
+                                      <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
+                                        <div className="flex items-start justify-between mb-1">
+                                          <p className="text-xs font-semibold text-green-800">Feedback:</p>
+                                          <button
+                                            onClick={() => setSelectedApplication(app)}
+                                            className="text-xs text-gray-600 hover:text-gray-800"
+                                          >
+                                            Edit
+                                          </button>
+                                        </div>
+                                        <p className="text-sm text-gray-700 whitespace-pre-wrap">{app.interviewFeedback}</p>
+                                      </div>
+                                    ) : app.interviewStatus === 'Interviewed' && (
+                                      <button
+                                        onClick={() => setSelectedApplication(app)}
+                                        className="text-sm text-gray-500 hover:text-green-600 underline"
+                                      >
+                                        + Add feedback
+                                      </button>
+                                    )}
                                   </div>
                                 </div>
                               </div>
