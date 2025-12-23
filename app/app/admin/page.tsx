@@ -1190,6 +1190,14 @@ export default function BetaAppDashboard() {
                             <div className={`px-3 py-1 rounded-lg ${getScoreBgColor(app.aiScore)} font-bold ${getScoreColor(app.aiScore)}`}>
                               Score: {app.aiScore}
                             </div>
+                            {app.interviewRating && (
+                              <div className="px-3 py-1 rounded-lg bg-yellow-50 border border-yellow-200 flex items-center gap-1">
+                                <span className="text-yellow-600 font-bold">
+                                  {'⭐'.repeat(app.interviewRating)}
+                                </span>
+                                <span className="text-xs text-gray-600">({app.interviewRating}/5)</span>
+                              </div>
+                            )}
                           </div>
                         )}
                         
@@ -1269,6 +1277,7 @@ export default function BetaAppDashboard() {
                                 <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                                   app.interviewStatus === 'Interview Booked' ? 'bg-green-100 text-green-700' :
                                   app.interviewStatus === 'Link Sent' ? 'bg-blue-100 text-blue-700' :
+                                  app.interviewStatus === 'Interviewed' ? 'bg-purple-100 text-purple-700' :
                                   'bg-gray-100 text-gray-700'
                                 }`}>
                                   {app.interviewStatus || 'Pending'}
@@ -1304,6 +1313,21 @@ export default function BetaAppDashboard() {
                                 )}
                               </div>
                             </div>
+                            
+                            {/* Interview Feedback Display */}
+                            {app.interviewFeedback && (
+                              <div className="mt-4 pt-4 border-t border-gray-200">
+                                <div className="flex items-start gap-2">
+                                  <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                                  <div className="flex-1">
+                                    <p className="text-sm font-semibold text-green-800 mb-2">Interview Feedback</p>
+                                    <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
+                                      <p className="text-sm text-gray-700 whitespace-pre-wrap">{app.interviewFeedback}</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
                           </div>
                           
                           {app.aiScore !== null && app.aiAnalysis && (
