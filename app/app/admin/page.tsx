@@ -1708,8 +1708,8 @@ export default function BetaAppDashboard() {
                   </button>
                   <p className="text-xs text-gray-500 text-center mt-2">
                     {hasInterviewPrep 
-                      ? 'Questions displayed below. Click to regenerate new ones.'
-                      : 'Get tailored interview questions based on the job description and candidate's profile'}
+                      ? "Questions displayed below. Click to regenerate new ones."
+                      : "Get tailored interview questions based on the job description and candidate's profile"}
                   </p>
                 </>
               )
