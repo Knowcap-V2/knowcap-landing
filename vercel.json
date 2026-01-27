@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd app && yarn install && yarn build",
+  "outputDirectory": "app/.next",
+  "installCommand": "echo skip",
+  "framework": "nextjs"
+}
