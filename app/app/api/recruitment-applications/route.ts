@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error('[GET RECRUITMENT APPLICATIONS ERROR]', error)
     return NextResponse.json(
-      { message: 'Failed to fetch applications' },
+      { message: 'Failed to fetch applications', debug: String(error) },
       { status: 500 }
     )
   }
