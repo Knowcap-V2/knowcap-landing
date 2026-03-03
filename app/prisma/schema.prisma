@@ -1,0 +1,94 @@
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model BetaApplication {
+    id          String   @id @default(cuid())
+    name        String
+    email       String
+    company     String
+    role        String
+    motivation  String   @db.Text
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    
+    @@index([email])
+    @@index([createdAt])
+}
+
+model ContactSubmission {
+    id        String   @id @default(cuid())
+    name      String
+    email     String
+    company   String?
+    subject   String
+    message   String   @db.Text
+    createdAt DateTime @default(now())
+
+    @@index([email])
+    @@index([createdAt])
+}
+
+model RecruitmentApplication {
+    id                  String   @id @default(cuid())
+    fullName            String
+    email               String
+    role                String
+    referralSource      String?
+    linkedin            String?
+    portfolio           String?
+    aiProject           String?  @db.Text
+    additionalInfo      String?  @db.Text
+    resumePath          String?
+    cloud_storage_path  String?
+    isPublic            Boolean  @default(false)
+    createdAt           DateTime @default(now())
+    
+    // AI Scoring fields
+    aiScore             Int?     // 0-100 score
+    aiAnalysis          String?  @db.Text // Detailed analysis from AI
+    scoredAt            DateTime? // When the scoring was done
+    strengths           String?  @db.Text // JSON array of strengths
+    weaknesses          String?  @db.Text // JSON array of weaknesses
+    recommendation      String?  // "strong_fit" | "good_fit" | "moderate_fit" | "weak_fit"
+    
+    // Interview Status
+    interviewStatus     String   @default("Pending") // "Pending" | "Link Sent" | "Interview Booked" | "Interviewed"
+    meetingLink         String?  // Meeting link for interview (Zoom, Meet, etc.)
+    
+    // Admin Notes & Interview Feedback
+    adminNotes          String?  @db.Text // General notes from admin
+    interviewFeedback   String?  @db.Text // Post-interview feedback
+    interviewRating     Int?     // 1-5 star rating from interview
+
+    // Relations
+    emailLogs           EmailLog[]
+
+    @@index([email])
+    @@index([role])
+    @@index([createdAt])
+    @@index([aiScore])
+    @@index([recommendation])
+    @@index([interviewStatus])
+}
+
+model EmailLog {
+    id                String   @id @default(cuid())
+    applicationId     String
+    application       RecruitmentApplication @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+    recipientEmail    String
+    recipientName     String
+    subject           String
+    body              String   @db.Text
+    sentAt            DateTime @default(now())
+    sentBy            String   @default("ai_assistant") // "ai_assistant" or user identifier
+    
+    @@index([applicationId])
+    @@index([sentAt])
+}

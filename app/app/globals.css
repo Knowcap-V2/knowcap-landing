@@ -1,0 +1,305 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 216 24% 16%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 216 24% 16%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 216 24% 16%;
+
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 216 24% 16%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 211 8% 32%;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 216 24% 16%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 84%;
+    --input: 0 0% 84%;
+    --ring: 0 0% 0%;
+
+    --radius: 0.5rem;
+
+    /* KnowCap Design System Colors */
+    --brand-blue: #005EFF;
+    --brand-blue-accent: #443AFF;
+    --highlight-blue: rgba(0, 94, 255, 0.9);
+    --bg-light: white;
+    --bg-secondary-light: #F5F5F5;
+    --bg-dark: #0A0D12;
+    --bg-secondary-dark: #181D27;
+    --text-primary-light: #191F2E;
+    --text-secondary-light: #414651;
+    --text-tertiary-light: #535862;
+    --text-primary-dark: #E9EAEB;
+    --text-secondary-dark: #D5D7DA;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-white text-foreground;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+  }
+}
+
+.hero-bg {
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-blur {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background: #443AFF;
+  opacity: 0.15;
+  filter: blur(62.19px);
+  transform: rotate(-15deg);
+  top: -200px;
+  right: -200px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Typography Classes */
+.hero-heading {
+  font-size: 60px;
+  font-weight: 600;
+  line-height: 72px;
+  color: var(--text-primary-light);
+}
+
+.section-heading {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 52.8px;
+  color: var(--text-primary-light);
+}
+
+.hero-subheading {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  color: var(--text-secondary-light);
+}
+
+.section-subheading {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.64px;
+  text-transform: uppercase;
+  color: var(--text-secondary-light);
+}
+
+.body-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--text-secondary-light);
+}
+
+/* Button Shadows */
+.btn-shadow {
+  box-shadow: 0px 1px 2px rgba(10, 13, 18, 0.05);
+}
+
+.card-shadow {
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Pitch Deck Styles for MVP Page */
+
+:root {
+  --primary-blue: #005EFF;
+  --primary-dark: #0046bd;
+  --primary-light: rgba(0, 94, 255, 0.08);
+  --dark-bg: #191F2E;
+  --gray-text: #414651;
+  --bg-light-pitch: #F5F7FA;
+  --surface-glass: rgba(255, 255, 255, 0.95);
+  --shadow-sm-pitch: 0 2px 4px rgba(0,0,0,0.02);
+  --shadow-md-pitch: 0 12px 24px -6px rgba(0,0,0,0.05);
+  --shadow-lg-pitch: 0 20px 40px -10px rgba(0,0,0,0.1);
+  --radius-lg-pitch: 16px;
+}
+
+.pitch-container {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: var(--dark-bg);
+  background: var(--bg-light-pitch);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.pitch-container h1, 
+.pitch-container h2, 
+.pitch-container h3, 
+.pitch-container h4, 
+.pitch-container h5 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--dark-bg);
+}
+
+.pitch-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.pitch-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.pitch-container .gradient-text {
+  background: linear-gradient(135deg, #005EFF 0%, #00C6FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.pitch-container .slide-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  display: inline-block;
+  background: var(--primary-light);
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+.pitch-container .pitch-card {
+  background: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-lg-pitch);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm-pitch);
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.pitch-container .pitch-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md-pitch);
+}
+
+.pitch-container .card-dark {
+  background: var(--dark-bg);
+  color: white;
+  border: 1px solid #333;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg-pitch);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pitch-container .card-dark p {
+  color: #9ca3af;
+  margin-bottom: 0;
+}
+
+.pitch-container .card-dark .text-white {
+  color: white !important;
+}
+
+.pitch-container .fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.pitch-container .fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pitch-container .hero-bg {
+  background: radial-gradient(circle at 50% 0%, #E3F2FD 0%, #F8FAFC 70%);
+  padding: 3rem 1.5rem;
+}
+
+.pitch-container section {
+  padding: 5rem 1.5rem;
+  position: relative;
+}
+
+.pitch-container .container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pitch-container .grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.pitch-container .grid-cols-3 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .pitch-container h1 {
+    font-size: 3.5rem;
+  }
+  .pitch-container h2 {
+    font-size: 2.5rem;
+  }
+  .pitch-container section {
+    padding: 7rem 2rem;
+  }
+  .pitch-container .grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

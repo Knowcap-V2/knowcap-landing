@@ -1,0 +1,671 @@
+<body>
+
+    <main>
+        <!-- SLIDE 1: HERO -->
+        <section class="hero-bg">
+            <div class="container">
+                <div class="fade-in text-center max-w-4xl mx-auto" style="margin-bottom: 4rem;">
+                    
+                    <h1>Knowcap AI Turns Meetings & Screen Work Into <span class="gradient-text">Verified Project Documents</span></h1>
+                    
+                    <p class="text-lg text-dark font-medium mb-4">
+                        Already saving 150 hours per project (30% reduction from a 500-hour baseline)
+                    </p>
+                    <p class="text-gray text-center max-w-3xl mx-auto mb-8">
+                        Automatically converts calls and screen actions into timestamp-linked contracts, SOPs, PRDs, and quotations.
+                    </p>
+
+                    <div class="card-dark max-w-3xl mx-auto">
+                        <p class="text-white text-center mb-0">
+                            Empowers <strong>service firms</strong> to eliminate rework, deliver faster, and prove every decision with verified video context.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 2: TRACTION -->
+        <section>
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">Traction</span>
+                    <h2>$1.85K MRR (Paid Pilot Partners) — 150 hours saved per project</h2>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="card text-center">
+                        <h3 class="text-primary" style="font-size: 2.5rem;">100%</h3>
+                        <p class="font-medium">Renewal Rate</p>
+                        <p class="text-xs text-gray">All pilots renewed after first cycle</p>
+                    </div>
+                    <div class="card text-center">
+                        <h3 class="text-primary" style="font-size: 2.5rem;">14 Days</h3>
+                        <p class="font-medium">Sales Cycle</p>
+                        <p class="text-xs text-gray">High "Hair on Fire" demand intensity</p>
+                    </div>
+                    <div class="card text-center">
+                        <h3 class="text-primary" style="font-size: 2.5rem;">0 hrs</h3>
+                        <p class="font-medium">Manual Reporting</p>
+                        <p class="text-xs text-gray">Eliminated completely</p>
+                    </div>
+
+                    <div class="card span-3">
+                        <h4 class="text-dark">Timeline</h4>
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">AUG</div>
+                                <div><strong>Founded</strong><p class="mb-0 text-sm text-gray">August 19th, 2025.</p></div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">SEP</div>
+                                <div><strong>1 pilot partner</strong><p class="mb-0 text-sm text-gray">Validated execution gap & workflow model.</p></div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">OCT</div>
+                                <div><strong>Expanded to 4 pilot partners</strong><p class="mb-0 text-sm text-gray">$1.85K MRR.</p></div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <div style="background: var(--primary); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">NOV</div>
+                                <div><strong>Added $4K/mo committed pipeline</strong><p class="mb-0 text-sm text-gray">Pending Zoom/Teams integration.</p></div>
+                            </div>
+                            <div style="display: flex; gap: 1rem; align-items: flex-start; background: rgba(0,94,255,0.05); padding: 1rem; border-radius: 8px; border: 1px dashed var(--primary);">
+                                <div style="background: white; color: var(--primary); border: 1px solid var(--primary); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-top: 2px;">NEXT</div>
+                                <div><strong>Next Milestone</strong><p class="mb-0 text-sm text-dark">4 additional pilot partners at $1K/mo each.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 3: THE PROBLEM -->
+        <section style="background: #F5F7FA;">
+            <div class="container fade-in">
+                <div class="mb-12">
+                    <span class="slide-label">The Problem</span>
+                    <h2>Service firms leak 20–40% of project hours due to undocumented work and unverifiable decisions</h2>
+                    <p class="text-center mt-4 text-lg">Where margin disappears:</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="card flex items-start">
+                        <div class="number-circle">1</div>
+                        <div>
+                            <h5>Process drift</h5>
+                            <p class="mb-0 text-sm">Juniors skip or sequence steps incorrectly.</p>
+                        </div>
+                    </div>
+                    <div class="card flex items-start">
+                        <div class="number-circle">2</div>
+                        <div>
+                            <h5>Scope creep</h5>
+                            <p class="mb-0 text-sm">Clients “remember” extra work without proof.</p>
+                        </div>
+                    </div>
+                    <div class="card flex items-start" style="border-left: 4px solid #FF5F56;">
+                        <div class="number-circle" style="background: rgba(255,95,86,0.1); color: #FF5F56;">3</div>
+                        <div>
+                            <h5>Manual documentation</h5>
+                            <p class="mb-0 text-sm">2–3 hours/meeting rewriting notes.</p>
+                        </div>
+                    </div>
+                    <div class="card flex items-start">
+                        <div class="number-circle">4</div>
+                        <div>
+                            <h5>Knowledge loss</h5>
+                            <p class="mb-0 text-sm">Seniors repeatedly explain the same workflows.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-dark text-center mt-spacer">
+                    <p class="text-white mb-0"><strong>Impact:</strong> Payroll is 70–90% of cost; losing 10% of billable hours can erase 100% of project profit.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4: THE SOLUTION -->
+        <section>
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">The Solution</span>
+                    <h2>Knowcap recovers 30% of total delivery time by turning real work into verifiable, timestamped documentation</h2>
+                </div>
+
+                <div class="card max-w-3xl mx-auto">
+                    <ul class="text-lg" style="list-style: none; padding: 0;">
+                        <li class="mb-4"><strong>✓ Captures context:</strong> call participation, real-time screen observation, document uploads</li>
+                        <li class="mb-4"><strong>✓ Understands execution:</strong> detects fields, clicks, steps, configurations</li>
+                        <li class="mb-4"><strong>✓ Compares against expectations:</strong> matches actions to SOPs, requirements, and agreements</li>
+                        <li class="mb-4"><strong>✓ Flags drifts:</strong> Project is At Risk from the original scope</li>
+                        <li class="mb-0"><strong>✓ Generates verifiable artifacts:</strong> contracts, quotations, SOPs, gap analyses</li>
+                    </ul>
+                </div>
+                <div class="card-dark max-w-3xl mx-auto text-center mt-spacer">
+                     <p class="text-white mb-0"><strong>Result:</strong> Improves accuracy, removes rework loops, and reveals project risks early.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 5: HOW IT WORKS -->
+        <section style="background: #F5F7FA;">
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">How It Works</span>
+                    <h2>It writes the documents you hate writing.</h2>
+                    <p>Command the AI to Audit, Quote, and Document.</p>
+                </div>
+
+                <div class="max-w-3xl mx-auto space-y-4" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div class="card" style="padding: 1.5rem;">
+                        <h5 class="text-primary m-0 mb-2">1. Instant Quality Control</h5>
+                        <p class="text-sm font-bold mt-2 mb-1">The Prompt:</p>
+                        <p class="text-sm italic mb-0">"Audit @Junior’s work in these @4_meetings against @Odoo_Implementation_Methodology."</p>
+                    </div>
+                    <div class="card" style="padding: 1.5rem;">
+                        <h5 class="text-primary m-0 mb-2">2. Admin on Autopilot</h5>
+                        <p class="text-sm font-bold mt-2 mb-1">The Prompt:</p>
+                        <p class="text-sm italic mb-0">"Draft Quotation based on @Kickoff_Meeting and @Requirements_Doc."</p>
+                    </div>
+                    <div class="card" style="padding: 1.5rem;">
+                        <h5 class="text-primary m-0 mb-2">3. Automated Knowledge Base</h5>
+                        <p class="text-sm font-bold mt-2 mb-1">The Prompt:</p>
+                        <p class="text-sm italic mb-0">"Watch @Senior_Config_Session and generate a step-by-step Guide for our 3 new Juniors"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 6: COMPETITION -->
+        <section>
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">Why Knowcap Wins</span>
+                    <h2>Competitors are Recorders. Knowcap is the Operating System.</h2>
+                </div>
+                
+                <!-- DESKTOP TABLE (Original) -->
+                <div class="table-container comp-table desktop-only">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Otter/Loom (The Recorders)</th>
+                                <th>Knowcap (The Intelligence)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Scope of Memory</strong></td>
+                                <td>Meeting-Level (Session Based)<br><small class="text-gray">Forgets previous context once call ends.</small></td>
+                                <td class="col-knowcap"><strong>Project-Level (Continuous)</strong><br><small>Synthesizes months of context.</small></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Integration Depth</strong></td>
+                                <td>Surface Level (Audio only)<br><small class="text-gray">Passive recording.</small></td>
+                                <td class="col-knowcap"><strong>Deep ERP Write Access</strong><br><small>Reads/Writes to Odoo & CRM directly.</small></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Language</strong></td>
+                                <td>Single Language<br><small class="text-gray">Confused by syntax switching.</small></td>
+                                <td class="col-knowcap"><strong>Fluid Code-Switching</strong><br><small>Parses mixed syntax instantly.</small></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Trust</strong></td>
+                                <td>"Black Box"<br><small class="text-gray">Prone to hallucinations.</small></td>
+                                <td class="col-knowcap"><strong>Verified Artifacts</strong><br><small>1-Click Hyperlinks to source video.</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- MOBILE CARD LIST (No Scrolling, Blue Column) -->
+                <div class="mobile-only">
+                    <!-- Feature 1 -->
+                    <div class="mobile-comp-card">
+                        <div class="mobile-comp-header">Scope of Memory</div>
+                        <div class="mobile-comp-grid">
+                            <div class="mobile-comp-cell competitor">
+                                <strong>Meeting-Level (Session)</strong><br>
+                                <small>Forgets previous context once call ends.</small>
+                            </div>
+                            <div class="mobile-comp-cell knowcap">
+                                <strong>Project-Level (Continuous)</strong><br>
+                                <small>Synthesizes months of context.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="mobile-comp-card">
+                        <div class="mobile-comp-header">Integration Depth</div>
+                        <div class="mobile-comp-grid">
+                            <div class="mobile-comp-cell competitor">
+                                <strong>Surface Level (Audio)</strong><br>
+                                <small>Passive recording.</small>
+                            </div>
+                            <div class="mobile-comp-cell knowcap">
+                                <strong>Deep ERP Write Access</strong><br>
+                                <small>Reads/Writes to Odoo & CRM.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="mobile-comp-card">
+                        <div class="mobile-comp-header">Language</div>
+                        <div class="mobile-comp-grid">
+                            <div class="mobile-comp-cell competitor">
+                                <strong>Single Language</strong><br>
+                                <small>Confused by syntax switching.</small>
+                            </div>
+                            <div class="mobile-comp-cell knowcap">
+                                <strong>Fluid Code-Switching</strong><br>
+                                <small>Parses mixed syntax instantly.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div class="mobile-comp-card">
+                        <div class="mobile-comp-header">Trust</div>
+                        <div class="mobile-comp-grid">
+                            <div class="mobile-comp-cell competitor">
+                                <strong>"Black Box"</strong><br>
+                                <small>Prone to hallucinations.</small>
+                            </div>
+                            <div class="mobile-comp-cell knowcap">
+                                <strong>Verified Artifacts</strong><br>
+                                <small>1-Click Hyperlinks to source video.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SLIDE 7: WHY NOW -->
+        <section style="background: #F5F7FA;">
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">Why Now</span>
+                    <h2>Multimodal AI only became capable of understanding workflows in 2024–2025.</h2>
+                    <p class="mt-4">What changed?</p>
+                </div>
+
+                <div class="card max-w-3xl mx-auto">
+                    <ul class="text-lg" style="list-style: none; padding: 0;">
+                        <li class="mb-4"><strong>✓</strong> Models interpret UI, screens, workflows</li>
+                        <li class="mb-4"><strong>✓</strong> Million-token windows &rarr; project-level memory</li>
+                        <li class="mb-4"><strong>✓</strong> Mixed-language models handle consultant conversations</li>
+                        <li class="mb-4"><strong>✓</strong> New APIs combine speech + screen capture</li>
+                        <li class="mb-0"><strong>✓</strong> Vector DB + RAG support multi-month retrieval</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 8: TAM -->
+        <section>
+            <div class="container fade-in">
+                <div class="grid grid-cols-2 gap-8 items-center">
+                    <!-- DESKTOP VIEW -->
+                    <div class="desktop-only">
+                        <span class="slide-label">Market Opportunity</span>
+                        <h2>Beachhead: $90M &rarr; Expansion: $5.1B</h2>
+                        <div class="card mt-6 tam-text-card" style="height: auto;">
+                            <p class="mb-2 text-xs uppercase tracking-wide text-gray">Bottom-Up Formula</p>
+                            <p class="text-xl font-bold mb-0">
+                                7,500 Partners <span class="text-gray">×</span> $12,000 ACV <span class="text-primary">= $90M</span>
+                            </p>
+                            <p class="text-xs text-gray mt-2 mb-0">Based on proven Odoo Ecosystem pricing.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- TAM CIRCLES (Desktop Only) -->
+                    <div class="tam-wrapper desktop-only">
+                        <div class="tam-circle tam-large">
+                            <h5 class="uppercase tracking-widest text-sm font-bold mb-0">Global TAM</h5>
+                            <p class="text-xs text-gray mb-1">Professional Service Agencies</p>
+                            <p class="text-sm text-gray font-bold mb-0">430,000 Firms × $12,000 ACV =</p>
+                            <h3 class="text-dark">$5.1B</h3>
+                        </div>
+                        <div class="tam-circle tam-medium">
+                            <h5 class="uppercase tracking-widest text-sm font-bold mb-0">Expansion</h5>
+                            <p class="text-xs text-dark mb-1">Specialized ERP Integrators</p>
+                            <p class="text-sm text-dark font-bold mb-0">50,000 Firms × $12,000 ACV =</p>
+                            <h3 class="text-dark">$600M</h3>
+                        </div>
+                        <div class="tam-circle tam-small">
+                            <h5 class="uppercase tracking-widest text-sm font-bold mb-0 text-white opacity-80">Beachhead</h5>
+                            <p class="text-xs text-white opacity-90 mb-1">Odoo Ecosystem</p>
+                            <p class="text-sm text-white font-bold mb-0">7,500 Partners × $12,000 ACV</p>
+                            <h3 class="text-white mb-0">= $90M</h3>
+                        </div>
+                    </div>
+
+                    <!-- MOBILE VIEW (4 Boxes) -->
+                    <div class="mobile-only" style="grid-column: span 2;">
+                        <div class="text-center mb-8">
+                            <span class="slide-label">Market Opportunity</span>
+                            <h2>Beachhead: $90M &rarr; Expansion: $5.1B</h2>
+                        </div>
+                        <!-- Box 1 -->
+                        <div class="mobile-tam-box">
+                            <h5>Bottom-Up Formula</h5>
+                            <p>7,500 Partners × $12K ACV = $90M</p>
+                        </div>
+                        <!-- Box 2 -->
+                        <div class="mobile-tam-box">
+                            <h5>Global TAM</h5>
+                            <p>430,000 Firms = $5.1B</p>
+                        </div>
+                        <!-- Box 3 -->
+                        <div class="mobile-tam-box">
+                            <h5>Expansion</h5>
+                            <p>50,000 Specialized Firms = $600M</p>
+                        </div>
+                        <!-- Box 4 -->
+                        <div class="mobile-tam-box" style="background: var(--primary); border: none;">
+                            <h5 style="color: rgba(255,255,255,0.8);">Beachhead</h5>
+                            <p style="color: white;">Odoo Ecosystem = $90M</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 9: BUSINESS MODEL -->
+        <section style="background: #F5F7FA;">
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">Business Model</span>
+                    <h2>Tier-based SaaS: $1,000–$5,000 per firm per month</h2>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="card text-center" style="border: 2px solid var(--primary);">
+                        <h4 class="text-primary">Core</h4>
+                        <p class="text-dark" style="font-size: 2rem; font-weight:700;">$1,000<span class="text-sm text-gray">/mo</span></p>
+                        <p class="text-xs text-gray mt-2">Up to 10 seats</p>
+                    </div>
+                    <div class="card text-center">
+                        <h4 class="text-primary">Growth</h4>
+                        <p class="text-dark" style="font-size: 2rem; font-weight:700;">$2,500<span class="text-sm text-gray">/mo</span></p>
+                        <p class="text-xs text-gray mt-2">Up to 30 seats</p>
+                    </div>
+                    <div class="card text-center">
+                        <h4 class="text-primary">Enterprise</h4>
+                        <p class="text-dark" style="font-size: 2rem; font-weight:700;">$5,000<span class="text-sm text-gray">/mo</span></p>
+                        <p class="text-xs text-gray mt-2">Unlimited seats</p>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 5rem;">
+                    <h4 class="mb-4">Why customers pay</h4>
+                    <ul class="text-gray" style="list-style-position: inside;">
+                        <li>150 hours saved per project</li>
+                        <li>Recover 30% of lost billable time</li>
+                        <li>Verified memory compounds value & reduces churn</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 10: GTM -->
+        <section>
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">Go-To-Market</span>
+                    <h2>Clear path to 100 customers &rarr; $1.2M ARR</h2>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="card">
+                        <div class="number-circle mb-4">1</div>
+                        <h5>Phase 1: Direct Founder Sales via Odoo Network</h5>
+                        <p class="text-sm">500+ warm introductions available via CEO's previous status as Gold Partner.</p>
+                    </div>
+                    <div class="card">
+                        <div class="number-circle mb-4">2</div>
+                        <h5>Phase 2: Referrals & Case Studies</h5>
+                        <p class="text-sm">Verified ROI expands into IT consultancies and agencies</p>
+                    </div>
+                    <div class="card">
+                        <div class="number-circle mb-4">3</div>
+                        <h5>Phase 3: Integrations & Marketplaces</h5>
+                        <p class="text-sm">Odoo App Store, Jira, ClickUp, Slack, and Open AI Agent Marketplace</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 11 & 12 MERGED: FINANCIALS & UNIT ECONOMICS -->
+        <section style="background: #F5F7FA;">
+            <div class="container fade-in">
+                <div class="text-center mb-12">
+                    <span class="slide-label">Financials & Unit Economics</span>
+                    <h2>Path to Profitability: Break-even by Sept 2026</h2>
+                </div>
+                <div class="grid grid-cols-2 gap-12">
+                    <!-- LEFT: PROJECTIONS -->
+                    <div>
+                        <h3 class="mb-4">Projections</h3>
+                        
+                        <!-- DESKTOP TABLE -->
+                        <div class="table-container desktop-only">
+                            <table>
+                                <thead><tr><th>Year</th><th>Milestone</th><th>Outcome</th></tr></thead>
+                                <tbody>
+                                    <tr><td>2025</td><td>4 pilots pending integration</td><td>$1.85K MRR (Pilots)</td></tr>
+                                    <tr><td>2026</td><td>100 customers</td><td>$1.2M ARR</td></tr>
+                                    <tr><td>2027</td><td>300 customers</td><td>$3.6M ARR</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- MOBILE PROJECTIONS LIST -->
+                        <div class="mobile-only">
+                            <div class="mobile-fin-card">
+                                <div><strong>2025</strong><br><small>4 pilots pending integration</small></div>
+                                <div class="text-primary font-bold">$1.85K MRR</div>
+                            </div>
+                            <div class="mobile-fin-card">
+                                <div><strong>2026</strong><br><small>100 customers</small></div>
+                                <div class="text-primary font-bold">$1.2M ARR</div>
+                            </div>
+                            <div class="mobile-fin-card">
+                                <div><strong>2027</strong><br><small>300 customers</small></div>
+                                <div class="text-primary font-bold">$3.6M ARR</div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-spacer">
+                            <div class="card" style="display: inline-block; padding: 0.75rem 1.5rem; width: auto; height: auto;">
+                                <p class="mb-0 text-dark"><strong>Break-even:</strong> Sept 2026 (~50 customers)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- RIGHT: UNIT ECONOMICS -->
+                    <div>
+                        <h3 class="mb-4">Unit Economics (60-Day Payback)</h3>
+                        <div class="mobile-forced-grid gap-4">
+                            <!-- Box 1 -->
+                            <div class="card text-center flex flex-col justify-center" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <small class="text-gray uppercase font-bold">Avg Sub</small>
+                                <p class="text-xl font-bold mt-1 mb-0 text-dark">$12K/yr</p>
+                            </div>
+                            <!-- Box 2 -->
+                            <div class="card text-center flex flex-col justify-center" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <small class="text-gray uppercase font-bold">Gross Margin</small>
+                                <p class="text-xl font-bold mt-1 mb-0 text-primary">85%</p>
+                            </div>
+                            <!-- Box 3 -->
+                            <div class="card text-center flex flex-col justify-center" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <small class="text-gray uppercase font-bold">CAC</small>
+                                <p class="text-xl font-bold mt-1 mb-0 text-dark">$1.5K</p>
+                            </div>
+                            <!-- Box 4 -->
+                            <div class="card text-center flex flex-col justify-center" style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                                <small class="text-gray uppercase font-bold">LTV</small>
+                                <p class="text-xl font-bold mt-1 mb-0 text-dark">$36K+</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 13: PATH TO 100 -->
+        <section>
+            <div class="container fade-in">
+                <div class="mb-16 text-center">
+                    <span class="slide-label">Path to 100 Customers</span>
+                    <h2>Execution-driven quarterly plan for predictable scale</h2>
+                </div>
+
+                <div class="card mb-12">
+                    <h4>Outcome</h4>
+                    <ul style="list-style: disc; padding-left: 1.5rem;">
+                        <li>50 customers &rarr; break-even September 2026</li>
+                        <li>100 customers &rarr; $1.2M ARR</li>
+                    </ul>
+                </div>
+
+                <!-- Quarterly Plan -->
+                <div class="mb-12">
+                    <h4 class="text-center mb-6 text-gray text-sm uppercase tracking-wider">Quarterly Growth Plan</h4>
+                    <div class="mobile-forced-grid flex flex-wrap justify-center items-center gap-4" style="justify-content: center;">
+                        <div class="milestone-box"><p class="text-gray font-bold mb-1">Q1</p><p class="text-primary text-2xl font-bold mb-0">+15</p></div>
+                        <div class="milestone-box"><p class="text-gray font-bold mb-1">Q2</p><p class="text-primary text-2xl font-bold mb-0">+23</p></div>
+                        <div class="milestone-box"><p class="text-gray font-bold mb-1">Q3</p><p class="text-primary text-2xl font-bold mb-0">+25</p></div>
+                        <div class="milestone-box"><p class="text-gray font-bold mb-1">Q4</p><p class="text-primary text-2xl font-bold mb-0">+37</p></div>
+                    </div>
+                </div>
+
+                <!-- Acquisition Flow -->
+                <div>
+                    <h4 class="text-center mb-6 text-gray text-sm uppercase tracking-wider">Acquisition Flow</h4>
+                    <div class="acquisition-container">
+                        <div class="acquisition-tag">Network</div><svg class="flow-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        <div class="acquisition-tag">Referrals</div><svg class="flow-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        <div class="acquisition-tag">Integrations</div><svg class="flow-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        <div class="acquisition-tag">SDR</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 14: TEAM -->
+        <section style="background: #F5F7FA;">
+            <div class="container fade-in">
+                <div class="mb-16 text-center">
+                    <span class="slide-label">Team</span>
+                    <h2>Founder-Market Fit: 10 Years Domain Trauma + Top 1% AI Talent</h2>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="card">
+                        <h3>Hassan Sam Arslan</h3>
+                        <p class="text-primary font-bold mb-4">Founder/CEO</p>
+                        <p>Co-founded Ariika ($0 &rarr; $20M). Former Odoo Gold Partner. <strong>Lost $200k on unbilled scope creep in previous agency.</strong></p>
+                    </div>
+                    <div class="card">
+                        <h3>Hesham Tarek</h3>
+                        <p class="text-primary font-bold mb-4">Technical Co-Founder</p>
+                        <p>AI systems architect. <strong>Wrote 100% of Knowcap’s VTE core code.</strong></p>
+                    </div>
+                </div>
+                <p class="text-center mt-8 text-gray font-medium">Founders with deep domain obsession and proven execution.</p>
+            </div>
+        </section>
+
+        <!-- SLIDE 15: PRODUCT VISION -->
+        <section>
+            <div class="container fade-in">
+                <div class="mb-12 text-center">
+                    <span class="slide-label">Product Vision</span>
+                    <h2>From Documentation &rarr; Automation &rarr; The Verification Standard</h2>
+                </div>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="card" style="border-top: 4px solid var(--primary);"><div class="number-circle mb-4">1</div><h5>Phase 1: Documentation & Verification</h5></div>
+                    <div class="card" style="border-top: 4px solid #00C6FF;"><div class="number-circle mb-4">2</div><h5>Phase 2: Vibe Tasking (AI creates & completes tasks)</h5></div>
+                    <div class="card" style="border-top: 4px solid var(--dark);"><div class="number-circle mb-4" style="background: var(--dark); color: white;">3</div><h5>Phase 3: The Verification Standard (The global dataset for project truth)</h5></div>
+                </div>
+                <div class="card-dark mt-spacer text-center"><p class="text-white mb-0"><strong>Moat:</strong> verified datasets competitors cannot replicate.</p></div>
+            </div>
+        </section>
+
+        <!-- SLIDE 16: THE ASK -->
+        <section class="bg-dark" style="background: #0A0D12; color: white; min-height: 90vh; display: flex; align-items: center;">
+            <div class="container fade-in">
+                <div class="text-center mb-16">
+                    <span class="slide-label" style="background: rgba(255,255,255,0.1); color: white;">The Ask</span>
+                    <h2 style="color: white;">Raising $750K <span style="font-weight:400; color:#888;">(SAFE @ $10M Pre)</span></h2>
+                    <p style="color: #aaa;">To reach 100 customers & break-even at 50 (September 2026)</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-12 items-start">
+                    <!-- Milestone Unlock -->
+                    <div class="card-dark">
+                        <h4 class="text-white mb-6">Milestone Unlock (18 Months)</h4>
+                        <div style="height: 8px; border-radius: 4px; background: #333; overflow: hidden; display: flex; margin-bottom: 1.5rem;">
+                            <div style="width: 45%; background: #005EFF;"></div>
+                            <div style="width: 30%; background: #00C6FF;"></div>
+                            <div style="width: 25%; background: #fff;"></div>
+                        </div>
+                        <div class="space-y-4" style="display: grid; gap: 1rem;">
+                            <div style="display: flex; gap: 10px; align-items: start;">
+                                <div style="width:40px; text-align:center; font-weight:bold; background:#005EFF; color:white; border-radius:50%;">45%</div>
+                                <div><strong class="text-white">Growth Engine</strong><br><span class="text-sm text-gray">Ads, partner referrals, and outbound SDR operations.</span></div>
+                            </div>
+                            <div style="display: flex; gap: 10px; align-items: start;">
+                                <div style="width:40px; text-align:center; font-weight:bold; background:#00C6FF; color:white; border-radius:50%;">30%</div>
+                                <div><strong class="text-white">Product Acceleration</strong><br><span class="text-sm text-gray">Mobile app, deep integrations, and "Vibe Tasking" beta.</span></div>
+                            </div>
+                            <div style="display: flex; gap: 10px; align-items: start;">
+                                <div style="width:40px; text-align:center; font-weight:bold; background:#fff; color:#000; border-radius:50%;">25%</div>
+                                <div><strong class="text-white">Core Team & Infrastructure</strong><br><span class="text-sm text-gray">Expanding AI and engineering capacity.</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Outcomes -->
+                    <div>
+                        <div class="card-dark mb-6">
+                            <h4 class="text-white mb-4">Expected Outcomes:</h4>
+                            <ul style="list-style: none; padding: 0;" class="space-y-3">
+                                <li style="display:flex; gap:10px;"><span class="text-primary">✓</span> <strong>Immediate:</strong> Deliver Zoom/Teams multimodal integration &rarr; unlock $4K/mo committed pipeline.</li>
+                                <li style="display:flex; gap:10px;"><span class="text-primary">✓</span> <strong>Launch:</strong> Go public with 20–25 paying customers.</li>
+                                <li style="display:flex; gap:10px;"><span class="text-primary">✓</span> <strong>Scale:</strong> Reach 100 customers &rarr; $1.2M ARR.</li>
+                                <li style="display:flex; gap:10px;"><span class="text-primary">✓</span> <strong>Safety:</strong> Achieve break-even profitability by September 2026.</li>
+                            </ul>
+                        </div>
+                        <div style="background: var(--primary); padding: 1.5rem; border-radius: 12px; text-align: center;">
+                            <p class="text-white font-bold mb-2">Thesis</p>
+                            <p class="text-white text-sm mb-0">Capture the Odoo ecosystem first — then expand to all professional service firms with a verified AI delivery layer.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="text-center" style="margin-top: 6rem;"> 
+                    <a href="https://knowcap.ai/invest" class="btn-white">
+                        Schedule an Investor Call &rarr;
+                    </a>
+                    <div class="mt-6">
+                        <a href="https://share.knowcap.ai/?token=6b654198-54a4-4092-9cf9-e829cecd153c" style="color: #888; font-size: 0.8rem; text-decoration: underline;">Watch 2 min demo on how i created this Interactive Pitch Deck</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+            });
+        }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(el => { observer.observe(el); });
+    </script>
+</body>

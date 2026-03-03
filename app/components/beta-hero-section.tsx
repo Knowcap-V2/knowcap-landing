@@ -1,0 +1,106 @@
+
+
+'use client'
+
+import { Button } from '@/components/ui/button'
+import { ArrowRight, Sparkles, Users, Zap, ChevronDown } from 'lucide-react'
+import { useState, useEffect } from 'react'
+
+export default function BetaHeroSection() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const scrollToNextSection = () => {
+    document.getElementById('beta-problem')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const joinBeta = () => {
+    document.getElementById('beta-cta')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  return (
+    <section className="relative min-h-screen flex items-center justify-center hero-bg">
+      <div className="max-w-[1400px] mx-auto px-2 py-16 text-center relative">
+        <div className={`mb-8 transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <Users className="w-6 h-6 text-blue-600" />
+            <span className="text-sm font-medium text-gray-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">Odoo Partners Beta Program</span>
+          </div>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-[#1a1d29]">
+            The AI-Powered Operating System for Odoo Partners
+          </h1>
+          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-4xl mx-auto">
+            Stop losing revenue to scope creep, client confusion, and endless support questions. 
+            Knowcap transforms your Odoo implementations into intelligent systems that scale your expertise.
+          </p>
+        </div>
+
+        <div className={`relative mb-8 mx-auto max-w-4xl transition-all duration-800 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          {/* YouTube Video Container */}
+          <div className="relative aspect-video rounded-lg overflow-hidden border border-border/20 shadow-2xl">
+            <iframe
+              src="https://www.youtube.com/embed/_B3XMb_LiU4"
+              title="Knowcap AI Platform Demo"
+              className="absolute inset-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+          <button
+            onClick={() => window.location.href = 'https://knowcap.ai/book'}
+            className="absolute -bottom-4 -right-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer"
+          >
+            Live Demo
+          </button>
+        </div>
+
+        <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+          <Button 
+            size="lg" 
+            onClick={joinBeta}
+            className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+          >
+            Join Beta Program
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
+          <Button 
+            variant="outline"
+            size="lg"
+            onClick={() => window.location.href = 'https://knowcap.ai/book'}
+            className="border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300"
+          >
+            Book Demo
+          </Button>
+        </div>
+
+        <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto transition-all duration-800 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <Users className="w-4 h-4 text-cyan-400" />
+            <span>Limited Beta Spots</span>
+          </div>
+          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <Zap className="w-4 h-4 text-cyan-400" />
+            <span>Free During Beta</span>
+          </div>
+          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <Sparkles className="w-4 h-4 text-cyan-400" />
+            <span>Odoo Partners Only</span>
+          </div>
+        </div>
+
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <button 
+            onClick={scrollToNextSection}
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ChevronDown className="w-6 h-6" />
+          </button>
+        </div>
+      </div>
+    </section>
+  )
+}
+

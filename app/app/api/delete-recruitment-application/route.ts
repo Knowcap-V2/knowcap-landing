@@ -1,0 +1,35 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url)
+    const id = searchParams.get('id')
+
+    if (!id) {
+      return NextResponse.json(
+        { message: 'Application ID is required' },
+        { status: 400 }
+      )
+    }
+
+    await prisma.recruitmentApplication.delete({
+      where: { id }
+    })
+
+    return NextResponse.json(
+      { message: 'Recruitment application deleted successfully' },
+      { status: 200 }
+    )
+  } catch (error) {
+    console.error('[DELETE RECRUITMENT APPLICATION ERROR]', error)
+    return NextResponse.json(
+      { message: 'Failed to delete application' },
+      { status: 500 }
+    )
+  } finally {
+    await prisma.$disconnect()
+  }
+}
