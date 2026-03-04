@@ -7,8 +7,7 @@ on:
 jobs:
   enforce-policy:
     runs-on: ubuntu-latest
-    # Authorized users: Abdelazizfarid (permanent), Shadysmetools (temporary - remove after setup)
-    if: github.actor != 'Abdelazizfarid' && github.actor != 'Shadysmetools'
+    if: github.actor != 'Abdelazizfarid'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
