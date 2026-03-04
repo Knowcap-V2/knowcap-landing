@@ -1,0 +1,43 @@
+name: Protect Main Branch
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  enforce-policy:
+    runs-on: ubuntu-latest
+    if: github.actor != 'Abdelazizfarid'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Revert unauthorized push
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          
+          echo "❌ Unauthorized push to main by ${{ github.actor }}"
+          echo "Reverting commit ${{ github.sha }}..."
+          
+          git revert --no-commit ${{ github.sha }}
+          git commit -m "🚫 Auto-revert: Unauthorized push by ${{ github.actor }}
+          
+          Only @Abdelazizfarid is authorized to push to main.
+          Original commit: ${{ github.sha }}"
+          
+          git push origin main
+
+      - name: Create issue for violation
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🚫 Unauthorized push to main reverted',
+              body: `**Violation detected**\n\n- **User:** @${{ github.actor }}\n- **Commit:** ${{ github.sha }}\n- **Action:** Auto-reverted\n\nOnly @Abdelazizfarid is authorized to push directly to main.\n\nPlease use Pull Requests instead.`
+            });
