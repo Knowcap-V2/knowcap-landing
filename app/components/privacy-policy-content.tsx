@@ -280,6 +280,74 @@ export default function PrivacyPolicyContent() {
             </div>
           </motion.div>
 
+          {/* Google API Services and Limited Use Disclosure */}
+          <motion.div
+            id="google-api-limited-use"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="bg-card border border-border rounded-lg p-8"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <Lock className="w-6 h-6 text-[#005EFF]" />
+              <h2 className="text-2xl font-bold text-[#0052CC]">6. Google API Services and Limited Use Disclosure</h2>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              Knowcap integrates with Google services so you can sign in with your Google account and, optionally, connect Google Calendar and Google Drive to power core product features. This section explains which Google APIs we use, why we need each scope, and how we handle data we receive from Google.
+            </p>
+
+            <h3 className="font-semibold text-[#0052CC] mb-3">Google APIs we use</h3>
+            <div className="space-y-2 mb-6">
+              <div className="flex items-start gap-3"><div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div><p className="text-muted-foreground">Google Identity (OpenID Connect / userinfo)</p></div>
+              <div className="flex items-start gap-3"><div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div><p className="text-muted-foreground">Google Calendar API</p></div>
+              <div className="flex items-start gap-3"><div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div><p className="text-muted-foreground">Google Drive API (file-scoped)</p></div>
+            </div>
+
+            <h3 className="font-semibold text-[#0052CC] mb-3">Per-scope justification</h3>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              When you connect your Google account, Knowcap requests only the OAuth scopes it needs to deliver features you have explicitly enabled:
+            </p>
+            <div className="space-y-3 mb-6">
+              <div className="flex items-start gap-3"><div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div><p className="text-muted-foreground"><span className="font-semibold text-[#0052CC]">userinfo.email</span> &mdash; Used to identify your account during sign-in and to associate activity in Knowcap with the correct user.</p></div>
+              <div className="flex items-start gap-3"><div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div><p className="text-muted-foreground"><span className="font-semibold text-[#0052CC]">userinfo.profile</span> &mdash; Used to display your name and avatar in the Knowcap interface so you and your teammates can recognize each other.</p></div>
+              <div className="flex items-start gap-3"><div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div><p className="text-muted-foreground"><span className="font-semibold text-[#0052CC]">calendar.readonly</span> &mdash; Used to show your upcoming meetings inside Knowcap so you can choose which ones to capture.</p></div>
+              <div className="flex items-start gap-3"><div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div><p className="text-muted-foreground"><span className="font-semibold text-[#0052CC]">calendar.events.readonly</span> &mdash; Used to read meeting details such as conferencing links and attendees so the Knowcap meeting bot can automatically join meetings you have opted to record.</p></div>
+              <div className="flex items-start gap-3"><div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div><p className="text-muted-foreground"><span className="font-semibold text-[#0052CC]">drive.file</span> &mdash; Used with the Google Drive Picker so you can select specific files for Knowcap to ingest. This is a per-file consent scope: Knowcap can only see files you explicitly pick, never your full Drive.</p></div>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              We do not request any additional Google scopes beyond those listed above.
+            </p>
+
+            <h3 className="font-semibold text-[#0052CC] mb-3">Limited Use disclosure</h3>
+            <div className="border-l-4 border-cyan-500 bg-cyan-500/5 p-4 rounded-r mb-6">
+              <p className="text-muted-foreground italic">
+                Knowcap&apos;s use and transfer to any other app of information received from Google APIs will adhere to the{' '}
+                <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer" className="text-[#005EFF] hover:text-[#0052CC] font-medium">Google API Services User Data Policy</a>, including the Limited Use requirements.
+              </p>
+            </div>
+
+            <h3 className="font-semibold text-[#0052CC] mb-3">How we handle Google user data</h3>
+            <div className="space-y-3 mb-6">
+              <div className="flex items-start gap-3"><div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div><p className="text-muted-foreground"><span className="font-semibold text-[#0052CC]">No AI model training.</span> We do not use data received from Google APIs to develop, improve, or train generalized or third-party AI or machine learning models.</p></div>
+              <div className="flex items-start gap-3"><div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div><p className="text-muted-foreground"><span className="font-semibold text-[#0052CC]">No selling or advertising.</span> We do not sell data received from Google APIs and we do not use it for advertising purposes.</p></div>
+              <div className="flex items-start gap-3"><div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div><p className="text-muted-foreground"><span className="font-semibold text-[#0052CC]">No third-party transfers.</span> We do not transfer data received from Google APIs to third parties, except as necessary to provide or improve the user-facing features you have enabled (for example, secure infrastructure providers that host the Service), to comply with applicable law, or as part of a merger, acquisition, or sale of assets with appropriate notice to you.</p></div>
+              <div className="flex items-start gap-3"><div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div><p className="text-muted-foreground"><span className="font-semibold text-[#0052CC]">No human access.</span> We do not allow humans to read data received from Google APIs unless (a) we have obtained your explicit consent to view specific content, (b) it is necessary for security purposes such as investigating abuse, (c) it is required to comply with applicable law, or (d) the data has been aggregated and de-identified so it cannot be linked to any individual.</p></div>
+            </div>
+
+            <h3 className="font-semibold text-[#0052CC] mb-3">Revoking access and deleting your data</h3>
+            <p className="text-muted-foreground leading-relaxed mb-3">
+              You can disconnect Knowcap from your Google account at any time:
+            </p>
+            <div className="space-y-2 mb-3">
+              <div className="flex items-start gap-3"><div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div><p className="text-muted-foreground">Visit your <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer" className="text-[#005EFF] hover:text-[#0052CC] font-medium">Google account permissions page</a>.</p></div>
+              <div className="flex items-start gap-3"><div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div><p className="text-muted-foreground">Select Knowcap and click &ldquo;Remove Access.&rdquo;</p></div>
+            </div>
+            <p className="text-muted-foreground leading-relaxed">
+              To delete data Knowcap has already stored, sign in to Knowcap and use the in-app data deletion controls, or email us at <a href="mailto:hsa@smetools.io" className="text-[#005EFF] hover:text-[#0052CC]">hsa@smetools.io</a>. Deletion follows the retention windows described elsewhere in this Privacy Policy.
+            </p>
+          </motion.div>
+
           {/* Data Storage */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -290,7 +358,7 @@ export default function PrivacyPolicyContent() {
           >
             <div className="flex items-center gap-3 mb-6">
               <Shield className="w-6 h-6 text-[#005EFF]" />
-              <h2 className="text-2xl font-bold text-[#0052CC]">6. Data Storage, Security, and Retention</h2>
+              <h2 className="text-2xl font-bold text-[#0052CC]">7. Data Storage, Security, and Retention</h2>
             </div>
             <div className="space-y-4">
               <div>
@@ -319,7 +387,7 @@ export default function PrivacyPolicyContent() {
           >
             <div className="flex items-center gap-3 mb-6">
               <Shield className="w-6 h-6 text-[#005EFF]" />
-              <h2 className="text-2xl font-bold text-[#0052CC]">7. Your Rights and Choices</h2>
+              <h2 className="text-2xl font-bold text-[#0052CC]">8. Your Rights and Choices</h2>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-cyan-500/5 border border-cyan-500/20 rounded-lg p-4">
@@ -347,7 +415,7 @@ export default function PrivacyPolicyContent() {
           >
             <div className="flex items-center gap-3 mb-6">
               <Shield className="w-6 h-6 text-[#005EFF]" />
-              <h2 className="text-2xl font-bold text-[#0052CC]">8. Your California Privacy Rights (CCPA/CPRA)</h2>
+              <h2 className="text-2xl font-bold text-[#0052CC]">9. Your California Privacy Rights (CCPA/CPRA)</h2>
             </div>
             <p className="text-muted-foreground leading-relaxed mb-6">
               If you are a California resident, you have specific rights regarding your personal information:
@@ -394,7 +462,7 @@ export default function PrivacyPolicyContent() {
           >
             <div className="flex items-center gap-3 mb-6">
               <Shield className="w-6 h-6 text-[#005EFF]" />
-              <h2 className="text-2xl font-bold text-[#0052CC]">9. Children's Privacy</h2>
+              <h2 className="text-2xl font-bold text-[#0052CC]">10. Children's Privacy</h2>
             </div>
             <p className="text-muted-foreground leading-relaxed">
               Our Service is not directed to individuals under the age of 16. We do not knowingly collect personal information from children under 16. If we become aware that a child under 16 has provided us with personal information, we will take steps to delete such information.
@@ -411,7 +479,7 @@ export default function PrivacyPolicyContent() {
           >
             <div className="flex items-center gap-3 mb-6">
               <FileText className="w-6 h-6 text-[#005EFF]" />
-              <h2 className="text-2xl font-bold text-[#0052CC]">10. Changes to This Privacy Policy</h2>
+              <h2 className="text-2xl font-bold text-[#0052CC]">11. Changes to This Privacy Policy</h2>
             </div>
             <p className="text-muted-foreground leading-relaxed">
               We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Effective Date" at the top. We encourage you to review this policy periodically.
@@ -429,7 +497,7 @@ export default function PrivacyPolicyContent() {
           >
             <div className="flex items-center justify-center gap-3 mb-6">
               <Mail className="w-6 h-6 text-[#005EFF]" />
-              <h2 className="text-2xl font-bold text-[#0052CC]">11. Contact Us</h2>
+              <h2 className="text-2xl font-bold text-[#0052CC]">12. Contact Us</h2>
             </div>
             <div className="space-y-4">
               <div>
