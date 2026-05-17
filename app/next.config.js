@@ -14,15 +14,16 @@ const nextConfig = {
     ignoreBuildErrors: false,
   },
   images: { unoptimized: true },
-  async redirects() {
+  // Chrome Web Store registers https://knowcap.ai/privacy as the
+  // extension's privacy URL but the page lives at /policy (commit
+  // 988833f). Google's publish-time reachability checker doesn't follow
+  // redirects, so /privacy must answer 200 directly. We use a Next.js
+  // rewrite (internal route mapping) instead of a redirect so the same
+  // policy page renders under both URLs with no HTTP 308 hop.
+  async rewrites() {
     return [
-      // Chrome Web Store registers https://knowcap.ai/privacy as the
-      // extension's privacy URL. The actual page lives at /policy
-      // (created in commit 988833f). Without this redirect Google's
-      // publish-time reachability check 404s and blocks publish.
-      // Anyone googling "knowcap privacy policy" also lands here.
-      { source: '/privacy', destination: '/policy', permanent: true },
-      { source: '/privacy-policy', destination: '/policy', permanent: true },
+      { source: '/privacy', destination: '/policy' },
+      { source: '/privacy-policy', destination: '/policy' },
     ];
   },
 };
