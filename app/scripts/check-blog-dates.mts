@@ -29,7 +29,18 @@ if (posts.length === 0) {
   process.exit(1)
 }
 
-const malformed = posts.filter((p) => !ISO_DAY.test(p.date))
+// Shape AND calendar: "2026-02-30" passes the regex, and Date silently slides it to
+// 2026-03-02 — which would then sort two days off its own label. Round-tripping the
+// parse back to the same ISO day rejects a date that does not exist.
+// The isNaN guard is not decoration: "2026-13-01" yields an Invalid Date, and calling
+// toISOString() on that THROWS — which would crash this check instead of failing it.
+const isIsoDay = (d: string) => {
+  if (!ISO_DAY.test(d)) return false
+  const parsed = new Date(d + 'T00:00:00Z')
+  return !Number.isNaN(parsed.getTime()) && parsed.toISOString().slice(0, 10) === d
+}
+
+const malformed = posts.filter((p) => !isIsoDay(p.date))
 
 // Non-increasing in ACTUAL time, not in the string the sort happened to use.
 const outOfOrder = posts.filter(
