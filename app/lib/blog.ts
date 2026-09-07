@@ -246,6 +246,25 @@ function extractFaqs(md: string): { q: string; a: string }[] {
   return faqs
 }
 
+/**
+ * Normalise a frontmatter date to a plain ISO day (`YYYY-MM-DD`).
+ *
+ * An UNQUOTED YAML date (`date: 2026-06-28`) is parsed into a Date object, and
+ * `String()` on that gives a raw machine timestamp — "Sun Jun 28 2026 03:00:00
+ * GMT+0300 (...)" — which reached visitors on 7 of 22 posts and also fed the
+ * JSON-LD / OpenGraph date tags (Odoo #8363). A quoted date is already a string
+ * and passes through untouched.
+ *
+ * Deliberately NOT prettified: this value doubles as the sort key in getAllPosts,
+ * and a label like "July 6, 2026" sorts behind "June 29, 2026" as text.
+ */
+function toIsoDay(value: unknown): string {
+  if (value instanceof Date) {
+    return Number.isNaN(value.getTime()) ? '' : value.toISOString().slice(0, 10)
+  }
+  return String(value ?? '')
+}
+
 function toMeta(slug: string, data: Record<string, any>, body: string): BlogPostMeta {
   const words = body.split(/\s+/).length
   const lang = String(data.lang ?? 'en')
@@ -253,7 +272,7 @@ function toMeta(slug: string, data: Record<string, any>, body: string): BlogPost
   return {
     slug,
     title: String(data.title ?? slug),
-    date: String(data.date ?? data.draft_date ?? ''),
+    date: toIsoDay(data.date ?? data.draft_date),
     author: String(data.author ?? 'Knowcap'),
     description: String(data.description ?? body.replace(/^#.*$/m, '').trim().split(/\r?\n/).find(Boolean) ?? '').slice(0, 300),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
